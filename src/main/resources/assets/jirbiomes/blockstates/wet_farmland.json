@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "jirbiomes:block/wet_farmland"
+    },
+    "moisture=1": {
+      "model": "jirbiomes:block/wet_farmland"
+    },
+    "moisture=2": {
+      "model": "jirbiomes:block/wet_farmland"
+    },
+    "moisture=3": {
+      "model": "jirbiomes:block/wet_farmland"
+    },
+    "moisture=4": {
+      "model": "jirbiomes:block/wet_farmland"
+    },
+    "moisture=5": {
+      "model": "jirbiomes:block/wet_farmland"
+    },
+    "moisture=6": {
+      "model": "jirbiomes:block/wet_farmland"
+    },
+    "moisture=7": {
+      "model": "jirbiomes:block/wet_farmland_moist"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "jirbiomes:block/dried_grass_block"
+    },
+    "snowy=true": {
+      "model": "jirbiomes:block/dried_grass_block_snow"
+    }
+  }
+}

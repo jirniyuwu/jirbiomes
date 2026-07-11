@@ -1,0 +1,8 @@
+{
+  "parent": "jirbiomes:block/template_farmland",
+  "textures": {
+    "dirt": "jirbiomes:block/dried_dirt",
+    "side": "jirbiomes:block/dry_farmland_side",
+    "top": "jirbiomes:block/dry_farmland"
+  }
+}

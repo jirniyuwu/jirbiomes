@@ -17,6 +17,9 @@
 		"main": [
 			"net.jirniy.jirbiomes.JirniyBiomes"
 		],
+		"client": [
+			"net.jirniy.jirbiomes.JirniyBiomesClient"
+		],
 		"fabric-datagen": [
 			"net.jirniy.jirbiomes.JirniyBiomesDataGenerator"
 		]

@@ -2,6 +2,9 @@ package net.jirniy.jirbiomes;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.datagen.ModBlockTagsProvider;
+import net.jirniy.jirbiomes.datagen.ModLootTableProvider;
 import net.jirniy.jirbiomes.datagen.ModModelProvider;
 
 public class JirniyBiomesDataGenerator implements DataGeneratorEntrypoint {
@@ -10,5 +13,7 @@ public class JirniyBiomesDataGenerator implements DataGeneratorEntrypoint {
 		var pack = fabricDataGenerator.createPack();
 
 		pack.addProvider(ModModelProvider::new);
+		pack.addProvider(ModBlockTagsProvider::new);
+		pack.addProvider(ModLootTableProvider::new);
 	}
 }
