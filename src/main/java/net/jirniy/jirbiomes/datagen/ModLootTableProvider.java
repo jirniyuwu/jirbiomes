@@ -47,6 +47,8 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         dropOther(ModBlocks.DRY_FARMLAND, ModBlocks.DRIED_DIRT);
         dropOther(ModBlocks.WET_FARMLAND, ModBlocks.WETLAND);
+        dropOther(ModBlocks.DRIED_DIRT_PATH, ModBlocks.DRIED_DIRT);
+        dropOther(ModBlocks.WETLAND_PATH, ModBlocks.WETLAND);
     }
 
     public LootTable.Builder silkTouchOrElseDrop(final Block block, ItemLike drop) {

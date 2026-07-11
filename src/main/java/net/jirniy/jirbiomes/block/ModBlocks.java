@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.custom.CustomFarmlandBlock;
 import net.jirniy.jirbiomes.block.custom.CustomGrassBlock;
+import net.jirniy.jirbiomes.block.custom.CustomPathBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -11,10 +12,7 @@ import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.WaterloggedTransparentBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -44,6 +42,10 @@ public class ModBlocks {
     public static final Block DRY_FARMLAND = registerBlock("dry_farmland", true, properties ->
             new CustomFarmlandBlock(DRIED_DIRT, properties.strength(0.4f).randomTicks()
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
+    public static final Block DRIED_DIRT_PATH = registerBlock("dried_dirt_path", true, properties ->
+            new CustomPathBlock(DRIED_DIRT, properties.strength(0.6f).isViewBlocking(Blocks::always).isSuffocating(Blocks::always)
+                    .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
+
 
     public static final Block WETLAND = registerBlock("wetland", true, properties ->
             new Block(properties.strength(0.6f).speedFactor(0.98f)
@@ -58,8 +60,11 @@ public class ModBlocks {
             new CustomGrassBlock(getKey(WETLAND), properties.strength(0.6f).speedFactor(0.98f).randomTicks()
                     .mapColor(MapColor.GRASS).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
     public static final Block WET_FARMLAND = registerBlock("wet_farmland", true, properties ->
-            new CustomFarmlandBlock(WETLAND, properties.strength(0.4f).randomTicks()
-                    .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
+            new CustomFarmlandBlock(WETLAND, properties.strength(0.6f).randomTicks().speedFactor(0.98f)
+                    .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
+    public static final Block WETLAND_PATH = registerBlock("wetland_path", true, properties ->
+            new CustomPathBlock(WETLAND, properties.strength(0.8f).isViewBlocking(Blocks::always).isSuffocating(Blocks::always)
+                    .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
 
     private static Block registerBlock(String name, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));

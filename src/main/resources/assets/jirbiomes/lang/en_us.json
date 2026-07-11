@@ -7,13 +7,15 @@
   "block.jirbiomes.rooted_dried_dirt": "Rooted Dried Dirt",
   "block.jirbiomes.coarse_dried_dirt": "Coarse Dried Dirt",
   "block.jirbiomes.dried_grass_block": "Dried Grass Block",
-  "block.jirbiomes.dried_farmland": "Dried Farmland",
+  "block.jirbiomes.dry_farmland": "Dry Farmland",
+  "block.jirbiomes.dried_dirt_path": "Dried Dirt Path",
 
   "block.jirbiomes.wetland": "Wetland",
   "block.jirbiomes.rooted_wetland": "Rooted Wetland",
   "block.jirbiomes.coarse_wetland": "Coarse Wetland",
   "block.jirbiomes.wet_grass_block": "Wet Grass Block",
   "block.jirbiomes.wet_farmland": "Wet Farmland",
+  "block.jirbiomes.wetland_path": "Wetland Path",
 
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions"
 }

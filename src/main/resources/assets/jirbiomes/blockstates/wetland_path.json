@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jirbiomes:block/wetland_path"
+      },
+      {
+        "model": "jirbiomes:block/wetland_path",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/wetland_path",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/wetland_path",
+        "y": 270
+      }
+    ]
+  }
+}

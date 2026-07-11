@@ -20,7 +20,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT)
-                .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND));
+                .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
+                .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH));
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE));
