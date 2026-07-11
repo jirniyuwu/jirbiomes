@@ -3,23 +3,22 @@
 	"id": "jirbiomes",
 	"version": "${version}",
 	"name": "Jirniy's biome additions",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A relatively small mod with quite a few additions to various biomes :3",
 	"authors": [
-		"Me!"
+		"JirniyUwU"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/jirniyuwu/jirbiomes"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/jirbiomes/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.jirniy.jirbiomes.JirniySBiomeAdditions"
+			"net.jirniy.jirbiomes.JirniyBiomes"
 		],
 		"fabric-datagen": [
-			"net.jirniy.jirbiomes.JirniySBiomeAdditionsDataGenerator"
+			"net.jirniy.jirbiomes.JirniyBiomesDataGenerator"
 		]
 	},
 	"mixins": [
