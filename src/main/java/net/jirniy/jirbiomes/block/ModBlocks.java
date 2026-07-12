@@ -29,6 +29,10 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 public class ModBlocks {
+    public static final Block NETHERSTONE = registerBlock("netherstone", properties ->
+            new Block(properties.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(0.34F).sound(SoundType.NETHERRACK)));
+
     public static final Block IRON_GRATE = registerBlock("iron_grate", properties ->
             new WaterloggedTransparentBlock(properties.noOcclusion().strength(3f).requiresCorrectToolForDrops()
                     .isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)

@@ -23,7 +23,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
                 .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH));
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.getKey(ModBlocks.IRON_GRATE));
+                .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
@@ -101,5 +102,16 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.GRASS_BLOCKS);
         tag(BlockTags.LOGS)
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS);
+
+        tag(BlockTags.NETHER_CARVER_REPLACEABLES)
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+        tag(BlockTags.BASE_STONE_NETHER)
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+        tag(BlockTags.INFINIBURN_NETHER)
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+        tag(BlockTags.INFINIBURN_OVERWORLD)
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+        tag(BlockTags.INFINIBURN_END)
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
     }
 }
