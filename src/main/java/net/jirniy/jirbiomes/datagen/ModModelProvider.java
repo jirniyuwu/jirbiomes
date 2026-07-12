@@ -22,6 +22,18 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.COARSE_WETLAND);
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_WETLAND);
         blockModelGenerators.createTrivialCube(ModBlocks.WETLAND);
+
+        blockModelGenerators.family(ModBlocks.GINKGO_PLANKS)
+                .stairs(ModBlocks.GINKGO_STAIRS)
+                .slab(ModBlocks.GINKGO_SLAB)
+                .button(ModBlocks.GINKGO_BUTTON)
+                .fence(ModBlocks.GINKGO_FENCE)
+                .fenceGate(ModBlocks.GINKGO_FENCE_GATE)
+                .pressurePlate(ModBlocks.GINKGO_PRESSURE_PLATE);
+        blockModelGenerators.createDoor(ModBlocks.GINKGO_DOOR);
+        blockModelGenerators.createTrapdoor(ModBlocks.GINKGO_TRAPDOOR);
+        blockModelGenerators.woodProvider(ModBlocks.GINKGO_LOG).log(ModBlocks.GINKGO_LOG).wood(ModBlocks.GINKGO_WOOD);
+        blockModelGenerators.woodProvider(ModBlocks.STRIPPED_GINKGO_LOG).log(ModBlocks.STRIPPED_GINKGO_LOG).wood(ModBlocks.STRIPPED_GINKGO_WOOD);
     }
 
     @Override

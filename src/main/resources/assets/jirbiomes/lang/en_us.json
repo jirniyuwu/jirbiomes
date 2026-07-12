@@ -17,5 +17,20 @@
   "block.jirbiomes.wet_farmland": "Wet Farmland",
   "block.jirbiomes.wetland_path": "Wetland Path",
 
+  "block.jirbiomes.ginkgo_planks": "Ginkgo Planks",
+  "block.jirbiomes.ginkgo_log": "Ginkgo Log",
+  "block.jirbiomes.ginkgo_wood": "Ginkgo Wood",
+  "block.jirbiomes.stripped_ginkgo_log": "Stripped Ginkgo Log",
+  "block.jirbiomes.stripped_ginkgo_wood": "Stripped Ginkgo Wood",
+
+  "block.jirbiomes.ginkgo_stairs": "Ginkgo Stairs",
+  "block.jirbiomes.ginkgo_slab": "Ginkgo Slab",
+  "block.jirbiomes.ginkgo_door": "Ginkgo Door",
+  "block.jirbiomes.ginkgo_trapdoor": "Ginkgo Trapdoor",
+  "block.jirbiomes.ginkgo_button": "Ginkgo Button",
+  "block.jirbiomes.ginkgo_pressure_plate": "Ginkgo Pressure Plate",
+  "block.jirbiomes.ginkgo_fence": "Ginkgo Fence",
+  "block.jirbiomes.ginkgo_fence_gate": "Ginkgo Fence Gate",
+
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions"
 }

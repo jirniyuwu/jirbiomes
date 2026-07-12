@@ -5,11 +5,13 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;
+import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
@@ -88,6 +90,49 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.WETLAND), has(ModBlocks.WETLAND))
                         .unlockedBy(getHasName(ModBlocks.COARSE_WETLAND), has(ModBlocks.COARSE_WETLAND))
                         .group("coarse_dirt").save(output, "coarse_wetland");
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GINKGO_WOOD, 3)
+                        .pattern("LL")
+                        .pattern("LL")
+                        .define('L', ModBlocks.GINKGO_LOG)
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_LOG), has(ModBlocks.GINKGO_LOG))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_WOOD), has(ModBlocks.GINKGO_WOOD))
+                        .group("wood").save(output, "ginkgo_wood");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_GINKGO_WOOD, 3)
+                        .pattern("LL")
+                        .pattern("LL")
+                        .define('L', ModBlocks.STRIPPED_GINKGO_LOG)
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_GINKGO_LOG), has(ModBlocks.STRIPPED_GINKGO_LOG))
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_GINKGO_WOOD), has(ModBlocks.STRIPPED_GINKGO_WOOD))
+                        .group("wood").save(output, "stripped_ginkgo_wood");
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GINKGO_PLANKS, 4)
+                        .requires(ModTags.Items.GINKGO_LOGS)
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_LOG), has(ModTags.Items.GINKGO_LOGS))
+                        .group("rooted_dirt").save(output, "ginkgo_planks");
+                stairBuilder(ModBlocks.GINKGO_STAIRS, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("wooden_stairs").save(output, "ginkgo_stairs");
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GINKGO_SLAB, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("wooden_slabs").save(output, "ginkgo_slab");
+                fenceBuilder(ModBlocks.GINKGO_FENCE, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("wooden_fences").save(output, "ginkgo_fence");
+                fenceGateBuilder(ModBlocks.GINKGO_FENCE_GATE, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("wooden_fence_gates").save(output, "ginkgo_fence_gate");
+                pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.GINKGO_PRESSURE_PLATE, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("wooden_pressure_plates").save(output, "ginkgo_pressure_plate");
+                buttonBuilder(ModBlocks.GINKGO_BUTTON, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("wooden_buttons").save(output, "ginkgo_button");
+                doorBuilder(ModBlocks.GINKGO_DOOR, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("wooden_doors").save(output, "ginkgo_door");
+                trapdoorBuilder(ModBlocks.GINKGO_TRAPDOOR, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("wooden_trapdoors").save(output, "ginkgo_trapdoor");
             }
         };
     }

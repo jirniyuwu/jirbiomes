@@ -49,6 +49,20 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropOther(ModBlocks.WET_FARMLAND, ModBlocks.WETLAND);
         dropOther(ModBlocks.DRIED_DIRT_PATH, ModBlocks.DRIED_DIRT);
         dropOther(ModBlocks.WETLAND_PATH, ModBlocks.WETLAND);
+
+        dropSelf(ModBlocks.GINKGO_LOG);
+        dropSelf(ModBlocks.STRIPPED_GINKGO_LOG);
+        dropSelf(ModBlocks.GINKGO_WOOD);
+        dropSelf(ModBlocks.STRIPPED_GINKGO_WOOD);
+        dropSelf(ModBlocks.GINKGO_PLANKS);
+        dropSelf(ModBlocks.GINKGO_STAIRS);
+        add(ModBlocks.GINKGO_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.GINKGO_TRAPDOOR);
+        dropSelf(ModBlocks.GINKGO_FENCE);
+        dropSelf(ModBlocks.GINKGO_FENCE_GATE);
+        add(ModBlocks.GINKGO_DOOR, this::createDoorTable);
+        dropSelf(ModBlocks.GINKGO_BUTTON);
+        dropSelf(ModBlocks.GINKGO_PRESSURE_PLATE);
     }
 
     public LootTable.Builder silkTouchOrElseDrop(final Block block, ItemLike drop) {
