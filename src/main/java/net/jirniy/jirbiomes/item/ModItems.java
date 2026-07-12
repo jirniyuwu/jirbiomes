@@ -9,6 +9,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.Function;
 
@@ -27,5 +29,16 @@ public class ModItems {
 
     public static void register() {
         JirniyBiomes.LOGGER.info("registering items for " + JirniyBiomes.MOD_ID);
+    }
+
+    public static ResourceKey<Item> getKey(ItemLike item) {
+        return BuiltInRegistries.ITEM.getResourceKey(item.asItem()).get();
+    }
+    public static ResourceKey<Item>[] getKeys(ItemLike... items) {
+        ResourceKey<Item>[] keys = new ResourceKey[items.length];
+        for (int i = 0; i < items.length; i++) {
+            keys[i] = getKey(items[i]);
+        }
+        return keys;
     }
 }
