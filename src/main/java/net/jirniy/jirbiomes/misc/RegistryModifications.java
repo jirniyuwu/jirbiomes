@@ -1,18 +1,17 @@
 package net.jirniy.jirbiomes.misc;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
+import net.fabricmc.fabric.api.registry.CompostableRegistry;
 import net.fabricmc.fabric.api.registry.FlattenableBlockRegistry;
 import net.fabricmc.fabric.api.registry.TillableBlockRegistry;
-import net.fabricmc.fabric.impl.content.registry.FuelRegistryEventsContextImpl;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.client.color.block.BlockTintSources;
-import net.minecraft.world.entity.animal.sheep.Sheep;
-import net.minecraft.world.level.block.entity.FuelValues;
 
 import java.util.List;
 
-public class BlockRegistryModifications {
+public class RegistryModifications {
     public static void register() {
         JirniyBiomes.LOGGER.info("registering block registry modifications for " + JirniyBiomes.MOD_ID);
 
@@ -42,5 +41,7 @@ public class BlockRegistryModifications {
 
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), ModBlocks.DRIED_GRASS_BLOCK);
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), ModBlocks.WET_GRASS_BLOCK);
+
+        CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.2f);
     }
 }

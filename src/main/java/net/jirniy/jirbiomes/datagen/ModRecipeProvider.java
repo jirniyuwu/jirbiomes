@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -31,6 +32,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                         .unlockedBy(getHasName(ModBlocks.IRON_GRATE), has(ModBlocks.IRON_GRATE))
                         .save(output, "iron_grate");
+
+                shapeless(RecipeCategory.MISC, ModItems.APPLE_SEEDS, 1)
+                        .requires(Items.APPLE)
+                        .unlockedBy(getHasName(Items.APPLE), has(Items.APPLE))
+                        .unlockedBy(getHasName(ModItems.APPLE_SEEDS), has(ModItems.APPLE_SEEDS))
+                        .group("seeds").save(output, "apple_seeds");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DRIED_DIRT, 4)
                         .pattern("DS")

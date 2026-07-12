@@ -2,16 +2,12 @@ package net.jirniy.jirbiomes;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.fabricmc.fabric.api.registry.FlattenableBlockRegistry;
-import net.fabricmc.fabric.api.registry.TillableBlockRegistry;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModCreativeModeTabs;
 import net.jirniy.jirbiomes.item.ModItems;
-import net.jirniy.jirbiomes.misc.BlockRegistryModifications;
+import net.jirniy.jirbiomes.misc.RegistryModifications;
 import net.minecraft.resources.Identifier;
 
-import net.minecraft.world.InteractionResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +21,7 @@ public class JirniyBiomes implements ModInitializer {
 		ModBlocks.register();
 		ModCreativeModeTabs.register();
 
-		BlockRegistryModifications.register();
+		RegistryModifications.register();
 	}
 
 	public static Identifier id(String path) {
