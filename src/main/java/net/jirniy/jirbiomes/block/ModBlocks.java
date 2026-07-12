@@ -6,8 +6,10 @@ import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
 import net.jirniy.jirbiomes.block.custom.CustomFarmlandBlock;
 import net.jirniy.jirbiomes.block.custom.CustomGrassBlock;
 import net.jirniy.jirbiomes.block.custom.CustomPathBlock;
+import net.jirniy.jirbiomes.particle.ModParticles;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.references.BlockItemId;
@@ -85,6 +87,12 @@ public class ModBlocks {
             new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.SAND, SoundType.WOOD)));
     public static final Block STRIPPED_GINKGO_WOOD = registerBlock("stripped_ginkgo_wood", properties ->
             new RotatedPillarBlock(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()));
+
+    public static final Block GINKGO_LEAVES = registerBlock("ginkgo_leaves", properties ->
+            new UntintedParticleLeavesBlock(0.1F, ModParticles.GINKGO_LEAVES, properties.mapColor(MapColor.COLOR_YELLOW)
+                    .strength(0.2F).randomTicks().sound(SoundType.CHERRY_LEAVES).noOcclusion()
+                    .isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                    .ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
 
     public static final Block GINKGO_PLANKS = registerBlock("ginkgo_planks", properties ->
             new Block(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS)

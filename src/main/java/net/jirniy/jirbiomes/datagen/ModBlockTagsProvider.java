@@ -47,6 +47,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD));
 
+        tag(BlockTags.LEAVES)
+                .add(ModBlocks.getKey(ModBlocks.GINKGO_LEAVES));
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS));
         tag(BlockTags.WOODEN_STAIRS)
@@ -89,6 +91,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.SUPPORTS_VEGETATION)
+                .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK)

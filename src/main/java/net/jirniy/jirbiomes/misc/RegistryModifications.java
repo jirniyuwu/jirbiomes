@@ -43,7 +43,8 @@ public class RegistryModifications {
         StrippableBlockRegistry.register(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG);
         StrippableBlockRegistry.register(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD);
 
-        CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.2f);
+        CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.1f);
+        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_LEAVES, 0.1f);
 
         FuelValueEvents.BUILD.register((builder, context) -> {
 

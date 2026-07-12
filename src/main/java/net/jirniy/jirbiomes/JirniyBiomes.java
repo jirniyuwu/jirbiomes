@@ -2,10 +2,15 @@ package net.jirniy.jirbiomes;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModCreativeModeTabs;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.RegistryModifications;
+import net.jirniy.jirbiomes.particle.ModParticles;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.Identifier;
 
 import org.slf4j.Logger;
@@ -20,6 +25,7 @@ public class JirniyBiomes implements ModInitializer {
 		ModItems.register();
 		ModBlocks.register();
 		ModCreativeModeTabs.register();
+		ModParticles.register();
 
 		RegistryModifications.register();
 	}

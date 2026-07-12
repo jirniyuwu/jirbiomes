@@ -70,6 +70,8 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.GINKGO_BUTTON);
         dropSelf(ModBlocks.GINKGO_PRESSURE_PLATE);
 
+        add(ModBlocks.GINKGO_LEAVES, createLeavesDrops(ModBlocks.GINKGO_LEAVES, Blocks.OAK_SAPLING, 0.05f));
+
         this.add(ModBlocks.APPLE_CROP, this.createCropDrops(ModBlocks.APPLE_CROP, Blocks.OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AppleCropBlock.AGE, AppleCropBlock.MAX_AGE))));
