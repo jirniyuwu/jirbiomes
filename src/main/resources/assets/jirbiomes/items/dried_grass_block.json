@@ -5,7 +5,7 @@
     "tints": [
       {
         "type": "minecraft:grass",
-        "downfall": 1.0,
+        "downfall": 0.4,
         "temperature": 0.8
       }
     ]
