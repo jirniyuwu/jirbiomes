@@ -3,6 +3,7 @@ package net.jirniy.jirbiomes.datagen;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -34,10 +35,12 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrapdoor(ModBlocks.GINKGO_TRAPDOOR);
         blockModelGenerators.woodProvider(ModBlocks.GINKGO_LOG).log(ModBlocks.GINKGO_LOG).wood(ModBlocks.GINKGO_WOOD);
         blockModelGenerators.woodProvider(ModBlocks.STRIPPED_GINKGO_LOG).log(ModBlocks.STRIPPED_GINKGO_LOG).wood(ModBlocks.STRIPPED_GINKGO_WOOD);
+
+        blockModelGenerators.createCrossBlock(ModBlocks.APPLE_CROP, BlockModelGenerators.PlantType.NOT_TINTED, AppleCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
-        itemModelGenerators.generateFlatItem(ModItems.APPLE_SEEDS, ModelTemplates.FLAT_ITEM);
+        // itemModelGenerators.generateFlatItem(ModItems.APPLE_SEEDS, ModelTemplates.FLAT_ITEM);
     }
 }

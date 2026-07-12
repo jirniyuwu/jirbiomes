@@ -2,11 +2,13 @@ package net.jirniy.jirbiomes.item;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
+import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.food.ModFood;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -17,7 +19,8 @@ import java.util.function.Function;
 
 public class ModItems {
 
-    public static final Item APPLE_SEEDS = registerItem("apple_seeds", properties -> new Item(properties.stacksTo(64)));
+    public static final Item APPLE_SEEDS = registerItem("apple_seeds", properties ->
+            new BlockItem(ModBlocks.APPLE_CROP, properties.useItemDescriptionPrefix()));
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         Item item = Registry.register(BuiltInRegistries.ITEM, JirniyBiomes.id(name),

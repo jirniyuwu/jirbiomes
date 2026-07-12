@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.block;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
+import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
 import net.jirniy.jirbiomes.block.custom.CustomFarmlandBlock;
 import net.jirniy.jirbiomes.block.custom.CustomGrassBlock;
 import net.jirniy.jirbiomes.block.custom.CustomPathBlock;
@@ -110,6 +111,10 @@ public class ModBlocks {
             new DoorBlock(BlockSetType.BIRCH, properties.mapColor(MapColor.SAND)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
                     .pushReaction(PushReaction.DESTROY).noOcclusion()));
+
+    public static final Block APPLE_CROP = registerBlock("apple_crop", false, properties ->
+            new AppleCropBlock(properties.instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.GRASS)
+                    .noCollision().randomTicks().sound(SoundType.CROP)));
 
 
     private static Block registerBlock(String name, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {

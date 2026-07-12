@@ -4,6 +4,9 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLootTableSubProvider;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
+import net.jirniy.jirbiomes.item.ModItems;
+import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
@@ -15,11 +18,13 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.concurrent.CompletableFuture;
@@ -63,6 +68,10 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.GINKGO_DOOR, this::createDoorTable);
         dropSelf(ModBlocks.GINKGO_BUTTON);
         dropSelf(ModBlocks.GINKGO_PRESSURE_PLATE);
+
+        this.add(ModBlocks.APPLE_CROP, this.createCropDrops(ModBlocks.APPLE_CROP, Blocks.OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AppleCropBlock.AGE, AppleCropBlock.MAX_AGE))));
     }
 
     public LootTable.Builder silkTouchOrElseDrop(final Block block, ItemLike drop) {

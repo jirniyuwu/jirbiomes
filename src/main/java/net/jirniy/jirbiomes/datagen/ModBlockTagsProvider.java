@@ -65,6 +65,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.FENCE_GATES)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_FENCE_GATE));
 
+        tag(BlockTags.CROPS)
+                .add(ModBlocks.getKey(ModBlocks.APPLE_CROP));
         tag(BlockTags.GROWS_CROPS)
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND));
         tag(BlockTags.SUPPORTS_CROPS)
