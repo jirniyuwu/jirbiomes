@@ -7,15 +7,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.FossilFeature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockStateMatchTest;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class MapStateProvider extends BlockStateProvider {
     public static final MapCodec<MapStateProvider> CODEC = RecordCodecBuilder.mapCodec(

@@ -2,7 +2,6 @@ package net.jirniy.jirbiomes;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.datagen.*;
 import net.jirniy.jirbiomes.worldgen.ModConfiguredFeatures;
 import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;

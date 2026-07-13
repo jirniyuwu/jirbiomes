@@ -1,6 +1,5 @@
 package net.jirniy.jirbiomes.worldgen;
 
-import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.world.level.block.grower.TreeGrower;
 
 import java.util.Optional;
