@@ -143,6 +143,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public String getName() {
-        return "jirbiomes_recipes";
+        return "Recipes";
     }
 }

@@ -6,6 +6,7 @@ import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.world.level.block.Block;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricPackOutput output) {
@@ -31,7 +32,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .fence(ModBlocks.GINKGO_FENCE)
                 .fenceGate(ModBlocks.GINKGO_FENCE_GATE)
                 .pressurePlate(ModBlocks.GINKGO_PRESSURE_PLATE);
-        blockModelGenerators.createCrossBlockWithDefaultItem(ModBlocks.GINKGO_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.GINKGO_SAPLING, ModBlocks.POTTED_GINKGO_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createTrivialCube(ModBlocks.GINKGO_LEAVES);
         blockModelGenerators.createDoor(ModBlocks.GINKGO_DOOR);
         blockModelGenerators.createTrapdoor(ModBlocks.GINKGO_TRAPDOOR);

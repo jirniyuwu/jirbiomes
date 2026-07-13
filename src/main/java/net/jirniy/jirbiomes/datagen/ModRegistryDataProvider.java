@@ -20,6 +20,6 @@ public class ModRegistryDataProvider extends FabricDynamicRegistryProvider {
 
     @Override
     public String getName() {
-        return "jirbiomes_registry";
+        return "Registry Data";
     }
 }
