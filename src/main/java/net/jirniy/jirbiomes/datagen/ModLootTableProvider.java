@@ -54,6 +54,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.GINKGO_WOOD);
         dropSelf(ModBlocks.STRIPPED_GINKGO_WOOD);
         dropSelf(ModBlocks.GINKGO_SAPLING);
+        dropPottedContents(ModBlocks.POTTED_GINKGO_SAPLING);
         dropSelf(ModBlocks.GINKGO_PLANKS);
         dropSelf(ModBlocks.GINKGO_STAIRS);
         add(ModBlocks.GINKGO_SLAB, this::createSlabItemTable);

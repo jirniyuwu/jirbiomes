@@ -92,6 +92,8 @@ public class ModBlocks {
     public static final Block GINKGO_SAPLING = registerBlock("ginkgo_sapling", properties ->
             new SaplingBlock(ModTreeGrowers.GINKGO, properties.mapColor(MapColor.COLOR_YELLOW).noCollision().randomTicks()
                     .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+    public static final Block POTTED_GINKGO_SAPLING = registerBlock("potted_ginkgo_sapling", false, properties ->
+            new FlowerPotBlock(ModBlocks.GINKGO_SAPLING, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     public static final Block GINKGO_PLANKS = registerBlock("ginkgo_planks", properties ->
             new Block(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS)

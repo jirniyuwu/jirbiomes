@@ -3,43 +3,58 @@ package net.jirniy.jirbiomes.worldgen;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
+import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.TrapezoidInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.LakeFeature;
+import net.minecraft.world.level.levelgen.feature.SequenceFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.PlaceOnGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
+import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 
 import java.util.List;
 import java.util.OptionalInt;
 
 public class ModConfiguredFeatures {
+    public static final ResourceKey<ConfiguredFeature<?, ?>> NETHERSTONE = registryKey("netherstone");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE = registryKey("ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE_BEES_005 = registryKey("ginkgo_tree_bees_005");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE = registryKey("old_growth_ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE_BEES_005 = registryKey("old_growth_ginkgo_tree_bees_005");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_GRASS_PATCH = registryKey("dried_grass_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_GRASS_PATCH_DESERT = registryKey("dried_grass_patch_desert");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WET_GRASS_PATCH = registryKey("wet_grass_patch");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+        HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         BlockStateProvider belowTrunkProvider = TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(context.lookup(Registries.BIOME));
 
         BlockStateProvider driedDirtProvider = new MapStateProvider(
@@ -79,20 +94,68 @@ public class ModConfiguredFeatures {
 
         register(context, GINKGO_TREE, Feature.TREE, ginkgoTreeConfig.ignoreVines().build());
         register(context, GINKGO_TREE_BEES_005, Feature.TREE, ginkgoTreeConfig.decorators(List.of(beehive005)).ignoreVines().build());
-        register(context, OLD_GROWTH_GINKGO_TREE, Feature.TREE, oldGrowthGinkgoTreeConfig.ignoreVines().build());
-        register(context, OLD_GROWTH_GINKGO_TREE_BEES_005, Feature.TREE, oldGrowthGinkgoTreeConfig.decorators(List.of(beehive005)).ignoreVines().build());
-
+        register(context, OLD_GROWTH_GINKGO_TREE, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.TREE, oldGrowthGinkgoTreeConfig.ignoreVines().build()),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DRIED_GRASS_PATCH),
+                                CountPlacement.of(UniformInt.of(2, 3)),
+                                RandomOffsetPlacement.of(UniformInt.of(-4, 4), UniformInt.of(-3, 1))),
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(RuleBasedStateProvider.ifTrueThenProvide(
+                                        BlockPredicate.allOf(BlockPredicate.solid(), BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE))),
+                                        ModBlocks.ROOTED_DRIED_DIRT)),
+                                CountPlacement.of(UniformInt.of(16, 60)),
+                                RandomOffsetPlacement.of(TrapezoidInt.of(-2, 2, 0), TrapezoidInt.of(-8, -1, 0)))
+                )
+        ));
+        register(context, OLD_GROWTH_GINKGO_TREE_BEES_005, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.TREE, oldGrowthGinkgoTreeConfig.ignoreVines().decorators(List.of(beehive005)).build()),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DRIED_GRASS_PATCH),
+                                CountPlacement.of(UniformInt.of(2, 3)),
+                                RandomOffsetPlacement.of(UniformInt.of(-4, 4), UniformInt.of(-3, 1))),
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(RuleBasedStateProvider.ifTrueThenProvide(
+                                        BlockPredicate.matchesBlocks(Blocks.SAND, Blocks.SANDSTONE),
+                                        ModBlocks.ROOTED_DRIED_DIRT)),
+                                CountPlacement.of(UniformInt.of(16, 60)),
+                                RandomOffsetPlacement.of(TrapezoidInt.of(-2, 2, 0), TrapezoidInt.of(-8, -1, 0)))
+                )
+        ));
         register(context, DRIED_GRASS_PATCH, Feature.DISK, new DiskConfiguration(
                 driedDirtProvider,
                 BlockPredicate.solid(),
                 UniformInt.of(3, 7),
                 4
         ));
+        register(context, DRIED_GRASS_PATCH_DESERT, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.DISK, new DiskConfiguration(
+                                RuleBasedStateProvider.ifTrueThenProvide(
+                                        BlockPredicate.allOf(BlockPredicate.solid(), BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE))),
+                                        ModBlocks.DRIED_DIRT),
+                                BlockPredicate.solid(),
+                                UniformInt.of(2, 5),
+                                3
+                        )),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(VegetationFeatures.DRY_GRASS),
+                                RarityFilter.onAverageOnceEvery(3),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP,
+                                CountPlacement.of(32),
+                                RandomOffsetPlacement.ofTriangle(5, 3),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE))
+                )
+        ));
         register(context, WET_GRASS_PATCH, Feature.DISK, new DiskConfiguration(
                 wetlandProvider,
                 BlockPredicate.solid(),
                 UniformInt.of(3, 7),
                 4
+        ));
+
+        register(context, NETHERSTONE, Feature.ORE, new OreConfiguration(
+                List.of(OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), ModBlocks.NETHERSTONE.defaultBlockState())), 32
         ));
     }
 

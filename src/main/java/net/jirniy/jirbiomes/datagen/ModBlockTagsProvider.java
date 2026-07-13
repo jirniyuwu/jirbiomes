@@ -90,10 +90,17 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.MOSS_REPLACEABLE)
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
+        tag(BlockTags.SUPPORTS_SUGAR_CANE)
+                .addOptionalTag(ModTags.Blocks.WET_DIRT)
+                .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
+        tag(BlockTags.SUPPORTS_CACTUS)
+                .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.SUPPORTS_VEGETATION)
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
+        tag(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.getKey(ModBlocks.POTTED_GINKGO_SAPLING));
         tag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK)
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
