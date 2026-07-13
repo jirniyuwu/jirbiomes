@@ -33,6 +33,8 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
         tag(ItemTags.PLANKS)
                 .add(ModItems.getKey(ModBlocks.GINKGO_PLANKS));
+        tag(ItemTags.SAPLINGS)
+                .add(ModItems.getKey(ModBlocks.GINKGO_SAPLING));
         tag(ItemTags.WOODEN_STAIRS)
                 .add(ModItems.getKey(ModBlocks.GINKGO_STAIRS));
         tag(ItemTags.WOODEN_SLABS)

@@ -24,6 +24,7 @@
   "block.jirbiomes.stripped_ginkgo_log": "Stripped Ginkgo Log",
   "block.jirbiomes.stripped_ginkgo_wood": "Stripped Ginkgo Wood",
   "block.jirbiomes.ginkgo_leaves": "Ginkgo Leaves",
+  "block.jirbiomes.ginkgo_sapling": "Ginkgo Sapling",
 
   "block.jirbiomes.ginkgo_stairs": "Ginkgo Stairs",
   "block.jirbiomes.ginkgo_slab": "Ginkgo Slab",
@@ -36,5 +37,6 @@
 
   "block.jirbiomes.apple_crop": "Apple Tree Crop",
 
-  "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions"
+  "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions",
+  "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log"
 }

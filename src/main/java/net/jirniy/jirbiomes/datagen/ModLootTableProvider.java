@@ -60,6 +60,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.STRIPPED_GINKGO_LOG);
         dropSelf(ModBlocks.GINKGO_WOOD);
         dropSelf(ModBlocks.STRIPPED_GINKGO_WOOD);
+        dropSelf(ModBlocks.GINKGO_SAPLING);
         dropSelf(ModBlocks.GINKGO_PLANKS);
         dropSelf(ModBlocks.GINKGO_STAIRS);
         add(ModBlocks.GINKGO_SLAB, this::createSlabItemTable);
@@ -70,7 +71,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.GINKGO_BUTTON);
         dropSelf(ModBlocks.GINKGO_PRESSURE_PLATE);
 
-        add(ModBlocks.GINKGO_LEAVES, createLeavesDrops(ModBlocks.GINKGO_LEAVES, Blocks.OAK_SAPLING, 0.05f));
+        add(ModBlocks.GINKGO_LEAVES, createLeavesDrops(ModBlocks.GINKGO_LEAVES, ModBlocks.GINKGO_SAPLING, 0.05f));
 
         this.add(ModBlocks.APPLE_CROP, this.createCropDrops(ModBlocks.APPLE_CROP, Blocks.OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)

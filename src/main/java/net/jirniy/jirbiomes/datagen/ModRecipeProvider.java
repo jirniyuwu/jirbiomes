@@ -113,7 +113,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GINKGO_PLANKS, 4)
                         .requires(ModTags.Items.GINKGO_LOGS)
                         .unlockedBy(getHasName(ModBlocks.GINKGO_LOG), has(ModTags.Items.GINKGO_LOGS))
-                        .group("rooted_dirt").save(output, "ginkgo_planks");
+                        .group("planks").save(output, "ginkgo_planks");
                 stairBuilder(ModBlocks.GINKGO_STAIRS, Ingredient.of(ModBlocks.GINKGO_PLANKS))
                         .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
                         .group("wooden_stairs").save(output, "ginkgo_stairs");

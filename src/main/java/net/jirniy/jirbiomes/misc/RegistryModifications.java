@@ -45,6 +45,7 @@ public class RegistryModifications {
 
         CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.1f);
         CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_LEAVES, 0.1f);
+        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_SAPLING, 0.25f);
 
         FuelValueEvents.BUILD.register((builder, context) -> {
 

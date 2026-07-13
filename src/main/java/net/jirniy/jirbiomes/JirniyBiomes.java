@@ -9,8 +9,12 @@ import net.jirniy.jirbiomes.item.ModCreativeModeTabs;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.RegistryModifications;
 import net.jirniy.jirbiomes.particle.ModParticles;
+import net.jirniy.jirbiomes.worldgen.ModConfiguredFeatures;
+import net.jirniy.jirbiomes.worldgen.blockstate.ModBlockStateProviderType;
 import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 
 import org.slf4j.Logger;
@@ -22,6 +26,8 @@ public class JirniyBiomes implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModBlockStateProviderType.register();
+
 		ModItems.register();
 		ModBlocks.register();
 		ModCreativeModeTabs.register();

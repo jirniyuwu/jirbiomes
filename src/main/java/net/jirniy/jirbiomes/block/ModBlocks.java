@@ -7,6 +7,7 @@ import net.jirniy.jirbiomes.block.custom.CustomFarmlandBlock;
 import net.jirniy.jirbiomes.block.custom.CustomGrassBlock;
 import net.jirniy.jirbiomes.block.custom.CustomPathBlock;
 import net.jirniy.jirbiomes.particle.ModParticles;
+import net.jirniy.jirbiomes.worldgen.ModTreeGrowers;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
@@ -19,6 +20,7 @@ import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -93,6 +95,10 @@ public class ModBlocks {
                     .strength(0.2F).randomTicks().sound(SoundType.CHERRY_LEAVES).noOcclusion()
                     .isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
                     .ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
+
+    public static final Block GINKGO_SAPLING = registerBlock("ginkgo_sapling", properties ->
+            new SaplingBlock(ModTreeGrowers.GINKGO, properties.mapColor(MapColor.COLOR_YELLOW).noCollision().randomTicks()
+                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
 
     public static final Block GINKGO_PLANKS = registerBlock("ginkgo_planks", properties ->
             new Block(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS)
