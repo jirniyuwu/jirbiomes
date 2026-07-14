@@ -13,7 +13,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class AppleCropBlock extends CropBlock {
-    public static final int MAX_AGE = 6;
+    public static final int MAX_AGE = 7;
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, MAX_AGE);
     private static final VoxelShape[] SHAPES = {
             Block.column(4, 0, 6),
@@ -22,7 +22,8 @@ public class AppleCropBlock extends CropBlock {
             Block.column(8, 0, 11),
             Block.column(8, 0, 12),
             Block.column(10, 0, 13),
-            Block.column(12, 0, 14)
+            Block.column(12, 0, 14),
+            Block.column(12, 0, 15)
     };
 
     public AppleCropBlock(Properties properties) {

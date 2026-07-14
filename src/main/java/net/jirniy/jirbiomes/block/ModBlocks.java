@@ -2,14 +2,12 @@ package net.jirniy.jirbiomes.block;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
-import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
-import net.jirniy.jirbiomes.block.custom.CustomFarmlandBlock;
-import net.jirniy.jirbiomes.block.custom.CustomGrassBlock;
-import net.jirniy.jirbiomes.block.custom.CustomPathBlock;
+import net.jirniy.jirbiomes.block.custom.*;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModTreeGrowers;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -129,6 +127,16 @@ public class ModBlocks {
             new AppleCropBlock(properties.instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.GRASS)
                     .noCollision().randomTicks().sound(SoundType.CROP)));
 
+    public static final Block APPLE_LEAVES = registerBlock("apple_leaves", properties ->
+            new AppleLeavesBlock(0.01F, properties.mapColor(MapColor.PLANT)
+                    .strength(0.2F).randomTicks().sound(SoundType.CHERRY_LEAVES).noOcclusion()
+                    .isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                    .ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
+    public static final Block APPLE_OAK_SAPLING = registerBlock("apple_oak_sapling", properties ->
+            new SaplingBlock(ModTreeGrowers.APPLE_OAK, properties.mapColor(MapColor.PLANT).noCollision().randomTicks()
+                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+    public static final Block POTTED_APPLE_OAK_SAPLING = registerBlock("potted_apple_oak_sapling", false, properties ->
+            new FlowerPotBlock(ModBlocks.APPLE_OAK_SAPLING, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     private static Block registerBlock(String name, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));

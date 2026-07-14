@@ -37,6 +37,9 @@
   "block.jirbiomes.ginkgo_fence_gate": "Ginkgo Fence Gate",
 
   "block.jirbiomes.apple_crop": "Apple Tree Crop",
+  "block.jirbiomes.apple_leaves": "Apple Leaves",
+  "block.jirbiomes.apple_oak_sapling": "Apple Oak Sapling",
+  "block.jirbiomes.potted_apple_oak_sapling": "Potted Apple Oak Sapling",
 
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions",
   "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log"

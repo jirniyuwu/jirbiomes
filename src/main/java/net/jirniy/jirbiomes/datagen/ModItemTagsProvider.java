@@ -25,14 +25,16 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.getKeys(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG))
                 .add(ModItems.getKeys(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD));
         tag(ItemTags.LEAVES)
-                .add(ModItems.getKey(ModBlocks.GINKGO_LEAVES));
+                .add(ModItems.getKey(ModBlocks.GINKGO_LEAVES))
+                .add(ModItems.getKey(ModBlocks.APPLE_LEAVES));
         tag(ItemTags.LOGS_THAT_BURN)
                 .addOptionalTag(ModTags.Items.GINKGO_LOGS);
 
         tag(ItemTags.PLANKS)
                 .add(ModItems.getKey(ModBlocks.GINKGO_PLANKS));
         tag(ItemTags.SAPLINGS)
-                .add(ModItems.getKey(ModBlocks.GINKGO_SAPLING));
+                .add(ModItems.getKey(ModBlocks.GINKGO_SAPLING))
+                .add(ModItems.getKey(ModBlocks.APPLE_OAK_SAPLING));
         tag(ItemTags.WOODEN_STAIRS)
                 .add(ModItems.getKey(ModBlocks.GINKGO_STAIRS));
         tag(ItemTags.WOODEN_SLABS)

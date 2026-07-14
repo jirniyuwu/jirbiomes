@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.worldgen;
 
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.block.custom.AppleLeavesBlock;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -10,16 +11,19 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
 import net.minecraft.data.worldgen.features.OreFeatures;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.TrapezoidInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -28,12 +32,15 @@ import net.minecraft.world.level.levelgen.feature.SequenceFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.PlaceOnGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 
@@ -47,6 +54,11 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE_BEES_005 = registryKey("ginkgo_tree_bees_005");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE = registryKey("old_growth_ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE_BEES_005 = registryKey("old_growth_ginkgo_tree_bees_005");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_OAK_TREE = registryKey("apple_oak_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_OAK_TREE_BEES_005 = registryKey("apple_oak_tree_bees_005");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_APPLE_OAK_TREE = registryKey("fancy_apple_oak_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_APPLE_OAK_TREE_BEES_005 = registryKey("fancy_apple_oak_tree_bees_005");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_GRASS_PATCH = registryKey("dried_grass_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_GRASS_PATCH_DESERT = registryKey("dried_grass_patch_desert");
@@ -90,6 +102,56 @@ public class ModConfiguredFeatures {
                 new AcaciaFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
                 belowTrunkProvider
+        );
+
+        register(context, APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OAK_LOG),
+                new StraightTrunkPlacer(4, 2, 0),
+                new WeightedStateProvider(
+                        WeightedList.<BlockState>builder()
+                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 1), 2)
+                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 2), 1)
+                ),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1),
+                belowTrunkProvider).ignoreVines().build()
+        );
+        register(context, APPLE_OAK_TREE_BEES_005, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OAK_LOG),
+                new StraightTrunkPlacer(4, 2, 0),
+                new WeightedStateProvider(
+                        WeightedList.<BlockState>builder()
+                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 1), 2)
+                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 2), 1)
+                ),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1),
+                belowTrunkProvider).ignoreVines().decorators(List.of(beehive005)).build()
+        );
+
+        register(context, FANCY_APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OAK_LOG),
+                new FancyTrunkPlacer(3, 11, 0),
+                new WeightedStateProvider(
+                        WeightedList.<BlockState>builder()
+                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 1), 2)
+                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 2), 1)
+                ),
+                new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
+                belowTrunkProvider).ignoreVines().build()
+        );
+        register(context, FANCY_APPLE_OAK_TREE_BEES_005, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OAK_LOG),
+                new FancyTrunkPlacer(3, 11, 0),
+                new WeightedStateProvider(
+                        WeightedList.<BlockState>builder()
+                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 1), 2)
+                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 2), 1)
+                ),
+                new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
+                belowTrunkProvider).ignoreVines().decorators(List.of(beehive005)).build()
         );
 
         register(context, GINKGO_TREE, Feature.TREE, ginkgoTreeConfig.ignoreVines().build());

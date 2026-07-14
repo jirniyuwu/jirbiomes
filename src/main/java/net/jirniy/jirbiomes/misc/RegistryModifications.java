@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.misc;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.fabricmc.fabric.api.registry.*;
+import net.fabricmc.fabric.impl.content.registry.CompostableRegistryImpl;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;
@@ -40,12 +41,16 @@ public class RegistryModifications {
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), ModBlocks.DRIED_GRASS_BLOCK);
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), ModBlocks.WET_GRASS_BLOCK);
 
+        BlockColorRegistry.register(List.of(BlockTintSources.foliage()), ModBlocks.APPLE_LEAVES);
+
         StrippableBlockRegistry.register(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG);
         StrippableBlockRegistry.register(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD);
 
-        CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.1f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_LEAVES, 0.1f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_SAPLING, 0.25f);
+        CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.3f);
+        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_LEAVES, 0.3f);
+        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_SAPLING, 0.3f);
+        CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_LEAVES, 0.5f);
+        CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_OAK_SAPLING, 0.5f);
 
         FuelValueEvents.BUILD.register((builder, context) -> {
 

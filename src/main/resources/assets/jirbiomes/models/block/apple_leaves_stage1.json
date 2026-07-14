@@ -1,0 +1,7 @@
+{
+  "parent": "jirbiomes:block/apple_leaves",
+  "textures": {
+    "all": "minecraft:block/oak_leaves",
+    "overlay": "jirbiomes:block/apple_leaves_1"
+  }
+}
