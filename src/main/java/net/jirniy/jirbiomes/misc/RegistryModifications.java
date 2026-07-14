@@ -52,6 +52,7 @@ public class RegistryModifications {
         CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_LEAVES, 0.5f);
         CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_OAK_SAPLING, 0.5f);
         CompostableRegistry.INSTANCE.add(ModItems.BARREL_CACTUS, 0.3f);
+        CompostableRegistry.INSTANCE.add(ModItems.PRICKLY_PEAR, 0.3f);
 
         FuelValueEvents.BUILD.register((builder, context) -> {
 

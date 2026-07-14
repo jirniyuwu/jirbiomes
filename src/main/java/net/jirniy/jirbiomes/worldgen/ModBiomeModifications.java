@@ -19,7 +19,7 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.HAS_DESERT_PYRAMID),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_DESERT_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_BADLANDS),
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BADLANDS, Biomes.WOODED_BADLANDS),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_DESERT_PLACED);
 
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.HAS_DESERT_PYRAMID),

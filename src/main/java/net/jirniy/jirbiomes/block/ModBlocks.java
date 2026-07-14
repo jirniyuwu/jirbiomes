@@ -138,12 +138,15 @@ public class ModBlocks {
     public static final Block POTTED_APPLE_OAK_SAPLING = registerBlock("potted_apple_oak_sapling", false, properties ->
             new FlowerPotBlock(ModBlocks.APPLE_OAK_SAPLING, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
+    public static final Block PRICKLY_PEAR_SEED = registerBlock("prickly_pear_seed", false, properties ->
+            new BarrelCactusSeedBlock(properties.noCollision().randomTicks().noOcclusion()
+                    .strength(0.03f).sound(SoundType.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY)));
     public static final Block SMALL_BARREL_CACTUS = registerBlock("small_barrel_cactus", false, properties ->
             new SmallBarrelCactusBlock(properties.mapColor(MapColor.COLOR_GREEN).noCollision().randomTicks().noOcclusion()
-                    .strength(0.15f).sound(SoundType.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY)));
+                    .strength(0.05f).sound(SoundType.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY)));
     public static final Block LARGE_BARREL_CACTUS = registerBlock("large_barrel_cactus", false, properties ->
             new LargeBarrelCactusBlock(properties.mapColor(MapColor.COLOR_GREEN).noCollision().randomTicks().noOcclusion()
-                    .strength(0.2f).sound(SoundType.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY)));
+                    .strength(0.07f).sound(SoundType.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY)));
 
     private static Block registerBlock(String name, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));

@@ -30,6 +30,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_STAIRS, ModBlocks.GINKGO_SLAB, ModBlocks.GINKGO_PRESSURE_PLATE, ModBlocks.GINKGO_BUTTON,
                         ModBlocks.GINKGO_FENCE, ModBlocks.GINKGO_FENCE_GATE, ModBlocks.GINKGO_TRAPDOOR, ModBlocks.GINKGO_DOOR));
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.getKeys(ModBlocks.PRICKLY_PEAR_SEED, ModBlocks.SMALL_BARREL_CACTUS, ModBlocks.LARGE_BARREL_CACTUS));
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE));
@@ -123,10 +125,12 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(ModTags.Blocks.SUPPORTS_LARGE_BARREL_CACTUS)
                 .addOptionalTag(BlockTags.SUPPORTS_CACTUS)
-                .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));
+                .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS))
+                .add(ModBlocks.getKey(ModBlocks.DRY_FARMLAND));
         tag(ModTags.Blocks.SUPPORTS_SMALL_BARREL_CACTUS)
                 .addOptionalTag(BlockTags.SUPPORTS_CACTUS)
-                .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));
+                .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS))
+                .add(ModBlocks.getKey(ModBlocks.DRY_FARMLAND));
 
         tag(BlockTags.NETHER_CARVER_REPLACEABLES)
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));

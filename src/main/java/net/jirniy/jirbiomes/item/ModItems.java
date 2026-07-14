@@ -3,6 +3,7 @@ package net.jirniy.jirbiomes.item;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.item.food.ModFood;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -20,6 +21,9 @@ public class ModItems {
 
     public static final Item BARREL_CACTUS = registerItem("barrel_cactus", properties ->
             new BlockItem(ModBlocks.SMALL_BARREL_CACTUS, properties.useItemDescriptionPrefix()));
+    public static final Item PRICKLY_PEAR = registerItem("prickly_pear", properties ->
+            new BlockItem(ModBlocks.PRICKLY_PEAR_SEED, properties.useItemDescriptionPrefix()
+                    .food(ModFood.Properties.PRICKLY_PEAR, ModFood.Effects.PRICKLY_PEAR_EFFECT)));
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         Item item = Registry.register(BuiltInRegistries.ITEM, JirniyBiomes.id(name),

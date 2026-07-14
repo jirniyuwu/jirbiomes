@@ -85,11 +85,7 @@ public class LargeBarrelCactusBlock extends Block implements BonemealableBlock {
 
     private void grow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (level.getBlockState(pos.above()).isAir()) {
-            if (random.nextFloat() < 0.8f) {
-                level.setBlockAndUpdate(pos.above(), ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState());
-            } else {
-                level.setBlockAndUpdate(pos.above(), Blocks.CACTUS_FLOWER.defaultBlockState());
-            }
+            level.setBlockAndUpdate(pos.above(), ModBlocks.PRICKLY_PEAR_SEED.defaultBlockState());
         }
     }
 

@@ -195,6 +195,7 @@ public class ModConfiguredFeatures {
                         BlockColumnConfiguration.layer(UniformInt.of(0, 2), BlockStateProvider.simple(ModBlocks.LARGE_BARREL_CACTUS)),
                         BlockColumnConfiguration.layer(ConstantInt.of(1),
                                 new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                        .add(ModBlocks.PRICKLY_PEAR_SEED.defaultBlockState(), 2)
                                         .add(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState().setValue(SmallBarrelCactusBlock.AGE, 1), 5)
                                         .add(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState().setValue(SmallBarrelCactusBlock.AGE, 2), 5)
                                         .add(Blocks.CACTUS_FLOWER.defaultBlockState(), 1)

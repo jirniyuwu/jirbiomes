@@ -5,7 +5,6 @@ import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
@@ -15,8 +14,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.CactusBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -26,23 +25,16 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.Nullable;
 
-public class SmallBarrelCactusBlock extends Block implements BonemealableBlock {
-    public static final int MAX_AGE = 2;
-    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, MAX_AGE);
-    private static final VoxelShape[] SHAPES = {
-            Block.column(8, 0, 9),
-            Block.column(10, 0, 12),
-            Block.column(12, 0, 14),
-    };
+public class BarrelCactusSeedBlock extends Block implements BonemealableBlock {
+    private static final VoxelShape SHAPE = Block.column(6, 0, 7);
 
-    public SmallBarrelCactusBlock(Properties properties) {
+    public BarrelCactusSeedBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(AGE, 1));
     }
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.2f && level.getRawBrightness(pos, 0) >= 9) {
+        if (random.nextFloat() < 0.1f && level.getRawBrightness(pos, 0) >= 9) {
             grow(state, level, pos, random);
         }
         super.randomTick(state, level, pos, random);
@@ -50,17 +42,12 @@ public class SmallBarrelCactusBlock extends Block implements BonemealableBlock {
 
     @Override
     public Item asItem() {
-        return ModItems.BARREL_CACTUS;
+        return ModItems.PRICKLY_PEAR;
     }
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPES[state.getValue(AGE)];
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
+        return SHAPE;
     }
 
     @Override
@@ -76,24 +63,16 @@ public class SmallBarrelCactusBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    protected void entityInside(final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise) {
-        if (state.getValue(AGE) == 2) {
-            if (!(entity instanceof ItemEntity)) {
-                entity.hurt(level.damageSources().cactus(), 1.0F);
-            }
-        }
-    }
-
-    @Override
     protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
         return false;
     }
 
     private void grow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (state.getValue(AGE) < 2) {
-            level.setBlockAndUpdate(pos, state.cycle(AGE));
-        } else if (state.getValue(AGE) == 2) {
-            level.setBlockAndUpdate(pos, ModBlocks.LARGE_BARREL_CACTUS.defaultBlockState());
+        if (random.nextFloat() < 0.2f && level.getBlockState(pos.below()).is(ModBlocks.LARGE_BARREL_CACTUS)) {
+            level.setBlockAndUpdate(pos, Blocks.CACTUS_FLOWER.defaultBlockState());
+        } else {
+            level.setBlockAndUpdate(pos, ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState()
+                    .setValue(SmallBarrelCactusBlock.AGE, 0));
         }
     }
 

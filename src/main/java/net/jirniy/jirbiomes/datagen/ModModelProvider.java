@@ -9,6 +9,7 @@ import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -45,12 +46,13 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.APPLE_OAK_SAPLING, ModBlocks.POTTED_APPLE_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createCrossBlock(ModBlocks.APPLE_CROP, BlockModelGenerators.PlantType.NOT_TINTED, AppleCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
 
+        blockModelGenerators.createCrossBlock(ModBlocks.PRICKLY_PEAR_SEED, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createCrossBlock(ModBlocks.SMALL_BARREL_CACTUS, BlockModelGenerators.PlantType.NOT_TINTED, SmallBarrelCactusBlock.AGE, 0, 1, 2);
         blockModelGenerators.createCrossBlock(ModBlocks.LARGE_BARREL_CACTUS, BlockModelGenerators.PlantType.NOT_TINTED);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
-        // itemModelGenerators.generateFlatItem(ModItems.BARREL_CACTUS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PRICKLY_PEAR, ModelTemplates.FLAT_ITEM);
     }
 }

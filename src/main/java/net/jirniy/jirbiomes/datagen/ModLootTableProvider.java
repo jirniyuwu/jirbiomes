@@ -79,6 +79,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.APPLE_LEAVES, createLeavesDrops(ModBlocks.APPLE_LEAVES, Blocks.OAK_SAPLING, 0.05f));
         dropSelf(ModBlocks.APPLE_OAK_SAPLING);
 
+        dropOther(ModBlocks.PRICKLY_PEAR_SEED, ModItems.PRICKLY_PEAR);
         dropOther(ModBlocks.SMALL_BARREL_CACTUS, ModItems.BARREL_CACTUS);
         add(ModBlocks.LARGE_BARREL_CACTUS, createSingleItemTable(ModItems.BARREL_CACTUS, ConstantValue.exactly(2)));
     }

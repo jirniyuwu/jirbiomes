@@ -44,6 +44,8 @@
   "item.jirbiomes.barrel_cactus": "Barrel Cactus",
   "block.jirbiomes.small_barrel_cactus": "Small Barrel Cactus",
   "block.jirbiomes.large_barrel_cactus": "Large Barrel Cactus",
+  "item.jirbiomes.prickly_pear": "Prickly Pear",
+  "block.jirbiomes.prickly_pear_seed": "Prickly Pear Seed",
 
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions",
   "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log"
