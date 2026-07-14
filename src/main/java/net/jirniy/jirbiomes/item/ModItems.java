@@ -18,6 +18,9 @@ public class ModItems {
     public static final Item APPLE_SEEDS = registerItem("apple_seeds", properties ->
             new BlockItem(ModBlocks.APPLE_CROP, properties.useItemDescriptionPrefix()));
 
+    public static final Item BARREL_CACTUS = registerItem("barrel_cactus", properties ->
+            new BlockItem(ModBlocks.SMALL_BARREL_CACTUS, properties.useItemDescriptionPrefix()));
+
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         Item item = Registry.register(BuiltInRegistries.ITEM, JirniyBiomes.id(name),
                 function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, JirniyBiomes.id((name))))));

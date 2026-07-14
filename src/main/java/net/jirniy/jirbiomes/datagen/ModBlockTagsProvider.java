@@ -105,7 +105,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.FLOWER_POTS)
-                .add(ModBlocks.getKey(ModBlocks.POTTED_GINKGO_SAPLING));
+                .add(ModBlocks.getKey(ModBlocks.POTTED_GINKGO_SAPLING))
+                .add(ModBlocks.getKey(ModBlocks.POTTED_APPLE_OAK_SAPLING));
         tag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK)
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
@@ -117,6 +118,15 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.GRASS_BLOCKS);
         tag(BlockTags.LOGS)
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS);
+        tag(BlockTags.SUPPORT_OVERRIDE_CACTUS_FLOWER)
+                .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));
+
+        tag(ModTags.Blocks.SUPPORTS_LARGE_BARREL_CACTUS)
+                .addOptionalTag(BlockTags.SUPPORTS_CACTUS)
+                .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));
+        tag(ModTags.Blocks.SUPPORTS_SMALL_BARREL_CACTUS)
+                .addOptionalTag(BlockTags.SUPPORTS_CACTUS)
+                .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));
 
         tag(BlockTags.NETHER_CARVER_REPLACEABLES)
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));

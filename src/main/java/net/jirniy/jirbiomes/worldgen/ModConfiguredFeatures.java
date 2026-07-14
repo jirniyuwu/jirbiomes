@@ -3,21 +3,23 @@ package net.jirniy.jirbiomes.worldgen;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.custom.AppleLeavesBlock;
+import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
+import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
+import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.TrapezoidInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -63,6 +65,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_GRASS_PATCH = registryKey("dried_grass_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_GRASS_PATCH_DESERT = registryKey("dried_grass_patch_desert");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WET_GRASS_PATCH = registryKey("wet_grass_patch");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BARREL_CACTUS = registryKey("barrel_cactus");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -161,7 +166,7 @@ public class ModConfiguredFeatures {
                         PlacementUtils.inlinePlaced(Feature.TREE, oldGrowthGinkgoTreeConfig.ignoreVines().build()),
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DRIED_GRASS_PATCH),
                                 CountPlacement.of(UniformInt.of(2, 3)),
-                                RandomOffsetPlacement.of(UniformInt.of(-4, 4), UniformInt.of(-3, 1))),
+                                RandomOffsetPlacement.of(ConstantInt.of(4), UniformInt.of(-3, 1))),
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
                                 new SimpleBlockConfiguration(RuleBasedStateProvider.ifTrueThenProvide(
                                         BlockPredicate.allOf(BlockPredicate.solid(), BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE))),
@@ -175,7 +180,7 @@ public class ModConfiguredFeatures {
                         PlacementUtils.inlinePlaced(Feature.TREE, oldGrowthGinkgoTreeConfig.ignoreVines().decorators(List.of(beehive005)).build()),
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DRIED_GRASS_PATCH),
                                 CountPlacement.of(UniformInt.of(2, 3)),
-                                RandomOffsetPlacement.of(UniformInt.of(-4, 4), UniformInt.of(-3, 1))),
+                                RandomOffsetPlacement.of(ConstantInt.of(4), UniformInt.of(-3, 1))),
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
                                 new SimpleBlockConfiguration(RuleBasedStateProvider.ifTrueThenProvide(
                                         BlockPredicate.allOf(BlockPredicate.solid(), BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE))),
@@ -184,6 +189,43 @@ public class ModConfiguredFeatures {
                                 RandomOffsetPlacement.of(TrapezoidInt.of(-2, 2, 0), TrapezoidInt.of(-8, -1, 0)))
                 )
         ));
+
+        register(context, BARREL_CACTUS, Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+                List.of(
+                        BlockColumnConfiguration.layer(UniformInt.of(0, 2), BlockStateProvider.simple(ModBlocks.LARGE_BARREL_CACTUS)),
+                        BlockColumnConfiguration.layer(ConstantInt.of(1),
+                                new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                        .add(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState().setValue(SmallBarrelCactusBlock.AGE, 1), 5)
+                                        .add(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState().setValue(SmallBarrelCactusBlock.AGE, 2), 5)
+                                        .add(Blocks.CACTUS_FLOWER.defaultBlockState(), 1)
+                                        .add(Blocks.AIR.defaultBlockState(), 9)
+                                ))
+                ),
+                Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, false
+        ));
+        register(context, BARREL_CACTUS_PATCH, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                                        RuleBasedStateProvider.builder(BlockStateProvider.simple(ModBlocks.DRIED_DIRT))
+                                                .ifTrueThenProvide(BlockPredicate.matchesTag(
+                                                BlockTags.SUPPORTS_CACTUS), ModBlocks.ROOTED_DRIED_DIRT).build()),
+                                CountPlacement.of(UniformInt.of(5, 12)), PlacementUtils.HEIGHTMAP,
+                                RandomOffsetPlacement.of(
+                                        TrapezoidInt.of(-2, 2, 0),
+                                        TrapezoidInt.of(-3, -1, 0)),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.solid())
+                        ),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BARREL_CACTUS),
+                                CountPlacement.of(UniformInt.of(5, 6)), PlacementUtils.HEIGHTMAP,
+                                RandomOffsetPlacement.of(TrapezoidInt.of(-3, 3, 0), ConstantInt.of(0)),
+                                EnvironmentScanPlacement.scanningFor(
+                                        Direction.DOWN, BlockPredicate.matchesTag(new Vec3i(0, -1, 0),
+                                                ModTags.Blocks.SUPPORTS_LARGE_BARREL_CACTUS), 4),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+                        )
+                )
+        ));
+
         register(context, DRIED_GRASS_PATCH, Feature.DISK, new DiskConfiguration(
                 driedDirtProvider,
                 BlockPredicate.solid(),
