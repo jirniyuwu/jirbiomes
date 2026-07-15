@@ -15,7 +15,7 @@ import net.minecraft.world.item.consume_effects.ConsumeEffect;
 
 public class ModFood {
     public class Properties {
-        public static final FoodProperties PRICKLY_PEAR = new FoodProperties.Builder().nutrition(3).saturationModifier(0.1F).build();
+        public static final FoodProperties PRICKLY_PEAR = new FoodProperties.Builder().nutrition(3).saturationModifier(0.4F).build();
     }
     public class Effects {
         public static final Consumable DROP_APPLE_SEEDS = Consumables.defaultFood()

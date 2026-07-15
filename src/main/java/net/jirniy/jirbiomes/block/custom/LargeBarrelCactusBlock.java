@@ -38,7 +38,8 @@ public class LargeBarrelCactusBlock extends Block implements BonemealableBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.05f && level.getRawBrightness(pos, 0) >= 9) {
+        if (random.nextFloat() < getGrowthChance(0.1f, 3, level, pos)
+                && level.getRawBrightness(pos, 0) >= 9) {
             if (!level.getBlockState(pos.below().below()).is(ModBlocks.LARGE_BARREL_CACTUS)) {
                 grow(state, level, pos, random);
             }
@@ -87,6 +88,19 @@ public class LargeBarrelCactusBlock extends Block implements BonemealableBlock {
         if (level.getBlockState(pos.above()).isAir()) {
             level.setBlockAndUpdate(pos.above(), ModBlocks.PRICKLY_PEAR_SEED.defaultBlockState());
         }
+    }
+
+    public static float getGrowthChance(float baseChance, int maxSteps, ServerLevel level, BlockPos pos) {
+        for (int i = 0; i < maxSteps; i++) {
+            if (level.getBlockState(pos.below(i + 1)).is(ModTags.Blocks.BARREL_CACTUS_FAST_GROWTH)) {
+                return baseChance*2;
+            } else if (level.getBlockState(pos.below(i + 1)).is(ModBlocks.LARGE_BARREL_CACTUS)) {
+                continue;
+            } else {
+                return baseChance;
+            }
+        }
+        return baseChance;
     }
 
     @Override

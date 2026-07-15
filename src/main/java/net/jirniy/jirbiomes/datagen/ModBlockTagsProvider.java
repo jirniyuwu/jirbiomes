@@ -133,6 +133,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.DRY_FARMLAND));
         tag(ModTags.Blocks.CACTUS_SEED_FLOWER_OVERRIDE)
                 .add(ModBlocks.getKey(Blocks.CACTUS));
+        tag(ModTags.Blocks.BARREL_CACTUS_FAST_GROWTH)
+                .add(ModBlocks.getKey(ModBlocks.DRY_FARMLAND))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_DRIED_DIRT));
 
         tag(BlockTags.NETHER_CARVER_REPLACEABLES)
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
