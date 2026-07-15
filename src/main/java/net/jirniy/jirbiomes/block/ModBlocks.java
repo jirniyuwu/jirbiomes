@@ -3,6 +3,7 @@ package net.jirniy.jirbiomes.block;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.custom.*;
+import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModTreeGrowers;
 import net.minecraft.core.Direction;
@@ -147,6 +148,8 @@ public class ModBlocks {
     public static final Block LARGE_BARREL_CACTUS = registerBlock("large_barrel_cactus", false, properties ->
             new LargeBarrelCactusBlock(properties.mapColor(MapColor.COLOR_GREEN).noCollision().randomTicks().noOcclusion()
                     .strength(0.07f).sound(SoundType.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY)));
+    public static final Block POTTED_BARREL_CACTUS = registerBlock("potted_barrel_cactus", false, properties ->
+            new FlowerPotBlock(ModBlocks.SMALL_BARREL_CACTUS, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     private static Block registerBlock(String name, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));

@@ -4,6 +4,7 @@ import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
@@ -61,8 +62,14 @@ public class LargeBarrelCactusBlock extends Block implements BonemealableBlock {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return level.getBlockState(pos.below()).is(ModTags.Blocks.SUPPORTS_LARGE_BARREL_CACTUS)
-                || level.isWaterAt(pos.east()) || level.isWaterAt(pos.west()) || level.isWaterAt(pos.north()) || level.isWaterAt(pos.south());
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
+            if (!level.getFluidState(pos.relative(direction)).isEmpty()) {
+                return false;
+            }
+        }
+
+        return level.getBlockState(pos.below()).is(ModTags.Blocks.SUPPORTS_BARREL_CACTUS)
+                && level.getFluidState(pos.above()).isEmpty();
     }
 
     @Override

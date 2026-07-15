@@ -4,8 +4,10 @@ import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
@@ -73,7 +75,14 @@ public class SmallBarrelCactusBlock extends Block implements BonemealableBlock {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return level.getBlockState(pos.below()).is(ModTags.Blocks.SUPPORTS_SMALL_BARREL_CACTUS);
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
+            if (!level.getFluidState(pos.relative(direction)).isEmpty()) {
+                return false;
+            }
+        }
+
+        return level.getBlockState(pos.below()).is(ModTags.Blocks.SUPPORTS_BARREL_CACTUS)
+                && level.getFluidState(pos.above()).isEmpty();
     }
 
     @Override
@@ -87,7 +96,7 @@ public class SmallBarrelCactusBlock extends Block implements BonemealableBlock {
 
     @Override
     protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
+        return state.getValue(AGE) < 1;
     }
 
     private void grow(BlockState state, ServerLevel level, BlockPos pos, int amount) {

@@ -12,8 +12,7 @@ public class ModTags {
         public static final TagKey<Block> WET_DIRT = create("wet_dirt");
         public static final TagKey<Block> GRASS_BLOCKS = create("grass_blocks");
         public static final TagKey<Block> GINKGO_LOGS = create("ginkgo_logs");
-        public static final TagKey<Block> SUPPORTS_SMALL_BARREL_CACTUS = create("supports_small_barrel_cactus");
-        public static final TagKey<Block> SUPPORTS_LARGE_BARREL_CACTUS = create("supports_large_barrel_cactus");
+        public static final TagKey<Block> SUPPORTS_BARREL_CACTUS = create("supports_barrel_cactus");
         public static final TagKey<Block> BARREL_CACTUS_FAST_GROWTH = create("barrel_cactus_fast_growth");
         public static final TagKey<Block> CACTUS_SEED_FLOWER_OVERRIDE = create("cactus_seed_flower_override");
 

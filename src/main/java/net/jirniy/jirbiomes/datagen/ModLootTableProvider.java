@@ -89,8 +89,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
                         .or(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.SMALL_BARREL_CACTUS)
                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                         .hasProperty(SmallBarrelCactusBlock.AGE, 2))))
-                        .add(LootItem.lootTableItem(ModItems.BARREL_CACTUS))
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+                        .add(LootItem.lootTableItem(ModItems.BARREL_CACTUS)))
         ));
         dropOther(ModBlocks.LARGE_BARREL_CACTUS, ModItems.BARREL_CACTUS);
 

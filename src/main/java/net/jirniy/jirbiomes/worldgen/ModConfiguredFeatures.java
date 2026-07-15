@@ -221,7 +221,7 @@ public class ModConfiguredFeatures {
                                 RandomOffsetPlacement.of(TrapezoidInt.of(-3, 3, 0), ConstantInt.of(0)),
                                 EnvironmentScanPlacement.scanningFor(
                                         Direction.DOWN, BlockPredicate.matchesTag(new Vec3i(0, -1, 0),
-                                                ModTags.Blocks.SUPPORTS_LARGE_BARREL_CACTUS), 4),
+                                                ModTags.Blocks.SUPPORTS_BARREL_CACTUS), 4),
                                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
                         )
                 )
@@ -237,7 +237,7 @@ public class ModConfiguredFeatures {
                 HolderSet.direct(
                         PlacementUtils.inlinePlaced(Feature.DISK, new DiskConfiguration(
                                 RuleBasedStateProvider.ifTrueThenProvide(
-                                        BlockPredicate.matchesBlocks(Blocks.SAND, Blocks.SANDSTONE),
+                                        BlockPredicate.matchesBlocks(Blocks.SAND),
                                         ModBlocks.DRIED_DIRT),
                                 BlockPredicate.solid(),
                                 UniformInt.of(2, 5),

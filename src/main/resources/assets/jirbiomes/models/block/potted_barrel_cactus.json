@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "jirbiomes:block/potted_barrel_cactus",
+    "dirt": "jirbiomes:block/rooted_dried_dirt"
+  }
+}
