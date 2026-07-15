@@ -35,7 +35,7 @@ public class BarrelCactusSeedBlock extends Block implements BonemealableBlock {
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (random.nextFloat() < 0.1f && level.getRawBrightness(pos, 0) >= 9) {
-            grow(state, level, pos, random);
+            grow(state, level, pos, random, 1);
         }
         super.randomTick(state, level, pos, random);
     }
@@ -59,7 +59,8 @@ public class BarrelCactusSeedBlock extends Block implements BonemealableBlock {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return level.getBlockState(pos.below()).is(ModTags.Blocks.SUPPORTS_SMALL_BARREL_CACTUS);
+        return level.getBlockState(pos.below()).is(ModTags.Blocks.SUPPORTS_SMALL_BARREL_CACTUS) ||
+               level.getBlockState(pos.below()).is(ModTags.Blocks.CACTUS_SEED_FLOWER_OVERRIDE);
     }
 
     @Override
@@ -67,12 +68,13 @@ public class BarrelCactusSeedBlock extends Block implements BonemealableBlock {
         return false;
     }
 
-    private void grow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.2f && level.getBlockState(pos.below()).is(ModBlocks.LARGE_BARREL_CACTUS)) {
+    private void grow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, int amount) {
+        if (level.getBlockState(pos.below()).is(ModTags.Blocks.CACTUS_SEED_FLOWER_OVERRIDE) ||
+                (random.nextFloat() < 0.2f && level.getBlockState(pos.below()).is(ModBlocks.LARGE_BARREL_CACTUS))) {
             level.setBlockAndUpdate(pos, Blocks.CACTUS_FLOWER.defaultBlockState());
         } else {
             level.setBlockAndUpdate(pos, ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState()
-                    .setValue(SmallBarrelCactusBlock.AGE, 0));
+                    .setValue(SmallBarrelCactusBlock.AGE, amount - 1));
         }
     }
 
@@ -88,6 +90,6 @@ public class BarrelCactusSeedBlock extends Block implements BonemealableBlock {
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        grow(state, level, pos, random);
+        grow(state, level, pos, random, random.nextIntBetweenInclusive(1, 2));
     }
 }

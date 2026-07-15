@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
 import net.jirniy.jirbiomes.block.custom.AppleLeavesBlock;
+import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -80,8 +81,19 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.APPLE_OAK_SAPLING);
 
         dropOther(ModBlocks.PRICKLY_PEAR_SEED, ModItems.PRICKLY_PEAR);
-        dropOther(ModBlocks.SMALL_BARREL_CACTUS, ModItems.BARREL_CACTUS);
-        add(ModBlocks.LARGE_BARREL_CACTUS, createSingleItemTable(ModItems.BARREL_CACTUS, ConstantValue.exactly(2)));
+        this.add(ModBlocks.SMALL_BARREL_CACTUS, block -> this.applyExplosionDecay(block,
+                LootTable.lootTable().withPool(LootPool.lootPool()
+                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.SMALL_BARREL_CACTUS)
+                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                        .hasProperty(SmallBarrelCactusBlock.AGE, 1))
+                        .or(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.SMALL_BARREL_CACTUS)
+                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                        .hasProperty(SmallBarrelCactusBlock.AGE, 2))))
+                        .add(LootItem.lootTableItem(ModItems.BARREL_CACTUS))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+        ));
+        dropOther(ModBlocks.LARGE_BARREL_CACTUS, ModItems.BARREL_CACTUS);
+
     }
 
     public LootTable.Builder silkTouchOrElseDrop(final Block block, ItemLike drop) {

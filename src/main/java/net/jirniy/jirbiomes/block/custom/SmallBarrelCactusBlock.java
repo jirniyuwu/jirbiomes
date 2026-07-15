@@ -43,7 +43,7 @@ public class SmallBarrelCactusBlock extends Block implements BonemealableBlock {
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (random.nextFloat() < 0.2f && level.getRawBrightness(pos, 0) >= 9) {
-            grow(state, level, pos, random);
+            grow(state, level, pos, 1);
         }
         super.randomTick(state, level, pos, random);
     }
@@ -89,10 +89,11 @@ public class SmallBarrelCactusBlock extends Block implements BonemealableBlock {
         return false;
     }
 
-    private void grow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (state.getValue(AGE) < 2) {
-            level.setBlockAndUpdate(pos, state.cycle(AGE));
-        } else if (state.getValue(AGE) == 2) {
+    private void grow(BlockState state, ServerLevel level, BlockPos pos, int amount) {
+        int currentAge = state.getValue(AGE);
+        if (currentAge <= MAX_AGE - amount) {
+            level.setBlockAndUpdate(pos, state.setValue(AGE, currentAge + amount));
+        } else {
             level.setBlockAndUpdate(pos, ModBlocks.LARGE_BARREL_CACTUS.defaultBlockState());
         }
     }
@@ -109,6 +110,6 @@ public class SmallBarrelCactusBlock extends Block implements BonemealableBlock {
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        grow(state, level, pos, random);
+        grow(state, level, pos, random.nextIntBetweenInclusive(1, 2));
     }
 }
