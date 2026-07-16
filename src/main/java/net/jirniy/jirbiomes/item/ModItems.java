@@ -9,7 +9,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.function.Function;
@@ -24,6 +26,11 @@ public class ModItems {
     public static final Item PRICKLY_PEAR = registerItem("prickly_pear", properties ->
             new BlockItem(ModBlocks.PRICKLY_PEAR_SEED, properties.useItemDescriptionPrefix()
                     .food(ModFood.Properties.PRICKLY_PEAR, ModFood.Effects.PRICKLY_PEAR_EFFECT)));
+
+    public static final Item GINKGO_SIGN = registerItem("ginkgo_sign", properties ->
+            new SignItem(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, properties.useItemDescriptionPrefix()));
+    public static final Item HANGING_GINKGO_SIGN = registerItem("ginkgo_hanging_sign", properties ->
+            new HangingSignItem(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN, properties.useItemDescriptionPrefix()));
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         Item item = Registry.register(BuiltInRegistries.ITEM, JirniyBiomes.id(name),

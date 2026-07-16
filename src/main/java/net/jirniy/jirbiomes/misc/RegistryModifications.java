@@ -2,7 +2,6 @@ package net.jirniy.jirbiomes.misc;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.fabricmc.fabric.api.registry.*;
-import net.fabricmc.fabric.impl.content.registry.CompostableRegistryImpl;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;

@@ -51,6 +51,12 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.getKey(ModBlocks.GINKGO_FENCE));
         tag(ItemTags.FENCE_GATES)
                 .add(ModItems.getKey(ModBlocks.GINKGO_FENCE_GATE));
+        tag(ItemTags.WOODEN_SHELVES)
+                .add(ModItems.getKey(ModBlocks.GINKGO_SHELF));
+        tag(ItemTags.SIGNS)
+                .add(ModItems.getKey(ModItems.GINKGO_SIGN));
+        tag(ItemTags.HANGING_SIGNS)
+                .add(ModItems.getKey(ModItems.HANGING_GINKGO_SIGN));
 
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.getKey(ModItems.APPLE_SEEDS));

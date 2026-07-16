@@ -35,6 +35,11 @@
   "block.jirbiomes.ginkgo_pressure_plate": "Ginkgo Pressure Plate",
   "block.jirbiomes.ginkgo_fence": "Ginkgo Fence",
   "block.jirbiomes.ginkgo_fence_gate": "Ginkgo Fence Gate",
+  "block.jirbiomes.ginkgo_shelf": "Ginkgo Shelf",
+  "item.jirbiomes.ginkgo_sign": "Ginkgo Sign",
+  "block.jirbiomes.ginkgo_sign": "Ginkgo Sign",
+  "item.jirbiomes.ginkgo_hanging_sign": "Ginkgo Hanging Sign",
+  "block.jirbiomes.ginkgo_hanging_sign": "Ginkgo Hanging Sign",
 
   "block.jirbiomes.apple_crop": "Apple Tree Crop",
   "block.jirbiomes.apple_leaves": "Apple Leaves",

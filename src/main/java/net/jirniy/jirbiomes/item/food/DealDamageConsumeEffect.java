@@ -10,9 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.consume_effects.ConsumeEffect;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 
 public record DealDamageConsumeEffect(float damage, float probability) implements ConsumeEffect {

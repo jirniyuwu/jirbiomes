@@ -69,6 +69,20 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_FENCE));
         tag(BlockTags.FENCE_GATES)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_FENCE_GATE));
+        tag(BlockTags.WOODEN_SHELVES)
+                .add(ModBlocks.getKey(ModBlocks.GINKGO_SHELF));
+        tag(BlockTags.ALL_SIGNS)
+                .add(ModBlocks.getKeys(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN));
+        tag(BlockTags.STANDING_SIGNS)
+                .add(ModBlocks.getKey(ModBlocks.GINKGO_SIGN));
+        tag(BlockTags.WALL_SIGNS)
+                .add(ModBlocks.getKey(ModBlocks.WALL_GINKGO_SIGN));
+        tag(BlockTags.ALL_HANGING_SIGNS)
+                .add(ModBlocks.getKeys(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN));
+        tag(BlockTags.CEILING_HANGING_SIGNS)
+                .add(ModBlocks.getKey(ModBlocks.HANGING_GINKGO_SIGN));
+        tag(BlockTags.WALL_HANGING_SIGNS)
+                .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_GINKGO_SIGN));
 
         tag(BlockTags.BEE_ATTRACTIVE)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES));

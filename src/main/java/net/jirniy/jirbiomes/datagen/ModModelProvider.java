@@ -8,9 +8,17 @@ import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
+import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.world.item.Item;
+import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.core.Direction;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricPackOutput output) {
@@ -36,13 +44,15 @@ public class ModModelProvider extends FabricModelProvider {
                 .fence(ModBlocks.GINKGO_FENCE)
                 .fenceGate(ModBlocks.GINKGO_FENCE_GATE)
                 .pressurePlate(ModBlocks.GINKGO_PRESSURE_PLATE);
+        createSign(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, ModBlocks.GINKGO_PLANKS, blockModelGenerators);
+        createHangingSign(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN, ModBlocks.STRIPPED_GINKGO_LOG, BlockFamily.Variant.WALL_HANGING_SIGN, blockModelGenerators);
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.GINKGO_SAPLING, ModBlocks.POTTED_GINKGO_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createTrivialCube(ModBlocks.GINKGO_LEAVES);
         blockModelGenerators.createDoor(ModBlocks.GINKGO_DOOR);
         blockModelGenerators.createTrapdoor(ModBlocks.GINKGO_TRAPDOOR);
         blockModelGenerators.woodProvider(ModBlocks.GINKGO_LOG).log(ModBlocks.GINKGO_LOG).wood(ModBlocks.GINKGO_WOOD);
         blockModelGenerators.woodProvider(ModBlocks.STRIPPED_GINKGO_LOG).log(ModBlocks.STRIPPED_GINKGO_LOG).wood(ModBlocks.STRIPPED_GINKGO_WOOD);
-
+        blockModelGenerators.createShelf(ModBlocks.GINKGO_SHELF, ModBlocks.STRIPPED_GINKGO_LOG);
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.APPLE_OAK_SAPLING, ModBlocks.POTTED_APPLE_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createCrossBlock(ModBlocks.APPLE_CROP, BlockModelGenerators.PlantType.NOT_TINTED, AppleCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
 
@@ -54,5 +64,79 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         itemModelGenerators.generateFlatItem(ModItems.PRICKLY_PEAR, ModelTemplates.FLAT_ITEM);
+    }
+
+    public void createSign(Block standingSign, Block wallSign, Block baseBlock, BlockModelGenerators generator) {
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.ALL, TextureMapping.getBlockTexture(standingSign))
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(baseBlock));
+        MultiVariant standingRot0 = BlockModelGenerators.plainVariant(
+                ModelTemplates.SIGN_ROT_0.create(ModelLocationUtils.getModelLocation(standingSign, "_rot_0"), mapping, generator.modelOutput)
+        );
+        MultiVariant standingRot1 = BlockModelGenerators.plainVariant(
+                ModelTemplates.SIGN_ROT_1.create(ModelLocationUtils.getModelLocation(standingSign, "_rot_1"), mapping, generator.modelOutput)
+        );
+        MultiVariant standingRot2 = BlockModelGenerators.plainVariant(
+                ModelTemplates.SIGN_ROT_2.create(ModelLocationUtils.getModelLocation(standingSign, "_rot_2"), mapping, generator.modelOutput)
+        );
+        MultiVariant standingRot3 = BlockModelGenerators.plainVariant(
+                ModelTemplates.SIGN_ROT_3.create(ModelLocationUtils.getModelLocation(standingSign, "_rot_3"), mapping, generator.modelOutput)
+        );
+        generator.blockStateOutput.accept(BlockModelGenerators.createSign(standingSign, standingRot0, standingRot1, standingRot2, standingRot3));
+        MultiVariant wallModel = BlockModelGenerators.plainVariant(ModelTemplates.WALL_SIGN.create(wallSign, mapping, generator.modelOutput));
+        generator.blockStateOutput
+                .accept(MultiVariantGenerator.dispatch(wallSign, wallModel).with(PropertyDispatch.modify(BlockStateProperties.HORIZONTAL_FACING)
+                        .select(Direction.SOUTH, BlockModelGenerators.NOP)
+                        .select(Direction.WEST, BlockModelGenerators.Y_ROT_90)
+                        .select(Direction.NORTH, BlockModelGenerators.Y_ROT_180)
+                        .select(Direction.EAST, BlockModelGenerators.Y_ROT_270)));
+        generator.registerSimpleFlatItemModel(standingSign.asItem());
+    }
+    public void createHangingSign(final Block hangingSign, final Block wallSign, final Block particleBlock, final BlockFamily.Variant wallVarient, BlockModelGenerators generator) {
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.ALL, TextureMapping.getBlockTexture(hangingSign))
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particleBlock));
+        generator.blockStateOutput
+                .accept(
+                        BlockModelGenerators.createHangingSign(
+                                hangingSign,
+                                BlockModelGenerators.plainVariant(
+                                        ModelTemplates.HANGING_SIGN_ROT_0.create(ModelLocationUtils.getModelLocation(hangingSign, "_rot_0"), mapping, generator.modelOutput)
+                                ),
+                                BlockModelGenerators.plainVariant(
+                                        ModelTemplates.HANGING_SIGN_ROT_1.create(ModelLocationUtils.getModelLocation(hangingSign, "_rot_1"), mapping, generator.modelOutput)
+                                ),
+                                BlockModelGenerators.plainVariant(
+                                        ModelTemplates.HANGING_SIGN_ROT_2.create(ModelLocationUtils.getModelLocation(hangingSign, "_rot_2"), mapping, generator.modelOutput)
+                                ),
+                                BlockModelGenerators.plainVariant(
+                                        ModelTemplates.HANGING_SIGN_ROT_3.create(ModelLocationUtils.getModelLocation(hangingSign, "_rot_3"), mapping, generator.modelOutput)
+                                ),
+                                BlockModelGenerators.plainVariant(
+                                        ModelTemplates.ATTACHED_HANGING_SIGN_ROT_0
+                                                .create(ModelLocationUtils.getModelLocation(hangingSign, "_attached_rot_0"), mapping, generator.modelOutput)
+                                ),
+                                BlockModelGenerators.plainVariant(
+                                        ModelTemplates.ATTACHED_HANGING_SIGN_ROT_1
+                                                .create(ModelLocationUtils.getModelLocation(hangingSign, "_attached_rot_1"), mapping, generator.modelOutput)
+                                ),
+                                BlockModelGenerators.plainVariant(
+                                        ModelTemplates.ATTACHED_HANGING_SIGN_ROT_2
+                                                .create(ModelLocationUtils.getModelLocation(hangingSign, "_attached_rot_2"), mapping, generator.modelOutput)
+                                ),
+                                BlockModelGenerators.plainVariant(
+                                        ModelTemplates.ATTACHED_HANGING_SIGN_ROT_3
+                                                .create(ModelLocationUtils.getModelLocation(hangingSign, "_attached_rot_3"), mapping, generator.modelOutput)
+                                )
+                        )
+                );
+        MultiVariant wallModel = BlockModelGenerators.plainVariant(ModelTemplates.WALL_HANGING_SIGN.create(wallSign, mapping, generator.modelOutput));
+        generator.blockStateOutput
+                .accept(MultiVariantGenerator.dispatch(wallSign, wallModel).with(PropertyDispatch.modify(BlockStateProperties.HORIZONTAL_FACING)
+                        .select(Direction.SOUTH, BlockModelGenerators.NOP)
+                        .select(Direction.WEST, BlockModelGenerators.Y_ROT_90)
+                        .select(Direction.NORTH, BlockModelGenerators.Y_ROT_180)
+                        .select(Direction.EAST, BlockModelGenerators.Y_ROT_270)));
+        generator.registerSimpleFlatItemModel(hangingSign.asItem());
     }
 }

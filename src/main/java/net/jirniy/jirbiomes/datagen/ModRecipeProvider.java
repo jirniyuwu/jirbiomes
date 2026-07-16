@@ -137,6 +137,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 trapdoorBuilder(ModBlocks.GINKGO_TRAPDOOR, Ingredient.of(ModBlocks.GINKGO_PLANKS))
                         .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
                         .group("wooden_trapdoors").save(output, "ginkgo_trapdoor");
+                shelf(ModBlocks.GINKGO_SHELF, ModBlocks.STRIPPED_GINKGO_LOG);
+                signBuilder(ModItems.GINKGO_SIGN, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("signs").save(output, "ginkgo_sign");
+                hangingSignBuilder(ModItems.HANGING_GINKGO_SIGN, Ingredient.of(ModBlocks.GINKGO_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                        .group("hanging_signs").save(output, "hanging_ginkgo_sign");
             }
         };
     }

@@ -3,22 +3,20 @@ package net.jirniy.jirbiomes.block;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.custom.*;
-import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModTreeGrowers;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
@@ -104,25 +102,46 @@ public class ModBlocks {
             new SlabBlock(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
     public static final Block GINKGO_BUTTON = registerBlock("ginkgo_button", properties ->
-            new ButtonBlock(BlockSetType.BIRCH, 20, properties.noCollision().pushReaction(PushReaction.DESTROY)
+            new ButtonBlock(ModBlockSetTypes.Sets.GINKGO, 20, properties.noCollision().pushReaction(PushReaction.DESTROY)
                     .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()));
     public static final Block GINKGO_PRESSURE_PLATE = registerBlock("ginkgo_pressure_plate", properties ->
-            new PressurePlateBlock(BlockSetType.BIRCH, properties.noCollision().pushReaction(PushReaction.DESTROY)
+            new PressurePlateBlock(ModBlockSetTypes.Sets.GINKGO, properties.noCollision().pushReaction(PushReaction.DESTROY)
                     .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()));
     public static final Block GINKGO_FENCE = registerBlock("ginkgo_fence", properties ->
             new FenceBlock(properties.mapColor(MapColor.SAND)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()));
     public static final Block GINKGO_FENCE_GATE = registerBlock("ginkgo_fence_gate", properties ->
-            new FenceGateBlock(WoodType.BIRCH, properties.mapColor(MapColor.SAND)
+            new FenceGateBlock(ModBlockSetTypes.WoodTypes.GINKGO, properties.mapColor(MapColor.SAND)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()));
     public static final Block GINKGO_TRAPDOOR = registerBlock("ginkgo_trapdoor", properties ->
-            new TrapDoorBlock(BlockSetType.BIRCH, properties.mapColor(MapColor.SAND)
+            new TrapDoorBlock(ModBlockSetTypes.Sets.GINKGO, properties.mapColor(MapColor.SAND)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
                     .pushReaction(PushReaction.DESTROY).noOcclusion()));
     public static final Block GINKGO_DOOR = registerBlock("ginkgo_door", properties ->
-            new DoorBlock(BlockSetType.BIRCH, properties.mapColor(MapColor.SAND)
+            new DoorBlock(ModBlockSetTypes.Sets.GINKGO, properties.mapColor(MapColor.SAND)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
                     .pushReaction(PushReaction.DESTROY).noOcclusion()));
+
+    public static final Block GINKGO_SHELF = registerBlockEntity("ginkgo_shelf", BlockEntityTypes.SHELF,
+            properties -> new ShelfBlock(properties.mapColor(GINKGO_PLANKS.defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS).sound(SoundType.SHELF)
+                    .ignitedByLava().strength(2.0F, 3.0F)));
+    public static final Block GINKGO_SIGN = registerBlockEntity("ginkgo_sign", BlockEntityTypes.SIGN, false,
+            properties -> new StandingSignBlock(ModBlockSetTypes.WoodTypes.GINKGO, properties.mapColor(GINKGO_PLANKS.defaultMapColor())
+                    .noCollision().strength(1.0F).ignitedByLava()));
+    public static final Block WALL_GINKGO_SIGN = registerBlockEntity("ginkgo_wall_sign", BlockEntityTypes.SIGN, false,
+            properties -> new WallSignBlock(ModBlockSetTypes.WoodTypes.GINKGO, wallVariant(GINKGO_SIGN, true,
+                    properties.mapColor(GINKGO_PLANKS.defaultMapColor())
+                            .noCollision().strength(1.0F).ignitedByLava())));
+    public static final Block HANGING_GINKGO_SIGN = registerBlockEntity("ginkgo_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
+            properties -> new CeilingHangingSignBlock(ModBlockSetTypes.WoodTypes.GINKGO, properties.mapColor(GINKGO_PLANKS.defaultMapColor())
+                    .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
+                    .strength(1.0F).ignitedByLava()));
+    public static final Block HANGING_WALL_GINKGO_SIGN = registerBlockEntity("ginkgo_wall_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
+            properties -> new WallHangingSignBlock(ModBlockSetTypes.WoodTypes.GINKGO, wallVariant(HANGING_GINKGO_SIGN, true,
+                    properties.mapColor(GINKGO_PLANKS.defaultMapColor())
+                            .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
+                            .strength(1.0F).ignitedByLava())));
 
     public static final Block APPLE_CROP = registerBlock("apple_crop", false, properties ->
             new AppleCropBlock(properties.instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.GRASS)
@@ -163,6 +182,16 @@ public class ModBlocks {
         return registerBlock(name, true, function);
     }
 
+    private static Block registerBlockEntity(String name, BlockEntityType<?> type, Function<BlockBehaviour.Properties, Block> function) {
+        return registerBlockEntity(name, type, true, function);
+    }
+
+    private static Block registerBlockEntity(String name, BlockEntityType<?> type, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {
+        Block block = registerBlock(name, addItem, function);
+        type.addValidBlock(block);
+        return block;
+    }
+
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> blockProperties, Item.Properties itemProperties) {
         Block toRegister = blockProperties.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));
         registerBlockItem(name, toRegister, itemProperties);
@@ -196,6 +225,15 @@ public class ModBlocks {
                 .strength(2.0F)
                 .sound(soundType)
                 .ignitedByLava();
+    }
+
+    private static BlockBehaviour.Properties wallVariant(final Block standingBlock, final boolean copyName, final BlockBehaviour.Properties properties) {
+        BlockBehaviour.Properties wallProperties = properties.overrideLootTable(standingBlock.getLootTable());
+        if (copyName) {
+            wallProperties = wallProperties.overrideDescription(standingBlock.getDescriptionId());
+        }
+
+        return wallProperties;
     }
 
     public static void register() {
