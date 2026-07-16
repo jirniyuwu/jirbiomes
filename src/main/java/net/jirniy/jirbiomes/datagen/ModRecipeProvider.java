@@ -77,7 +77,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.ROOTED_DIRT), has(Blocks.ROOTED_DIRT))
                         .group("rooted_dirt").save(output, "rooted_regular_dirt");
 
-
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COARSE_DRIED_DIRT, 4)
                         .pattern("DS")
                         .pattern("SD")
@@ -94,6 +93,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.WETLAND), has(ModBlocks.WETLAND))
                         .unlockedBy(getHasName(ModBlocks.COARSE_WETLAND), has(ModBlocks.COARSE_WETLAND))
                         .group("coarse_dirt").save(output, "coarse_wetland");
+
+                shaped(RecipeCategory.MISC, Blocks.CACTUS)
+                        .pattern("OO")
+                        .pattern("OO")
+                        .define('O', ModItems.BARREL_CACTUS)
+                        .unlockedBy(getHasName(ModItems.BARREL_CACTUS), has(ModItems.BARREL_CACTUS))
+                        .save(output, "cactus_from_barrel_cactus");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GINKGO_WOOD, 3)
                         .pattern("LL")
@@ -144,6 +150,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 hangingSignBuilder(ModItems.HANGING_GINKGO_SIGN, Ingredient.of(ModBlocks.GINKGO_PLANKS))
                         .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
                         .group("hanging_signs").save(output, "hanging_ginkgo_sign");
+                chestBoat(ModItems.GINKGO_CHEST_BOAT, ModItems.GINKGO_BOAT);
+                woodenBoat(ModItems.GINKGO_BOAT, ModBlocks.GINKGO_PLANKS);
             }
         };
     }

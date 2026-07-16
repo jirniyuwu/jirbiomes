@@ -3,15 +3,14 @@ package net.jirniy.jirbiomes.item;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.entity.ModEntities;
 import net.jirniy.jirbiomes.item.food.ModFood;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.HangingSignItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SignItem;
+import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.function.Function;
@@ -31,6 +30,11 @@ public class ModItems {
             new SignItem(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, properties.useItemDescriptionPrefix()));
     public static final Item HANGING_GINKGO_SIGN = registerItem("ginkgo_hanging_sign", properties ->
             new HangingSignItem(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN, properties.useItemDescriptionPrefix()));
+
+    public static final Item GINKGO_BOAT = registerItem("ginkgo_boat", properties ->
+            new BoatItem(ModEntities.GINKGO_BOAT, properties));
+    public static final Item GINKGO_CHEST_BOAT = registerItem("ginkgo_chest_boat", properties ->
+            new BoatItem(ModEntities.GINKGO_CHEST_BOAT, properties));
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         Item item = Registry.register(BuiltInRegistries.ITEM, JirniyBiomes.id(name),

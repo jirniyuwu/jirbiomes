@@ -40,6 +40,10 @@
   "block.jirbiomes.ginkgo_sign": "Ginkgo Sign",
   "item.jirbiomes.ginkgo_hanging_sign": "Ginkgo Hanging Sign",
   "block.jirbiomes.ginkgo_hanging_sign": "Ginkgo Hanging Sign",
+  "item.jirbiomes.ginkgo_boat": "Ginkgo Boat",
+  "entity.jirbiomes.ginkgo_boat": "Ginkgo Boat",
+  "item.jirbiomes.ginkgo_chest_boat": "Ginkgo Chest Boat",
+  "entity.jirbiomes.ginkgo_chest_boat": "Ginkgo Chest Boat",
 
   "block.jirbiomes.apple_crop": "Apple Tree Crop",
   "block.jirbiomes.apple_leaves": "Apple Leaves",
