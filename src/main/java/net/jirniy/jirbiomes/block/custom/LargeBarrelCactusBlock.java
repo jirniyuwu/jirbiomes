@@ -33,7 +33,7 @@ public class LargeBarrelCactusBlock extends Block implements BonemealableBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < getGrowthChance(0.1f, 3, level, pos)
+        if (random.nextFloat() < getGrowthChance(0.08f, 3, level, pos)
                 && level.getRawBrightness(pos, 0) >= 9) {
             if (!level.getBlockState(pos.below().below()).is(ModBlocks.LARGE_BARREL_CACTUS)) {
                 grow(state, level, pos, random);
