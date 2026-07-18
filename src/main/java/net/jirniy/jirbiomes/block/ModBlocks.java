@@ -51,7 +51,6 @@ public class ModBlocks {
             new CustomPathBlock(DRIED_DIRT, properties.strength(0.6f).isViewBlocking(Blocks::always).isSuffocating(Blocks::always)
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
 
-
     public static final Block WETLAND = registerBlock("wetland", properties ->
             new Block(properties.strength(0.6f).speedFactor(0.98f)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
@@ -70,6 +69,37 @@ public class ModBlocks {
     public static final Block WETLAND_PATH = registerBlock("wetland_path", properties ->
             new CustomPathBlock(WETLAND, properties.strength(0.8f).isViewBlocking(Blocks::always).isSuffocating(Blocks::always)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
+
+    public static final Block BRIMSTONE = registerBlock("brimstone", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(2.8F).sound(SoundType.CINNABAR)));
+    public static final Block IGNITED_BRIMSTONE = registerBlock("ignited_brimstone", properties ->
+            new MagmaLikeBlock(ModBlocks.BRIMSTONE, properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(2.8F).sound(SoundType.CINNABAR).lightLevel(state -> 6)));
+    public static final Block POLISHED_BRIMSTONE = registerBlock("polished_brimstone", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block POLISHED_BRIMSTONE_STAIRS = registerBlock("polished_brimstone_stairs", properties ->
+            new StairBlock(POLISHED_BRIMSTONE.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block POLISHED_BRIMSTONE_SLAB = registerBlock("polished_brimstone_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block POLISHED_BRIMSTONE_WALL = registerBlock("polished_brimstone_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block BRIMSTONE_BRICKS = registerBlock("brimstone_bricks", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block BRIMSTONE_BRICKS_STAIRS = registerBlock("brimstone_bricks_stairs", properties ->
+            new StairBlock(BRIMSTONE_BRICKS.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block BRIMSTONE_BRICKS_SLAB = registerBlock("brimstone_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block BRIMSTONE_BRICKS_WALL = registerBlock("brimstone_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
 
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->
             new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));

@@ -24,7 +24,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH));
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
-                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL));
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
@@ -34,7 +38,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.PRICKLY_PEAR_SEED, ModBlocks.SMALL_BARREL_CACTUS, ModBlocks.LARGE_BARREL_CACTUS));
 
         tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.getKey(ModBlocks.IRON_GRATE));
+                .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL));
 
         tag(ModTags.Blocks.DRIED_DIRT)
                 .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT, ModBlocks.COARSE_DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.DRIED_GRASS_BLOCK));
@@ -83,6 +91,13 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.HANGING_GINKGO_SIGN));
         tag(BlockTags.WALL_HANGING_SIGNS)
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_GINKGO_SIGN));
+
+        tag(BlockTags.STAIRS)
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS));
+        tag(BlockTags.SLABS)
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB));
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL));
 
         tag(BlockTags.BEE_ATTRACTIVE)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES));
@@ -149,14 +164,24 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_DRIED_DIRT));
 
         tag(BlockTags.NETHER_CARVER_REPLACEABLES)
-                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.BASE_STONE_NETHER)
-                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.INFINIBURN_NETHER)
-                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.INFINIBURN_OVERWORLD)
-                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.INFINIBURN_END)
-                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE));
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
     }
 }

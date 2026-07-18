@@ -11,13 +11,11 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.data.models.model.*;
 import net.minecraft.core.Direction;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -36,6 +34,17 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.COARSE_WETLAND);
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_WETLAND);
         blockModelGenerators.createTrivialCube(ModBlocks.WETLAND);
+
+        blockModelGenerators.createTrivialBlock(ModBlocks.BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
+        blockModelGenerators.createTrivialBlock(ModBlocks.IGNITED_BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
+        blockModelGenerators.family(ModBlocks.POLISHED_BRIMSTONE)
+                .wall(ModBlocks.POLISHED_BRIMSTONE_WALL)
+                .stairs(ModBlocks.POLISHED_BRIMSTONE_STAIRS)
+                .slab(ModBlocks.POLISHED_BRIMSTONE_SLAB);
+        blockModelGenerators.family(ModBlocks.BRIMSTONE_BRICKS)
+                .wall(ModBlocks.BRIMSTONE_BRICKS_WALL)
+                .stairs(ModBlocks.BRIMSTONE_BRICKS_STAIRS)
+                .slab(ModBlocks.BRIMSTONE_BRICKS_SLAB);
 
         blockModelGenerators.family(ModBlocks.GINKGO_PLANKS)
                 .stairs(ModBlocks.GINKGO_STAIRS)

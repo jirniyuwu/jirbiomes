@@ -51,6 +51,17 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropOther(ModBlocks.DRIED_DIRT_PATH, ModBlocks.DRIED_DIRT);
         dropOther(ModBlocks.WETLAND_PATH, ModBlocks.WETLAND);
 
+        dropSelf(ModBlocks.BRIMSTONE);
+        dropSelf(ModBlocks.IGNITED_BRIMSTONE);
+        dropSelf(ModBlocks.BRIMSTONE_BRICKS);
+        dropSelf(ModBlocks.BRIMSTONE_BRICKS_STAIRS);
+        add(ModBlocks.BRIMSTONE_BRICKS_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.BRIMSTONE_BRICKS_WALL);
+        dropSelf(ModBlocks.POLISHED_BRIMSTONE);
+        dropSelf(ModBlocks.POLISHED_BRIMSTONE_STAIRS);
+        add(ModBlocks.POLISHED_BRIMSTONE_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.POLISHED_BRIMSTONE_WALL);
+
         dropSelf(ModBlocks.GINKGO_LOG);
         dropSelf(ModBlocks.STRIPPED_GINKGO_LOG);
         dropSelf(ModBlocks.GINKGO_WOOD);

@@ -62,6 +62,14 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.CHEST_BOATS)
                 .add(ModItems.getKey(ModItems.GINKGO_CHEST_BOAT));
 
+        tag(ItemTags.STONE_CRAFTING_MATERIALS)
+                .add(ModItems.getKey(ModBlocks.BRIMSTONE));
+        tag(ItemTags.STONE_TOOL_MATERIALS)
+                .add(ModItems.getKey(ModBlocks.BRIMSTONE));
+
+        tag(ItemTags.WALLS)
+                .add(ModItems.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL));
+
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.getKey(ModItems.APPLE_SEEDS));
     }

@@ -18,6 +18,17 @@
   "block.jirbiomes.wet_farmland": "Wet Farmland",
   "block.jirbiomes.wetland_path": "Wetland Path",
 
+  "block.jirbiomes.brimstone": "Brimstone",
+  "block.jirbiomes.ignited_brimstone": "Ignited Brimstone",
+  "block.jirbiomes.polished_brimstone": "Polished Brimstone",
+  "block.jirbiomes.polished_brimstone_slab": "Polished Brimstone Slab",
+  "block.jirbiomes.polished_brimstone_stairs": "Polished Brimstone Stairs",
+  "block.jirbiomes.polished_brimstone_wall": "Polished Brimstone Wall",
+  "block.jirbiomes.brimstone_bricks": "Brimstone Bricks",
+  "block.jirbiomes.brimstone_bricks_slab": "Brimstone Brick Slab",
+  "block.jirbiomes.brimstone_bricks_stairs": "Brimstone Brick Stairs",
+  "block.jirbiomes.brimstone_bricks_wall": "Brimstone Brick Wall",
+
   "block.jirbiomes.ginkgo_planks": "Ginkgo Planks",
   "block.jirbiomes.ginkgo_log": "Ginkgo Log",
   "block.jirbiomes.ginkgo_wood": "Ginkgo Wood",

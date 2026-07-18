@@ -6,6 +6,7 @@ import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -76,6 +77,48 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .requires(Blocks.DIRT).requires(Blocks.HANGING_ROOTS)
                         .unlockedBy(getHasName(Blocks.ROOTED_DIRT), has(Blocks.ROOTED_DIRT))
                         .group("rooted_dirt").save(output, "rooted_regular_dirt");
+
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.IGNITED_BRIMSTONE, 4)
+                        .requires(Blocks.MAGMA_BLOCK).requires(ModBlocks.BRIMSTONE)
+                        .requires(ModBlocks.BRIMSTONE).requires(Blocks.MAGMA_BLOCK)
+                        .unlockedBy(getHasName(ModBlocks.BRIMSTONE), has(ModBlocks.BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.IGNITED_BRIMSTONE), has(ModBlocks.IGNITED_BRIMSTONE))
+                        .save(output, "ignited_brimstone");
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE, Ingredient.of(ModBlocks.BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.BRIMSTONE), has(ModBlocks.BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_BRIMSTONE), has(ModBlocks.POLISHED_BRIMSTONE))
+                        .group("polished").save(output, "polished_brimstone");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE, ModBlocks.BRIMSTONE);
+                stairBuilder(ModBlocks.POLISHED_BRIMSTONE_STAIRS, Ingredient.of(ModBlocks.POLISHED_BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_BRIMSTONE), has(ModBlocks.POLISHED_BRIMSTONE))
+                        .group("stairs").save(output, "polished_brimstone_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE_SLAB, Ingredient.of(ModBlocks.POLISHED_BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_BRIMSTONE), has(ModBlocks.POLISHED_BRIMSTONE))
+                        .group("slabs").save(output, "polished_brimstone_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE_WALL, Ingredient.of(ModBlocks.POLISHED_BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_BRIMSTONE), has(ModBlocks.POLISHED_BRIMSTONE))
+                        .group("slabs").save(output, "polished_brimstone_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.POLISHED_BRIMSTONE);
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS, Ingredient.of(ModBlocks.POLISHED_BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_BRIMSTONE), has(ModBlocks.POLISHED_BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.BRIMSTONE_BRICKS), has(ModBlocks.BRIMSTONE_BRICKS))
+                        .group("bricks").save(output, "brimstone_bricks");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS, ModBlocks.POLISHED_BRIMSTONE);
+                stairBuilder(ModBlocks.BRIMSTONE_BRICKS_STAIRS, Ingredient.of(ModBlocks.BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.BRIMSTONE_BRICKS), has(ModBlocks.BRIMSTONE_BRICKS))
+                        .group("stairs").save(output, "brimstone_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_SLAB, Ingredient.of(ModBlocks.BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.BRIMSTONE_BRICKS), has(ModBlocks.BRIMSTONE_BRICKS))
+                        .group("slabs").save(output, "brimstone_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_WALL, Ingredient.of(ModBlocks.BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.BRIMSTONE_BRICKS), has(ModBlocks.BRIMSTONE_BRICKS))
+                        .group("slabs").save(output, "brimstone_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.BRIMSTONE_BRICKS);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COARSE_DRIED_DIRT, 4)
                         .pattern("DS")
