@@ -46,6 +46,8 @@ import java.util.OptionalInt;
 
 public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> NETHERSTONE = registryKey("netherstone");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMSTONE_PATCH = registryKey("brimstone_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> IGNITED_BRIMSTONE_PATCH = registryKey("ignited_brimstone_patch");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE = registryKey("ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE_BEES_005 = registryKey("ginkgo_tree_bees_005");
@@ -255,7 +257,17 @@ public class ModConfiguredFeatures {
         ));
 
         register(context, NETHERSTONE, Feature.ORE, new OreConfiguration(
-                List.of(OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), ModBlocks.NETHERSTONE.defaultBlockState())), 32
+                List.of(OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), ModBlocks.NETHERSTONE.defaultBlockState())), 32));
+        register(context, BRIMSTONE_PATCH, Feature.ORE, new OreConfiguration(
+                List.of(OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), ModBlocks.BRIMSTONE.defaultBlockState()),
+                        OreConfiguration.target(new BlockMatchTest(ModBlocks.NETHERSTONE), ModBlocks.BRIMSTONE.defaultBlockState()),
+                        OreConfiguration.target(new BlockMatchTest(Blocks.MAGMA_BLOCK), ModBlocks.IGNITED_BRIMSTONE.defaultBlockState())), 32));
+        register(context, IGNITED_BRIMSTONE_PATCH, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BRIMSTONE_PATCH), CountPlacement.of(1)),
+                        PlacementUtils.inlinePlaced(Feature.SCATTERED_ORE, new OreConfiguration(
+                                List.of(OreConfiguration.target(new BlockMatchTest(ModBlocks.BRIMSTONE), ModBlocks.IGNITED_BRIMSTONE.defaultBlockState())), 40))
+                )
         ));
     }
 

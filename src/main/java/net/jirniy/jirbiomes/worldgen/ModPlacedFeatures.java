@@ -2,20 +2,26 @@ package net.jirniy.jirbiomes.worldgen;
 
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
@@ -30,6 +36,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
 
     public static final ResourceKey<PlacedFeature> NETHERSTONE_PLACED = registryKey("netherstone");
+    public static final ResourceKey<PlacedFeature> BRIMSTONE_PLACED = registryKey("brimstone");
+    public static final ResourceKey<PlacedFeature> IGNITED_BRIMSTONE_PLACED = registryKey("ignited_brimstone");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -66,6 +74,14 @@ public class ModPlacedFeatures {
         register(context, NETHERSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.NETHERSTONE),
                 BiomeFilter.biome(), HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(160)),
                 CountPlacement.of(16), InSquarePlacement.spread());
+        register(context, BRIMSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRIMSTONE_PATCH),
+                HeightRangePlacement.of(BiasedToBottomHeight.of(
+                        VerticalAnchor.aboveBottom(20), VerticalAnchor.aboveBottom(40), 2)),
+                BiomeFilter.biome(), CountPlacement.of(30), InSquarePlacement.spread());
+        register(context, IGNITED_BRIMSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.IGNITED_BRIMSTONE_PATCH),
+                HeightRangePlacement.of(BiasedToBottomHeight.of(
+                        VerticalAnchor.aboveBottom(15), VerticalAnchor.aboveBottom(30), 2)),
+                BiomeFilter.biome(), NoiseThresholdCountPlacement.of(0.5f, 1, 3), InSquarePlacement.spread());
     }
 
     public static ResourceKey<PlacedFeature> registryKey(String name) {
