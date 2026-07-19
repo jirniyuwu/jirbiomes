@@ -70,6 +70,22 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.woodProvider(ModBlocks.GINKGO_LOG).log(ModBlocks.GINKGO_LOG).wood(ModBlocks.GINKGO_WOOD);
         blockModelGenerators.woodProvider(ModBlocks.STRIPPED_GINKGO_LOG).log(ModBlocks.STRIPPED_GINKGO_LOG).wood(ModBlocks.STRIPPED_GINKGO_WOOD);
         blockModelGenerators.createShelf(ModBlocks.GINKGO_SHELF, ModBlocks.STRIPPED_GINKGO_LOG);
+
+        blockModelGenerators.family(ModBlocks.TENEBRIS_PLANKS)
+                .stairs(ModBlocks.TENEBRIS_STAIRS)
+                .slab(ModBlocks.TENEBRIS_SLAB)
+                .button(ModBlocks.TENEBRIS_BUTTON)
+                .fence(ModBlocks.TENEBRIS_FENCE)
+                .fenceGate(ModBlocks.TENEBRIS_FENCE_GATE)
+                .pressurePlate(ModBlocks.TENEBRIS_PRESSURE_PLATE);
+        createSign(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN, ModBlocks.TENEBRIS_PLANKS, blockModelGenerators);
+        createHangingSign(ModBlocks.HANGING_TENEBRIS_SIGN, ModBlocks.HANGING_WALL_TENEBRIS_SIGN, ModBlocks.STRIPPED_TENEBRIS_LOG, BlockFamily.Variant.WALL_HANGING_SIGN, blockModelGenerators);
+        blockModelGenerators.createDoor(ModBlocks.TENEBRIS_DOOR);
+        blockModelGenerators.createTrapdoor(ModBlocks.TENEBRIS_TRAPDOOR);
+        blockModelGenerators.woodProvider(ModBlocks.TENEBRIS_LOG).log(ModBlocks.TENEBRIS_LOG).wood(ModBlocks.TENEBRIS_WOOD);
+        blockModelGenerators.woodProvider(ModBlocks.STRIPPED_TENEBRIS_LOG).log(ModBlocks.STRIPPED_TENEBRIS_LOG).wood(ModBlocks.STRIPPED_TENEBRIS_WOOD);
+        blockModelGenerators.createShelf(ModBlocks.TENEBRIS_SHELF, ModBlocks.STRIPPED_TENEBRIS_LOG);
+
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.APPLE_OAK_SAPLING, ModBlocks.POTTED_APPLE_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createCrossBlock(ModBlocks.APPLE_CROP, BlockModelGenerators.PlantType.NOT_TINTED, AppleCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
 

@@ -34,7 +34,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_STAIRS, ModBlocks.GINKGO_SLAB, ModBlocks.GINKGO_PRESSURE_PLATE, ModBlocks.GINKGO_BUTTON,
-                        ModBlocks.GINKGO_FENCE, ModBlocks.GINKGO_FENCE_GATE, ModBlocks.GINKGO_TRAPDOOR, ModBlocks.GINKGO_DOOR));
+                        ModBlocks.GINKGO_FENCE, ModBlocks.GINKGO_FENCE_GATE, ModBlocks.GINKGO_TRAPDOOR, ModBlocks.GINKGO_DOOR))
+                .addOptionalTag(ModTags.Blocks.TENEBRIS_LOGS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_PLANKS))
+                .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_STAIRS, ModBlocks.TENEBRIS_SLAB, ModBlocks.TENEBRIS_PRESSURE_PLATE, ModBlocks.TENEBRIS_BUTTON,
+                        ModBlocks.TENEBRIS_FENCE, ModBlocks.TENEBRIS_FENCE_GATE, ModBlocks.TENEBRIS_TRAPDOOR, ModBlocks.TENEBRIS_DOOR));
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.getKeys(ModBlocks.PRICKLY_PEAR_SEED, ModBlocks.SMALL_BARREL_CACTUS, ModBlocks.LARGE_BARREL_CACTUS));
 
@@ -58,40 +62,59 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(ModTags.Blocks.GINKGO_LOGS)
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD));
+        tag(ModTags.Blocks.TENEBRIS_LOGS)
+                .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_LOG, ModBlocks.STRIPPED_TENEBRIS_LOG))
+                .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_WOOD, ModBlocks.STRIPPED_TENEBRIS_WOOD));
 
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_LEAVES));
         tag(BlockTags.PLANKS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_PLANKS))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS));
         tag(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_STAIRS));
         tag(BlockTags.WOODEN_SLABS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SLAB))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_SLAB));
         tag(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_BUTTON))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_BUTTON));
         tag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_PRESSURE_PLATE))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PRESSURE_PLATE));
         tag(BlockTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_TRAPDOOR))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_TRAPDOOR));
         tag(BlockTags.WOODEN_DOORS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_DOOR))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_DOOR));
         tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_FENCE))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_FENCE));
         tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_FENCE_GATE))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_FENCE_GATE));
         tag(BlockTags.WOODEN_SHELVES)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SHELF))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_SHELF));
         tag(BlockTags.ALL_SIGNS)
+                .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN));
         tag(BlockTags.STANDING_SIGNS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_SIGN));
         tag(BlockTags.WALL_SIGNS)
+                .add(ModBlocks.getKey(ModBlocks.WALL_TENEBRIS_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.WALL_GINKGO_SIGN));
         tag(BlockTags.ALL_HANGING_SIGNS)
+                .add(ModBlocks.getKeys(ModBlocks.HANGING_TENEBRIS_SIGN, ModBlocks.HANGING_WALL_TENEBRIS_SIGN))
                 .add(ModBlocks.getKeys(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN));
         tag(BlockTags.CEILING_HANGING_SIGNS)
+                .add(ModBlocks.getKey(ModBlocks.HANGING_TENEBRIS_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.HANGING_GINKGO_SIGN));
         tag(BlockTags.WALL_HANGING_SIGNS)
+                .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_TENEBRIS_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_GINKGO_SIGN));
 
         tag(BlockTags.STAIRS)
@@ -154,7 +177,10 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.GRASS_BLOCKS);
         tag(BlockTags.GRASS_BLOCKS)
                 .addOptionalTag(ModTags.Blocks.GRASS_BLOCKS);
+        tag(BlockTags.OVERWORLD_NATURAL_LOGS)
+                .addOptionalTag(ModTags.Blocks.GINKGO_LOGS);
         tag(BlockTags.LOGS)
+                .addOptionalTag(ModTags.Blocks.TENEBRIS_LOGS)
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS);
         tag(BlockTags.SUPPORT_OVERRIDE_CACTUS_FLOWER)
                 .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));

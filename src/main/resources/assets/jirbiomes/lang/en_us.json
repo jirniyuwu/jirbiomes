@@ -66,6 +66,29 @@
   "item.jirbiomes.ginkgo_chest_boat": "Ginkgo Chest Boat",
   "entity.jirbiomes.ginkgo_chest_boat": "Ginkgo Chest Boat",
 
+  "block.jirbiomes.tenebris_planks": "Tenebris Planks",
+  "block.jirbiomes.tenebris_stem": "Tenebris Stem",
+  "block.jirbiomes.tenebris_hyphae": "Tenebris Hyphae",
+  "block.jirbiomes.stripped_tenebris_stem": "Stripped Tenebris Stem",
+  "block.jirbiomes.stripped_tenebris_hyphae": "Stripped Tenebris Hyphae",
+  "block.jirbiomes.tenebris_leaves": "Tenebris Leaves",
+  "block.jirbiomes.tenebris_sapling": "Tenebris Sapling",
+  "block.jirbiomes.potted_tenebris_sapling": "Potted Tenebris Sapling",
+
+  "block.jirbiomes.tenebris_stairs": "Tenebris Stairs",
+  "block.jirbiomes.tenebris_slab": "Tenebris Slab",
+  "block.jirbiomes.tenebris_door": "Tenebris Door",
+  "block.jirbiomes.tenebris_trapdoor": "Tenebris Trapdoor",
+  "block.jirbiomes.tenebris_button": "Tenebris Button",
+  "block.jirbiomes.tenebris_pressure_plate": "Tenebris Pressure Plate",
+  "block.jirbiomes.tenebris_fence": "Tenebris Fence",
+  "block.jirbiomes.tenebris_fence_gate": "Tenebris Fence Gate",
+  "block.jirbiomes.tenebris_shelf": "Tenebris Shelf",
+  "item.jirbiomes.tenebris_sign": "Tenebris Sign",
+  "block.jirbiomes.tenebris_sign": "Tenebris Sign",
+  "item.jirbiomes.tenebris_hanging_sign": "Tenebris Hanging Sign",
+  "block.jirbiomes.tenebris_hanging_sign": "Tenebris Hanging Sign",
+
   "block.jirbiomes.apple_crop": "Apple Tree Crop",
   "block.jirbiomes.apple_leaves": "Apple Leaves",
   "block.jirbiomes.apple_oak_sapling": "Apple Oak Sapling",
@@ -84,5 +107,6 @@
   "death.attack.cactus_food.player": "%1$s wasn't looking at what they were eating while trying to escape %2$s",
 
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions",
-  "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log"
+  "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log",
+  "tag.item.jirbiomes.tenebris_logs": "Any Tenebris log"
 }

@@ -35,6 +35,11 @@ public class ModItems {
     public static final Item GINKGO_CHEST_BOAT = registerItem("ginkgo_chest_boat", properties ->
             new BoatItem(ModEntities.GINKGO_CHEST_BOAT, properties));
 
+    public static final Item TENEBRIS_SIGN = registerItem("tenebris_sign", properties ->
+            new SignItem(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN, properties.useItemDescriptionPrefix()));
+    public static final Item HANGING_TENEBRIS_SIGN = registerItem("tenebris_hanging_sign", properties ->
+            new HangingSignItem(ModBlocks.HANGING_TENEBRIS_SIGN, ModBlocks.HANGING_WALL_TENEBRIS_SIGN, properties.useItemDescriptionPrefix()));
+
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         Item item = Registry.register(BuiltInRegistries.ITEM, JirniyBiomes.id(name),
                 function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, JirniyBiomes.id((name))))));

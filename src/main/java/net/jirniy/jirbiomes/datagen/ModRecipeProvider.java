@@ -221,11 +221,61 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 signBuilder(ModItems.GINKGO_SIGN, Ingredient.of(ModBlocks.GINKGO_PLANKS))
                         .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
                         .group("signs").save(output, "ginkgo_sign");
-                hangingSignBuilder(ModItems.HANGING_GINKGO_SIGN, Ingredient.of(ModBlocks.GINKGO_PLANKS))
-                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLANKS), has(ModBlocks.GINKGO_PLANKS))
+                hangingSignBuilder(ModItems.HANGING_GINKGO_SIGN, Ingredient.of(ModBlocks.STRIPPED_GINKGO_LOG))
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_GINKGO_LOG), has(ModBlocks.STRIPPED_GINKGO_LOG))
                         .group("hanging_signs").save(output, "hanging_ginkgo_sign");
                 chestBoat(ModItems.GINKGO_CHEST_BOAT, ModItems.GINKGO_BOAT);
                 woodenBoat(ModItems.GINKGO_BOAT, ModBlocks.GINKGO_PLANKS);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_WOOD, 3)
+                        .pattern("LL")
+                        .pattern("LL")
+                        .define('L', ModBlocks.TENEBRIS_LOG)
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_LOG), has(ModBlocks.TENEBRIS_LOG))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_WOOD), has(ModBlocks.TENEBRIS_WOOD))
+                        .group("wood").save(output, "tenebris_wood");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_TENEBRIS_WOOD, 3)
+                        .pattern("LL")
+                        .pattern("LL")
+                        .define('L', ModBlocks.STRIPPED_TENEBRIS_LOG)
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_TENEBRIS_LOG), has(ModBlocks.STRIPPED_TENEBRIS_LOG))
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_TENEBRIS_WOOD), has(ModBlocks.STRIPPED_TENEBRIS_WOOD))
+                        .group("wood").save(output, "stripped_tenebris_wood");
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_PLANKS, 4)
+                        .requires(ModTags.Items.TENEBRIS_LOGS)
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_LOG), has(ModTags.Items.TENEBRIS_LOGS))
+                        .group("planks").save(output, "tenebris_planks");
+                stairBuilder(ModBlocks.TENEBRIS_STAIRS, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("wooden_stairs").save(output, "tenebris_stairs");
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_SLAB, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("wooden_slabs").save(output, "tenebris_slab");
+                fenceBuilder(ModBlocks.TENEBRIS_FENCE, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("wooden_fences").save(output, "tenebris_fence");
+                fenceGateBuilder(ModBlocks.TENEBRIS_FENCE_GATE, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("wooden_fence_gates").save(output, "tenebris_fence_gate");
+                pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.TENEBRIS_PRESSURE_PLATE, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("wooden_pressure_plates").save(output, "tenebris_pressure_plate");
+                buttonBuilder(ModBlocks.TENEBRIS_BUTTON, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("wooden_buttons").save(output, "tenebris_button");
+                doorBuilder(ModBlocks.TENEBRIS_DOOR, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("wooden_doors").save(output, "tenebris_door");
+                trapdoorBuilder(ModBlocks.TENEBRIS_TRAPDOOR, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("wooden_trapdoors").save(output, "tenebris_trapdoor");
+                shelf(ModBlocks.TENEBRIS_SHELF, ModBlocks.STRIPPED_TENEBRIS_LOG);
+                signBuilder(ModItems.TENEBRIS_SIGN, Ingredient.of(ModBlocks.TENEBRIS_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PLANKS), has(ModBlocks.TENEBRIS_PLANKS))
+                        .group("signs").save(output, "tenebris_sign");
+                hangingSignBuilder(ModItems.HANGING_TENEBRIS_SIGN, Ingredient.of(ModBlocks.STRIPPED_TENEBRIS_LOG))
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_TENEBRIS_LOG), has(ModBlocks.STRIPPED_TENEBRIS_LOG))
+                        .group("hanging_signs").save(output, "hanging_tenebris_sign");
             }
         };
     }

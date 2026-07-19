@@ -204,6 +204,66 @@ public class ModBlocks {
                             .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
                             .strength(1.0F).ignitedByLava())));
 
+    public static final Block TENEBRIS_LOG = registerBlock("tenebris_stem", properties ->
+            new RotatedPillarBlock(logProperties(properties, MapColor.COLOR_MAGENTA, MapColor.TERRACOTTA_BLACK, SoundType.NETHER_WOOD)));
+    public static final Block TENEBRIS_WOOD = registerBlock("tenebris_hyphae", properties ->
+            new RotatedPillarBlock(properties.mapColor(MapColor.COLOR_MAGENTA).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD)));
+    public static final Block STRIPPED_TENEBRIS_LOG = registerBlock("stripped_tenebris_stem", properties ->
+            new RotatedPillarBlock(logProperties(properties, MapColor.COLOR_MAGENTA, MapColor.TERRACOTTA_BLACK, SoundType.NETHER_WOOD)));
+    public static final Block STRIPPED_TENEBRIS_WOOD = registerBlock("stripped_tenebris_hyphae", properties ->
+            new RotatedPillarBlock(properties.mapColor(MapColor.COLOR_MAGENTA).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.NETHER_WOOD)));
+
+    public static final Block TENEBRIS_PLANKS = registerBlock("tenebris_planks", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_MAGENTA).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD)));
+    public static final Block TENEBRIS_STAIRS = registerBlock("tenebris_stairs", properties ->
+            new StairBlock(TENEBRIS_PLANKS.defaultBlockState(), properties.mapColor(MapColor.COLOR_MAGENTA).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD)));
+    public static final Block TENEBRIS_SLAB = registerBlock("tenebris_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.COLOR_MAGENTA).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD)));
+    public static final Block TENEBRIS_BUTTON = registerBlock("tenebris_button", properties ->
+            new ButtonBlock(ModBlockSetTypes.Sets.TENEBRIS, 20, properties.noCollision().pushReaction(PushReaction.DESTROY)
+                    .strength(1.0F, 2.0F).sound(SoundType.NETHER_WOOD)));
+    public static final Block TENEBRIS_PRESSURE_PLATE = registerBlock("tenebris_pressure_plate", properties ->
+            new PressurePlateBlock(ModBlockSetTypes.Sets.TENEBRIS, properties.noCollision().pushReaction(PushReaction.DESTROY)
+                    .strength(1.0F, 2.0F).sound(SoundType.NETHER_WOOD)));
+    public static final Block TENEBRIS_FENCE = registerBlock("tenebris_fence", properties ->
+            new FenceBlock(properties.mapColor(MapColor.COLOR_MAGENTA)
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD)));
+    public static final Block TENEBRIS_FENCE_GATE = registerBlock("tenebris_fence_gate", properties ->
+            new FenceGateBlock(ModBlockSetTypes.WoodTypes.TENEBRIS, properties.mapColor(MapColor.COLOR_MAGENTA)
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD)));
+    public static final Block TENEBRIS_TRAPDOOR = registerBlock("tenebris_trapdoor", properties ->
+            new TrapDoorBlock(ModBlockSetTypes.Sets.TENEBRIS, properties.mapColor(MapColor.COLOR_MAGENTA)
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD)
+                    .pushReaction(PushReaction.DESTROY).noOcclusion()));
+    public static final Block TENEBRIS_DOOR = registerBlock("tenebris_door", properties ->
+            new DoorBlock(ModBlockSetTypes.Sets.TENEBRIS, properties.mapColor(MapColor.COLOR_MAGENTA)
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD)
+                    .pushReaction(PushReaction.DESTROY).noOcclusion()));
+
+    public static final Block TENEBRIS_SHELF = registerBlockEntity("tenebris_shelf", BlockEntityTypes.SHELF,
+            properties -> new ShelfBlock(properties.mapColor(TENEBRIS_PLANKS.defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS).sound(SoundType.SHELF)
+                    .strength(2.0F, 3.0F)));
+    public static final Block TENEBRIS_SIGN = registerBlockEntity("tenebris_sign", BlockEntityTypes.SIGN, false,
+            properties -> new StandingSignBlock(ModBlockSetTypes.WoodTypes.TENEBRIS, properties.mapColor(TENEBRIS_PLANKS.defaultMapColor())
+                    .noCollision().strength(1.0F)));
+    public static final Block WALL_TENEBRIS_SIGN = registerBlockEntity("tenebris_wall_sign", BlockEntityTypes.SIGN, false,
+            properties -> new WallSignBlock(ModBlockSetTypes.WoodTypes.TENEBRIS, wallVariant(TENEBRIS_SIGN, true,
+                    properties.mapColor(TENEBRIS_PLANKS.defaultMapColor())
+                            .noCollision().strength(1.0F))));
+    public static final Block HANGING_TENEBRIS_SIGN = registerBlockEntity("tenebris_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
+            properties -> new CeilingHangingSignBlock(ModBlockSetTypes.WoodTypes.TENEBRIS, properties.mapColor(TENEBRIS_PLANKS.defaultMapColor())
+                    .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
+                    .strength(1.0F)));
+    public static final Block HANGING_WALL_TENEBRIS_SIGN = registerBlockEntity("tenebris_wall_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
+            properties -> new WallHangingSignBlock(ModBlockSetTypes.WoodTypes.TENEBRIS, wallVariant(HANGING_TENEBRIS_SIGN, true,
+                    properties.mapColor(TENEBRIS_PLANKS.defaultMapColor())
+                            .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
+                            .strength(1.0F))));
+
     public static final Block APPLE_CROP = registerBlock("apple_crop", false, properties ->
             new AppleCropBlock(properties.instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.GRASS)
                     .noCollision().randomTicks().sound(SoundType.CROP)));

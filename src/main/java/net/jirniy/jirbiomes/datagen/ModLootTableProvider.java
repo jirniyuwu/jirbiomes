@@ -88,11 +88,27 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.GINKGO_BUTTON);
         dropSelf(ModBlocks.GINKGO_PRESSURE_PLATE);
         dropSelf(ModBlocks.GINKGO_SHELF);
-
         dropSelf(ModBlocks.GINKGO_SIGN);
         dropSelf(ModBlocks.HANGING_GINKGO_SIGN);
 
         add(ModBlocks.GINKGO_LEAVES, createLeavesDrops(ModBlocks.GINKGO_LEAVES, ModBlocks.GINKGO_SAPLING, 0.05f));
+
+        dropSelf(ModBlocks.TENEBRIS_LOG);
+        dropSelf(ModBlocks.STRIPPED_TENEBRIS_LOG);
+        dropSelf(ModBlocks.TENEBRIS_WOOD);
+        dropSelf(ModBlocks.STRIPPED_TENEBRIS_WOOD);
+        dropSelf(ModBlocks.TENEBRIS_PLANKS);
+        dropSelf(ModBlocks.TENEBRIS_STAIRS);
+        add(ModBlocks.TENEBRIS_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.TENEBRIS_TRAPDOOR);
+        dropSelf(ModBlocks.TENEBRIS_FENCE);
+        dropSelf(ModBlocks.TENEBRIS_FENCE_GATE);
+        add(ModBlocks.TENEBRIS_DOOR, this::createDoorTable);
+        dropSelf(ModBlocks.TENEBRIS_BUTTON);
+        dropSelf(ModBlocks.TENEBRIS_PRESSURE_PLATE);
+        dropSelf(ModBlocks.TENEBRIS_SHELF);
+        dropSelf(ModBlocks.TENEBRIS_SIGN);
+        dropSelf(ModBlocks.HANGING_TENEBRIS_SIGN);
 
         add(ModBlocks.APPLE_CROP, createCropDrops(ModBlocks.APPLE_CROP, ModBlocks.APPLE_OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)
