@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.worldgen;
 
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -29,6 +30,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DRIED_GRASS_PATCH_DESERT_PLACED = registryKey("dried_grass_desert_patch");
     public static final ResourceKey<PlacedFeature> WET_GRASS_PATCH_PLACED = registryKey("wet_grass_patch");
     public static final ResourceKey<PlacedFeature> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
+
+    public static final ResourceKey<PlacedFeature> BRIMGRASS_PLACED = registryKey("brimgrass_patch");
 
     public static final ResourceKey<PlacedFeature> NETHERSTONE_PLACED = registryKey("netherstone");
     public static final ResourceKey<PlacedFeature> BRIMSTONE_PLACED = registryKey("brimstone");
@@ -65,6 +68,13 @@ public class ModPlacedFeatures {
                 RandomOffsetPlacement.of(UniformInt.of(-2, 3), ConstantInt.of(0)), CountPlacement.of(UniformInt.of(1, 4)),
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
                 InSquarePlacement.spread(), NoiseThresholdCountPlacement.of(0.3, 1, 2));
+
+        register(context, BRIMGRASS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRIMGRASS),
+                CountPlacement.of(200), RandomOffsetPlacement.ofTriangle(7, 3),
+                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(32), PlacementUtils.FULL_RANGE,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
+                                ModBlocks.BRIMGRASS_BLOCK))));
 
         register(context, NETHERSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.NETHERSTONE),
                 BiomeFilter.biome(), HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(160)),

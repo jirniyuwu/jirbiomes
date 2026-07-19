@@ -10,12 +10,16 @@ import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.RegistryModifications;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModBiomeModifications;
+import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
+import net.jirniy.jirbiomes.worldgen.biome.ModSurfaceRules;
 import net.jirniy.jirbiomes.worldgen.blockstate.ModBlockStateProviderType;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import terrablender.api.SurfaceRuleManager;
+import terrablender.api.TerraBlenderApi;
 
-public class JirniyBiomes implements ModInitializer {
+public class JirniyBiomes implements ModInitializer, TerraBlenderApi {
 	public static final String MOD_ID = "jirbiomes";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -33,6 +37,12 @@ public class JirniyBiomes implements ModInitializer {
 
 		ModBiomeModifications.register();
 		RegistryModifications.register();
+	}
+
+	@Override
+	public void onTerraBlenderInitialized() {
+		ModBiomes.registerBiomes();
+		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, MOD_ID, ModSurfaceRules::brimstoneCragsRules);
 	}
 
 	public static Identifier id(String path) {

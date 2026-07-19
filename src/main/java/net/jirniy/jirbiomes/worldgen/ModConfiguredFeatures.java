@@ -66,6 +66,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BARREL_CACTUS = registryKey("barrel_cactus");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -255,6 +257,8 @@ public class ModConfiguredFeatures {
                 UniformInt.of(3, 7),
                 4
         ));
+
+        register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BRIMGRASS)));
 
         register(context, NETHERSTONE, Feature.ORE, new OreConfiguration(
                 List.of(OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), ModBlocks.NETHERSTONE.defaultBlockState())), 32));

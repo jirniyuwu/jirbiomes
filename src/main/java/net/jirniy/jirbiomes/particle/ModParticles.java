@@ -8,6 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 
 public class ModParticles {
     public static final SimpleParticleType GINKGO_LEAVES = create("ginkgo_leaves", false);
+    public static final SimpleParticleType BRIMGRASS_SPORES = create("brimgrass_spores", false);
 
     private static SimpleParticleType create(final String name, final boolean alwaysSpawn) {
         return Registry.register(BuiltInRegistries.PARTICLE_TYPE, JirniyBiomes.id(name), FabricParticleTypes.simple(alwaysSpawn));

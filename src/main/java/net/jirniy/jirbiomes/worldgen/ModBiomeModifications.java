@@ -3,6 +3,7 @@ package net.jirniy.jirbiomes.worldgen;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.jirniy.jirbiomes.JirniyBiomes;
+import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -38,5 +39,8 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BRIMSTONE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.IGNITED_BRIMSTONE_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.BRIMSTONE_CRAGS),
+                GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BRIMGRASS_PLACED);
     }
 }
