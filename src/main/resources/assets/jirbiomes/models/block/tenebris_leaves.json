@@ -1,0 +1,82 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"leaf": "jirbiomes:block/tenebris_leaves",
+		"particle": "jirbiomes:block/tenebris_leaves"
+	},
+	"elements": [
+		{
+			"from": [8, 0, 2],
+			"to": [8, 16, 18],
+			"rotation": {"x": 90, "y": -50, "z": -90, "origin": [8, 0, 10]},
+			"faces": {
+				"east": {"uv": [0, 0, 8, 8], "rotation": 90, "texture": "#leaf"},
+				"west": {"uv": [0, 0, 8, 8], "rotation": 90, "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [8, 0, -2],
+			"to": [8, 16, 14],
+			"rotation": {"x": -90, "y": -50, "z": 89.99999, "origin": [8, 0, 6]},
+			"faces": {
+				"east": {"uv": [0, 0, 8, 8], "rotation": 90, "texture": "#leaf"},
+				"west": {"uv": [0, 0, 8, 8], "rotation": 90, "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [8, 0, 0],
+			"to": [8, 16, 16],
+			"rotation": {"x": 30, "y": 35, "z": 45, "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [8, 0, 16, 8], "rotation": 90, "texture": "#leaf"},
+				"west": {"uv": [8, 0, 16, 8], "rotation": 90, "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [8, 0, 0],
+			"to": [8, 16, 16],
+			"rotation": {"x": -30, "y": 35, "z": -45, "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [8, 0, 16, 8], "rotation": 90, "texture": "#leaf"},
+				"west": {"uv": [8, 0, 16, 8], "rotation": 90, "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [8, 0, 0],
+			"to": [8, 16, 16],
+			"rotation": {"x": -150, "y": 35, "z": -135, "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [8, 8, 16, 16], "rotation": 90, "texture": "#leaf"},
+				"west": {"uv": [8, 8, 16, 16], "rotation": 90, "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [8, 0, 0],
+			"to": [8, 16, 16],
+			"rotation": {"x": 150, "y": 35, "z": 135, "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [8, 8, 16, 16], "rotation": 90, "texture": "#leaf"},
+				"west": {"uv": [8, 8, 16, 16], "rotation": 90, "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [9.53209, 1.28558, 0],
+			"to": [9.53209, 17.28558, 16],
+			"rotation": {"x": -180, "y": 0, "z": -145, "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [0, 8, 8, 16], "rotation": 90, "texture": "#leaf"},
+				"west": {"uv": [0, 8, 8, 16], "rotation": 90, "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [6.46791, 1.28558, 0],
+			"to": [6.46791, 17.28558, 16],
+			"rotation": {"x": -180, "y": 0, "z": 145, "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [0, 8, 8, 16], "rotation": 90, "texture": "#leaf"},
+				"west": {"uv": [0, 8, 8, 16], "rotation": 90, "texture": "#leaf"}
+			}
+		}
+	]
+}

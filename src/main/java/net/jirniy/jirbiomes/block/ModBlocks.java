@@ -130,7 +130,7 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.CINNABAR)));
     public static final Block BRIMGRASS = registerBlock("brimgrass", properties ->
             new GenericGrassBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.GRASS)
-                    .offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+                    .offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY)));
 
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->
             new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));
@@ -207,7 +207,7 @@ public class ModBlocks {
     public static final Block TENEBRIS_LOG = registerBlock("tenebris_stem", properties ->
             new RotatedPillarBlock(logProperties(properties, MapColor.COLOR_MAGENTA, MapColor.TERRACOTTA_BLACK, SoundType.NETHER_WOOD)));
     public static final Block TENEBRIS_WOOD = registerBlock("tenebris_hyphae", properties ->
-            new RotatedPillarBlock(properties.mapColor(MapColor.COLOR_MAGENTA).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD)));
+            new RotatedPillarBlock(properties.mapColor(MapColor.COLOR_MAGENTA).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.NETHER_WOOD)));
     public static final Block STRIPPED_TENEBRIS_LOG = registerBlock("stripped_tenebris_stem", properties ->
             new RotatedPillarBlock(logProperties(properties, MapColor.COLOR_MAGENTA, MapColor.TERRACOTTA_BLACK, SoundType.NETHER_WOOD)));
     public static final Block STRIPPED_TENEBRIS_WOOD = registerBlock("stripped_tenebris_hyphae", properties ->
@@ -263,6 +263,9 @@ public class ModBlocks {
                     properties.mapColor(TENEBRIS_PLANKS.defaultMapColor())
                             .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
                             .strength(1.0F))));
+
+    public static final Block TENEBRIS_LEAVES = registerBlock("tenebris_leaves", properties ->
+            new PlantLikeLeavesBlock(properties.noCollision().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
 
     public static final Block APPLE_CROP = registerBlock("apple_crop", false, properties ->
             new AppleCropBlock(properties.instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.GRASS)

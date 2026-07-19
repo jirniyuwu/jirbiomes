@@ -42,5 +42,7 @@ public class ModBiomeModifications {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.BRIMSTONE_CRAGS),
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BRIMGRASS_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.BRIMSTONE_CRAGS),
+                GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.TENEBRIS_PLACED);
     }
 }

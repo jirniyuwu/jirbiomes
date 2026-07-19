@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "shape=floor,facing=west": {
+      "model": "jirbiomes:block/tenebris_leaves",
+      "y": 0
+    },
+    "shape=floor,facing=north": {
+      "model": "jirbiomes:block/tenebris_leaves",
+      "y": 90
+    },
+    "shape=floor,facing=east": {
+      "model": "jirbiomes:block/tenebris_leaves",
+      "y": 180
+    },
+    "shape=floor,facing=south": {
+      "model": "jirbiomes:block/tenebris_leaves",
+      "y": 270
+    },
+    "shape=ceiling,facing=west": {
+      "model": "jirbiomes:block/tenebris_leaves",
+      "z": 180,
+      "y": 0
+    },
+    "shape=ceiling,facing=north": {
+      "model": "jirbiomes:block/tenebris_leaves",
+      "z": 180,
+      "y": 90
+    },
+    "shape=ceiling,facing=east": {
+      "model": "jirbiomes:block/tenebris_leaves",
+      "z": 180,
+      "y": 180
+    },
+    "shape=ceiling,facing=south": {
+      "model": "jirbiomes:block/tenebris_leaves",
+      "z": 180,
+      "y": 270
+    },
+    "shape=wall,facing=west": {
+      "model": "jirbiomes:block/tenebris_leaves_side",
+      "y": 0
+    },
+    "shape=wall,facing=north": {
+      "model": "jirbiomes:block/tenebris_leaves_side",
+      "y": 90
+    },
+    "shape=wall,facing=east": {
+      "model": "jirbiomes:block/tenebris_leaves_side",
+      "y": 180
+    },
+    "shape=wall,facing=south": {
+      "model": "jirbiomes:block/tenebris_leaves_side",
+      "y": 270
+    }
+  }
+}

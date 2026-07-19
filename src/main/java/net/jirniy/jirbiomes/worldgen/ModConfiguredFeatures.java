@@ -6,6 +6,7 @@ import net.jirniy.jirbiomes.block.custom.AppleLeavesBlock;
 import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
+import net.jirniy.jirbiomes.worldgen.feature.ModFeatures;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -54,6 +55,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE = registryKey("old_growth_ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE_BEES_005 = registryKey("old_growth_ginkgo_tree_bees_005");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_OAK_TREE = registryKey("apple_oak_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_OAK_TREE_BEES_005 = registryKey("apple_oak_tree_bees_005");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_APPLE_OAK_TREE = registryKey("fancy_apple_oak_tree");
@@ -90,6 +93,8 @@ public class ModConfiguredFeatures {
         BeehiveDecorator beehive002 = new BeehiveDecorator(0.02F);
         BeehiveDecorator beehive005 = new BeehiveDecorator(0.05F);
         BeehiveDecorator beehive = new BeehiveDecorator(1.0F);
+
+        register(context, TENEBRIS, ModFeatures.TENEBRIS, new NoneFeatureConfiguration());
 
         TreeConfiguration.TreeConfigurationBuilder ginkgoTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.GINKGO_LOG),

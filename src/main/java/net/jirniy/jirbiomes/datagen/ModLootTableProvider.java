@@ -109,6 +109,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.TENEBRIS_SHELF);
         dropSelf(ModBlocks.TENEBRIS_SIGN);
         dropSelf(ModBlocks.HANGING_TENEBRIS_SIGN);
+        add(ModBlocks.TENEBRIS_LEAVES, createShearsOrSilkTouchOnlyDrop(ModBlocks.TENEBRIS_LEAVES));
 
         add(ModBlocks.APPLE_CROP, createCropDrops(ModBlocks.APPLE_CROP, ModBlocks.APPLE_OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)

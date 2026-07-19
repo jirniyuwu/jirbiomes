@@ -1,0 +1,46 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"leaf": "jirbiomes:block/tenebris_leaves",
+		"particle": "jirbiomes:block/tenebris_leaves"
+	},
+	"elements": [
+		{
+			"from": [0, 11.5, 0],
+			"to": [16, 11.5, 16],
+			"rotation": {"angle": 30, "axis": "z", "origin": [0, 11.5, 8]},
+			"faces": {
+				"up": {"uv": [8, 8, 0, 0], "texture": "#leaf"},
+				"down": {"uv": [8, 0, 0, 8], "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [0, 6.25, 0],
+			"to": [16, 6.25, 16],
+			"rotation": {"angle": -17.5, "axis": "z", "origin": [0, 6.25, 8]},
+			"faces": {
+				"up": {"uv": [8, 16, 0, 8], "texture": "#leaf"},
+				"down": {"uv": [8, 8, 0, 16], "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [0, 8, 0],
+			"to": [16, 8, 16],
+			"rotation": {"x": -10, "y": -42.5, "z": 12.5, "origin": [0, 8, 8]},
+			"faces": {
+				"up": {"uv": [16, 16, 8, 8], "texture": "#leaf"},
+				"down": {"uv": [16, 8, 8, 16], "texture": "#leaf"}
+			}
+		},
+		{
+			"from": [0, 8, 0],
+			"to": [16, 8, 16],
+			"rotation": {"x": 10, "y": 42.5, "z": 12.5, "origin": [0, 8, 8]},
+			"faces": {
+				"up": {"uv": [16, 8, 8, 0], "texture": "#leaf"},
+				"down": {"uv": [16, 0, 8, 8], "texture": "#leaf"}
+			}
+		}
+	]
+}
