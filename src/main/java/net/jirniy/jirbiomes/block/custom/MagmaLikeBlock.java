@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.jirniy.jirbiomes.effect.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -9,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.ClipContext;
@@ -53,6 +55,9 @@ public class MagmaLikeBlock extends Block {
     public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
         if (!entity.isSteppingCarefully() && entity instanceof LivingEntity) {
             entity.hurt(level.damageSources().hotFloor(), 1.5F);
+            if (!entity.fireImmune()) {
+                ((LivingEntity) entity).addEffect(new MobEffectInstance(ModEffects.FLAMING, 20, 0));
+            }
         }
 
         super.stepOn(level, pos, onState, entity);

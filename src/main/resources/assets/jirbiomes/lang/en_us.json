@@ -78,6 +78,8 @@
   "item.jirbiomes.prickly_pear": "Prickly Pear",
   "block.jirbiomes.prickly_pear_seed": "Prickly Pear Seed",
 
+  "effect.jirbiomes.flaming": "Flaming",
+
   "death.attack.cactus_food": "%1$s got stung by their meal",
   "death.attack.cactus_food.player": "%1$s wasn't looking at what they were eating while trying to escape %2$s",
 

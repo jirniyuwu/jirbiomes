@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes;
 
 import net.fabricmc.api.ModInitializer;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.effect.ModEffects;
 import net.jirniy.jirbiomes.entity.ModEntities;
 import net.jirniy.jirbiomes.entity.ModModelLayers;
 import net.jirniy.jirbiomes.item.ModCreativeModeTabs;
@@ -28,6 +29,7 @@ public class JirniyBiomes implements ModInitializer {
 		ModParticles.register();
 		ModEntities.register();
 		ModModelLayers.register();
+		ModEffects.registerEffects();
 
 		ModBiomeModifications.register();
 		RegistryModifications.register();
