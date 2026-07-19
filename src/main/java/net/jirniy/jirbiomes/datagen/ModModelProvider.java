@@ -37,6 +37,15 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createTrivialBlock(ModBlocks.BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
         blockModelGenerators.createTrivialBlock(ModBlocks.IGNITED_BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
+        blockModelGenerators.createCrossBlockWithDefaultItem(ModBlocks.BRIMGRASS, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModelGenerators.family(ModBlocks.MOSSY_BRIMSTONE_BRICKS)
+                .wall(ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL)
+                .stairs(ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS)
+                .slab(ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB);
+        blockModelGenerators.family(ModBlocks.CRACKED_BRIMSTONE_BRICKS)
+                .wall(ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL)
+                .stairs(ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS)
+                .slab(ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB);
         blockModelGenerators.family(ModBlocks.POLISHED_BRIMSTONE)
                 .wall(ModBlocks.POLISHED_BRIMSTONE_WALL)
                 .stairs(ModBlocks.POLISHED_BRIMSTONE_STAIRS)

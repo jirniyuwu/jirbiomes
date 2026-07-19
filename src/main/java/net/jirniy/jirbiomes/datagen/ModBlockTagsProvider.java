@@ -25,8 +25,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
-                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE))
-                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE, ModBlocks.BRIMGRASS_BLOCK, ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKeys(ModBlocks.MOSSY_BRIMSTONE_BRICKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL));
         tag(BlockTags.MINEABLE_WITH_AXE)
@@ -39,8 +40,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
-                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE))
-                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE, ModBlocks.BRIMGRASS_BLOCK, ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKeys(ModBlocks.MOSSY_BRIMSTONE_BRICKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL));
 
@@ -93,11 +95,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_GINKGO_SIGN));
 
         tag(BlockTags.STAIRS)
-                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS));
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS));
         tag(BlockTags.SLABS)
-                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB));
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB));
         tag(BlockTags.WALLS)
-                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL));
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL));
 
         tag(BlockTags.BEE_ATTRACTIVE)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES));
@@ -118,6 +120,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.SNIFFER_DIGGABLE_BLOCK)
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.LUSH_GROUND_REPLACEABLE)
@@ -132,7 +135,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.SUPPORTS_CACTUS)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.SUPPORTS_VEGETATION)
-                .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
+                .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND, ModBlocks.BRIMGRASS_BLOCK))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.FLOWER_POTS)
@@ -140,11 +143,14 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.POTTED_GINKGO_SAPLING))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_APPLE_OAK_SAPLING));
         tag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK)
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.ANIMALS_SPAWNABLE_ON)
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .addOptionalTag(ModTags.Blocks.GRASS_BLOCKS);
         tag(BlockTags.VALID_SPAWN)
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .addOptionalTag(ModTags.Blocks.GRASS_BLOCKS);
         tag(BlockTags.GRASS_BLOCKS)
                 .addOptionalTag(ModTags.Blocks.GRASS_BLOCKS);
@@ -164,6 +170,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_DRIED_DIRT));
 
         tag(BlockTags.NETHER_CARVER_REPLACEABLES)
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
@@ -172,14 +179,17 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.INFINIBURN_NETHER)
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.INFINIBURN_OVERWORLD)
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.INFINIBURN_END)
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));

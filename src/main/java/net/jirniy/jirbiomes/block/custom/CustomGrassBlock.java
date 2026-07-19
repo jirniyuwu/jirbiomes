@@ -1,5 +1,6 @@
 package net.jirniy.jirbiomes.block.custom;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -27,10 +28,13 @@ import java.util.Optional;
 public class CustomGrassBlock extends SpreadingSnowyBlock implements BonemealableBlock {
     public static final MapCodec<CustomGrassBlock> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance
-                    .group(ResourceKey.codec(Registries.BLOCK).fieldOf("replaceable").forGetter(block -> block.replaceable), propertiesCodec())
+                    .group(ResourceKey.codec(Registries.BLOCK).fieldOf("replaceable").forGetter(block -> block.replaceable),
+                           Codec.BOOL.optionalFieldOf("can_bonemeal", false).forGetter(block -> block.canBonemeal),
+                           propertiesCodec())
                     .apply(instance, CustomGrassBlock::new)
     );
     protected final ResourceKey<Block> replaceable;
+    protected final boolean canBonemeal;
 
     @Override
     public MapCodec<CustomGrassBlock> codec() {
@@ -40,16 +44,23 @@ public class CustomGrassBlock extends SpreadingSnowyBlock implements Bonemealabl
     public CustomGrassBlock(ResourceKey<Block> replaceable, final BlockBehaviour.Properties properties) {
         super(properties, replaceable);
         this.replaceable = replaceable;
+        this.canBonemeal = false;
+    }
+
+    public CustomGrassBlock(ResourceKey<Block> replaceable, boolean canBonemeal, final BlockBehaviour.Properties properties) {
+        super(properties, replaceable);
+        this.replaceable = replaceable;
+        this.canBonemeal = canBonemeal;
     }
 
     @Override
     public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return level.getBlockState(pos.above()).isAir() && level.isInsideBuildHeight(pos.above());
+        return this.canBonemeal && level.getBlockState(pos.above()).isAir() && level.isInsideBuildHeight(pos.above());
     }
 
     @Override
     public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
+        return this.canBonemeal;
     }
 
     @Override

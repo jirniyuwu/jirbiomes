@@ -119,6 +119,38 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.BRIMSTONE_BRICKS), has(ModBlocks.BRIMSTONE_BRICKS))
                         .group("slabs").save(output, "brimstone_bricks_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.BRIMSTONE_BRICKS);
+                oreSmelting(List.of(ModBlocks.BRIMSTONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS, 0, 200, "cracked_brimstone_bricks");
+                oreBlasting(List.of(ModBlocks.BRIMSTONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS, 0, 100, "cracked_brimstone_bricks");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS);
+                stairBuilder(ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, Ingredient.of(ModBlocks.CRACKED_BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.CRACKED_BRIMSTONE_BRICKS), has(ModBlocks.CRACKED_BRIMSTONE_BRICKS))
+                        .group("stairs").save(output, "cracked_brimstone_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, Ingredient.of(ModBlocks.CRACKED_BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.CRACKED_BRIMSTONE_BRICKS), has(ModBlocks.CRACKED_BRIMSTONE_BRICKS))
+                        .group("slabs").save(output, "cracked_brimstone_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, Ingredient.of(ModBlocks.CRACKED_BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.CRACKED_BRIMSTONE_BRICKS), has(ModBlocks.CRACKED_BRIMSTONE_BRICKS))
+                        .group("slabs").save(output, "cracked_brimstone_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS);
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS, 1)
+                        .requires(ModBlocks.BRIMGRASS).requires(ModBlocks.BRIMSTONE_BRICKS)
+                        .unlockedBy(getHasName(ModBlocks.BRIMSTONE_BRICKS), has(ModBlocks.BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.MOSSY_BRIMSTONE_BRICKS), has(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
+                        .save(output, "mossy_brimstone_bricks");
+                stairBuilder(ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS, Ingredient.of(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.MOSSY_BRIMSTONE_BRICKS), has(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
+                        .group("stairs").save(output, "mossy_brimstone_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB, Ingredient.of(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.MOSSY_BRIMSTONE_BRICKS), has(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
+                        .group("slabs").save(output, "mossy_brimstone_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL, Ingredient.of(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.MOSSY_BRIMSTONE_BRICKS), has(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
+                        .group("slabs").save(output, "mossy_brimstone_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COARSE_DRIED_DIRT, 4)
                         .pattern("DS")

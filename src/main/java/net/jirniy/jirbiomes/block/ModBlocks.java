@@ -42,7 +42,7 @@ public class ModBlocks {
             new Block(properties.strength(0.4f)
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
     public static final Block DRIED_GRASS_BLOCK = registerBlock("dried_grass_block", properties ->
-            new CustomGrassBlock(getKey(DRIED_DIRT), properties.strength(0.4f).randomTicks()
+            new CustomGrassBlock(getKey(DRIED_DIRT), true, properties.strength(0.4f).randomTicks()
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
     public static final Block DRY_FARMLAND = registerBlock("dry_farmland", properties ->
             new CustomFarmlandBlock(DRIED_DIRT, properties.strength(0.4f).randomTicks()
@@ -61,7 +61,7 @@ public class ModBlocks {
             new Block(properties.strength(0.6f).speedFactor(0.98f)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
     public static final Block WET_GRASS_BLOCK = registerBlock("wet_grass_block", properties ->
-            new CustomGrassBlock(getKey(WETLAND), properties.strength(0.6f).speedFactor(0.98f).randomTicks()
+            new CustomGrassBlock(getKey(WETLAND), true, properties.strength(0.6f).speedFactor(0.98f).randomTicks()
                     .mapColor(MapColor.GRASS).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
     public static final Block WET_FARMLAND = registerBlock("wet_farmland", properties ->
             new CustomFarmlandBlock(WETLAND, properties.strength(0.6f).randomTicks().speedFactor(0.98f)
@@ -100,6 +100,37 @@ public class ModBlocks {
     public static final Block BRIMSTONE_BRICKS_WALL = registerBlock("brimstone_bricks_wall", properties ->
             new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block CRACKED_BRIMSTONE_BRICKS = registerBlock("cracked_brimstone_bricks", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block CRACKED_BRIMSTONE_BRICKS_STAIRS = registerBlock("cracked_brimstone_bricks_stairs", properties ->
+            new StairBlock(CRACKED_BRIMSTONE_BRICKS.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block CRACKED_BRIMSTONE_BRICKS_SLAB = registerBlock("cracked_brimstone_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block CRACKED_BRIMSTONE_BRICKS_WALL = registerBlock("cracked_brimstone_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block MOSSY_BRIMSTONE_BRICKS = registerBlock("mossy_brimstone_bricks", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block MOSSY_BRIMSTONE_BRICKS_STAIRS = registerBlock("mossy_brimstone_bricks_stairs", properties ->
+            new StairBlock(MOSSY_BRIMSTONE_BRICKS.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block MOSSY_BRIMSTONE_BRICKS_SLAB = registerBlock("mossy_brimstone_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block MOSSY_BRIMSTONE_BRICKS_WALL = registerBlock("mossy_brimstone_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+
+    public static final Block BRIMGRASS_BLOCK = registerBlock("brimgrass_block", properties ->
+            new CustomGrassBlock(getKey(BRIMSTONE), false, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.CINNABAR)));
+    public static final Block BRIMGRASS = registerBlock("brimgrass", properties ->
+            new GenericGrassBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
 
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->
             new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));

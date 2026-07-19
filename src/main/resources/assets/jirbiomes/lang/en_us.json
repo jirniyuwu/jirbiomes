@@ -19,6 +19,8 @@
   "block.jirbiomes.wetland_path": "Wetland Path",
 
   "block.jirbiomes.brimstone": "Brimstone",
+  "block.jirbiomes.brimgrass_block": "Brimgrass Block",
+  "block.jirbiomes.brimgrass": "Brimgrass",
   "block.jirbiomes.ignited_brimstone": "Ignited Brimstone",
   "block.jirbiomes.polished_brimstone": "Polished Brimstone",
   "block.jirbiomes.polished_brimstone_slab": "Polished Brimstone Slab",
@@ -28,6 +30,14 @@
   "block.jirbiomes.brimstone_bricks_slab": "Brimstone Brick Slab",
   "block.jirbiomes.brimstone_bricks_stairs": "Brimstone Brick Stairs",
   "block.jirbiomes.brimstone_bricks_wall": "Brimstone Brick Wall",
+  "block.jirbiomes.cracked_brimstone_bricks": "Cracked Brimstone Bricks",
+  "block.jirbiomes.cracked_brimstone_bricks_slab": "Cracked Brimstone Brick Slab",
+  "block.jirbiomes.cracked_brimstone_bricks_stairs": "Cracked Brimstone Brick Stairs",
+  "block.jirbiomes.cracked_brimstone_bricks_wall": "Cracked Brimstone Brick Wall",
+  "block.jirbiomes.mossy_brimstone_bricks": "Mossy Brimstone Bricks",
+  "block.jirbiomes.mossy_brimstone_bricks_slab": "Mossy Brimstone Brick Slab",
+  "block.jirbiomes.mossy_brimstone_bricks_stairs": "Mossy Brimstone Brick Stairs",
+  "block.jirbiomes.mossy_brimstone_bricks_wall": "Mossy Brimstone Brick Wall",
 
   "block.jirbiomes.ginkgo_planks": "Ginkgo Planks",
   "block.jirbiomes.ginkgo_log": "Ginkgo Log",
