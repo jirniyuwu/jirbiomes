@@ -3,17 +3,8 @@ package net.jirniy.jirbiomes.entity;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.fabricmc.fabric.mixin.client.rendering.ModelLayersAccessor;
 import net.jirniy.jirbiomes.JirniyBiomes;
-import net.jirniy.jirbiomes.JirniyBiomesClient;
-import net.minecraft.client.data.models.model.TexturedModel;
-import net.minecraft.client.model.geom.LayerDefinitions;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.object.boat.AbstractBoatModel;
 import net.minecraft.client.model.object.boat.BoatModel;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.entity.vehicle.boat.Boat;
 
 public class ModModelLayers implements ModelLayersAccessor {
     public static final ModelLayerLocation GINKGO_BOAT = create("boat/ginkgo", BoatModel::createBoatModel);

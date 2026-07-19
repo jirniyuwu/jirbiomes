@@ -15,7 +15,6 @@ import net.minecraft.client.data.models.model.*;
 import net.minecraft.core.Direction;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class ModModelProvider extends FabricModelProvider {

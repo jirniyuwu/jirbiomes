@@ -1,8 +1,8 @@
 package net.jirniy.jirbiomes.item.food;
 
 import com.mojang.serialization.MapCodec;
-import net.jirniy.jirbiomes.misc.ModDamageTypes;
 import net.jirniy.jirbiomes.item.ModItems;
+import net.jirniy.jirbiomes.misc.ModDamageTypes;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
