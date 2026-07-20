@@ -3,6 +3,7 @@
   "package": "net.jirniy.jirbiomes.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "GlowstoneFeatureMixin",
     "SheepEdibleMixin"
   ],
   "injectors": {

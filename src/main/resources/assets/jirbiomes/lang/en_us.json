@@ -104,6 +104,8 @@
 
   "effect.jirbiomes.flaming": "Flaming",
 
+  "biome.jirbiomes.brimstone_crags": "Brimstone Crags",
+
   "death.attack.cactus_food": "%1$s got stung by their meal",
   "death.attack.cactus_food.player": "%1$s wasn't looking at what they were eating while trying to escape %2$s",
 

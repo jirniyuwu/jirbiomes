@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.references.BlockItemIds;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 
@@ -199,6 +200,13 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(ModTags.Blocks.BARREL_CACTUS_FAST_GROWTH)
                 .add(ModBlocks.getKey(ModBlocks.DRY_FARMLAND))
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_DRIED_DIRT));
+
+        tag(ModTags.Blocks.GLOWSTONE_FEATURE_PLACEABLE)
+                .add(BlockItemIds.BASALT.block())
+                .add(BlockItemIds.BASALT.block())
+                .add(BlockItemIds.BASALT.block())
+                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
 
         tag(BlockTags.NETHER_CARVER_REPLACEABLES)
                 .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
