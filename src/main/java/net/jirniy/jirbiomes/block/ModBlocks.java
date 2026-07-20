@@ -124,6 +124,9 @@ public class ModBlocks {
     public static final Block MOSSY_BRIMSTONE_BRICKS_WALL = registerBlock("mossy_brimstone_bricks_wall", properties ->
             new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block CHISELED_BRIMSTONE_BRICKS = registerBlock("chiseled_brimstone_bricks", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).lightLevel(state -> 7)
+                    .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
 
     public static final Block BRIMGRASS_BLOCK = registerBlock("brimgrass_block", properties ->
             new CustomGrassBlock(getKey(BRIMSTONE), false, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()

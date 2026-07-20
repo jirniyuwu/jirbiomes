@@ -53,6 +53,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         add(ModBlocks.BRIMGRASS_BLOCK, silkTouchOrElseDrop(ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE));
         dropWhenSilkTouch(ModBlocks.BRIMGRASS);
+        dropSelf(ModBlocks.CHISELED_BRIMSTONE_BRICKS);
         dropSelf(ModBlocks.BRIMSTONE);
         dropSelf(ModBlocks.IGNITED_BRIMSTONE);
         dropSelf(ModBlocks.MOSSY_BRIMSTONE_BRICKS);

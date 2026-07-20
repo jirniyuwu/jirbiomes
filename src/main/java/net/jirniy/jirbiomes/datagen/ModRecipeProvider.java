@@ -83,6 +83,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.BRIMSTONE), has(ModBlocks.BRIMSTONE))
                         .unlockedBy(getHasName(ModBlocks.IGNITED_BRIMSTONE), has(ModBlocks.IGNITED_BRIMSTONE))
                         .save(output, "ignited_brimstone");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_BRIMSTONE_BRICKS, 4)
+                        .pattern("BBB")
+                        .pattern("III")
+                        .pattern("BBB")
+                        .define('I', ModBlocks.IGNITED_BRIMSTONE)
+                        .define('B', ModBlocks.BRIMSTONE_BRICKS)
+                        .unlockedBy(getHasName(ModBlocks.IGNITED_BRIMSTONE), has(ModBlocks.IGNITED_BRIMSTONE))
+                        .unlockedBy(getHasName(ModBlocks.CHISELED_BRIMSTONE_BRICKS), has(ModBlocks.CHISELED_BRIMSTONE_BRICKS))
+                        .group("chiseled_bricks").save(output, "chiseled_brimstone_bricks");
                 bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE, Ingredient.of(ModBlocks.BRIMSTONE))
                         .unlockedBy(getHasName(ModBlocks.BRIMSTONE), has(ModBlocks.BRIMSTONE))
                         .unlockedBy(getHasName(ModBlocks.POLISHED_BRIMSTONE), has(ModBlocks.POLISHED_BRIMSTONE))
