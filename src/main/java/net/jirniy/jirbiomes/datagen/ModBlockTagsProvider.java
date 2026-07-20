@@ -164,7 +164,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.getKey(ModBlocks.POTTED_BARREL_CACTUS))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_GINKGO_SAPLING))
-                .add(ModBlocks.getKey(ModBlocks.POTTED_APPLE_OAK_SAPLING));
+                .add(ModBlocks.getKey(ModBlocks.POTTED_APPLE_OAK_SAPLING))
+                .add(ModBlocks.getKey(ModBlocks.POTTED_TENEBRIS_SAPLING));
         tag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK)
                 .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
@@ -184,6 +185,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS);
         tag(BlockTags.SUPPORT_OVERRIDE_CACTUS_FLOWER)
                 .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));
+        tag(BlockTags.FLOWERS)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SAPLING));
 
         tag(ModTags.Blocks.SUPPORTS_BARREL_CACTUS)
                 .addOptionalTag(BlockTags.SUPPORTS_CACTUS)

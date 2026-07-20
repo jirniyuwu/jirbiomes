@@ -85,6 +85,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.woodProvider(ModBlocks.TENEBRIS_LOG).log(ModBlocks.TENEBRIS_LOG).wood(ModBlocks.TENEBRIS_WOOD);
         blockModelGenerators.woodProvider(ModBlocks.STRIPPED_TENEBRIS_LOG).log(ModBlocks.STRIPPED_TENEBRIS_LOG).wood(ModBlocks.STRIPPED_TENEBRIS_WOOD);
         blockModelGenerators.createShelf(ModBlocks.TENEBRIS_SHELF, ModBlocks.STRIPPED_TENEBRIS_LOG);
+        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.TENEBRIS_SAPLING, ModBlocks.POTTED_TENEBRIS_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.APPLE_OAK_SAPLING, ModBlocks.POTTED_APPLE_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createCrossBlock(ModBlocks.APPLE_CROP, BlockModelGenerators.PlantType.NOT_TINTED, AppleCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);

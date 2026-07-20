@@ -24,7 +24,7 @@ public class NetherRegion extends Region {
         VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
         new ParameterPointListBuilder()
                 .temperature(Temperature.FROZEN)
-                .humidity(Humidity.WET)
+                .humidity(Humidity.WET, Humidity.HUMID)
                 .continentalness(Continentalness.FULL_RANGE)
                 .erosion(Erosion.FULL_RANGE)
                 .depth(Depth.UNDERGROUND)

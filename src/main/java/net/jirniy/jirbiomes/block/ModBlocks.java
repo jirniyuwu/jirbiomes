@@ -127,9 +127,9 @@ public class ModBlocks {
 
     public static final Block BRIMGRASS_BLOCK = registerBlock("brimgrass_block", properties ->
             new CustomGrassBlock(getKey(BRIMSTONE), false, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()
-                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.CINNABAR)));
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.NETHER_SPROUTS)));
     public static final Block BRIMGRASS = registerBlock("brimgrass", properties ->
-            new GenericGrassBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.GRASS)
+            new GenericGrassBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS)
                     .offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY)));
 
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->
@@ -265,7 +265,12 @@ public class ModBlocks {
                             .strength(1.0F))));
 
     public static final Block TENEBRIS_LEAVES = registerBlock("tenebris_leaves", properties ->
-            new PlantLikeLeavesBlock(properties.noCollision().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+            new PlantLikeLeavesBlock(properties.noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).pushReaction(PushReaction.DESTROY)));
+    public static final Block TENEBRIS_SAPLING = registerBlock("tenebris_bud", properties ->
+            new SaplingBlock(ModTreeGrowers.TENEBRIS, properties.mapColor(MapColor.COLOR_PURPLE).noCollision().lightLevel(state -> 7)
+                    .instabreak().sound(SoundType.NETHER_SPROUTS).pushReaction(PushReaction.DESTROY)));
+    public static final Block POTTED_TENEBRIS_SAPLING = registerBlock("potted_tenebris_bud", false, properties ->
+            new FlowerPotBlock(ModBlocks.TENEBRIS_SAPLING, properties.instabreak().noOcclusion().lightLevel(state -> 6).pushReaction(PushReaction.DESTROY)));
 
     public static final Block APPLE_CROP = registerBlock("apple_crop", false, properties ->
             new AppleCropBlock(properties.instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.GRASS)

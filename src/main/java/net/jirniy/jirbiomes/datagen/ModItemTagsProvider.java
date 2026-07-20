@@ -33,6 +33,9 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.LOGS_THAT_BURN)
                 .addOptionalTag(ModTags.Items.GINKGO_LOGS);
         tag(ItemTags.LOGS)
+                .addOptionalTag(ModTags.Items.TENEBRIS_LOGS)
+                .addOptionalTag(ModTags.Items.GINKGO_LOGS);
+        tag(ItemTags.NON_FLAMMABLE_WOOD)
                 .addOptionalTag(ModTags.Items.TENEBRIS_LOGS);
 
         tag(ItemTags.PLANKS)
@@ -40,7 +43,8 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.getKey(ModBlocks.GINKGO_PLANKS));
         tag(ItemTags.SAPLINGS)
                 .add(ModItems.getKey(ModBlocks.GINKGO_SAPLING))
-                .add(ModItems.getKey(ModBlocks.APPLE_OAK_SAPLING));
+                .add(ModItems.getKey(ModBlocks.APPLE_OAK_SAPLING))
+                .add(ModItems.getKey(ModBlocks.TENEBRIS_SAPLING));
         tag(ItemTags.WOODEN_STAIRS)
                 .add(ModItems.getKey(ModBlocks.TENEBRIS_STAIRS))
                 .add(ModItems.getKey(ModBlocks.GINKGO_STAIRS));

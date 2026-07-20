@@ -26,4 +26,16 @@ public class ModTreeGrowers {
             Optional.of(ModConfiguredFeatures.APPLE_OAK_TREE_BEES_005),
             Optional.of(ModConfiguredFeatures.FANCY_APPLE_OAK_TREE_BEES_005)
     );
+
+    public static final TreeGrower TENEBRIS = new TreeGrower(
+            "tenebris",
+            0.0F,
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.TENEBRIS),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.TENEBRIS),
+            Optional.empty()
+    );
+
 }

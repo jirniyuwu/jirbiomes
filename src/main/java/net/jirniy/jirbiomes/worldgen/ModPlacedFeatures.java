@@ -33,6 +33,7 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> BRIMGRASS_PLACED = registryKey("brimgrass_patch");
     public static final ResourceKey<PlacedFeature> TENEBRIS_PLACED = registryKey("tenebris_tree");
+    public static final ResourceKey<PlacedFeature> TENEBRIS_BUD_PLACED = registryKey("tenebris_bud");
 
     public static final ResourceKey<PlacedFeature> NETHERSTONE_PLACED = registryKey("netherstone");
     public static final ResourceKey<PlacedFeature> BRIMSTONE_PLACED = registryKey("brimstone");
@@ -73,6 +74,15 @@ public class ModPlacedFeatures {
         register(context, BRIMGRASS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRIMGRASS),
                 CountPlacement.of(200), RandomOffsetPlacement.ofTriangle(7, 3),
                 InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(32), PlacementUtils.FULL_RANGE,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
+                                ModBlocks.BRIMGRASS_BLOCK))));
+        register(context, TENEBRIS_BUD_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.TENEBRIS_BUD),
+                CountPlacement.of(14), RandomOffsetPlacement.ofTriangle(7, 3),
+                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(4), PlacementUtils.FULL_RANGE,
+                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
+                                ModBlocks.BRIMGRASS_BLOCK)), 6),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                 ModBlocks.BRIMGRASS_BLOCK))));

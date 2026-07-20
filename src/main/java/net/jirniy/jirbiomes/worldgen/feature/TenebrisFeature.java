@@ -58,7 +58,7 @@ public class TenebrisFeature extends Feature<NoneFeatureConfiguration> {
                         BlockState leafState = ModBlocks.TENEBRIS_LEAVES.defaultBlockState()
                                 .setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.WALL)
                                 .setValue(PlantLikeLeavesBlock.FACING, direction.getOpposite());
-                        level.setBlock(pos.above(i).relative(direction), leafState, 3);
+                        level.setBlock(pos.above(i).relative(direction), leafState, 3); 
                     }
                 }
             }

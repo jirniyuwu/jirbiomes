@@ -227,6 +227,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 chestBoat(ModItems.GINKGO_CHEST_BOAT, ModItems.GINKGO_BOAT);
                 woodenBoat(ModItems.GINKGO_BOAT, ModBlocks.GINKGO_PLANKS);
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_SAPLING, 2)
+                        .pattern("S")
+                        .pattern("L")
+                        .define('S', Blocks.SHROOMLIGHT)
+                        .define('L', ModBlocks.TENEBRIS_LEAVES)
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_LOG), has(ModBlocks.TENEBRIS_LOG))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_SAPLING), has(ModBlocks.TENEBRIS_SAPLING))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_LEAVES), has(ModBlocks.TENEBRIS_LEAVES))
+                        .save(output, "tenebris_bud");
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_WOOD, 3)
                         .pattern("LL")
                         .pattern("LL")
