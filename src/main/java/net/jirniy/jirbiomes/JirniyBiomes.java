@@ -44,7 +44,8 @@ public class JirniyBiomes implements ModInitializer, TerraBlenderApi {
 	@Override
 	public void onTerraBlenderInitialized() {
 		ModBiomes.registerBiomes();
-		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, MOD_ID, ModSurfaceRules::brimstoneCragsRules);
+		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, MOD_ID, ModSurfaceRules::netherRules);
+		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules::overworldRules);
 	}
 
 	public static Identifier id(String path) {

@@ -70,6 +70,22 @@ public class ModBlocks {
             new CustomPathBlock(WETLAND, properties.strength(0.8f).isViewBlocking(Blocks::always).isSuffocating(Blocks::always)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
 
+    public static final Block SALT_BLOCK = registerBlock("salt", properties ->
+            new Block(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.COW_BELL)
+                    .requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+    public static final Block SALT_BRICKS = registerBlock("salt_bricks", properties ->
+            new Block(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.COW_BELL)
+                    .requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+    public static final Block SALT_BRICKS_STAIRS = registerBlock("salt_bricks_stairs", properties ->
+            new StairBlock(SALT_BRICKS.defaultBlockState(), properties.mapColor(MapColor.QUARTZ)
+                    .instrument(NoteBlockInstrument.COW_BELL).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+    public static final Block SALT_BRICKS_SLAB = registerBlock("salt_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.QUARTZ)
+                    .instrument(NoteBlockInstrument.COW_BELL).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+    public static final Block SALT_BRICKS_WALL = registerBlock("salt_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.QUARTZ)
+                    .instrument(NoteBlockInstrument.COW_BELL).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+
     public static final Block BRIMSTONE = registerBlock("brimstone", properties ->
             new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops().strength(2.8F).sound(SoundType.CINNABAR)));

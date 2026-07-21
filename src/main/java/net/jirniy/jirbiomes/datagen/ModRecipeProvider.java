@@ -77,6 +77,25 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.ROOTED_DIRT), has(Blocks.ROOTED_DIRT))
                         .group("rooted_dirt").save(output, "rooted_regular_dirt");
 
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS, Ingredient.of(ModBlocks.SALT_BLOCK))
+                        .unlockedBy(getHasName(ModBlocks.SALT_BLOCK), has(ModBlocks.SALT_BLOCK))
+                        .unlockedBy(getHasName(ModBlocks.SALT_BRICKS), has(ModBlocks.SALT_BRICKS))
+                        .group("bricks").save(output, "salt_bricks");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS, ModBlocks.SALT_BLOCK);
+                stairBuilder(ModBlocks.SALT_BRICKS_STAIRS, Ingredient.of(ModBlocks.SALT_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SALT_BRICKS), has(ModBlocks.SALT_BRICKS))
+                        .group("stairs").save(output, "salt_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS_SLAB, Ingredient.of(ModBlocks.SALT_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SALT_BRICKS), has(ModBlocks.SALT_BRICKS))
+                        .group("slabs").save(output, "salt_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS_WALL, Ingredient.of(ModBlocks.SALT_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SALT_BRICKS), has(ModBlocks.SALT_BRICKS))
+                        .group("walls").save(output, "salt_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS_WALL, ModBlocks.SALT_BRICKS);
+
+
                 shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.IGNITED_BRIMSTONE, 4)
                         .requires(Blocks.MAGMA_BLOCK).requires(ModBlocks.BRIMSTONE)
                         .requires(ModBlocks.BRIMSTONE).requires(Blocks.MAGMA_BLOCK)
@@ -107,7 +126,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE, 2);
                 wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE_WALL, Ingredient.of(ModBlocks.POLISHED_BRIMSTONE))
                         .unlockedBy(getHasName(ModBlocks.POLISHED_BRIMSTONE), has(ModBlocks.POLISHED_BRIMSTONE))
-                        .group("slabs").save(output, "polished_brimstone_wall");
+                        .group("walls").save(output, "polished_brimstone_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.POLISHED_BRIMSTONE);
                 bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS, Ingredient.of(ModBlocks.POLISHED_BRIMSTONE))
                         .unlockedBy(getHasName(ModBlocks.POLISHED_BRIMSTONE), has(ModBlocks.POLISHED_BRIMSTONE))
@@ -125,7 +144,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS, 2);
                 wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_WALL, Ingredient.of(ModBlocks.BRIMSTONE_BRICKS))
                         .unlockedBy(getHasName(ModBlocks.BRIMSTONE_BRICKS), has(ModBlocks.BRIMSTONE_BRICKS))
-                        .group("slabs").save(output, "brimstone_bricks_wall");
+                        .group("walls").save(output, "brimstone_bricks_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.BRIMSTONE_BRICKS);
                 oreSmelting(List.of(ModBlocks.BRIMSTONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS, 0, 200, "cracked_brimstone_bricks");
                 oreBlasting(List.of(ModBlocks.BRIMSTONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS, 0, 100, "cracked_brimstone_bricks");
@@ -140,7 +159,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS, 2);
                 wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, Ingredient.of(ModBlocks.CRACKED_BRIMSTONE_BRICKS))
                         .unlockedBy(getHasName(ModBlocks.CRACKED_BRIMSTONE_BRICKS), has(ModBlocks.CRACKED_BRIMSTONE_BRICKS))
-                        .group("slabs").save(output, "cracked_brimstone_bricks_wall");
+                        .group("walls").save(output, "cracked_brimstone_bricks_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS);
                 shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS, 1)
                         .requires(ModBlocks.BRIMGRASS).requires(ModBlocks.BRIMSTONE_BRICKS)
@@ -157,7 +176,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS, 2);
                 wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL, Ingredient.of(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
                         .unlockedBy(getHasName(ModBlocks.MOSSY_BRIMSTONE_BRICKS), has(ModBlocks.MOSSY_BRIMSTONE_BRICKS))
-                        .group("slabs").save(output, "mossy_brimstone_bricks_wall");
+                        .group("walls").save(output, "mossy_brimstone_bricks_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COARSE_DRIED_DIRT, 4)

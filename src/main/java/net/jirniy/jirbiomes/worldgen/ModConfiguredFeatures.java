@@ -71,6 +71,7 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SALT = registryKey("salt");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -266,6 +267,7 @@ public class ModConfiguredFeatures {
 
         register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BRIMGRASS)));
         register(context, TENEBRIS_BUD, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TENEBRIS_SAPLING)));
+        register(context, SALT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SALT_BLOCK)));
 
         register(context, NETHERSTONE, Feature.ORE, new OreConfiguration(
                 List.of(OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), ModBlocks.NETHERSTONE.defaultBlockState())), 32));

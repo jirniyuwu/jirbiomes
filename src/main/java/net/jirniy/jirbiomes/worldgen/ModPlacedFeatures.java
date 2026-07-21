@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BRIMGRASS_PLACED = registryKey("brimgrass_patch");
     public static final ResourceKey<PlacedFeature> TENEBRIS_PLACED = registryKey("tenebris_tree");
     public static final ResourceKey<PlacedFeature> TENEBRIS_BUD_PLACED = registryKey("tenebris_bud");
+
+    public static final ResourceKey<PlacedFeature> SALT_PLACED = registryKey("sea_salt");
 
     public static final ResourceKey<PlacedFeature> NETHERSTONE_PLACED = registryKey("netherstone");
     public static final ResourceKey<PlacedFeature> BRIMSTONE_PLACED = registryKey("brimstone");
@@ -92,6 +95,12 @@ public class ModPlacedFeatures {
                 EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                 ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE)), 9));
+
+        register(context, SALT_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SALT),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                NoiseThresholdCountPlacement.of(0.4f, 40, 200),
+                RandomOffsetPlacement.of(ConstantInt.of(0), UniformInt.of(-2, -1)), InSquarePlacement.spread(), BiomeFilter.biome(),
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER, Fluids.FLOWING_WATER)));
 
         register(context, NETHERSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.NETHERSTONE),
                 BiomeFilter.biome(), HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(160)),

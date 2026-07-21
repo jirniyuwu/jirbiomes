@@ -18,6 +18,12 @@
   "block.jirbiomes.wet_farmland": "Wet Farmland",
   "block.jirbiomes.wetland_path": "Wetland Path",
 
+  "block.jirbiomes.salt": "Salt",
+  "block.jirbiomes.salt_bricks": "Salt Bricks",
+  "block.jirbiomes.salt_bricks_slab": "Salt Brick Slab",
+  "block.jirbiomes.salt_bricks_stairs": "Salt Brick Stairs",
+  "block.jirbiomes.salt_bricks_wall": "Salt Brick Wall",
+
   "block.jirbiomes.brimstone": "Brimstone",
   "block.jirbiomes.brimgrass_block": "Brimgrass Block",
   "block.jirbiomes.brimgrass": "Brimgrass",
@@ -104,6 +110,7 @@
 
   "effect.jirbiomes.flaming": "Flaming",
 
+  "biome.jirbiomes.salt_deposit": "Salt Deposit",
   "biome.jirbiomes.brimstone_crags": "Brimstone Crags",
 
   "death.attack.cactus_food": "%1$s got stung by their meal",

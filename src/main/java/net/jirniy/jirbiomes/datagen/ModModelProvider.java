@@ -34,6 +34,12 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_WETLAND);
         blockModelGenerators.createTrivialCube(ModBlocks.WETLAND);
 
+        blockModelGenerators.createTrivialCube(ModBlocks.SALT_BLOCK);
+        blockModelGenerators.family(ModBlocks.SALT_BRICKS)
+                .wall(ModBlocks.SALT_BRICKS_WALL)
+                .stairs(ModBlocks.SALT_BRICKS_STAIRS)
+                .slab(ModBlocks.SALT_BRICKS_SLAB);
+
         blockModelGenerators.createTrivialBlock(ModBlocks.BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
         blockModelGenerators.createTrivialBlock(ModBlocks.IGNITED_BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
         blockModelGenerators.createTrivialBlock(ModBlocks.CHISELED_BRIMSTONE_BRICKS, TexturedModel.COLUMN_WITH_WALL);

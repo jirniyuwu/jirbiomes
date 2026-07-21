@@ -6,6 +6,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
+import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 import static net.minecraft.world.level.levelgen.SurfaceRules.*;
@@ -13,7 +14,7 @@ import static net.minecraft.world.level.levelgen.SurfaceRules.*;
 public class ModSurfaceRules {
     private static final RuleSource BEDROCK = makeStateRule(Blocks.BEDROCK);
 
-    public static RuleSource brimstoneCragsRules(HolderGetter<Biome> biomes) {
+    public static RuleSource netherRules(HolderGetter<Biome> biomes) {
         ConditionSource aboveNetherLavaLevel = yBlockCheck(VerticalAnchor.absolute(31), 0);
         ConditionSource aboveNetherLavaSurface = yBlockCheck(VerticalAnchor.absolute(32), 0);
         ConditionSource netherBandAroundLavaLevelBottom = yStartCheck(VerticalAnchor.absolute(30), 0);
@@ -38,51 +39,30 @@ public class ModSurfaceRules {
         );
     }
 
+    public static RuleSource overworldRules(HolderGetter<Biome> biomes) {;
+        SurfaceRules.ConditionSource notUnderDeepWater = SurfaceRules.waterStartCheck(-6, -1);
+
+        return sequence(
+                ifTrue(verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK),
+
+                ifTrue(isBiome(biomes, ModBiomes.SALT_DEPOSIT), sequence(
+                        ifTrue(not(verticalGradient("salt", VerticalAnchor.absolute(48), VerticalAnchor.absolute(52))), sequence(
+                                ifTrue(UNDER_FLOOR, sequence(
+                                        ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.09f, 0.09f),
+                                                makeStateRule(Blocks.SAND)),
+                                        ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.29f, 0.29f),
+                                                makeStateRule(Blocks.CALCITE)),
+                                        ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.60f, 0.60f),
+                                                makeStateRule(ModBlocks.SALT_BLOCK)),
+                                        makeStateRule(Blocks.SAND)
+                                )),
+                                ifTrue(DEEP_UNDER_FLOOR, makeStateRule(Blocks.SANDSTONE))
+                        ))
+                    ))
+        );
+    }
+
     private static RuleSource makeStateRule(Block block) {
         return state(block.defaultBlockState());
     }
-
-    /*
-    sequence(new RuleSource[]{
-        ifTrue(
-                verticalGradient("bedrock_floor", 
-                        VerticalAnchor.bottom(), 
-                        VerticalAnchor.aboveBottom(5)), BEDROCK), 
-                ifTrue(not(
-                        verticalGradient("bedrock_roof", 
-                                VerticalAnchor.belowTop(5), 
-                                VerticalAnchor.top())), BEDROCK), 
-                ifTrue(closeToCeiling, NETHERRACK), 
-                ifTrue(
-                        isBiome(biomes, new ResourceKey[]{Biomes.BASALT_DELTAS}), 
-                        sequence(new RuleSource[]{
-                                ifTrue(UNDER_CEILING, BASALT), 
-                                ifTrue(UNDER_FLOOR, 
-                                        sequence(new RuleSource[]{gravelPatch, 
-                                                ifTrue(netherStateSelector, BASALT), BLACKSTONE}))})), 
-                ifTrue(isBiome(biomes, new ResourceKey[]{Biomes.SOUL_SAND_VALLEY}), 
-                        sequence(new RuleSource[]{
-                                ifTrue(UNDER_CEILING, 
-                                        sequence(new RuleSource[]{
-                                                ifTrue(netherStateSelector, SOUL_SAND), SOUL_SOIL})), 
-                                ifTrue(UNDER_FLOOR, 
-                                        sequence(new RuleSource[]{gravelPatch, 
-                                                ifTrue(netherStateSelector, SOUL_SAND), SOUL_SOIL}))})), 
-                ifTrue(ON_FLOOR, sequence(new RuleSource[]{ 
-                        ifTrue(isBiome(biomes, new ResourceKey[]{Biomes.CRIMSON_FOREST}), 
-                                ifTrue(not(netherrack), ifTrue(aboveNetherLavaLevel, sequence(ifTrue(netherWart, NETHER_WART_BLOCK), CRIMSON_NYLIUM))))})), 
-                ifTrue(isBiome(biomes, new ResourceKey[]{Biomes.NETHER_WASTES}), 
-                        sequence(new RuleSource[]{ifTrue(
-                                UNDER_FLOOR, ifTrue(soulSandLayer, 
-                                        sequence(new RuleSource[]{
-                                                ifTrue(not(hole), 
-                                                        ifTrue(netherBandAroundLavaLevelBottom, 
-                                                                ifTrue(netherBandAroundLavaLevelTop, SOUL_SAND))), 
-                                                NETHERRACK}))), ifTrue(ON_FLOOR, 
-                                ifTrue(aboveNetherLavaLevel, 
-                                        ifTrue(netherBandAroundLavaLevelTop, 
-                                                ifTrue(gravelLayer, sequence(new RuleSource[]{
-                                                        ifTrue(aboveNetherLavaSurface, GRAVEL), 
-                                                        ifTrue(not(hole), GRAVEL)})))))})), NETHERRACK});
-     */
 }

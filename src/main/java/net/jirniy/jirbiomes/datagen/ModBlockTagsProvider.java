@@ -31,7 +31,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.MOSSY_BRIMSTONE_BRICKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
-                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL));
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL))
+                .add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
+                .add(ModBlocks.getKeys(ModBlocks.SALT_BRICKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS_WALL));
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
@@ -121,11 +123,14 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_GINKGO_SIGN));
 
         tag(BlockTags.STAIRS)
-                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS));
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS)).add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
+                .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_STAIRS));
         tag(BlockTags.SLABS)
-                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB));
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB))
+                .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_SLAB));;
         tag(BlockTags.WALLS)
-                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL));
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
+                .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_WALL));;
 
         tag(BlockTags.BEE_ATTRACTIVE)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES));
