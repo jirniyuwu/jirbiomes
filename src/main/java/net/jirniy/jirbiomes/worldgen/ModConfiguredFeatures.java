@@ -3,14 +3,12 @@ package net.jirniy.jirbiomes.worldgen;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.custom.AppleLeavesBlock;
+import net.jirniy.jirbiomes.block.custom.PlantLikeLeavesBlock;
 import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
 import net.jirniy.jirbiomes.worldgen.feature.ModFeatures;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Vec3i;
+import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
@@ -25,6 +23,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -58,6 +57,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE_BEES_005 = registryKey("old_growth_ginkgo_tree_bees_005");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DOWNWARDS_TENEBRIS = registryKey("downwards_tenebris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLD_BRIMSTONE_RUINS = registryKey("gold_brimstone_ruins");
 
@@ -75,6 +75,7 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CEILING_TENEBRIS_PATCH = registryKey("ceiling_tenebris_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SALT = registryKey("salt");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -102,6 +103,7 @@ public class ModConfiguredFeatures {
         BeehiveDecorator beehive = new BeehiveDecorator(1.0F);
 
         register(context, TENEBRIS, ModFeatures.TENEBRIS, new NoneFeatureConfiguration());
+        register(context, DOWNWARDS_TENEBRIS, ModFeatures.TENEBRIS_DOWNWARDS, new NoneFeatureConfiguration());
 
         TreeConfiguration.TreeConfigurationBuilder ginkgoTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.GINKGO_LOG),
@@ -320,6 +322,20 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(Blocks.AIR), 1, 1,
                 BlockPredicate.allOf(BlockPredicate.anyOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.not(BlockPredicate.solid())),
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE))
+        ));
+
+        register(context, CEILING_TENEBRIS_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
+                blocks.getOrThrow(ModTags.Blocks.BRIMSTONE_GOLD_REPLACEABLE),
+                BlockStateProvider.simple(ModBlocks.BRIMSTONE),
+                PlacementUtils.inlinePlaced(Feature.WEIGHTED_RANDOM_SELECTOR, new WeightedRandomFeatureConfiguration(
+                        WeightedList.<Holder<PlacedFeature>>builder()
+                                .add(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DOWNWARDS_TENEBRIS)), 1)
+                                .add(PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                                        BlockStateProvider.simple(ModBlocks.TENEBRIS_LEAVES.defaultBlockState()
+                                                .setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.CEILING)))), 4)
+                                .build())),
+                CaveSurface.CEILING, UniformInt.of(1, 2), 0f, 5, 0.2f,
+                UniformInt.of(2, 5), 0.75F
         ));
 
         register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BRIMGRASS)));

@@ -9,6 +9,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 
 public class ModFeatures {
     public static final Feature<NoneFeatureConfiguration> TENEBRIS = create("tenebris", new TenebrisFeature(NoneFeatureConfiguration.CODEC));
+    public static final Feature<NoneFeatureConfiguration> TENEBRIS_DOWNWARDS = create("tenebris_downwards", new DownwardsTenebrisFeature(NoneFeatureConfiguration.CODEC));
 
     private static <C extends FeatureConfiguration, F extends Feature<C>> F create(final String name, final F feature) {
         return (F)(Registry.register(BuiltInRegistries.FEATURE, JirniyBiomes.id(name), feature));

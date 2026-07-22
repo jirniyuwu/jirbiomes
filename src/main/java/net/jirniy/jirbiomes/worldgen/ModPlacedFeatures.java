@@ -36,6 +36,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
     public static final ResourceKey<PlacedFeature> TENEBRIS_PLACED = registryKey("tenebris_tree");
     public static final ResourceKey<PlacedFeature> TENEBRIS_BUD_PLACED = registryKey("tenebris_bud");
+    public static final ResourceKey<PlacedFeature> TENEBRIS_CEILING_PLACED = registryKey("tenebris_ceiling");
 
     public static final ResourceKey<PlacedFeature> SALT_PLACED = registryKey("sea_salt");
 
@@ -103,6 +104,11 @@ public class ModPlacedFeatures {
                 EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                 ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE)), 9));
+        register(context, TENEBRIS_CEILING_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.CEILING_TENEBRIS_PATCH),
+                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(UniformInt.of(2, 5)), PlacementUtils.FULL_RANGE,
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(),
+                                ModBlocks.IGNITED_BRIMSTONE, ModBlocks.BRIMSTONE)), 9));
 
         register(context, SALT_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SALT),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
