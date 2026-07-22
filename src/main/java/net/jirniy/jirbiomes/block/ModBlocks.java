@@ -92,6 +92,9 @@ public class ModBlocks {
     public static final Block IGNITED_BRIMSTONE = registerBlock("ignited_brimstone", properties ->
             new MagmaLikeBlock(ModBlocks.BRIMSTONE, properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops().strength(2.8F).sound(SoundType.CINNABAR).lightLevel(state -> 6)));
+    public static final Block BRIMSTONE_GOLD_ORE = registerBlock("brimstone_gold_ore", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.CINNABAR)));
     public static final Block POLISHED_BRIMSTONE = registerBlock("polished_brimstone", properties ->
             new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));

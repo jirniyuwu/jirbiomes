@@ -40,9 +40,16 @@ public class ModModelProvider extends FabricModelProvider {
                 .stairs(ModBlocks.SALT_BRICKS_STAIRS)
                 .slab(ModBlocks.SALT_BRICKS_SLAB);
 
-        blockModelGenerators.createTrivialBlock(ModBlocks.BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
-        blockModelGenerators.createTrivialBlock(ModBlocks.IGNITED_BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.BRIMSTONE,
+                BlockModelGenerators.createRotatedVariants(BlockModelGenerators.plainModel(
+                        TexturedModel.COLUMN_WITH_WALL.create(ModBlocks.BRIMSTONE, blockModelGenerators.modelOutput)))));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.IGNITED_BRIMSTONE,
+                BlockModelGenerators.createRotatedVariants(BlockModelGenerators.plainModel(
+                        TexturedModel.COLUMN_WITH_WALL.create(ModBlocks.IGNITED_BRIMSTONE, blockModelGenerators.modelOutput)))));
+        // blockModelGenerators.createTrivialBlock(ModBlocks.BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
+        // blockModelGenerators.createTrivialBlock(ModBlocks.IGNITED_BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
         blockModelGenerators.createTrivialBlock(ModBlocks.CHISELED_BRIMSTONE_BRICKS, TexturedModel.COLUMN_WITH_WALL);
+        blockModelGenerators.createTrivialCube(ModBlocks.BRIMSTONE_GOLD_ORE);
         blockModelGenerators.createCrossBlockWithDefaultItem(ModBlocks.BRIMGRASS, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.family(ModBlocks.MOSSY_BRIMSTONE_BRICKS)
                 .wall(ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL)

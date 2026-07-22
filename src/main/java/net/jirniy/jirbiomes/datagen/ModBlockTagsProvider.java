@@ -24,6 +24,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
                 .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH));
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE, ModBlocks.BRIMGRASS_BLOCK, ModBlocks.IGNITED_BRIMSTONE))
@@ -47,6 +48,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.PRICKLY_PEAR_SEED, ModBlocks.SMALL_BARREL_CACTUS, ModBlocks.LARGE_BARREL_CACTUS));
 
         tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE, ModBlocks.BRIMGRASS_BLOCK, ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.CHISELED_BRIMSTONE_BRICKS))
@@ -212,6 +214,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(BlockItemIds.BASALT.block())
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
+
+        tag(BlockTags.GOLD_ORES)
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE));
+        tag(BlockTags.GUARDED_BY_PIGLINS)
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE));
 
         tag(BlockTags.NETHER_CARVER_REPLACEABLES)
                 .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))

@@ -9,6 +9,7 @@ import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
@@ -56,6 +57,8 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.SALT_BRICKS_STAIRS);
         add(ModBlocks.SALT_BRICKS_SLAB, this::createSlabItemTable);
         dropSelf(ModBlocks.SALT_BRICKS_WALL);
+
+        add(ModBlocks.BRIMSTONE_GOLD_ORE, createOreDrop(ModBlocks.BRIMSTONE_GOLD_ORE, Items.RAW_GOLD));
 
         add(ModBlocks.BRIMGRASS_BLOCK, silkTouchOrElseDrop(ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE));
         dropWhenSilkTouch(ModBlocks.BRIMGRASS);

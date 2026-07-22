@@ -1,7 +1,22 @@
 {
   "variants": {
-    "": {
-      "model": "jirbiomes:block/brimgrass_block"
-    }
+    "": [
+      {
+        "model": "jirbiomes:block/brimgrass_block",
+        "y": 0
+      },
+      {
+        "model": "jirbiomes:block/brimgrass_block",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/brimgrass_block",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/brimgrass_block",
+        "y": 270
+      }
+    ]
   }
 }

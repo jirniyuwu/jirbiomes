@@ -30,6 +30,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreSmelting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, 200, "netherstone");
                 oreBlasting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, 100, "netherstone");
 
+                oreSmelting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, 200, "gold_ingot");
+                oreBlasting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, 100, "gold_ingot");
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.IRON_GRATE, 4)
                         .pattern(" S ")
                         .pattern("S S")

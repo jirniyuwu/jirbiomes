@@ -88,6 +88,9 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.STONE_TOOL_MATERIALS)
                 .add(ModItems.getKey(ModBlocks.BRIMSTONE));
 
+        tag(ItemTags.GOLD_ORES)
+                .add(ModItems.getKey(ModBlocks.BRIMSTONE_GOLD_ORE));
+
         tag(ItemTags.WALLS)
                 .add(ModItems.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL));
 
