@@ -34,6 +34,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
+                .add(ModBlocks.getKey(ModBlocks.SALT_LAMP))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BRICKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS_WALL));
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS)

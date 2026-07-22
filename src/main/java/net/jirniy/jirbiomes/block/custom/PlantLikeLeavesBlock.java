@@ -49,10 +49,10 @@ public class PlantLikeLeavesBlock extends Block {
     public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
         for(Direction direction : context.getNearestLookingDirections()) {
             BlockState state;
-            if (direction.getAxis() == Direction.Axis.Y) {
-                state = this.defaultBlockState().setValue(BLOCKSHAPE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
-            } else {
+            if (direction.getAxis() == Direction.Axis.Z || direction.getAxis() == Direction.Axis.X) {
                 state = this.defaultBlockState().setValue(BLOCKSHAPE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
+                } else {
+                state = this.defaultBlockState().setValue(BLOCKSHAPE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
             }
 
             if (state.canSurvive(context.getLevel(), context.getClickedPos())) {

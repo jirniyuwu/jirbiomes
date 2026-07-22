@@ -46,8 +46,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.IGNITED_BRIMSTONE,
                 BlockModelGenerators.createRotatedVariants(BlockModelGenerators.plainModel(
                         TexturedModel.COLUMN_WITH_WALL.create(ModBlocks.IGNITED_BRIMSTONE, blockModelGenerators.modelOutput)))));
-        // blockModelGenerators.createTrivialBlock(ModBlocks.BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
-        // blockModelGenerators.createTrivialBlock(ModBlocks.IGNITED_BRIMSTONE, TexturedModel.COLUMN_WITH_WALL);
         blockModelGenerators.createTrivialBlock(ModBlocks.CHISELED_BRIMSTONE_BRICKS, TexturedModel.COLUMN_WITH_WALL);
         blockModelGenerators.createTrivialCube(ModBlocks.BRIMSTONE_GOLD_ORE);
         blockModelGenerators.createCrossBlockWithDefaultItem(ModBlocks.BRIMGRASS, BlockModelGenerators.PlantType.NOT_TINTED);
@@ -114,6 +112,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.PRICKLY_PEAR, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModBlocks.TENEBRIS_LEAVES.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModBlocks.SALT_LAMP.asItem(), ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);

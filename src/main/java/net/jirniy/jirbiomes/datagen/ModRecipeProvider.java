@@ -97,7 +97,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.SALT_BRICKS), has(ModBlocks.SALT_BRICKS))
                         .group("walls").save(output, "salt_bricks_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS_WALL, ModBlocks.SALT_BRICKS);
-
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_LAMP, 1)
+                        .pattern("B")
+                        .pattern("I")
+                        .define('I', Items.TORCH)
+                        .define('B', ModBlocks.SALT_BLOCK)
+                        .unlockedBy(getHasName(ModBlocks.SALT_BLOCK), has(ModBlocks.SALT_BLOCK))
+                        .unlockedBy(getHasName(ModBlocks.SALT_LAMP), has(ModBlocks.SALT_LAMP))
+                        .save(output, "salt_lamp");
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.IGNITED_BRIMSTONE, 4)
                         .requires(Blocks.MAGMA_BLOCK).requires(ModBlocks.BRIMSTONE)

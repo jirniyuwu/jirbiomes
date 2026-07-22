@@ -57,6 +57,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.SALT_BRICKS_STAIRS);
         add(ModBlocks.SALT_BRICKS_SLAB, this::createSlabItemTable);
         dropSelf(ModBlocks.SALT_BRICKS_WALL);
+        dropSelf(ModBlocks.SALT_LAMP);
 
         add(ModBlocks.BRIMSTONE_GOLD_ORE, createOreDrop(ModBlocks.BRIMSTONE_GOLD_ORE, Items.RAW_GOLD));
 

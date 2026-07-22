@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "lit=true,hanging=false": {
+      "model": "jirbiomes:block/salt_lamp"
+    },
+    "lit=false,hanging=false": {
+      "model": "jirbiomes:block/salt_lamp_off"
+    },
+    "lit=true,hanging=true": {
+      "model": "jirbiomes:block/hanging_salt_lamp"
+    },
+    "lit=false,hanging=true": {
+      "model": "jirbiomes:block/hanging_salt_lamp_off"
+    }
+  }
+}

@@ -86,6 +86,10 @@ public class ModBlocks {
             new WallBlock(properties.mapColor(MapColor.QUARTZ)
                     .instrument(NoteBlockInstrument.COW_BELL).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
 
+    public static final Block SALT_LAMP = registerBlock("salt_lamp", properties ->
+            new LampBlock(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.COW_BELL).lightLevel(LampBlock::getLight)
+                    .strength(1.2F).sound(SoundType.CALCITE)));
+
     public static final Block BRIMSTONE = registerBlock("brimstone", properties ->
             new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops().strength(2.8F).sound(SoundType.CINNABAR)));

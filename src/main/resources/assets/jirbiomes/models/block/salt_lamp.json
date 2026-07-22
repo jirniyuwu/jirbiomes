@@ -1,0 +1,37 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"salt": "jirbiomes:block/salt_lamp",
+		"base": "minecraft:block/anvil",
+		"particle": "jirbiomes:block/salt_lamp"
+	},
+	"elements": [
+		{
+			"from": [3, 0, 3],
+			"to": [13, 2, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 7]},
+			"faces": {
+				"north": {"uv": [0, 0, 10, 2], "texture": "#base"},
+				"east": {"uv": [6, 14, 16, 16], "texture": "#base"},
+				"south": {"uv": [0, 14, 10, 16], "texture": "#base"},
+				"west": {"uv": [6, 0, 16, 2], "texture": "#base"},
+				"up": {"uv": [3, 3, 13, 13], "texture": "#base"},
+				"down": {"uv": [3, 3, 13, 13], "texture": "#base"}
+			}
+		},
+		{
+			"from": [4, 2, 4],
+			"to": [12, 15, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 2, 4]},
+			"faces": {
+				"north": {"uv": [0, 3, 8, 16], "texture": "#salt"},
+				"east": {"uv": [8, 3, 16, 16], "texture": "#salt"},
+				"south": {"uv": [0, 3, 8, 16], "texture": "#salt"},
+				"west": {"uv": [8, 3, 16, 16], "texture": "#salt"},
+				"up": {"uv": [8, 4, 16, 12], "texture": "#salt"},
+				"down": {"uv": [0, 4, 8, 12], "texture": "#salt"}
+			}
+		}
+	]
+}
