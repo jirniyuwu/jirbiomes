@@ -302,11 +302,21 @@ public class ModConfiguredFeatures {
                                                 CountPlacement.of(1))
                                 )),
                         CountPlacement.of(1), RandomOffsetPlacement.vertical(ConstantInt.of(-1))),
-                3, 0, 0, 3,
+                3, 0, 0, 2,
                 blocks.getOrThrow(ModTags.Blocks.BRIMSTONE_GOLD_REPLACEABLE),
-                RuleBasedStateProvider.ifTrueThenProvide(BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE, ModBlocks.IGNITED_BRIMSTONE),
-                        ModBlocks.BRIMSTONE_GOLD_ORE),
-                15, 20, 3, 2,
+                new MapStateProvider(
+                        new Block[]{ModBlocks.BRIMSTONE, ModBlocks.IGNITED_BRIMSTONE},
+                        List.of(new WeightedStateProvider(
+                                    WeightedList.<BlockState>builder()
+                                            .add(ModBlocks.BRIMSTONE.defaultBlockState(), 2)
+                                            .add(ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState(), 1)
+                                ),
+                                new WeightedStateProvider(
+                                    WeightedList.<BlockState>builder()
+                                            .add(ModBlocks.IGNITED_BRIMSTONE.defaultBlockState(), 1)
+                                            .add(ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState(), 3)
+                                ))),
+                7, 17, 3, 2,
                 BlockStateProvider.simple(Blocks.AIR), 1, 1,
                 BlockPredicate.allOf(BlockPredicate.anyOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.not(BlockPredicate.solid())),
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE))
@@ -332,7 +342,7 @@ public class ModConfiguredFeatures {
         register(context, GOLD_BRIMSTONE, Feature.SCATTERED_ORE, new OreConfiguration(
                 List.of(OreConfiguration.target(new BlockMatchTest(ModBlocks.BRIMSTONE), ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState()),
                         OreConfiguration.target(new BlockMatchTest(ModBlocks.IGNITED_BRIMSTONE), ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState())),
-                50));
+                35));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registryKey(String name) {

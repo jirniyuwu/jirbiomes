@@ -44,6 +44,23 @@ public class MapStateProvider extends BlockStateProvider {
         this(true, input, output);
     }
 
+    public MapStateProvider(Block[] inputBlocks, List<BlockStateProvider> output) {
+        super();
+        this.useBlock = true;
+        if (inputBlocks.length < 1 || output.isEmpty()) {
+            throw new IllegalArgumentException("Map state provider lists must have at least one entry");
+        } else if (inputBlocks.length != output.size()) {
+            throw new IllegalArgumentException("Map state provider lists must be equal lengths");
+        }
+
+        ArrayList<BlockState> inputBlockStates = new ArrayList<BlockState>();
+        for (Block block : inputBlocks) {
+            inputBlockStates.add(block.defaultBlockState());
+        }
+        this.input = inputBlockStates;
+        this.output = output;
+    }
+
     public MapStateProvider(Block[] inputBlocks, Block[] outputBlocks) {
         super();
         this.useBlock = true;

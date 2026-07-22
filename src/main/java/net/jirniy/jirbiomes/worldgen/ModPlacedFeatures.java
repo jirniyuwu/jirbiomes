@@ -94,7 +94,8 @@ public class ModPlacedFeatures {
         register(context, BRIMSTONE_RUINS, configuredFeatures.getOrThrow(ModConfiguredFeatures.GOLD_BRIMSTONE_RUINS),
                 CountPlacement.of(UniformInt.of(3, 5)), InSquarePlacement.spread(),
                 HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(50), VerticalAnchor.aboveBottom(180)),
-                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(),
+                        BlockPredicate.anyOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesFluids(Fluids.LAVA, Fluids.FLOWING_LAVA)), 12),
                 RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
 
         register(context, TENEBRIS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.TENEBRIS),
@@ -112,7 +113,7 @@ public class ModPlacedFeatures {
         register(context, GOLD_BRIMSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.GOLD_BRIMSTONE),
                 HeightRangePlacement.of(BiasedToBottomHeight.of(
                         VerticalAnchor.aboveBottom(20), VerticalAnchor.aboveBottom(200), 1)),
-                BiomeFilter.biome(), CountPlacement.of(40), InSquarePlacement.spread());
+                BiomeFilter.biome(), CountPlacement.of(12), InSquarePlacement.spread());
         register(context, NETHERSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.NETHERSTONE),
                 BiomeFilter.biome(), HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(160)),
                 CountPlacement.of(16), InSquarePlacement.spread());
