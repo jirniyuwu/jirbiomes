@@ -24,11 +24,12 @@ public class OverworldRegion extends Region {
         VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
         new ParameterPointListBuilder()
                 .temperature(Temperature.NEUTRAL, Temperature.WARM)
-                .humidity(Humidity.DRY)
+                .humidity(Humidity.NEUTRAL, Humidity.DRY)
                 .continentalness(Continentalness.COAST)
-                .erosion(Erosion.EROSION_5, Erosion.EROSION_4)
+                .erosion(Erosion.EROSION_6, Erosion.EROSION_5)
                 .depth(Depth.FULL_RANGE)
-                .weirdness(Weirdness.VALLEY)
+                .weirdness(Weirdness.VALLEY, Weirdness.LOW_SLICE_VARIANT_ASCENDING)
+                .offset(0.26f)
                 .build().forEach(point -> builder.add(point, ModBiomes.SALT_DEPOSIT));
         builder.build().forEach(mapper);
     }

@@ -52,8 +52,10 @@ public class ModSurfaceRules {
                                                 makeStateRule(Blocks.SAND)),
                                         ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.29f, 0.29f),
                                                 makeStateRule(Blocks.CALCITE)),
-                                        ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.60f, 0.60f),
+                                        ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.5f, 0.5f),
                                                 makeStateRule(ModBlocks.SALT_BLOCK)),
+                                        ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.64f, 0.64f),
+                                                makeStateRule(Blocks.CALCITE)),
                                         makeStateRule(Blocks.SAND)
                                 )),
                                 ifTrue(DEEP_UNDER_FLOOR, makeStateRule(Blocks.SANDSTONE))
