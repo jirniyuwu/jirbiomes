@@ -32,9 +32,11 @@ public class ModNetherBiomes {
                 .addSpawn(MobCategory.CREATURE, 60, new MobSpawnSettings.SpawnerData(EntityTypes.STRIDER, 1, 2)).build();
         BiomeGenerationSettings.Builder biomeBuilder = (new BiomeGenerationSettings.Builder(placedFeatures, carvers))
                 .addCarver(Carvers.NETHER_CAVE)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.BRIMSTONE_RUINS)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TENEBRIS_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TENEBRIS_BUD_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BRIMGRASS_PLACED)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.GOLD_BRIMSTONE_PLACED)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE_EXTRA)
@@ -50,7 +52,7 @@ public class ModNetherBiomes {
                 .hasPrecipitation(false).temperature(4.0F).downfall(0.0F)
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x9c3669)).build())
                 .mobSpawnSettings(mobSpawnSettings).generationSettings(biomeBuilder.build())
-                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x9c3669)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x7a1553)
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.AMBIENT_NETHER_WASTES_LOOP))
                 .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.BRIMGRASS_SPORES, 0.0025f))
                 .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(

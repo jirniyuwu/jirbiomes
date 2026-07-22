@@ -33,6 +33,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
 
     public static final ResourceKey<PlacedFeature> BRIMGRASS_PLACED = registryKey("brimgrass_patch");
+    public static final ResourceKey<PlacedFeature> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
     public static final ResourceKey<PlacedFeature> TENEBRIS_PLACED = registryKey("tenebris_tree");
     public static final ResourceKey<PlacedFeature> TENEBRIS_BUD_PLACED = registryKey("tenebris_bud");
 
@@ -41,6 +42,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> NETHERSTONE_PLACED = registryKey("netherstone");
     public static final ResourceKey<PlacedFeature> BRIMSTONE_PLACED = registryKey("brimstone");
     public static final ResourceKey<PlacedFeature> IGNITED_BRIMSTONE_PLACED = registryKey("ignited_brimstone");
+    public static final ResourceKey<PlacedFeature> GOLD_BRIMSTONE_PLACED = registryKey("brimstone_gold");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -89,6 +91,11 @@ public class ModPlacedFeatures {
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                 ModBlocks.BRIMGRASS_BLOCK))));
+        register(context, BRIMSTONE_RUINS, configuredFeatures.getOrThrow(ModConfiguredFeatures.GOLD_BRIMSTONE_RUINS),
+                CountPlacement.of(UniformInt.of(3, 5)), InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(50), VerticalAnchor.aboveBottom(180)),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
+                RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
 
         register(context, TENEBRIS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.TENEBRIS),
                 InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(32), PlacementUtils.FULL_RANGE,
@@ -102,6 +109,10 @@ public class ModPlacedFeatures {
                 RandomOffsetPlacement.of(ConstantInt.of(0), UniformInt.of(-2, -1)), InSquarePlacement.spread(), BiomeFilter.biome(),
                 BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER, Fluids.FLOWING_WATER)));
 
+        register(context, GOLD_BRIMSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.GOLD_BRIMSTONE),
+                HeightRangePlacement.of(BiasedToBottomHeight.of(
+                        VerticalAnchor.aboveBottom(20), VerticalAnchor.aboveBottom(200), 1)),
+                BiomeFilter.biome(), CountPlacement.of(40), InSquarePlacement.spread());
         register(context, NETHERSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.NETHERSTONE),
                 BiomeFilter.biome(), HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(160)),
                 CountPlacement.of(16), InSquarePlacement.spread());

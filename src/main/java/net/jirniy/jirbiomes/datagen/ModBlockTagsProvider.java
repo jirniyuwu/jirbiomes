@@ -214,6 +214,10 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(BlockItemIds.BASALT.block())
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
+        tag(ModTags.Blocks.BRIMSTONE_GOLD_REPLACEABLE)
+                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE));
 
         tag(BlockTags.GOLD_ORES)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE));

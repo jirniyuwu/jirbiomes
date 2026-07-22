@@ -23,6 +23,7 @@ import net.minecraft.util.valueproviders.TrapezoidInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -49,6 +50,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> NETHERSTONE = registryKey("netherstone");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMSTONE_PATCH = registryKey("brimstone_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> IGNITED_BRIMSTONE_PATCH = registryKey("ignited_brimstone_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GOLD_BRIMSTONE = registryKey("brimstone_gold");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE = registryKey("ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE_BEES_005 = registryKey("ginkgo_tree_bees_005");
@@ -56,6 +58,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE_BEES_005 = registryKey("old_growth_ginkgo_tree_bees_005");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GOLD_BRIMSTONE_RUINS = registryKey("gold_brimstone_ruins");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_OAK_TREE = registryKey("apple_oak_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_OAK_TREE_BEES_005 = registryKey("apple_oak_tree_bees_005");
@@ -76,6 +80,7 @@ public class ModConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         BlockStateProvider belowTrunkProvider = TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(context.lookup(Registries.BIOME));
 
         BlockStateProvider driedDirtProvider = new MapStateProvider(
@@ -265,6 +270,48 @@ public class ModConfiguredFeatures {
                 4
         ));
 
+        register(context, BRIMSTONE_RUINS, Feature.TEMPLATE, new TemplateFeatureConfiguration(
+                WeightedList.<TemplateFeatureConfiguration.TemplateEntry>builder()
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/small1"), List.of(Rotation.NONE)), 4)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/small2"), List.of(Rotation.NONE)), 4)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/small3"), List.of(Rotation.values())), 4)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/small4"), List.of(Rotation.values())), 4)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/small5"), List.of(Rotation.values())), 4)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/small6"), List.of(Rotation.NONE)), 4)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/medium1"), List.of(Rotation.values())), 3)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/medium2"), List.of(Rotation.values())), 2)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/medium3"), List.of(Rotation.NONE)), 1)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/medium4"), List.of(Rotation.values())), 3)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/large1"), List.of(Rotation.NONE)), 1)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/large2"), List.of(Rotation.NONE)), 1)
+                        .add(new TemplateFeatureConfiguration.TemplateEntry(JirniyBiomes.id("brimstone_ruins/large3"), List.of(Rotation.values())), 2)
+                        .build()
+        ));
+        register(context, GOLD_BRIMSTONE_RUINS, Feature.ROOT_SYSTEM, new RootSystemConfiguration(
+                PlacementUtils.inlinePlaced(Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                                HolderSet.direct(
+                                        PlacementUtils.inlinePlaced(Feature.DISK, new DiskConfiguration(
+                                                BlockStateProvider.simple(ModBlocks.BRIMSTONE),
+                                                BlockPredicate.allOf(
+                                                        BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE)),
+                                                        BlockPredicate.not(BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE_GOLD_ORE))
+                                                ),
+                                                UniformInt.of(4, 6), 2),
+                                                RandomOffsetPlacement.vertical(ConstantInt.of(-2))),
+                                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BRIMSTONE_RUINS),
+                                                CountPlacement.of(1))
+                                )),
+                        CountPlacement.of(1), RandomOffsetPlacement.vertical(ConstantInt.of(-1))),
+                3, 0, 0, 3,
+                blocks.getOrThrow(ModTags.Blocks.BRIMSTONE_GOLD_REPLACEABLE),
+                RuleBasedStateProvider.ifTrueThenProvide(BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE, ModBlocks.IGNITED_BRIMSTONE),
+                        ModBlocks.BRIMSTONE_GOLD_ORE),
+                15, 20, 3, 2,
+                BlockStateProvider.simple(Blocks.AIR), 1, 1,
+                BlockPredicate.allOf(BlockPredicate.anyOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.not(BlockPredicate.solid())),
+                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE))
+        ));
+
         register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BRIMGRASS)));
         register(context, TENEBRIS_BUD, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TENEBRIS_SAPLING)));
         register(context, SALT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SALT_BLOCK)));
@@ -282,6 +329,10 @@ public class ModConfiguredFeatures {
                                 List.of(OreConfiguration.target(new BlockMatchTest(ModBlocks.BRIMSTONE), ModBlocks.IGNITED_BRIMSTONE.defaultBlockState())), 40))
                 )
         ));
+        register(context, GOLD_BRIMSTONE, Feature.SCATTERED_ORE, new OreConfiguration(
+                List.of(OreConfiguration.target(new BlockMatchTest(ModBlocks.BRIMSTONE), ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState()),
+                        OreConfiguration.target(new BlockMatchTest(ModBlocks.IGNITED_BRIMSTONE), ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState())),
+                50));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registryKey(String name) {

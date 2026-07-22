@@ -17,6 +17,7 @@ public class ModTags {
         public static final TagKey<Block> BARREL_CACTUS_FAST_GROWTH = create("barrel_cactus_fast_growth");
         public static final TagKey<Block> CACTUS_SEED_FLOWER_OVERRIDE = create("cactus_seed_flower_override");
         public static final TagKey<Block> GLOWSTONE_FEATURE_PLACEABLE = create("glowstone_feature_placeable");
+        public static final TagKey<Block> BRIMSTONE_GOLD_REPLACEABLE = create("brimstone_gold_replaceable");
 
         private static TagKey<Block> create(final String name) {
             return TagKey.create(Registries.BLOCK, JirniyBiomes.id(name));
