@@ -199,6 +199,10 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.FLOWERS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SAPLING));
 
+        tag(ModTags.Blocks.BARREL_CACTUSES)
+                .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS))
+                .add(ModBlocks.getKey(ModBlocks.SMALL_BARREL_CACTUS))
+                .add(ModBlocks.getKey(ModBlocks.PRICKLY_PEAR_SEED));
         tag(ModTags.Blocks.SUPPORTS_BARREL_CACTUS)
                 .addOptionalTag(BlockTags.SUPPORTS_CACTUS)
                 .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS))

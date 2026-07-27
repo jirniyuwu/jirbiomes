@@ -1,8 +1,8 @@
 {
-  "item.jirbiomes.apple_seeds": "Apple Seeds",
-
   "block.jirbiomes.iron_grate": "Iron Grate",
   "block.jirbiomes.netherstone": "Netherstone",
+
+  "block.jirbiomes.cattail": "Cattail",
 
   "block.jirbiomes.dried_dirt": "Dried Dirt",
   "block.jirbiomes.rooted_dried_dirt": "Rooted Dried Dirt",
@@ -98,6 +98,7 @@
   "item.jirbiomes.tenebris_hanging_sign": "Tenebris Hanging Sign",
   "block.jirbiomes.tenebris_hanging_sign": "Tenebris Hanging Sign",
 
+  "item.jirbiomes.apple_seeds": "Apple Seeds",
   "block.jirbiomes.apple_crop": "Apple Tree Crop",
   "block.jirbiomes.apple_leaves": "Apple Leaves",
   "block.jirbiomes.apple_oak_sapling": "Apple Oak Sapling",

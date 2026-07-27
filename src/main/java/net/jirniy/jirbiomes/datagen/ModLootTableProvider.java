@@ -52,6 +52,8 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropOther(ModBlocks.DRIED_DIRT_PATH, ModBlocks.DRIED_DIRT);
         dropOther(ModBlocks.WETLAND_PATH, ModBlocks.WETLAND);
 
+        dropSelf(ModBlocks.CATTAIL);
+
         dropSelf(ModBlocks.SALT_BLOCK);
         dropSelf(ModBlocks.SALT_BRICKS);
         dropSelf(ModBlocks.SALT_BRICKS_STAIRS);

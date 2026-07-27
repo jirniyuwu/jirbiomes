@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jirbiomes:block/cattail_top",
+    "layer1": "jirbiomes:block/cattail_top_overlay"
+  }
+}

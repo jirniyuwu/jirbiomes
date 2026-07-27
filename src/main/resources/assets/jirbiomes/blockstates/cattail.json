@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "jirbiomes:block/cattail_bottom"
+    },
+    "half=upper": {
+      "model": "jirbiomes:block/cattail_top"
+    }
+  }
+}
