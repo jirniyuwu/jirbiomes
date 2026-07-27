@@ -52,7 +52,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropOther(ModBlocks.DRIED_DIRT_PATH, ModBlocks.DRIED_DIRT);
         dropOther(ModBlocks.WETLAND_PATH, ModBlocks.WETLAND);
 
-        dropSelf(ModBlocks.CATTAIL);
+        add(ModBlocks.CATTAIL, this::createTallPlantShearsDrop);
 
         dropSelf(ModBlocks.SALT_BLOCK);
         dropSelf(ModBlocks.SALT_BRICKS);
@@ -155,6 +155,10 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
                         LootItem.lootTableItem(drop)
                 )
         );
+    }
+
+    public LootTable.Builder createTallPlantShearsDrop(final Block block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().when(this.hasShears()).add(LootItem.lootTableItem(block)));
     }
 
     public LootTable.Builder createMultiOreDrops(final Block block, ItemLike drop, float min, float max) {

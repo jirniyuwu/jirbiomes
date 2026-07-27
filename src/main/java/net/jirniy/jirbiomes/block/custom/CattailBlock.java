@@ -38,6 +38,13 @@ public class CattailBlock extends DoublePlantBlock implements SimpleWaterloggedB
                 : null;
     }
 
+    @Override
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (!canSurvive(state, level, pos)) {
+            level.destroyBlock(pos, true);
+        }
+        super.randomTick(state, level, pos, random);
+    }
 
     @Override
     protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbour, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
@@ -66,7 +73,9 @@ public class CattailBlock extends DoublePlantBlock implements SimpleWaterloggedB
             if (state.getBlock() != this) {
                 return level.isEmptyBlock(pos);
             }
-            return this.isExposed(level, pos) && blockstate.getBlock() == this && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER && blockstate.getValue(WATERLOGGED);
+            return this.isExposed(level, pos) && blockstate.getBlock() == this
+                    && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER
+                    && (blockstate.getValue(WATERLOGGED) || isWaterAdjacent(level, pos.below(2)));
         }
     }
 
@@ -78,11 +87,6 @@ public class CattailBlock extends DoublePlantBlock implements SimpleWaterloggedB
             }
         }
         return false;
-    }
-
-    protected boolean isExposed(LevelReader level, BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        return state.getBlock() == this ? !state.getValue(WATERLOGGED) : level.isEmptyBlock(pos);
     }
 
     @Override
@@ -104,5 +108,10 @@ public class CattailBlock extends DoublePlantBlock implements SimpleWaterloggedB
     @Override
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    protected boolean isExposed(LevelReader level, BlockPos pos) {
+        BlockState state = level.getBlockState(pos);
+        return state.getBlock() == this ? !state.getValue(WATERLOGGED) : level.isEmptyBlock(pos);
     }
 }
