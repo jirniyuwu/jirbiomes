@@ -4,8 +4,6 @@
   "block.jirbiomes.iron_grate": "Iron Grate",
   "block.jirbiomes.netherstone": "Netherstone",
 
-  "block.jirbiomes.cattail": "Cattail",
-
   "block.jirbiomes.dried_dirt": "Dried Dirt",
   "block.jirbiomes.rooted_dried_dirt": "Rooted Dried Dirt",
   "block.jirbiomes.coarse_dried_dirt": "Coarse Dried Dirt",
@@ -19,6 +17,10 @@
   "block.jirbiomes.wet_grass_block": "Wet Grass Block",
   "block.jirbiomes.wet_farmland": "Wet Farmland",
   "block.jirbiomes.wetland_path": "Wetland Path",
+
+  "block.jirbiomes.cattail": "Cattail",
+  "block.jirbiomes.algae": "Algae",
+  "item.jirbiomes.algae_bucket": "Bucket of Algae",
 
   "block.jirbiomes.salt": "Salt",
   "block.jirbiomes.salt_lamp": "Salt Lamp",

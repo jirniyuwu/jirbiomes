@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "jirbiomes:block/dense_algae",
+		"texture": "jirbiomes:block/dense_algae"
+	},
+	"elements": [
+		{
+			"from": [0, 13.5, 0],
+			"to": [16, 15.5, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 2], "texture": "#texture"},
+				"east": {"uv": [0, 6, 16, 8], "texture": "#texture"},
+				"south": {"uv": [0, 4, 16, 6], "texture": "#texture"},
+				"west": {"uv": [0, 2, 16, 4], "texture": "#texture"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#texture"},
+				"down": {"uv": [0, 16, 16, 0], "texture": "#texture"}
+			}
+		}
+	]
+}

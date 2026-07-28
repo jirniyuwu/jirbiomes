@@ -9,6 +9,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 
@@ -25,6 +26,10 @@ public class ModItems {
     public static final Item PRICKLY_PEAR = registerItem("prickly_pear", properties ->
             new BlockItem(ModBlocks.PRICKLY_PEAR_SEED, properties.useItemDescriptionPrefix()
                     .food(ModFood.Properties.PRICKLY_PEAR, ModFood.Effects.PRICKLY_PEAR_EFFECT)));
+
+    public static final Item ALGAE_BUCKET = registerItem("algae_bucket", properties ->
+            new SolidBucketItem(ModBlocks.ALGAE, SoundEvents.BUCKET_EMPTY,
+                    properties.stacksTo(1).useItemDescriptionPrefix()));
 
     public static final Item GINKGO_SIGN = registerItem("ginkgo_sign", properties ->
             new SignItem(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, properties.useItemDescriptionPrefix()));

@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "dense=true": [
+      {
+        "model": "jirbiomes:block/algae_dense",
+        "y": 0
+      },
+      {
+        "model": "jirbiomes:block/algae_dense",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/algae_dense",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/algae_dense",
+        "y": 270
+      }
+    ],
+    "dense=false": [
+      {
+        "model": "jirbiomes:block/algae",
+        "y": 0
+      },
+      {
+        "model": "jirbiomes:block/algae",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/algae",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/algae",
+        "y": 270
+      }
+    ]
+  }
+}

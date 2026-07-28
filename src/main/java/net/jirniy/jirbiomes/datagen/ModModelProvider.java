@@ -113,6 +113,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.DRIED_FIBERS, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.ALGAE_BUCKET, ModelTemplates.FLAT_ITEM);
+
         itemModelGenerators.generateFlatItem(ModBlocks.TENEBRIS_LEAVES.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.SALT_LAMP.asItem(), ModelTemplates.FLAT_ITEM);
 
