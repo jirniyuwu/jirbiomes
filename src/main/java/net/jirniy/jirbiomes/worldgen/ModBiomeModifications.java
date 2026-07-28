@@ -35,6 +35,10 @@ public class ModBiomeModifications {
 
         BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CATTAIL_PATCH_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_PATCH_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_PATCH_PLACED);
 
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.NETHERSTONE_PLACED);

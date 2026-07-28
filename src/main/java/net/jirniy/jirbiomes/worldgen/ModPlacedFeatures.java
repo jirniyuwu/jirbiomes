@@ -34,6 +34,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
 
     public static final ResourceKey<PlacedFeature> CATTAIL_PATCH_PLACED = registryKey("cattail_patch");
+    public static final ResourceKey<PlacedFeature> ALGAE_PATCH_PLACED = registryKey("algae_patch");
 
     public static final ResourceKey<PlacedFeature> BRIMGRASS_PLACED = registryKey("brimgrass_patch");
     public static final ResourceKey<PlacedFeature> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
@@ -83,6 +84,13 @@ public class ModPlacedFeatures {
         register(context, CATTAIL_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.CATTAIL),
                 RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
                 BiomeFilter.biome(), CountPlacement.of(80), RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesFluids(Fluids.WATER),
+                        BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(), BlockTags.AIR))));
+
+        register(context, ALGAE_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.ALGAE_PATCH),
+                RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BiomeFilter.biome(), CountPlacement.of(20), RandomOffsetPlacement.ofTriangle(7, 0),
+                RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesFluids(Fluids.WATER),
                         BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(), BlockTags.AIR))));
 

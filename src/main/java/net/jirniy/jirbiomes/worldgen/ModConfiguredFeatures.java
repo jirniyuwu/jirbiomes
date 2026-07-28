@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.worldgen;
 
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.block.custom.AlgaeBlock;
 import net.jirniy.jirbiomes.block.custom.AppleLeavesBlock;
 import net.jirniy.jirbiomes.block.custom.PlantLikeLeavesBlock;
 import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
@@ -74,6 +75,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> CATTAIL = registryKey("cattail");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE = registryKey("algae");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE_PATCH = registryKey("algae_patch");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
@@ -267,11 +270,8 @@ public class ModConfiguredFeatures {
                                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE))
                 )
         ));
-        register(context, WET_GRASS_PATCH, Feature.DISK, new DiskConfiguration(
-                wetlandProvider,
-                BlockPredicate.solid(),
-                UniformInt.of(3, 7),
-                4
+        register(context, WET_GRASS_PATCH, Feature.DISK, new DiskConfiguration(wetlandProvider, BlockPredicate.solid(),
+                UniformInt.of(3, 7), 4
         ));
 
         register(context, BRIMSTONE_RUINS, Feature.TEMPLATE, new TemplateFeatureConfiguration(
@@ -341,6 +341,16 @@ public class ModConfiguredFeatures {
         ));
 
         register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CATTAIL)));
+        register(context, ALGAE, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(
+                WeightedList.<BlockState>builder()
+                        .add(ModBlocks.ALGAE.defaultBlockState().setValue(AlgaeBlock.DENSE, false), 2)
+                        .add(ModBlocks.ALGAE.defaultBlockState().setValue(AlgaeBlock.DENSE, true), 1)
+        )));
+        register(context, ALGAE_PATCH, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(ALGAE),
+                                CountPlacement.of(20), RandomOffsetPlacement.ofTriangle(3, 0)))
+        ));
         
         register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BRIMGRASS)));
         register(context, TENEBRIS_BUD, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TENEBRIS_SAPLING)));
