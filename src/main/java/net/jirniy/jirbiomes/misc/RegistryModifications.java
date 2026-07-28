@@ -59,7 +59,8 @@ public class RegistryModifications {
         CompostableRegistry.INSTANCE.add(ModBlocks.CATTAIL, 0.3f);
 
         FuelValueEvents.BUILD.register((builder, context) -> {
-
+            final int BASE_TIME = context.baseSmeltTime();
+            builder.add(ModItems.DRIED_FIBERS, BASE_TIME/6);
         });
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CATTAIL, 40, 100);

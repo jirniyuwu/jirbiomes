@@ -12,7 +12,9 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MapStateProvider extends BlockStateProvider {
     public static final MapCodec<MapStateProvider> CODEC = RecordCodecBuilder.mapCodec(
@@ -30,14 +32,14 @@ public class MapStateProvider extends BlockStateProvider {
 
     public MapStateProvider(boolean useBlock, List<BlockState> input, List<BlockStateProvider> output) {
         super();
-        if (input.isEmpty() || output.isEmpty()) {
-            throw new IllegalArgumentException("Map state provider lists must have at least one entry");
-        } else if (input.size() != output.size()) {
-            throw new IllegalArgumentException("Map state provider lists must be equal lengths");
-        }
+
+        checkListLengths(input, output);
+
         this.useBlock = useBlock;
         this.input = input;
         this.output = output;
+
+        checkDuplicatesInput(this.input);
     }
 
     public MapStateProvider(List<BlockState> input, List<BlockStateProvider> output) {
@@ -47,11 +49,8 @@ public class MapStateProvider extends BlockStateProvider {
     public MapStateProvider(Block[] inputBlocks, List<BlockStateProvider> output) {
         super();
         this.useBlock = true;
-        if (inputBlocks.length < 1 || output.isEmpty()) {
-            throw new IllegalArgumentException("Map state provider lists must have at least one entry");
-        } else if (inputBlocks.length != output.size()) {
-            throw new IllegalArgumentException("Map state provider lists must be equal lengths");
-        }
+
+        checkListLengths(List.of(inputBlocks), output);
 
         ArrayList<BlockState> inputBlockStates = new ArrayList<BlockState>();
         for (Block block : inputBlocks) {
@@ -59,16 +58,15 @@ public class MapStateProvider extends BlockStateProvider {
         }
         this.input = inputBlockStates;
         this.output = output;
+
+        checkDuplicatesInput(this.input);
     }
 
     public MapStateProvider(Block[] inputBlocks, Block[] outputBlocks) {
         super();
         this.useBlock = true;
-        if (inputBlocks.length < 1 || outputBlocks.length < 1) {
-            throw new IllegalArgumentException("Map state provider lists must have at least one entry");
-        } else if (inputBlocks.length != outputBlocks.length) {
-            throw new IllegalArgumentException("Map state provider lists must be equal lengths");
-        }
+
+        checkListLengths(List.of(inputBlocks), List.of(outputBlocks));
 
         ArrayList<BlockState> inputBlockStates = new ArrayList<BlockState>();
         for (Block block : inputBlocks) {
@@ -80,6 +78,8 @@ public class MapStateProvider extends BlockStateProvider {
             outputProviders.add(BlockStateProvider.simple(block));
         }
         this.output = outputProviders;
+
+        checkDuplicatesInput(this.input);
     }
 
     @Override
@@ -100,5 +100,24 @@ public class MapStateProvider extends BlockStateProvider {
             }
         }
         return level.getBlockState(pos);
+    }
+
+    protected void checkDuplicatesInput(List<BlockState> list) {
+        Set<BlockState> seen = new HashSet<>();
+
+        for (BlockState state : list) {
+            if (!seen.add(state)) {
+                throw new IllegalArgumentException("Map state provider lists cannot contain duplicate input entries: "
+                        + state.getBlock().toString());
+            }
+        }
+    }
+
+    protected void checkListLengths(List<?> list1, List<?> list2) {
+        if (list1.isEmpty() || list2.isEmpty()) {
+            throw new IllegalArgumentException("Map state provider lists must have at least one entry");
+        } else if (list1.size() != list2.size()) {
+            throw new IllegalArgumentException("Map state provider lists must be equal lengths");
+        }
     }
 }

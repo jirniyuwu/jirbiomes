@@ -15,6 +15,7 @@ import net.minecraft.world.level.ItemLike;
 import java.util.function.Function;
 
 public class ModItems {
+    public static final Item DRIED_FIBERS = registerItem("dried_fibers", Item::new);
 
     public static final Item APPLE_SEEDS = registerItem("apple_seeds", properties ->
             new BlockItem(ModBlocks.APPLE_CROP, properties.useItemDescriptionPrefix()));

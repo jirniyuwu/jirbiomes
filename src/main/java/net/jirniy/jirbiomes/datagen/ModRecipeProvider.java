@@ -10,14 +10,21 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CampfireCookingRecipe;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.SmokingRecipe;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
+    public static final int BASE_COOKING_TIME = 200;
+    public static final int BASE_SMELTING_TIME = BASE_COOKING_TIME/2;
+    public static final int BASE_CAMPFIRE_TIME = 600;
+
     public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
@@ -27,11 +34,37 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new RecipeProvider(registries, output) {
             @Override
             public void buildRecipes() {
-                oreSmelting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, 200, "netherstone");
-                oreBlasting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, 100, "netherstone");
+                final List<ItemLike> DRIED_FIBER_SMELTABLE = List.of(
+                        Items.SHORT_GRASS,
+                        Items.TALL_GRASS,
+                        Items.BUSH,
+                        Items.FERN,
+                        Items.LARGE_FERN,
+                        Items.BAMBOO,
+                        Items.SUGAR_CANE,
+                        Items.FIREFLY_BUSH,
+                        Items.WHEAT,
+                        ModBlocks.CATTAIL,
+                        ModBlocks.BRIMGRASS
+                );
+                final List<ItemLike> DRIED_FIBER_QUICK_SMELTABLE = List.of(
+                        Items.DRY_SHORT_GRASS,
+                        Items.DRY_TALL_GRASS
+                );
 
-                oreSmelting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, 200, "gold_ingot");
-                oreBlasting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, 100, "gold_ingot");
+                oreSmelting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, BASE_COOKING_TIME, "netherstone");
+                oreBlasting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, BASE_SMELTING_TIME, "netherstone");
+
+                oreSmelting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, BASE_COOKING_TIME, "gold_ingot");
+                oreBlasting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, BASE_SMELTING_TIME, "gold_ingot");
+
+                oreSmelting(DRIED_FIBER_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, ModItems.DRIED_FIBERS, 0.1f, BASE_COOKING_TIME, "dried_fibers");
+                oreSmoking(DRIED_FIBER_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, ModItems.DRIED_FIBERS, 0.1f, BASE_SMELTING_TIME, "dried_fibers");
+                campfireCooking(DRIED_FIBER_SMELTABLE, ModItems.DRIED_FIBERS, BASE_CAMPFIRE_TIME, 0.1f);
+
+                oreSmelting(DRIED_FIBER_QUICK_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, ModItems.DRIED_FIBERS, 0.1f, BASE_COOKING_TIME/4, "dried_fibers");
+                oreSmoking(DRIED_FIBER_QUICK_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, ModItems.DRIED_FIBERS, 0.1f, BASE_SMELTING_TIME/4, "dried_fibers");
+                campfireCooking(DRIED_FIBER_QUICK_SMELTABLE, ModItems.DRIED_FIBERS, BASE_CAMPFIRE_TIME/4, 0.1f, "campfire_cooking_quick");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.IRON_GRATE, 4)
                         .pattern(" S ")
@@ -323,6 +356,46 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 hangingSignBuilder(ModItems.HANGING_TENEBRIS_SIGN, Ingredient.of(ModBlocks.STRIPPED_TENEBRIS_LOG))
                         .unlockedBy(getHasName(ModBlocks.STRIPPED_TENEBRIS_LOG), has(ModBlocks.STRIPPED_TENEBRIS_LOG))
                         .group("hanging_signs").save(output, "hanging_tenebris_sign");
+            }
+
+            public void oreSmoking(final List<ItemLike> smeltables, final RecipeCategory craftingCategory, final CookingBookCategory cookingCategory, final ItemLike result, final float experience, final int cookingTime, final String group) {
+                this.oreCooking(SmokingRecipe::new, smeltables, craftingCategory, cookingCategory, result, experience, cookingTime, group, "_from_smoking");
+            }
+            public void campfireCooking(final ItemLike smeltable, final ItemLike result, final int cookingTime, final float experience, final String source) {
+                this.simpleCookingRecipe(source, CampfireCookingRecipe::new, cookingTime, smeltable, result, experience);
+            }
+            public void campfireCooking(final List<ItemLike> smeltables, final ItemLike result, final int cookingTime, final float experience, final String source) {
+                for (int i = 0; i < smeltables.size(); i++) {
+                    ItemLike item = smeltables.get(i);
+                    campfireCooking(item, result, cookingTime, experience, source + i);
+                }
+            }
+            public void campfireCooking(final ItemLike smeltable, final ItemLike result, final int cookingTime, final String source) {
+                this.simpleCookingRecipe(source, CampfireCookingRecipe::new, cookingTime, smeltable, result, 0.35f);
+            }
+            public void campfireCooking(final List<ItemLike> smeltables, final ItemLike result, final int cookingTime, final String source) {
+                for (int i = 0; i < smeltables.size(); i++) {
+                    ItemLike item = smeltables.get(i);
+                    campfireCooking(item, result, cookingTime, source + i);
+                }
+            }
+            public void campfireCooking(final ItemLike smeltable, final ItemLike result, final int cookingTime, final float experience) {
+                this.simpleCookingRecipe("campfire_cooking", CampfireCookingRecipe::new, cookingTime, smeltable, result, experience);
+            }
+            public void campfireCooking(final List<ItemLike> smeltables, final ItemLike result, final int cookingTime, final float experience) {
+                for (int i = 0; i < smeltables.size(); i++) {
+                    ItemLike item = smeltables.get(i);
+                    campfireCooking(item, result, cookingTime, experience, "campfire_cooking" + i);
+                }
+            }
+            public void campfireCooking(final ItemLike smeltable, final ItemLike result, final int cookingTime) {
+                this.simpleCookingRecipe("campfire_cooking", CampfireCookingRecipe::new, cookingTime, smeltable, result, 0.35f);
+            }
+            public void campfireCooking(final List<ItemLike> smeltables, final ItemLike result, final int cookingTime) {
+                for (int i = 0; i < smeltables.size(); i++) {
+                    ItemLike item = smeltables.get(i);
+                    campfireCooking(item, result, cookingTime, "campfire_cooking" + i);
+                }
             }
         };
     }
