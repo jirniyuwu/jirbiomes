@@ -69,6 +69,14 @@ public class AlgaeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
         super.animateTick(state, level, pos, random);
     }
 
+    protected boolean skipRendering(final BlockState state, final BlockState neighborState, final Direction direction) {
+        if (direction.getAxis().isHorizontal() && state.getValue(DENSE) && neighborState.is(this) && neighborState.getValue(DENSE)) {
+            return true;
+        }
+
+        return super.skipRendering(state, neighborState, direction);
+    }
+
     @Override
     protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbour, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
         if (state.getValue(WATERLOGGED)) {
