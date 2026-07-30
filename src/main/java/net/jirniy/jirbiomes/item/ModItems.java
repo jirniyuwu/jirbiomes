@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.entity.ModEntities;
+import net.jirniy.jirbiomes.item.custom.PlaceWaterloggedBucketItem;
 import net.jirniy.jirbiomes.item.food.ModFood;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -32,8 +33,8 @@ public class ModItems {
                     .food(ModFood.Properties.PRICKLY_PEAR, ModFood.Effects.PRICKLY_PEAR_EFFECT)));
 
     public static final Item ALGAE_BUCKET = registerItem("algae_bucket", properties ->
-            new SolidBucketItem(ModBlocks.ALGAE, SoundEvents.BUCKET_EMPTY,
-                    properties.stacksTo(1).useItemDescriptionPrefix()));
+            new PlaceWaterloggedBucketItem(ModBlocks.ALGAE, SoundEvents.BUCKET_EMPTY,
+                    properties.stacksTo(1).usingConvertsTo(Items.BUCKET).useItemDescriptionPrefix()));
 
     public static final Item GINKGO_SIGN = registerItem("ginkgo_sign", properties ->
             new SignItem(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, properties.useItemDescriptionPrefix()));
