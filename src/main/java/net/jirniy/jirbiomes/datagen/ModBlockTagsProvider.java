@@ -255,6 +255,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(BlockTags.SUPPORTS_DRY_VEGETATION)
                 .add(BlockItemIds.SAND.block());
 
+        tag(BlockTags.SUPPORTS_COCOA)
+                .addOptionalTag(ModTags.Blocks.PALM_LOGS);
+
         tag(BlockTags.GOLD_ORES)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE));
         tag(BlockTags.GUARDED_BY_PIGLINS)

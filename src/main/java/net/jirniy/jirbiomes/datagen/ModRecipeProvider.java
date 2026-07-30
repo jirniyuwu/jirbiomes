@@ -80,6 +80,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Items.APPLE), has(Items.APPLE))
                         .unlockedBy(getHasName(ModItems.APPLE_SEEDS), has(ModItems.APPLE_SEEDS))
                         .group("seeds").save(output, "apple_seeds");
+                shapeless(RecipeCategory.MISC, ModItems.CRACKED_COCONUT, 2)
+                        .requires(ModItems.COCONUT)
+                        .unlockedBy(getHasName(ModItems.COCONUT), has(ModItems.COCONUT))
+                        .unlockedBy(getHasName(ModItems.CRACKED_COCONUT), has(ModItems.CRACKED_COCONUT))
+                        .save(output, "cracked_coconut");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DRIED_DIRT, 4)
                         .pattern("DS")

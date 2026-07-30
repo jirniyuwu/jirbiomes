@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
+import net.jirniy.jirbiomes.block.custom.CoconutBlock;
 import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
@@ -165,6 +166,14 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
                         .add(LootItem.lootTableItem(ModItems.BARREL_CACTUS)))
         ));
         dropOther(ModBlocks.LARGE_BARREL_CACTUS, ModItems.BARREL_CACTUS);
+
+        this.add(ModBlocks.COCONUT_PLANT, block -> this.applyExplosionDecay(block,
+                LootTable.lootTable().withPool(LootPool.lootPool()
+                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.COCONUT_PLANT)
+                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                        .hasProperty(CoconutBlock.AGE, 2)))
+                        .add(LootItem.lootTableItem(ModItems.COCONUT)))
+        ));
 
     }
 

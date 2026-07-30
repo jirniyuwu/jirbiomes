@@ -1,6 +1,10 @@
 {
   "item.jirbiomes.dried_fibers": "Dried Fibers",
 
+  "item.jirbiomes.coconut": "Coconut",
+  "item.jirbiomes.cracked_coconut": "Cracked Coconut",
+  "block.jirbiomes.coconut_plant": "Coconut",
+
   "block.jirbiomes.iron_grate": "Iron Grate",
   "block.jirbiomes.netherstone": "Netherstone",
 

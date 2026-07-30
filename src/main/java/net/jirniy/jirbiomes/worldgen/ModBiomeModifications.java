@@ -22,6 +22,10 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BEACH, Biomes.SNOWY_BEACH),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_BEACH_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_OCEAN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_OCEAN_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_DEEP_OCEAN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_OCEAN_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DESERT),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_DESERT_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BADLANDS, Biomes.WOODED_BADLANDS),

@@ -30,6 +30,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> GINKGO_TREE_BONUS_PLACED = registryKey("ginkgo_tree_bonus");
     public static final ResourceKey<PlacedFeature> PALM_TREE_PLACED = registryKey("palm_tree");
     public static final ResourceKey<PlacedFeature> PALM_TREE_BEACH_PLACED = registryKey("palm_tree_beach");
+    public static final ResourceKey<PlacedFeature> PALM_TREE_OCEAN_PLACED = registryKey("palm_tree_ocean");
 
     public static final ResourceKey<PlacedFeature> DRIED_GRASS_PATCH_PLACED = registryKey("dried_grass_patch");
     public static final ResourceKey<PlacedFeature> DRIED_GRASS_PATCH_DESERT_PLACED = registryKey("dried_grass_desert_patch");
@@ -64,14 +65,15 @@ public class ModPlacedFeatures {
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), RarityFilter.onAverageOnceEvery(6),
                 NoiseThresholdCountPlacement.of(0.8, 1, 3));
 
-        register(context, PALM_TREE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PALM_TREE),
-                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(),
-                PlacementUtils.filteredByBlockSurvival(ModBlocks.PALM_SAPLING), VegetationFeatures.nearWaterPredicate(ModBlocks.PALM_SAPLING),
-                NoiseThresholdCountPlacement.of(0.6, 1, 3), InSquarePlacement.spread());
-        register(context, PALM_TREE_BEACH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PALM_TREE),
-                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(), PlacementUtils.filteredByBlockSurvival(ModBlocks.PALM_SAPLING),
-                NoiseThresholdCountPlacement.of(0.4, 1, 3), InSquarePlacement.spread(),
-                RarityFilter.onAverageOnceEvery(12));
+        register(context, PALM_TREE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PALM_COCONUT_TREE),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), NoiseThresholdCountPlacement.of(0.6, 1, 3), InSquarePlacement.spread(),
+                PlacementUtils.filteredByBlockSurvival(ModBlocks.PALM_SAPLING), VegetationFeatures.nearWaterPredicate(ModBlocks.PALM_SAPLING), BiomeFilter.biome());
+        register(context, PALM_TREE_BEACH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PALM_COCONUT_TREE),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), NoiseThresholdCountPlacement.of(0.4, 1, 3), InSquarePlacement.spread(),
+                RarityFilter.onAverageOnceEvery(12), BiomeFilter.biome(), PlacementUtils.filteredByBlockSurvival(ModBlocks.PALM_SAPLING));
+        register(context, PALM_TREE_OCEAN_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PALM_COCONUT_TREE),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), CountPlacement.of(UniformInt.of(1, 3)), InSquarePlacement.spread(),
+                BiomeFilter.biome(), PlacementUtils.filteredByBlockSurvival(ModBlocks.PALM_SAPLING));
 
         register(context, DRIED_GRASS_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.DRIED_GRASS_PATCH),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(),

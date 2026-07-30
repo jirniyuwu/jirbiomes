@@ -27,6 +27,6 @@ public class SaplingWithAdditionalPlaceableBlock extends SaplingBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return level.getBlockState(pos.below()).is(this.placeableOn);
+        return level.getBlockState(pos).is(this.placeableOn);
     }
 }

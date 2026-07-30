@@ -8,6 +8,7 @@ import net.jirniy.jirbiomes.block.custom.PlantLikeLeavesBlock;
 import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
+import net.jirniy.jirbiomes.worldgen.feature.CoconutDecorator;
 import net.jirniy.jirbiomes.worldgen.feature.ModFeatures;
 import net.jirniy.jirbiomes.worldgen.feature.PalmFoliagePlacer;
 import net.minecraft.core.*;
@@ -60,6 +61,7 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE = registryKey("palm_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE_BEES_005 = registryKey("palm_tree_bees_005");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_COCONUT_TREE = registryKey("palm_tree_coconut");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DOWNWARDS_TENEBRIS = registryKey("downwards_tenebris");
@@ -135,22 +137,17 @@ public class ModConfiguredFeatures {
                 belowTrunkProvider
         );
 
-        register(context, PALM_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+        TreeConfiguration.TreeConfigurationBuilder palmTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.PALM_LOG),
                 new StraightTrunkPlacer(6, 1, 0),
                 BlockStateProvider.simple(ModBlocks.PALM_LEAVES),
                 new PalmFoliagePlacer(UniformInt.of(4, 6), ConstantInt.of(0)),
                 new TwoLayersFeatureSize(1, 0, 1),
-                palmTreeBelowTrunkProvider).ignoreVines().build()
-        );
-        register(context, PALM_TREE_BEES_005, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(ModBlocks.PALM_LOG),
-                new StraightTrunkPlacer(6, 1, 0),
-                BlockStateProvider.simple(ModBlocks.PALM_LEAVES),
-                new PalmFoliagePlacer(UniformInt.of(4, 6), ConstantInt.of(0)),
-                new TwoLayersFeatureSize(1, 0, 1),
-                palmTreeBelowTrunkProvider).ignoreVines().decorators(List.of(beehive005)).build()
-        );
+                palmTreeBelowTrunkProvider);
+
+        register(context, PALM_TREE, Feature.TREE, palmTreeConfig.ignoreVines().build());
+        register(context, PALM_TREE_BEES_005, Feature.TREE, palmTreeConfig.ignoreVines().decorators(List.of(beehive005)).build());
+        register(context, PALM_COCONUT_TREE, Feature.TREE, palmTreeConfig.ignoreVines().decorators(List.of(new CoconutDecorator(0.3f))).build());
 
         register(context, APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.OAK_LOG),

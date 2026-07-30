@@ -18,6 +18,10 @@ import java.util.function.Function;
 public class ModItems {
     public static final Item DRIED_FIBERS = registerItem("dried_fibers", Item::new);
 
+    public static final Item COCONUT = registerItem("coconut", Item::new);
+    public static final Item CRACKED_COCONUT = registerItem("cracked_coconut", properties ->
+            new Item(properties.food(ModFood.Properties.COCONUT_PROPERTIES, ModFood.Effects.COCONUT_EFFECT)));
+
     public static final Item APPLE_SEEDS = registerItem("apple_seeds", properties ->
             new BlockItem(ModBlocks.APPLE_CROP, properties.useItemDescriptionPrefix()));
 

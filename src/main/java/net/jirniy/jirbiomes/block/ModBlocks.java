@@ -3,9 +3,11 @@ package net.jirniy.jirbiomes.block;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.custom.*;
+import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModTreeGrowers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,13 +15,17 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Function;
 
@@ -248,10 +254,14 @@ public class ModBlocks {
             new RotatedPillarBlock(properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()));
 
     public static final Block PALM_LEAVES = registerBlock("palm_leaves", properties ->
-            new UntintedParticleLeavesBlock(0.0F, ModParticles.GINKGO_LEAVES, properties.mapColor(MapColor.EMERALD)
-                    .strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion()
+            new PalmLeavesBlock(properties.mapColor(MapColor.EMERALD).strength(0.2F).randomTicks()
+                    .sound(SoundType.AZALEA_LEAVES).noOcclusion()
                     .isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
                     .ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
+
+    public static final Block COCONUT_PLANT = registerBlock("coconut_plant", false, properties ->
+            new CoconutBlock(properties.mapColor(MapColor.PLANT).randomTicks().strength(0.2F, 3.0F)
+                    .sound(SoundType.WOOD).noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     public static final Block PALM_SAPLING = registerBlock("palm_sapling", properties ->
             new SaplingWithAdditionalPlaceableBlock(ModTreeGrowers.PALM, ModTags.Blocks.PALM_PLACEABLE, properties.mapColor(MapColor.EMERALD).noCollision().randomTicks()
