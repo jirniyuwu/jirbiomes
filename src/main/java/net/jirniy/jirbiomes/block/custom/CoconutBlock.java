@@ -2,6 +2,8 @@ package net.jirniy.jirbiomes.block.custom;
 
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -32,6 +34,11 @@ public class CoconutBlock extends CocoaBlock {
 
     public CoconutBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        super.randomTick(state, level, pos, random);
     }
 
     @Override
