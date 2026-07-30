@@ -9,6 +9,7 @@ import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
 import net.jirniy.jirbiomes.worldgen.feature.ModFeatures;
+import net.jirniy.jirbiomes.worldgen.feature.PalmFoliagePlacer;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -57,6 +58,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE = registryKey("old_growth_ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLD_GROWTH_GINKGO_TREE_BEES_005 = registryKey("old_growth_ginkgo_tree_bees_005");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE = registryKey("palm_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE_BEES_005 = registryKey("palm_tree_bees_005");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DOWNWARDS_TENEBRIS = registryKey("downwards_tenebris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
@@ -88,6 +92,10 @@ public class ModConfiguredFeatures {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         BlockStateProvider belowTrunkProvider = TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(context.lookup(Registries.BIOME));
+        BlockStateProvider palmTreeBelowTrunkProvider = new MapStateProvider(
+                new Block[]{Blocks.SAND, Blocks.GRASS_BLOCK, Blocks.DIRT, ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT, Blocks.WATER, Blocks.AIR},
+                new Block[]{Blocks.SAND, Blocks.DIRT, Blocks.DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.PALM_LOG, ModBlocks.PALM_LOG}
+        );
 
         BlockStateProvider driedDirtProvider = new MapStateProvider(
                 new Block[]{Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.ROOTED_DIRT, Blocks.COARSE_DIRT, Blocks.DIRT_PATH, Blocks.FARMLAND},
@@ -125,6 +133,23 @@ public class ModConfiguredFeatures {
                 new AcaciaFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
                 belowTrunkProvider
+        );
+
+        register(context, PALM_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.PALM_LOG),
+                new StraightTrunkPlacer(6, 1, 0),
+                BlockStateProvider.simple(ModBlocks.PALM_LEAVES),
+                new PalmFoliagePlacer(UniformInt.of(4, 6), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(1, 0, 1),
+                palmTreeBelowTrunkProvider).ignoreVines().build()
+        );
+        register(context, PALM_TREE_BEES_005, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.PALM_LOG),
+                new StraightTrunkPlacer(6, 1, 0),
+                BlockStateProvider.simple(ModBlocks.PALM_LEAVES),
+                new PalmFoliagePlacer(UniformInt.of(4, 6), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(1, 0, 1),
+                palmTreeBelowTrunkProvider).ignoreVines().decorators(List.of(beehive005)).build()
         );
 
         register(context, APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(

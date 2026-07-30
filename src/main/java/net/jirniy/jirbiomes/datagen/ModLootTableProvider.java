@@ -125,7 +125,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.PALM_SIGN);
         dropSelf(ModBlocks.HANGING_PALM_SIGN);
 
-        add(ModBlocks.PALM_LEAVES, createLeavesDrops(ModBlocks.PALM_LEAVES, ModBlocks.PALM_SAPLING, 0.05f));
+        add(ModBlocks.PALM_LEAVES, createLeavesDrops(ModBlocks.PALM_LEAVES, ModBlocks.PALM_SAPLING, 0.1f));
 
         dropSelf(ModBlocks.TENEBRIS_LOG);
         dropSelf(ModBlocks.STRIPPED_TENEBRIS_LOG);

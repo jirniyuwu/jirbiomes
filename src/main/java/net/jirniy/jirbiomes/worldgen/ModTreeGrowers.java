@@ -16,6 +16,17 @@ public class ModTreeGrowers {
             Optional.empty()
     );
 
+    public static final TreeGrower PALM = new TreeGrower(
+            "palm",
+            0.0F,
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.PALM_TREE),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.PALM_TREE_BEES_005),
+            Optional.empty()
+    );
+
     public static final TreeGrower APPLE_OAK = new TreeGrower(
             "apple_oak",
             0.1F,

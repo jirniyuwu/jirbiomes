@@ -254,7 +254,7 @@ public class ModBlocks {
                     .ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
 
     public static final Block PALM_SAPLING = registerBlock("palm_sapling", properties ->
-            new SaplingWithAdditionalPlaceableBlock(ModTreeGrowers.GINKGO, ModTags.Blocks.PALM_PLACEABLE, properties.mapColor(MapColor.EMERALD).noCollision().randomTicks()
+            new SaplingWithAdditionalPlaceableBlock(ModTreeGrowers.PALM, ModTags.Blocks.PALM_PLACEABLE, properties.mapColor(MapColor.EMERALD).noCollision().randomTicks()
                     .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
     public static final Block POTTED_PALM_SAPLING = registerBlock("potted_palm_sapling", false, properties ->
             new FlowerPotBlock(ModBlocks.PALM_SAPLING, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));

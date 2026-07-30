@@ -51,7 +51,7 @@ public class AlgaeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return state.getValue(WATERLOGGED) && level.getBlockState(pos.above()).is(BlockTags.AIR);
+        return state.getValue(WATERLOGGED) && (level.getBlockState(pos.above()).is(BlockTags.AIR) || level.getBlockState(pos.above()).is(Blocks.LILY_PAD));
     }
 
     @Override
