@@ -298,6 +298,58 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 chestBoat(ModItems.GINKGO_CHEST_BOAT, ModItems.GINKGO_BOAT);
                 woodenBoat(ModItems.GINKGO_BOAT, ModBlocks.GINKGO_PLANKS);
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALM_WOOD, 3)
+                        .pattern("LL")
+                        .pattern("LL")
+                        .define('L', ModBlocks.PALM_LOG)
+                        .unlockedBy(getHasName(ModBlocks.PALM_LOG), has(ModBlocks.PALM_LOG))
+                        .unlockedBy(getHasName(ModBlocks.PALM_WOOD), has(ModBlocks.PALM_WOOD))
+                        .group("wood").save(output, "palm_wood");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_PALM_WOOD, 3)
+                        .pattern("LL")
+                        .pattern("LL")
+                        .define('L', ModBlocks.STRIPPED_PALM_LOG)
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_PALM_LOG), has(ModBlocks.STRIPPED_PALM_LOG))
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_PALM_WOOD), has(ModBlocks.STRIPPED_PALM_WOOD))
+                        .group("wood").save(output, "stripped_palm_wood");
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALM_PLANKS, 4)
+                        .requires(ModTags.Items.PALM_LOGS)
+                        .unlockedBy(getHasName(ModBlocks.PALM_LOG), has(ModTags.Items.PALM_LOGS))
+                        .group("planks").save(output, "palm_planks");
+                stairBuilder(ModBlocks.PALM_STAIRS, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("wooden_stairs").save(output, "palm_stairs");
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALM_SLAB, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("wooden_slabs").save(output, "palm_slab");
+                fenceBuilder(ModBlocks.PALM_FENCE, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("wooden_fences").save(output, "palm_fence");
+                fenceGateBuilder(ModBlocks.PALM_FENCE_GATE, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("wooden_fence_gates").save(output, "palm_fence_gate");
+                pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.PALM_PRESSURE_PLATE, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("wooden_pressure_plates").save(output, "palm_pressure_plate");
+                buttonBuilder(ModBlocks.PALM_BUTTON, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("wooden_buttons").save(output, "palm_button");
+                doorBuilder(ModBlocks.PALM_DOOR, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("wooden_doors").save(output, "palm_door");
+                trapdoorBuilder(ModBlocks.PALM_TRAPDOOR, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("wooden_trapdoors").save(output, "palm_trapdoor");
+                shelf(ModBlocks.PALM_SHELF, ModBlocks.STRIPPED_PALM_LOG);
+                signBuilder(ModItems.PALM_SIGN, Ingredient.of(ModBlocks.PALM_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLANKS), has(ModBlocks.PALM_PLANKS))
+                        .group("signs").save(output, "palm_sign");
+                hangingSignBuilder(ModItems.HANGING_PALM_SIGN, Ingredient.of(ModBlocks.STRIPPED_PALM_LOG))
+                        .unlockedBy(getHasName(ModBlocks.STRIPPED_PALM_LOG), has(ModBlocks.STRIPPED_PALM_LOG))
+                        .group("hanging_signs").save(output, "hanging_palm_sign");
+                chestBoat(ModItems.PALM_CHEST_BOAT, ModItems.PALM_BOAT);
+                woodenBoat(ModItems.PALM_BOAT, ModBlocks.PALM_PLANKS);
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_SAPLING, 2)
                         .pattern("S")
                         .pattern("L")

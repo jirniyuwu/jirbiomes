@@ -18,5 +18,7 @@ public class JirniyBiomesClient implements ClientModInitializer {
 
         EntityRendererRegistryImpl.register(ModEntities.GINKGO_BOAT, context -> new BoatRenderer(context, ModModelLayers.GINKGO_BOAT));
         EntityRendererRegistryImpl.register(ModEntities.GINKGO_CHEST_BOAT, context -> new BoatRenderer(context, ModModelLayers.GINKGO_CHEST_BOAT));
+        EntityRendererRegistryImpl.register(ModEntities.PALM_BOAT, context -> new BoatRenderer(context, ModModelLayers.PALM_BOAT));
+        EntityRendererRegistryImpl.register(ModEntities.PALM_CHEST_BOAT, context -> new BoatRenderer(context, ModModelLayers.PALM_CHEST_BOAT));
     }
 }

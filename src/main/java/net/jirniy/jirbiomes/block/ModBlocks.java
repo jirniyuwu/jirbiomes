@@ -3,6 +3,7 @@ package net.jirniy.jirbiomes.block;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.custom.*;
+import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModTreeGrowers;
 import net.minecraft.core.Direction;
@@ -234,6 +235,78 @@ public class ModBlocks {
     public static final Block HANGING_WALL_GINKGO_SIGN = registerBlockEntity("ginkgo_wall_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
             properties -> new WallHangingSignBlock(ModBlockSetTypes.WoodTypes.GINKGO, wallVariant(HANGING_GINKGO_SIGN, true,
                     properties.mapColor(GINKGO_PLANKS.defaultMapColor())
+                            .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
+                            .strength(1.0F).ignitedByLava())));
+
+    public static final Block PALM_LOG = registerBlock("palm_log", properties ->
+            new RotatedPillarBlock(logProperties(properties, MapColor.EMERALD, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));
+    public static final Block PALM_WOOD = registerBlock("palm_wood", properties ->
+            new RotatedPillarBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block STRIPPED_PALM_LOG = registerBlock("stripped_palm_log", properties ->
+            new RotatedPillarBlock(logProperties(properties, MapColor.EMERALD, MapColor.EMERALD, SoundType.WOOD)));
+    public static final Block STRIPPED_PALM_WOOD = registerBlock("stripped_palm_wood", properties ->
+            new RotatedPillarBlock(properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()));
+
+    public static final Block PALM_LEAVES = registerBlock("palm_leaves", properties ->
+            new UntintedParticleLeavesBlock(0.0F, ModParticles.GINKGO_LEAVES, properties.mapColor(MapColor.EMERALD)
+                    .strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion()
+                    .isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
+                    .ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
+
+    public static final Block PALM_SAPLING = registerBlock("palm_sapling", properties ->
+            new SaplingWithAdditionalPlaceableBlock(ModTreeGrowers.GINKGO, ModTags.Blocks.PALM_PLACEABLE, properties.mapColor(MapColor.EMERALD).noCollision().randomTicks()
+                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+    public static final Block POTTED_PALM_SAPLING = registerBlock("potted_palm_sapling", false, properties ->
+            new FlowerPotBlock(ModBlocks.PALM_SAPLING, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final Block PALM_PLANKS = registerBlock("palm_planks", properties ->
+            new Block(properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block PALM_STAIRS = registerBlock("palm_stairs", properties ->
+            new StairBlock(PALM_PLANKS.defaultBlockState(), properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block PALM_SLAB = registerBlock("palm_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block PALM_BUTTON = registerBlock("palm_button", properties ->
+            new ButtonBlock(ModBlockSetTypes.Sets.PALM, 20, properties.noCollision().pushReaction(PushReaction.DESTROY)
+                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block PALM_PRESSURE_PLATE = registerBlock("palm_pressure_plate", properties ->
+            new PressurePlateBlock(ModBlockSetTypes.Sets.PALM, properties.noCollision().pushReaction(PushReaction.DESTROY)
+                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block PALM_FENCE = registerBlock("palm_fence", properties ->
+            new FenceBlock(properties.mapColor(MapColor.EMERALD)
+                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block PALM_FENCE_GATE = registerBlock("palm_fence_gate", properties ->
+            new FenceGateBlock(ModBlockSetTypes.WoodTypes.PALM, properties.mapColor(MapColor.EMERALD)
+                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()));
+    public static final Block PALM_TRAPDOOR = registerBlock("palm_trapdoor", properties ->
+            new TrapDoorBlock(ModBlockSetTypes.Sets.PALM, properties.mapColor(MapColor.EMERALD)
+                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY).noOcclusion()));
+    public static final Block PALM_DOOR = registerBlock("palm_door", properties ->
+            new DoorBlock(ModBlockSetTypes.Sets.PALM, properties.mapColor(MapColor.EMERALD)
+                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY).noOcclusion()));
+
+    public static final Block PALM_SHELF = registerBlockEntity("palm_shelf", BlockEntityTypes.SHELF,
+            properties -> new ShelfBlock(properties.mapColor(PALM_PLANKS.defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS).sound(SoundType.SHELF)
+                    .ignitedByLava().strength(2.0F, 3.0F)));
+    public static final Block PALM_SIGN = registerBlockEntity("palm_sign", BlockEntityTypes.SIGN, false,
+            properties -> new StandingSignBlock(ModBlockSetTypes.WoodTypes.PALM, properties.mapColor(PALM_PLANKS.defaultMapColor())
+                    .noCollision().strength(1.0F).ignitedByLava()));
+    public static final Block WALL_PALM_SIGN = registerBlockEntity("palm_wall_sign", BlockEntityTypes.SIGN, false,
+            properties -> new WallSignBlock(ModBlockSetTypes.WoodTypes.PALM, wallVariant(PALM_SIGN, true,
+                    properties.mapColor(PALM_PLANKS.defaultMapColor())
+                            .noCollision().strength(1.0F).ignitedByLava())));
+    public static final Block HANGING_PALM_SIGN = registerBlockEntity("palm_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
+            properties -> new CeilingHangingSignBlock(ModBlockSetTypes.WoodTypes.PALM, properties.mapColor(PALM_PLANKS.defaultMapColor())
+                    .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
+                    .strength(1.0F).ignitedByLava()));
+    public static final Block HANGING_WALL_PALM_SIGN = registerBlockEntity("palm_wall_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
+            properties -> new WallHangingSignBlock(ModBlockSetTypes.WoodTypes.PALM, wallVariant(HANGING_PALM_SIGN, true,
+                    properties.mapColor(PALM_PLANKS.defaultMapColor())
                             .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
                             .strength(1.0F).ignitedByLava())));
 

@@ -17,6 +17,8 @@ public class ModEntityTagsProvider extends FabricTagsProvider.EntityTypeTagsProv
     protected void addTags(HolderLookup.Provider provider) {
         tag(EntityTypeTags.BOAT)
                 .add(ModEntities.getKey(ModEntities.GINKGO_BOAT))
-                .add(ModEntities.getKey(ModEntities.GINKGO_CHEST_BOAT));
+                .add(ModEntities.getKey(ModEntities.GINKGO_CHEST_BOAT))
+                .add(ModEntities.getKey(ModEntities.PALM_BOAT))
+                .add(ModEntities.getKey(ModEntities.PALM_CHEST_BOAT));
     }
 }

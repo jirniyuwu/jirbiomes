@@ -79,6 +79,33 @@
   "item.jirbiomes.ginkgo_chest_boat": "Ginkgo Chest Boat",
   "entity.jirbiomes.ginkgo_chest_boat": "Ginkgo Chest Boat",
 
+  "block.jirbiomes.palm_planks": "Palm Planks",
+  "block.jirbiomes.palm_log": "Palm Log",
+  "block.jirbiomes.palm_wood": "Palm Wood",
+  "block.jirbiomes.stripped_palm_log": "Stripped Palm Log",
+  "block.jirbiomes.stripped_palm_wood": "Stripped Palm Wood",
+  "block.jirbiomes.palm_leaves": "Palm Leaves",
+  "block.jirbiomes.palm_sapling": "Palm Sapling",
+  "block.jirbiomes.potted_palm_sapling": "Potted Palm Sapling",
+
+  "block.jirbiomes.palm_stairs": "Palm Stairs",
+  "block.jirbiomes.palm_slab": "Palm Slab",
+  "block.jirbiomes.palm_door": "Palm Door",
+  "block.jirbiomes.palm_trapdoor": "Palm Trapdoor",
+  "block.jirbiomes.palm_button": "Palm Button",
+  "block.jirbiomes.palm_pressure_plate": "Palm Pressure Plate",
+  "block.jirbiomes.palm_fence": "Palm Fence",
+  "block.jirbiomes.palm_fence_gate": "Palm Fence Gate",
+  "block.jirbiomes.palm_shelf": "Palm Shelf",
+  "item.jirbiomes.palm_sign": "Palm Sign",
+  "block.jirbiomes.palm_sign": "Palm Sign",
+  "item.jirbiomes.palm_hanging_sign": "Palm Hanging Sign",
+  "block.jirbiomes.palm_hanging_sign": "Palm Hanging Sign",
+  "item.jirbiomes.palm_boat": "Palm Boat",
+  "entity.jirbiomes.palm_boat": "Palm Boat",
+  "item.jirbiomes.palm_chest_boat": "Palm Chest Boat",
+  "entity.jirbiomes.palm_chest_boat": "Palm Chest Boat",
+
   "block.jirbiomes.tenebris_planks": "Tenebris Planks",
   "block.jirbiomes.tenebris_stem": "Tenebris Stem",
   "block.jirbiomes.tenebris_hyphae": "Tenebris Hyphae",
@@ -125,5 +152,6 @@
 
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions",
   "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log",
+  "tag.item.jirbiomes.palm_logs": "Any Palm log",
   "tag.item.jirbiomes.tenebris_logs": "Any Tenebris log"
 }

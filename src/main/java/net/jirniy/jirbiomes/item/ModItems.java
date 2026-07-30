@@ -41,6 +41,16 @@ public class ModItems {
     public static final Item GINKGO_CHEST_BOAT = registerItem("ginkgo_chest_boat", properties ->
             new BoatItem(ModEntities.GINKGO_CHEST_BOAT, properties));
 
+    public static final Item PALM_SIGN = registerItem("palm_sign", properties ->
+            new SignItem(ModBlocks.PALM_SIGN, ModBlocks.WALL_PALM_SIGN, properties.useItemDescriptionPrefix()));
+    public static final Item HANGING_PALM_SIGN = registerItem("palm_hanging_sign", properties ->
+            new HangingSignItem(ModBlocks.HANGING_PALM_SIGN, ModBlocks.HANGING_WALL_PALM_SIGN, properties.useItemDescriptionPrefix()));
+
+    public static final Item PALM_BOAT = registerItem("palm_boat", properties ->
+            new BoatItem(ModEntities.PALM_BOAT, properties));
+    public static final Item PALM_CHEST_BOAT = registerItem("palm_chest_boat", properties ->
+            new BoatItem(ModEntities.PALM_CHEST_BOAT, properties));
+
     public static final Item TENEBRIS_SIGN = registerItem("tenebris_sign", properties ->
             new SignItem(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN, properties.useItemDescriptionPrefix()));
     public static final Item HANGING_TENEBRIS_SIGN = registerItem("tenebris_hanging_sign", properties ->

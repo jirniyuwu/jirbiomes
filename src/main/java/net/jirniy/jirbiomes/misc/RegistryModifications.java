@@ -46,12 +46,16 @@ public class RegistryModifications {
 
         StrippableBlockRegistry.register(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG);
         StrippableBlockRegistry.register(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD);
+        StrippableBlockRegistry.register(ModBlocks.PALM_LOG, ModBlocks.STRIPPED_PALM_LOG);
+        StrippableBlockRegistry.register(ModBlocks.PALM_WOOD, ModBlocks.STRIPPED_PALM_WOOD);
         StrippableBlockRegistry.register(ModBlocks.TENEBRIS_LOG, ModBlocks.STRIPPED_TENEBRIS_LOG);
         StrippableBlockRegistry.register(ModBlocks.TENEBRIS_WOOD, ModBlocks.STRIPPED_TENEBRIS_WOOD);
 
         CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.3f);
         CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_LEAVES, 0.3f);
         CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_SAPLING, 0.3f);
+        CompostableRegistry.INSTANCE.add(ModBlocks.PALM_LEAVES, 0.3f);
+        CompostableRegistry.INSTANCE.add(ModBlocks.PALM_SAPLING, 0.3f);
         CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_LEAVES, 0.5f);
         CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_OAK_SAPLING, 0.5f);
         CompostableRegistry.INSTANCE.add(ModItems.BARREL_CACTUS, 0.3f);

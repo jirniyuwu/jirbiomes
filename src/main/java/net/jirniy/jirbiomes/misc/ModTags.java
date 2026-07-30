@@ -13,12 +13,15 @@ public class ModTags {
         public static final TagKey<Block> GRASS_BLOCKS = create("grass_blocks");
 
         public static final TagKey<Block> GINKGO_LOGS = create("ginkgo_logs");
+        public static final TagKey<Block> PALM_LOGS = create("palm_logs");
         public static final TagKey<Block> TENEBRIS_LOGS = create("tenebris_logs");
 
         public static final TagKey<Block> SUPPORTS_BARREL_CACTUS = create("supports_barrel_cactus");
         public static final TagKey<Block> BARREL_CACTUS_FAST_GROWTH = create("barrel_cactus_fast_growth");
         public static final TagKey<Block> CACTUS_SEED_FLOWER_OVERRIDE = create("cactus_seed_flower_override");
         public static final TagKey<Block> BARREL_CACTUSES = create("barrel_cactuses");
+
+        public static final TagKey<Block> PALM_PLACEABLE = create("palm_placeable");
 
         public static final TagKey<Block> GLOWSTONE_FEATURE_PLACEABLE = create("glowstone_feature_placeable");
         public static final TagKey<Block> BRIMSTONE_GOLD_REPLACEABLE = create("brimstone_gold_replaceable");
@@ -30,6 +33,7 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> GINKGO_LOGS = create("ginkgo_logs");
+        public static final TagKey<Item> PALM_LOGS = create("palm_logs");
         public static final TagKey<Item> TENEBRIS_LOGS = create("tenebris_logs");
 
         private static TagKey<Item> create(final String name) {

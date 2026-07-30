@@ -106,6 +106,27 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         add(ModBlocks.GINKGO_LEAVES, createLeavesDrops(ModBlocks.GINKGO_LEAVES, ModBlocks.GINKGO_SAPLING, 0.05f));
 
+        dropSelf(ModBlocks.PALM_LOG);
+        dropSelf(ModBlocks.STRIPPED_PALM_LOG);
+        dropSelf(ModBlocks.PALM_WOOD);
+        dropSelf(ModBlocks.STRIPPED_PALM_WOOD);
+        dropSelf(ModBlocks.PALM_SAPLING);
+        dropPottedContents(ModBlocks.POTTED_PALM_SAPLING);
+        dropSelf(ModBlocks.PALM_PLANKS);
+        dropSelf(ModBlocks.PALM_STAIRS);
+        add(ModBlocks.PALM_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.PALM_TRAPDOOR);
+        dropSelf(ModBlocks.PALM_FENCE);
+        dropSelf(ModBlocks.PALM_FENCE_GATE);
+        add(ModBlocks.PALM_DOOR, this::createDoorTable);
+        dropSelf(ModBlocks.PALM_BUTTON);
+        dropSelf(ModBlocks.PALM_PRESSURE_PLATE);
+        dropSelf(ModBlocks.PALM_SHELF);
+        dropSelf(ModBlocks.PALM_SIGN);
+        dropSelf(ModBlocks.HANGING_PALM_SIGN);
+
+        add(ModBlocks.PALM_LEAVES, createLeavesDrops(ModBlocks.PALM_LEAVES, ModBlocks.PALM_SAPLING, 0.05f));
+
         dropSelf(ModBlocks.TENEBRIS_LOG);
         dropSelf(ModBlocks.STRIPPED_TENEBRIS_LOG);
         dropSelf(ModBlocks.TENEBRIS_WOOD);

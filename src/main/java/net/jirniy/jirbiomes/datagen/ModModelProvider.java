@@ -83,6 +83,23 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.woodProvider(ModBlocks.STRIPPED_GINKGO_LOG).log(ModBlocks.STRIPPED_GINKGO_LOG).wood(ModBlocks.STRIPPED_GINKGO_WOOD);
         blockModelGenerators.createShelf(ModBlocks.GINKGO_SHELF, ModBlocks.STRIPPED_GINKGO_LOG);
 
+        blockModelGenerators.family(ModBlocks.PALM_PLANKS)
+                .stairs(ModBlocks.PALM_STAIRS)
+                .slab(ModBlocks.PALM_SLAB)
+                .button(ModBlocks.PALM_BUTTON)
+                .fence(ModBlocks.PALM_FENCE)
+                .fenceGate(ModBlocks.PALM_FENCE_GATE)
+                .pressurePlate(ModBlocks.PALM_PRESSURE_PLATE);
+        createSign(ModBlocks.PALM_SIGN, ModBlocks.WALL_PALM_SIGN, ModBlocks.PALM_PLANKS, blockModelGenerators);
+        createHangingSign(ModBlocks.HANGING_PALM_SIGN, ModBlocks.HANGING_WALL_PALM_SIGN, ModBlocks.STRIPPED_PALM_LOG, BlockFamily.Variant.WALL_HANGING_SIGN, blockModelGenerators);
+        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.PALM_SAPLING, ModBlocks.POTTED_PALM_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModelGenerators.createTrivialCube(ModBlocks.PALM_LEAVES);
+        blockModelGenerators.createDoor(ModBlocks.PALM_DOOR);
+        blockModelGenerators.createTrapdoor(ModBlocks.PALM_TRAPDOOR);
+        blockModelGenerators.woodProvider(ModBlocks.PALM_LOG).log(ModBlocks.PALM_LOG).wood(ModBlocks.PALM_WOOD);
+        blockModelGenerators.woodProvider(ModBlocks.STRIPPED_PALM_LOG).log(ModBlocks.STRIPPED_PALM_LOG).wood(ModBlocks.STRIPPED_PALM_WOOD);
+        blockModelGenerators.createShelf(ModBlocks.PALM_SHELF, ModBlocks.STRIPPED_PALM_LOG);
+
         blockModelGenerators.family(ModBlocks.TENEBRIS_PLANKS)
                 .stairs(ModBlocks.TENEBRIS_STAIRS)
                 .slab(ModBlocks.TENEBRIS_SLAB)
@@ -120,6 +137,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PALM_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PALM_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
     }
 
     public void createSign(Block standingSign, Block wallSign, Block baseBlock, BlockModelGenerators generator) {

@@ -27,6 +27,17 @@ public class ModEntities {
                     .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10)
     );
 
+    public static final EntityType<Boat> PALM_BOAT = create(
+            "palm_boat",
+            EntityType.Builder.of(boatFactory(() -> ModItems.PALM_BOAT), MobCategory.MISC)
+                    .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10)
+    );
+    public static final EntityType<ChestBoat> PALM_CHEST_BOAT = create(
+            "palm_chest_boat",
+            EntityType.Builder.of(chestBoatFactory(() -> ModItems.PALM_CHEST_BOAT), MobCategory.MISC)
+                    .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10)
+    );
+
     private static EntityType.EntityFactory<Boat> boatFactory(final Supplier<Item> boatItem) {
         return (entityType, level) -> new Boat(entityType, level, boatItem);
     }
