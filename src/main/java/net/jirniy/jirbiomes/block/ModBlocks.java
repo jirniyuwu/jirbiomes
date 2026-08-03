@@ -3,29 +3,25 @@ package net.jirniy.jirbiomes.block;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.custom.*;
-import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.particle.ModParticles;
+import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
 import net.jirniy.jirbiomes.worldgen.ModTreeGrowers;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Function;
 
@@ -49,7 +45,7 @@ public class ModBlocks {
             new Block(properties.strength(0.4f)
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
     public static final Block DRIED_GRASS_BLOCK = registerBlock("dried_grass_block", properties ->
-            new CustomGrassBlock(getKey(DRIED_DIRT), true, properties.strength(0.4f).randomTicks()
+            new CustomGrassBlock(getKey(DRIED_DIRT), VegetationPlacements.GRASS_BONEMEAL, properties.strength(0.4f).randomTicks()
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
     public static final Block DRY_FARMLAND = registerBlock("dry_farmland", properties ->
             new CustomFarmlandBlock(DRIED_DIRT, properties.strength(0.4f).randomTicks()
@@ -68,7 +64,7 @@ public class ModBlocks {
             new Block(properties.strength(0.6f).speedFactor(0.98f)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
     public static final Block WET_GRASS_BLOCK = registerBlock("wet_grass_block", properties ->
-            new CustomGrassBlock(getKey(WETLAND), true, properties.strength(0.6f).speedFactor(0.98f).randomTicks()
+            new CustomGrassBlock(getKey(WETLAND), VegetationPlacements.GRASS_BONEMEAL, properties.strength(0.6f).speedFactor(0.98f).randomTicks()
                     .mapColor(MapColor.GRASS).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
     public static final Block WET_FARMLAND = registerBlock("wet_farmland", properties ->
             new CustomFarmlandBlock(WETLAND, properties.strength(0.6f).randomTicks().speedFactor(0.98f)
@@ -166,7 +162,7 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
 
     public static final Block BRIMGRASS_BLOCK = registerBlock("brimgrass_block", properties ->
-            new CustomGrassBlock(getKey(BRIMSTONE), false, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()
+            new CustomGrassBlock(getKey(BRIMSTONE), ModPlacedFeatures.BRIMGRASS_BONEMEAL, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.NETHER_SPROUTS)));
     public static final Block BRIMGRASS = registerBlock("brimgrass", properties ->
             new GenericGrassBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS)

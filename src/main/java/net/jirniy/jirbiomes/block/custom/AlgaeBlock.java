@@ -137,7 +137,7 @@ public class AlgaeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.03f) {
+        if (level.getRawBrightness(pos, 0) >= 11 && random.nextFloat() < 0.03f) {
             grow(level, pos, state, random);
         }
         super.randomTick(state, level, pos, random);

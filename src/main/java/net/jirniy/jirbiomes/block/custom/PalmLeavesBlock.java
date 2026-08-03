@@ -24,13 +24,10 @@ public class PalmLeavesBlock extends UntintedParticleLeavesBlock implements Bone
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        super.randomTick(state, level, pos, random);
-        List<Direction> directionsToGrow = directionsToGrow(level, pos);
-        if (level.getBlockState(pos.below()).isAir() && random.nextFloat() < 0.02f && directionsToGrow.isEmpty()) {
-            BlockState coconutState = ModBlocks.COCONUT_PLANT.defaultBlockState();
-            level.setBlockAndUpdate(pos.below(), coconutState
-                    .setValue(CocoaBlock.FACING, directionsToGrow.get(random.nextInt(0, directionsToGrow.size()))));
+        if (random.nextFloat() < 0.02f && level.getBlockState(pos.below()).isAir() && level.getRawBrightness(pos, 0) >= 9 && !directionsToGrow(level, pos).isEmpty()) {
+            grow(level, random, pos);
         }
+        super.randomTick(state, level, pos, random);
     }
 
     @Override
@@ -45,6 +42,15 @@ public class PalmLeavesBlock extends UntintedParticleLeavesBlock implements Bone
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        grow(level, random, pos);
+    }
+
+    @Override
+    protected boolean isRandomlyTicking(BlockState state) {
+        return true;
+    }
+
+    protected void grow(ServerLevel level, RandomSource random, BlockPos pos) {
         BlockState coconutState = ModBlocks.COCONUT_PLANT.defaultBlockState();
         List<Direction> directionsToGrow = directionsToGrow(level, pos);
         level.setBlockAndUpdate(pos.below(), coconutState

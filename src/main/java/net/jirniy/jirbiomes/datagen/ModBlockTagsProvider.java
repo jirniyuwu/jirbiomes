@@ -37,6 +37,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.SALT_LAMP))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BRICKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS_WALL));
         tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.getKey(ModBlocks.COCONUT_PLANT))
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_STAIRS, ModBlocks.GINKGO_SLAB, ModBlocks.GINKGO_PRESSURE_PLATE, ModBlocks.GINKGO_BUTTON,

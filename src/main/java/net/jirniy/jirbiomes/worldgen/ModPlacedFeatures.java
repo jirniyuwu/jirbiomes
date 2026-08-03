@@ -26,6 +26,8 @@ import net.minecraft.world.level.material.Fluids;
 import java.util.List;
 
 public class ModPlacedFeatures {
+    public static final ResourceKey<PlacedFeature> NOOP = registryKey("noop");
+
     public static final ResourceKey<PlacedFeature> GINKGO_TREE_PLACED = registryKey("ginkgo_tree");
     public static final ResourceKey<PlacedFeature> GINKGO_TREE_BONUS_PLACED = registryKey("ginkgo_tree_bonus");
     public static final ResourceKey<PlacedFeature> PALM_TREE_PLACED = registryKey("palm_tree");
@@ -41,6 +43,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ALGAE_PATCH_PLACED = registryKey("algae_patch");
 
     public static final ResourceKey<PlacedFeature> BRIMGRASS_PLACED = registryKey("brimgrass_patch");
+    public static final ResourceKey<PlacedFeature> BRIMGRASS_BONEMEAL = registryKey("brimgrass_bonemeal");
     public static final ResourceKey<PlacedFeature> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
     public static final ResourceKey<PlacedFeature> TENEBRIS_PLACED = registryKey("tenebris_tree");
     public static final ResourceKey<PlacedFeature> TENEBRIS_BUD_PLACED = registryKey("tenebris_bud");
@@ -55,6 +58,8 @@ public class ModPlacedFeatures {
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+
+        register(context, NOOP, configuredFeatures.getOrThrow(ModConfiguredFeatures.NOOP));
 
         register(context, GINKGO_TREE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.OLD_GROWTH_GINKGO_TREE_BEES_005),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(), InSquarePlacement.spread(),
@@ -113,6 +118,7 @@ public class ModPlacedFeatures {
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                 ModBlocks.BRIMGRASS_BLOCK))));
+        register(context, BRIMGRASS_BONEMEAL, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRIMGRASS), PlacementUtils.isEmpty());
         register(context, TENEBRIS_BUD_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.TENEBRIS_BUD),
                 CountPlacement.of(14), RandomOffsetPlacement.ofTriangle(7, 3),
                 InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(4), PlacementUtils.FULL_RANGE,

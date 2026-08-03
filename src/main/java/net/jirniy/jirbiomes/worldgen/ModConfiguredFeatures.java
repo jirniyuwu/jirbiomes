@@ -49,6 +49,8 @@ import java.util.List;
 import java.util.OptionalInt;
 
 public class ModConfiguredFeatures {
+    public static final ResourceKey<ConfiguredFeature<?, ?>> NOOP = registryKey("noop");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> NETHERSTONE = registryKey("netherstone");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMSTONE_PATCH = registryKey("brimstone_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> IGNITED_BRIMSTONE_PATCH = registryKey("ignited_brimstone_patch");
@@ -93,6 +95,9 @@ public class ModConfiguredFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
+
+        register(context, NOOP, Feature.NO_OP, new NoneFeatureConfiguration());
+
         BlockStateProvider belowTrunkProvider = TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(context.lookup(Registries.BIOME));
         BlockStateProvider palmTreeBelowTrunkProvider = new MapStateProvider(
                 new Block[]{Blocks.SAND, Blocks.GRASS_BLOCK, Blocks.DIRT, ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT, Blocks.WATER, Blocks.AIR},
