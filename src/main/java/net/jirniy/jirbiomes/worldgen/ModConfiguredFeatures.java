@@ -14,14 +14,13 @@ import net.jirniy.jirbiomes.worldgen.feature.PalmFoliagePlacer;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.TrapezoidInt;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
@@ -55,6 +54,11 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMSTONE_PATCH = registryKey("brimstone_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> IGNITED_BRIMSTONE_PATCH = registryKey("ignited_brimstone_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLD_BRIMSTONE = registryKey("brimstone_gold");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_TOP_LAYER = registryKey("ice_top_layer");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ICICLE_CLUSTER = registryKey("icicle_cluster");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_ICICLE = registryKey("large_icicle");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> POINTED_ICICLE = registryKey("pointed_icicle");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE = registryKey("ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE_BEES_005 = registryKey("ginkgo_tree_bees_005");
@@ -234,6 +238,44 @@ public class ModConfiguredFeatures {
                                 RandomOffsetPlacement.of(TrapezoidInt.of(-2, 2, 0), TrapezoidInt.of(-8, -1, 0)))
                 )
         ));
+
+        register(context, ICE_TOP_LAYER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                RuleBasedStateProvider.builder()
+                        .ifTrueThenProvide(BlockPredicate.allOf(BlockPredicate.matchesBlocks(Blocks.WATER),
+                                BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)), Blocks.ICE)
+                        .ifTrueThenProvide(BlockPredicate.allOf(BlockPredicate.matchesBlocks(Blocks.LAVA),
+                                BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)), Blocks.MAGMA_BLOCK).build()
+        ));
+        // copied from dripstone features
+        register(context, ICICLE_CLUSTER, Feature.SPELEOTHEM_CLUSTER, new SpeleothemClusterConfiguration(
+                ModBlocks.PERMAFROST_BLOCK.defaultBlockState(), ModBlocks.ICICLE.defaultBlockState(),
+                blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE), 12, UniformInt.of(3, 6), UniformInt.of(2, 8),
+                1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F),
+                ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F),
+                0.1F, 3, 8));
+        FeatureUtils.register(context, LARGE_ICICLE, ModFeatures.LARGE_ICICLE, new LargeDripstoneConfiguration(
+                blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE), 30,
+                ClampedInt.of(UniformInt.of(3, 19), 3, 16),
+                UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F),
+                UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
+        FeatureUtils.register(context, POINTED_ICICLE, Feature.SIMPLE_RANDOM_SELECTOR, new CompositeFeatureConfiguration(
+                HolderSet.direct(PlacementUtils.inlinePlaced(Feature.SPELEOTHEM,
+                        new SpeleothemConfiguration(ModBlocks.PERMAFROST_BLOCK.defaultBlockState(),
+                                ModBlocks.ICICLE.defaultBlockState(),
+                                blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE),
+                                0.2F, 0.7F,
+                                0.5F, 0.5F),
+                                        EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(),
+                                                BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12),
+                                RandomOffsetPlacement.vertical(ConstantInt.of(1))),
+                        PlacementUtils.inlinePlaced(Feature.SPELEOTHEM,
+                                new SpeleothemConfiguration(ModBlocks.PERMAFROST_BLOCK.defaultBlockState(),
+                                        ModBlocks.ICICLE.defaultBlockState(), blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE),
+                                        0.2F, 0.7F,
+                                        0.5F, 0.5F),
+                                                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(),
+                                                        BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12),
+                                        RandomOffsetPlacement.vertical(ConstantInt.of(-1))))));
 
         register(context, BARREL_CACTUS, Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(

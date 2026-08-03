@@ -33,6 +33,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL))
+                .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
+                .add(ModBlocks.getKeys(ModBlocks.POLISHED_FROST, ModBlocks.POLISHED_FROST_STAIRS, ModBlocks.POLISHED_FROST_SLAB, ModBlocks.POLISHED_FROST_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS, ModBlocks.FROST_BRICKS_STAIRS, ModBlocks.FROST_BRICKS_SLAB, ModBlocks.FROST_BRICKS_WALL))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.SALT_LAMP))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BRICKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS_WALL));
@@ -152,13 +155,16 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS)).add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
+                .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS_STAIRS, ModBlocks.POLISHED_FROST_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_STAIRS));
         tag(BlockTags.SLABS)
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB))
-                .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_SLAB));;
+                .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS_SLAB, ModBlocks.POLISHED_FROST_SLAB))
+                .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_SLAB));
         tag(BlockTags.WALLS)
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
-                .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_WALL));;
+                .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS_WALL, ModBlocks.POLISHED_FROST_WALL))
+                .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_WALL));
 
         tag(BlockTags.BEE_ATTRACTIVE)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES));
@@ -226,6 +232,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));
         tag(BlockTags.FLOWERS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SAPLING));
+        tag(BlockTags.SPELEOTHEMS)
+                .add(ModBlocks.getKey(ModBlocks.ICICLE));
 
         tag(ModTags.Blocks.BARREL_CACTUSES)
                 .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS))
@@ -288,5 +296,14 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
+        tag(BlockTags.BASE_STONE_OVERWORLD)
+                .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE));
+        tag(BlockTags.STONE_ORE_REPLACEABLES)
+                .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE));
+        tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
+                .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE));
+        tag(BlockTags.DRIPSTONE_REPLACEABLE)
+                .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
+                .add(ModBlocks.getKey(Blocks.PACKED_ICE));
     }
 }

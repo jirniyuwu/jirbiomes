@@ -11,8 +11,10 @@ import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.ClampedNormalInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -41,6 +43,11 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> CATTAIL_PATCH_PLACED = registryKey("cattail_patch");
     public static final ResourceKey<PlacedFeature> ALGAE_PATCH_PLACED = registryKey("algae_patch");
+
+    public static final ResourceKey<PlacedFeature> ICE_TOP_LAYER = registryKey("ice_top_layer");
+    public static final ResourceKey<PlacedFeature> ICICLE_CLUSTER_PLACED = registryKey("icicle_cluster");
+    public static final ResourceKey<PlacedFeature> LARGE_ICICLE_PLACED = registryKey("large_icicle");
+    public static final ResourceKey<PlacedFeature> POINTED_ICICLE_PLACED = registryKey("pointed_icicle");
 
     public static final ResourceKey<PlacedFeature> BRIMGRASS_PLACED = registryKey("brimgrass_patch");
     public static final ResourceKey<PlacedFeature> BRIMGRASS_BONEMEAL = registryKey("brimgrass_bonemeal");
@@ -79,6 +86,23 @@ public class ModPlacedFeatures {
         register(context, PALM_TREE_OCEAN_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PALM_COCONUT_TREE),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), CountPlacement.of(UniformInt.of(1, 3)), InSquarePlacement.spread(),
                 BiomeFilter.biome(), PlacementUtils.filteredByBlockSurvival(ModBlocks.PALM_SAPLING));
+
+        register(context, ICE_TOP_LAYER, configuredFeatures.getOrThrow(ModConfiguredFeatures.ICE_TOP_LAYER),
+                CountPlacement.of(UniformInt.of(1024, 1546)), InSquarePlacement.spread(),
+                HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(20), VerticalAnchor.absolute(100)), EnvironmentScanPlacement.scanningFor(
+                        Direction.DOWN, BlockPredicate.matchesBlocks(Blocks.WATER), 9),
+                BiomeFilter.biome());
+        register(context, ICICLE_CLUSTER_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.ICICLE_CLUSTER),
+                CountPlacement.of(UniformInt.of(48, 96)), InSquarePlacement.spread(),
+                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
+        register(context, LARGE_ICICLE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.LARGE_ICICLE),
+                CountPlacement.of(UniformInt.of(10, 48)), InSquarePlacement.spread(),
+                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
+        register(context, POINTED_ICICLE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.POINTED_ICICLE),
+                CountPlacement.of(UniformInt.of(192, 256)), InSquarePlacement.spread(),
+                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, CountPlacement.of(UniformInt.of(1, 5)),
+                RandomOffsetPlacement.of(ClampedNormalInt.of(0.0F, 3.0F, -10, 10),
+                        ClampedNormalInt.of(0.0F, 0.6F, -2, 2)), BiomeFilter.biome());
 
         register(context, DRIED_GRASS_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.DRIED_GRASS_PATCH),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(),

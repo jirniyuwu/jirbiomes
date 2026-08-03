@@ -41,6 +41,7 @@ public class ModSurfaceRules {
 
     public static RuleSource overworldRules(HolderGetter<Biome> biomes) {;
         SurfaceRules.ConditionSource notUnderDeepWater = SurfaceRules.waterStartCheck(-6, -1);
+        SurfaceRules.ConditionSource deepslate = SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8));
 
         return sequence(
                 ifTrue(verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK),
@@ -60,7 +61,15 @@ public class ModSurfaceRules {
                                 )),
                                 ifTrue(DEEP_UNDER_FLOOR, makeStateRule(Blocks.SANDSTONE))
                         ))
-                    ))
+                    )),
+
+                ifTrue(isBiome(biomes, ModBiomes.PERMAFROST_CAVES), sequence(
+                        ifTrue(noiseCondition3d(Noises.ICE, 0.01f),
+                                ifTrue(ON_FLOOR, makeStateRule(Blocks.SNOW_BLOCK))),
+                        ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.0f, 0.2f),
+                                makeStateRule(Blocks.PACKED_ICE))),
+                        ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.2f, 0.4f),
+                                makeStateRule(ModBlocks.FROSTED_STONE)))))
         );
     }
 

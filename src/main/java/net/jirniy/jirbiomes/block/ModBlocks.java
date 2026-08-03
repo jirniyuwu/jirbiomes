@@ -168,6 +168,44 @@ public class ModBlocks {
             new GenericGrassBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS)
                     .offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY)));
 
+    public static final Block PERMAFROST_BLOCK = registerBlock("permafrost_block", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).friction(0.98f)
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().strength(4.5F, 7.0F)));
+    public static final Block ICICLE = registerBlock("icicle", properties ->
+            new PointedDripstoneBlock(PERMAFROST_BLOCK.defaultBlockState(), properties.mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM).noOcclusion()
+                    .sound(SoundType.GLASS).randomTicks().strength(0.5F, 0.2F)
+                    .dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)
+                    .isRedstoneConductor(Blocks::never).noOcclusion().friction(0.98f)));
+
+    public static final Block FROSTED_STONE = registerBlock("frosted_stone", properties ->
+            new Block(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(1.4F).sound(SoundType.STONE)));
+    public static final Block POLISHED_FROST = registerBlock("polished_frost", properties ->
+            new Block(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.STONE)));
+    public static final Block POLISHED_FROST_STAIRS = registerBlock("polished_frost_stairs", properties ->
+            new StairBlock(POLISHED_FROST.defaultBlockState(), properties.mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.STONE)));
+    public static final Block POLISHED_FROST_SLAB = registerBlock("polished_frost_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.STONE)));
+    public static final Block POLISHED_FROST_WALL = registerBlock("polished_frost_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.STONE)));
+    public static final Block FROST_BRICKS = registerBlock("frost_bricks", properties ->
+            new Block(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.STONE)));
+    public static final Block FROST_BRICKS_STAIRS = registerBlock("frost_bricks_stairs", properties ->
+            new StairBlock(FROST_BRICKS.defaultBlockState(), properties.mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.STONE)));
+    public static final Block FROST_BRICKS_SLAB = registerBlock("frost_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.STONE)));
+    public static final Block FROST_BRICKS_WALL = registerBlock("frost_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.STONE)));
+
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->
             new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));
     public static final Block GINKGO_WOOD = registerBlock("ginkgo_wood", properties ->

@@ -54,6 +54,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
                 oreSmelting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, BASE_COOKING_TIME, "netherstone");
                 oreBlasting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, BASE_SMELTING_TIME, "netherstone");
+                oreSmelting(List.of(ModBlocks.FROSTED_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, Blocks.STONE, 0, BASE_COOKING_TIME, "netherstone");
+                oreBlasting(List.of(ModBlocks.FROSTED_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, Blocks.STONE, 0, BASE_SMELTING_TIME, "netherstone");
 
                 oreSmelting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, BASE_COOKING_TIME, "gold_ingot");
                 oreBlasting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, BASE_SMELTING_TIME, "gold_ingot");
@@ -85,6 +87,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.COCONUT), has(ModItems.COCONUT))
                         .unlockedBy(getHasName(ModItems.CRACKED_COCONUT), has(ModItems.CRACKED_COCONUT))
                         .save(output, "cracked_coconut");
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ICICLE, 4)
+                        .pattern("I")
+                        .pattern("I")
+                        .define('I', Blocks.ICE)
+                        .unlockedBy(getHasName(ModBlocks.ICICLE), has(ModBlocks.ICICLE))
+                        .unlockedBy(getHasName(Blocks.ICE), has(Blocks.ICE))
+                        .group("speleothem").save(output, "icicle");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PERMAFROST_BLOCK, 1)
+                        .pattern("BB")
+                        .pattern("BB")
+                        .define('B', Blocks.BLUE_ICE)
+                        .unlockedBy(getHasName(ModBlocks.PERMAFROST_BLOCK), has(ModBlocks.PERMAFROST_BLOCK))
+                        .unlockedBy(getHasName(Blocks.BLUE_ICE), has(Blocks.BLUE_ICE))
+                        .save(output, "permafrost_block");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DRIED_DIRT, 4)
                         .pattern("DS")
@@ -143,6 +160,50 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.SALT_BLOCK), has(ModBlocks.SALT_BLOCK))
                         .unlockedBy(getHasName(ModBlocks.SALT_LAMP), has(ModBlocks.SALT_LAMP))
                         .save(output, "salt_lamp");
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROSTED_STONE, 4)
+                        .pattern("BI")
+                        .pattern("IB")
+                        .define('I', Blocks.ICE)
+                        .define('B', Blocks.STONE)
+                        .unlockedBy(getHasName(Blocks.ICE), has(Blocks.ICE))
+                        .unlockedBy(getHasName(ModBlocks.FROSTED_STONE), has(ModBlocks.FROSTED_STONE))
+                        .save(output, "frosted_stone");
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FROST, Ingredient.of(ModBlocks.FROSTED_STONE))
+                        .unlockedBy(getHasName(ModBlocks.FROSTED_STONE), has(ModBlocks.FROSTED_STONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_FROST), has(ModBlocks.POLISHED_FROST))
+                        .group("polished").save(output, "polished_frost");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FROST, ModBlocks.FROSTED_STONE);
+                stairBuilder(ModBlocks.POLISHED_FROST_STAIRS, Ingredient.of(ModBlocks.POLISHED_FROST))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_FROST), has(ModBlocks.POLISHED_FROST))
+                        .group("stairs").save(output, "polished_frost_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FROST_STAIRS, ModBlocks.POLISHED_FROST);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FROST_SLAB, Ingredient.of(ModBlocks.POLISHED_FROST))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_FROST), has(ModBlocks.POLISHED_FROST))
+                        .group("slabs").save(output, "polished_frost_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FROST_SLAB, ModBlocks.POLISHED_FROST, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FROST_WALL, Ingredient.of(ModBlocks.POLISHED_FROST))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_FROST), has(ModBlocks.POLISHED_FROST))
+                        .group("walls").save(output, "polished_frost_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FROST_WALL, ModBlocks.POLISHED_FROST);
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS, Ingredient.of(ModBlocks.POLISHED_FROST))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_FROST), has(ModBlocks.POLISHED_FROST))
+                        .unlockedBy(getHasName(ModBlocks.FROST_BRICKS), has(ModBlocks.FROST_BRICKS))
+                        .group("bricks").save(output, "frost_bricks");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS, ModBlocks.FROSTED_STONE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS, ModBlocks.POLISHED_FROST);
+                stairBuilder(ModBlocks.FROST_BRICKS_STAIRS, Ingredient.of(ModBlocks.FROST_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.FROST_BRICKS), has(ModBlocks.FROST_BRICKS))
+                        .group("stairs").save(output, "frost_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS_STAIRS, ModBlocks.FROST_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS_SLAB, Ingredient.of(ModBlocks.FROST_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.FROST_BRICKS), has(ModBlocks.FROST_BRICKS))
+                        .group("slabs").save(output, "frost_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS_SLAB, ModBlocks.FROST_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS_WALL, Ingredient.of(ModBlocks.FROST_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.FROST_BRICKS), has(ModBlocks.FROST_BRICKS))
+                        .group("walls").save(output, "frost_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS_WALL, ModBlocks.FROST_BRICKS);
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.IGNITED_BRIMSTONE, 4)
                         .requires(Blocks.MAGMA_BLOCK).requires(ModBlocks.BRIMSTONE)

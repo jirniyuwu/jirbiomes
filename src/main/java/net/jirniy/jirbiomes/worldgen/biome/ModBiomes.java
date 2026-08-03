@@ -9,6 +9,7 @@ import terrablender.api.Regions;
 
 public class ModBiomes {
     public static final ResourceKey<Biome> SALT_DEPOSIT = registerBiomeKey("salt_deposit");
+    public static final ResourceKey<Biome> PERMAFROST_CAVES = registerBiomeKey("permafrost_caves");
     public static final ResourceKey<Biome> BRIMSTONE_CRAGS = registerBiomeKey("brimstone_crags");
 
     public static void registerBiomes() {
@@ -22,6 +23,7 @@ public class ModBiomes {
 
         register(context, BRIMSTONE_CRAGS, ModNetherBiomes.brimstoneCrags(placedFeatures, carvers));
         register(context, SALT_DEPOSIT, ModOverworldBiomes.saltDeposit(placedFeatures, carvers));
+        register(context, PERMAFROST_CAVES, ModOverworldBiomes.permafrostCaves(placedFeatures, carvers));
     }
 
     private static void register(BootstrapContext<Biome> context, ResourceKey<Biome> key, Biome biome) {

@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "jirbiomes:salt_deposit",
     "jirbiomes:permafrost_caves"
   ]
 }

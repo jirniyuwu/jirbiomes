@@ -29,8 +29,17 @@ public class OverworldRegion extends Region {
                 .erosion(Erosion.EROSION_6, Erosion.EROSION_5)
                 .depth(Depth.FULL_RANGE)
                 .weirdness(Weirdness.VALLEY, Weirdness.LOW_SLICE_VARIANT_ASCENDING)
-                .offset(0.26f)
+                .offset(0.24f)
                 .build().forEach(point -> builder.add(point, ModBiomes.SALT_DEPOSIT));
+        new ParameterPointListBuilder()
+                .temperature(Temperature.FROZEN)
+                .humidity(Humidity.FULL_RANGE)
+                .continentalness(Continentalness.OCEAN, Continentalness.COAST, Continentalness.NEAR_INLAND, Continentalness.MID_INLAND)
+                .erosion(Erosion.FULL_RANGE)
+                .depth(Depth.UNDERGROUND)
+                .weirdness(Weirdness.FULL_RANGE)
+                .offset(0f)
+                .build().forEach(point -> builder.add(point, ModBiomes.PERMAFROST_CAVES));
         builder.build().forEach(mapper);
     }
 }

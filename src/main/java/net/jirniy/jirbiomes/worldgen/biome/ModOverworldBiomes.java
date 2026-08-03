@@ -4,6 +4,9 @@ import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -29,6 +32,32 @@ public class ModOverworldBiomes {
 
         return biome
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x91c2ed)).build())
+                .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
+                .build();
+    }
+
+    public static Biome permafrostCaves(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        Biome.BiomeBuilder biome = OverworldBiomes.baseBiome(0.0f, 0.5f);
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.dripstoneCavesSpawns(mobs);
+        BiomeDefaultFeatures.snowySpawns(mobs, false);
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        OverworldBiomes.globalOverworldGeneration(generation);
+        BiomeDefaultFeatures.addPlainGrass(generation);
+        BiomeDefaultFeatures.addFrozenSprings(generation);
+        BiomeDefaultFeatures.addDefaultOres(generation, true);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+        BiomeDefaultFeatures.addPlainVegetation(generation);
+        BiomeDefaultFeatures.addDefaultMushrooms(generation);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(generation, false);
+        generation.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.LARGE_ICICLE_PLACED)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.ICICLE_CLUSTER_PLACED)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.POINTED_ICICLE_PLACED)
+                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ICE_TOP_LAYER);
+
+        return biome
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
+                .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x8fabf2)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();
     }

@@ -40,6 +40,9 @@ public class ModModelProvider extends FabricModelProvider {
                 .stairs(ModBlocks.SALT_BRICKS_STAIRS)
                 .slab(ModBlocks.SALT_BRICKS_SLAB);
 
+        blockModelGenerators.createTrivialBlock(ModBlocks.PERMAFROST_BLOCK, TexturedModel.COLUMN_WITH_WALL);
+        blockModelGenerators.createSpeleothem(ModBlocks.ICICLE);
+
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.BRIMSTONE,
                 BlockModelGenerators.createRotatedVariants(BlockModelGenerators.plainModel(
                         TexturedModel.COLUMN_WITH_WALL.create(ModBlocks.BRIMSTONE, blockModelGenerators.modelOutput)))));
@@ -65,6 +68,16 @@ public class ModModelProvider extends FabricModelProvider {
                 .wall(ModBlocks.BRIMSTONE_BRICKS_WALL)
                 .stairs(ModBlocks.BRIMSTONE_BRICKS_STAIRS)
                 .slab(ModBlocks.BRIMSTONE_BRICKS_SLAB);
+
+        blockModelGenerators.createTrivialCube(ModBlocks.FROSTED_STONE);
+        blockModelGenerators.family(ModBlocks.POLISHED_FROST)
+                .wall(ModBlocks.POLISHED_FROST_WALL)
+                .stairs(ModBlocks.POLISHED_FROST_STAIRS)
+                .slab(ModBlocks.POLISHED_FROST_SLAB);
+        blockModelGenerators.family(ModBlocks.FROST_BRICKS)
+                .wall(ModBlocks.FROST_BRICKS_WALL)
+                .stairs(ModBlocks.FROST_BRICKS_STAIRS)
+                .slab(ModBlocks.FROST_BRICKS_SLAB);
 
         blockModelGenerators.family(ModBlocks.GINKGO_PLANKS)
                 .stairs(ModBlocks.GINKGO_STAIRS)
@@ -136,6 +149,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModBlocks.TENEBRIS_LEAVES.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.SALT_LAMP.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModBlocks.ICICLE.asItem(), ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
