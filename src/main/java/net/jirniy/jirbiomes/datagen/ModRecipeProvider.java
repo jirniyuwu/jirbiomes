@@ -52,8 +52,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         Items.DRY_TALL_GRASS
                 );
 
-                oreSmelting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, BASE_COOKING_TIME, "netherstone");
-                oreBlasting(List.of(Blocks.NETHERRACK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.NETHERSTONE, 0, BASE_SMELTING_TIME, "netherstone");
                 oreSmelting(List.of(ModBlocks.FROSTED_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, Blocks.STONE, 0, BASE_COOKING_TIME, "netherstone");
                 oreBlasting(List.of(ModBlocks.FROSTED_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, Blocks.STONE, 0, BASE_SMELTING_TIME, "netherstone");
 
@@ -87,6 +85,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.COCONUT), has(ModItems.COCONUT))
                         .unlockedBy(getHasName(ModItems.CRACKED_COCONUT), has(ModItems.CRACKED_COCONUT))
                         .save(output, "cracked_coconut");
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE, 4)
+                        .pattern("SS")
+                        .pattern("SS")
+                        .define('S', Blocks.NETHERRACK)
+                        .unlockedBy(getHasName(Blocks.NETHERRACK), has(Blocks.NETHERRACK))
+                        .unlockedBy(getHasName(ModBlocks.NETHERSTONE), has(ModBlocks.NETHERSTONE))
+                        .save(output, "netherstone");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ICICLE, 4)
                         .pattern("I")

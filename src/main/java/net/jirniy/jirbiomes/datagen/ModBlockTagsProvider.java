@@ -33,6 +33,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL))
+                .add(ModBlocks.getKey(ModBlocks.PERMAFROST_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_FROST, ModBlocks.POLISHED_FROST_STAIRS, ModBlocks.POLISHED_FROST_SLAB, ModBlocks.POLISHED_FROST_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS, ModBlocks.FROST_BRICKS_STAIRS, ModBlocks.FROST_BRICKS_SLAB, ModBlocks.FROST_BRICKS_WALL))
@@ -65,6 +66,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.POLISHED_BRIMSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.BRIMSTONE_BRICKS_WALL));
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.getKey(ModBlocks.PERMAFROST_BLOCK));
 
         tag(ModTags.Blocks.DRIED_DIRT)
                 .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT, ModBlocks.COARSE_DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.DRIED_GRASS_BLOCK));
