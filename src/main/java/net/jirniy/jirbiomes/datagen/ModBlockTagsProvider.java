@@ -41,6 +41,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.SALT_LAMP))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BRICKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS_WALL));
         tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.getKey(ModBlocks.STRAW_BLOCK))
+                .add(ModBlocks.getKeys(ModBlocks.PACKED_STRAW, ModBlocks.PACKED_STRAW_SLAB, ModBlocks.PACKED_STRAW_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.COCONUT_PLANT))
                 .addOptionalTag(ModTags.Blocks.GINKGO_LOGS)
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
@@ -55,6 +57,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_STAIRS, ModBlocks.TENEBRIS_SLAB, ModBlocks.TENEBRIS_PRESSURE_PLATE, ModBlocks.TENEBRIS_BUTTON,
                         ModBlocks.TENEBRIS_FENCE, ModBlocks.TENEBRIS_FENCE_GATE, ModBlocks.TENEBRIS_TRAPDOOR, ModBlocks.TENEBRIS_DOOR));
         tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.getKey(ModBlocks.STRAW_BLOCK))
+                .add(ModBlocks.getKeys(ModBlocks.PACKED_STRAW, ModBlocks.PACKED_STRAW_SLAB, ModBlocks.PACKED_STRAW_STAIRS))
                 .add(ModBlocks.getKeys(ModBlocks.PRICKLY_PEAR_SEED, ModBlocks.SMALL_BARREL_CACTUS, ModBlocks.LARGE_BARREL_CACTUS));
 
         tag(BlockTags.NEEDS_STONE_TOOL)
@@ -157,10 +161,12 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_PALM_SIGN));
 
         tag(BlockTags.STAIRS)
+                .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_STAIRS))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS)).add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS_STAIRS, ModBlocks.POLISHED_FROST_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_STAIRS));
         tag(BlockTags.SLABS)
+                .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS_SLAB, ModBlocks.POLISHED_FROST_SLAB))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_SLAB));

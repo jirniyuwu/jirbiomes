@@ -65,9 +65,15 @@ public class RegistryModifications {
         FuelValueEvents.BUILD.register((builder, context) -> {
             final int BASE_TIME = context.baseSmeltTime();
             builder.add(ModItems.DRIED_FIBERS, BASE_TIME/6);
+            builder.add(ModBlocks.STRAW_BLOCK, BASE_TIME);
         });
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CATTAIL, 40, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModTags.Blocks.BARREL_CACTUSES, 40, 60);
+
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRAW_BLOCK, 40, 100);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW, 20, 40);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_SLAB, 20, 40);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_STAIRS, 20, 40);
     }
 }

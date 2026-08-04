@@ -33,6 +33,11 @@
   "block.jirbiomes.salt_bricks_stairs": "Salt Brick Stairs",
   "block.jirbiomes.salt_bricks_wall": "Salt Brick Wall",
 
+  "block.jirbiomes.straw_block": "Straw Block",
+  "block.jirbiomes.packed_straw": "Packed Straw",
+  "block.jirbiomes.packed_straw_slab": "Packed Straw Slab",
+  "block.jirbiomes.packed_straw_stairs": "Packed Straw Stairs",
+
   "block.jirbiomes.permafrost_block": "Permafrost",
   "block.jirbiomes.icicle": "Icicle",
 

@@ -77,6 +77,11 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.POLISHED_FROST_SLAB, this::createSlabItemTable);
         dropSelf(ModBlocks.POLISHED_FROST_WALL);
 
+        dropSelf(ModBlocks.STRAW_BLOCK);
+        dropSelf(ModBlocks.PACKED_STRAW);
+        dropSelf(ModBlocks.PACKED_STRAW_STAIRS);
+        add(ModBlocks.PACKED_STRAW_SLAB, this::createSlabItemTable);
+
         add(ModBlocks.BRIMGRASS_BLOCK, silkTouchOrElseDrop(ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE));
         dropWhenSilkTouch(ModBlocks.BRIMGRASS);
         dropSelf(ModBlocks.CHISELED_BRIMSTONE_BRICKS);

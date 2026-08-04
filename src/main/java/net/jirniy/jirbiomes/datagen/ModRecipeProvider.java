@@ -94,6 +94,27 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.NETHERSTONE), has(ModBlocks.NETHERSTONE))
                         .save(output, "netherstone");
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRAW_BLOCK, 1)
+                        .pattern("SS")
+                        .pattern("SS")
+                        .define('S', ModItems.DRIED_FIBERS)
+                        .unlockedBy(getHasName(ModItems.DRIED_FIBERS), has(ModItems.DRIED_FIBERS))
+                        .unlockedBy(getHasName(ModBlocks.STRAW_BLOCK), has(ModBlocks.STRAW_BLOCK))
+                        .save(output, "straw_block");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PACKED_STRAW, 4)
+                        .pattern("SS")
+                        .pattern("SS")
+                        .define('S', ModBlocks.STRAW_BLOCK)
+                        .unlockedBy(getHasName(ModBlocks.PACKED_STRAW), has(ModBlocks.PACKED_STRAW))
+                        .unlockedBy(getHasName(ModBlocks.STRAW_BLOCK), has(ModBlocks.STRAW_BLOCK))
+                        .save(output, "packed_straw");
+                stairBuilder(ModBlocks.PACKED_STRAW_STAIRS, Ingredient.of(ModBlocks.PACKED_STRAW))
+                        .unlockedBy(getHasName(ModBlocks.PACKED_STRAW), has(ModBlocks.PACKED_STRAW))
+                        .group("stairs").save(output, "packed_straw_stairs");
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PACKED_STRAW_SLAB, Ingredient.of(ModBlocks.PACKED_STRAW))
+                        .unlockedBy(getHasName(ModBlocks.PACKED_STRAW), has(ModBlocks.PACKED_STRAW))
+                        .group("slabs").save(output, "packed_straw_slab");
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ICICLE, 4)
                         .pattern("I")
                         .pattern("I")

@@ -69,6 +69,11 @@ public class ModModelProvider extends FabricModelProvider {
                 .stairs(ModBlocks.BRIMSTONE_BRICKS_STAIRS)
                 .slab(ModBlocks.BRIMSTONE_BRICKS_SLAB);
 
+        blockModelGenerators.woodProvider(ModBlocks.STRAW_BLOCK).log(ModBlocks.STRAW_BLOCK);
+        blockModelGenerators.family(ModBlocks.PACKED_STRAW)
+                .stairs(ModBlocks.PACKED_STRAW_STAIRS)
+                .slab(ModBlocks.PACKED_STRAW_SLAB);
+
         blockModelGenerators.createTrivialCube(ModBlocks.FROSTED_STONE);
         blockModelGenerators.family(ModBlocks.POLISHED_FROST)
                 .wall(ModBlocks.POLISHED_FROST_WALL)

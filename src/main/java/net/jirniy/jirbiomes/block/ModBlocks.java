@@ -73,6 +73,19 @@ public class ModBlocks {
             new CustomPathBlock(WETLAND, properties.strength(0.8f).isViewBlocking(Blocks::always).isSuffocating(Blocks::always)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
 
+    public static final Block STRAW_BLOCK = registerBlock("straw_block", properties ->
+            new RotatedPillarBlock(properties.strength(0.8f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
+                    .pushReaction(PushReaction.NORMAL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
+    public static final Block PACKED_STRAW = registerBlock("packed_straw", properties ->
+            new Block(properties.strength(0.95f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
+                    .pushReaction(PushReaction.NORMAL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
+    public static final Block PACKED_STRAW_STAIRS = registerBlock("packed_straw_stairs", properties ->
+            new StairBlock(PACKED_STRAW.defaultBlockState(), properties.strength(0.95f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
+                    .pushReaction(PushReaction.NORMAL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
+    public static final Block PACKED_STRAW_SLAB = registerBlock("packed_straw_slab", properties ->
+            new SlabBlock(properties.strength(0.95f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
+                    .pushReaction(PushReaction.NORMAL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
+
     public static final Block CATTAIL = registerBlock("cattail", properties ->
             new CattailBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_BROWN).noCollision().noOcclusion().ignitedByLava()
                     .randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).sound(SoundType.CROP)));
