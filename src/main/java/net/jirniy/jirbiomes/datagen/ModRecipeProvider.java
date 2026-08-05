@@ -122,7 +122,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.ICICLE), has(ModBlocks.ICICLE))
                         .unlockedBy(getHasName(Blocks.ICE), has(Blocks.ICE))
                         .group("speleothem").save(output, "icicle");
-                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PERMAFROST_BLOCK, 1)
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PERMAFROST_BLOCK, 4)
                         .pattern("BB")
                         .pattern("BB")
                         .define('B', Blocks.BLUE_ICE)

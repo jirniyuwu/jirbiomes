@@ -26,6 +26,8 @@ public class ModTags {
         public static final TagKey<Block> GLOWSTONE_FEATURE_PLACEABLE = create("glowstone_feature_placeable");
         public static final TagKey<Block> BRIMSTONE_GOLD_REPLACEABLE = create("brimstone_gold_replaceable");
 
+        public static final TagKey<Block> FALLING_STALACTITE_NO_DROP = create("falling_stalactite_without_drop");
+
         private static TagKey<Block> create(final String name) {
             return TagKey.create(Registries.BLOCK, JirniyBiomes.id(name));
         }

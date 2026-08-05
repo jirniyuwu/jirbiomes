@@ -185,14 +185,14 @@ public class ModBlocks {
             new Block(properties.mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).friction(0.986f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().strength(4.5F, 7.0F)));
     public static final Block ICICLE = registerBlock("icicle", properties ->
-            new PointedDripstoneBlock(PERMAFROST_BLOCK.defaultBlockState(), properties.mapColor(MapColor.COLOR_LIGHT_BLUE)
+            new IcicleBlock(PERMAFROST_BLOCK.defaultBlockState(), properties.mapColor(MapColor.COLOR_LIGHT_BLUE)
                     .forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM).noOcclusion()
                     .sound(SoundType.GLASS).randomTicks().strength(0.5F, 0.2F)
                     .dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)
-                    .isRedstoneConductor(Blocks::never).noOcclusion().friction(0.98f)));
+                    .isRedstoneConductor(Blocks::never).noOcclusion().friction(0.986f)));
 
     public static final Block FROSTED_STONE = registerBlock("frosted_stone", properties ->
-            new Block(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).friction(0.78f)
+            new Block(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).friction(0.68f)
                     .requiresCorrectToolForDrops().strength(1.4F).sound(SoundType.STONE)));
     public static final Block POLISHED_FROST = registerBlock("polished_frost", properties ->
             new Block(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)

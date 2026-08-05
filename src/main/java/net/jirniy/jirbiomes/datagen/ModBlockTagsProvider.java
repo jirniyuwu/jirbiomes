@@ -275,6 +275,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(BlockTags.SUPPORTS_COCOA)
                 .addOptionalTag(ModTags.Blocks.PALM_LOGS);
+        tag(ModTags.Blocks.FALLING_STALACTITE_NO_DROP)
+                .add(ModBlocks.getKey(ModBlocks.ICICLE));
 
         tag(BlockTags.GOLD_ORES)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE));

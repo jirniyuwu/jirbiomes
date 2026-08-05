@@ -43,6 +43,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -59,6 +60,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ICICLE_CLUSTER = registryKey("icicle_cluster");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_ICICLE = registryKey("large_icicle");
     public static final ResourceKey<ConfiguredFeature<?, ?>> POINTED_ICICLE = registryKey("pointed_icicle");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_ICE_ORE = registryKey("blue_ice_ore");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE = registryKey("ginkgo_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO_TREE_BEES_005 = registryKey("ginkgo_tree_bees_005");
@@ -246,6 +248,12 @@ public class ModConfiguredFeatures {
                         .ifTrueThenProvide(BlockPredicate.allOf(BlockPredicate.matchesBlocks(Blocks.LAVA),
                                 BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)), Blocks.MAGMA_BLOCK).build()
         ));
+        register(context, BLUE_ICE_ORE, Feature.ORE, new OreConfiguration(
+                List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.BLUE_ICE.defaultBlockState()),
+                        OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.PACKED_ICE.defaultBlockState()),
+                        OreConfiguration.target(new BlockMatchTest(Blocks.PACKED_ICE), Blocks.BLUE_ICE.defaultBlockState())),
+                24, 0.6f));
+
         // copied from dripstone features
         register(context, ICICLE_CLUSTER, Feature.SPELEOTHEM_CLUSTER, new SpeleothemClusterConfiguration(
                 ModBlocks.PERMAFROST_BLOCK.defaultBlockState(), ModBlocks.ICICLE.defaultBlockState(),
