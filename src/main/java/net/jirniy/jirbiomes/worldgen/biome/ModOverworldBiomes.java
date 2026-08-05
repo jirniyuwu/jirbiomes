@@ -1,10 +1,12 @@
 package net.jirniy.jirbiomes.worldgen.biome;
 
+import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.AmbientParticle;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.biome.Biome;
@@ -58,6 +60,7 @@ public class ModOverworldBiomes {
 
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.SNOWFLAKE, 0.005f))
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x8fabf2)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();

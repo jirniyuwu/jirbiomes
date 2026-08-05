@@ -14,6 +14,7 @@ public class JirniyBiomesClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ParticleProviderRegistry.getInstance().register(ModParticles.GINKGO_LEAVES, FallingLeavesParticle.CherryProvider::new);
+        ParticleProviderRegistry.getInstance().register(ModParticles.SNOWFLAKE, FallingLeavesParticle.CherryProvider::new);
         ParticleProviderRegistry.getInstance().register(ModParticles.BRIMGRASS_SPORES, ModDripParticle.BrimgrassAmbientProvider::new);
 
         EntityRendererRegistryImpl.register(ModEntities.GINKGO_BOAT, context -> new BoatRenderer(context, ModModelLayers.GINKGO_BOAT));
