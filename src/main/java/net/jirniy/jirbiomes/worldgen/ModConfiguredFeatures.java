@@ -21,6 +21,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.*;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
@@ -302,9 +303,14 @@ public class ModConfiguredFeatures {
         register(context, BARREL_CACTUS_PATCH, Feature.SEQUENCE, new CompositeFeatureConfiguration(
                 HolderSet.direct(
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
-                                        RuleBasedStateProvider.builder(BlockStateProvider.simple(ModBlocks.DRIED_DIRT))
-                                                .ifTrueThenProvide(BlockPredicate.matchesTag(
-                                                BlockTags.SUPPORTS_CACTUS), ModBlocks.ROOTED_DRIED_DIRT).build()),
+                                        RuleBasedStateProvider.builder(BlockStateProvider.simple(ModBlocks.ROOTED_SAND))
+                                                .ifTrueThenProvide(BlockPredicate.matchesBiomes(
+                                                        HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(Biomes.BADLANDS),
+                                                                context.lookup(Registries.BIOME).getOrThrow(Biomes.ERODED_BADLANDS),
+                                                                context.lookup(Registries.BIOME).getOrThrow(Biomes.WOODED_BADLANDS))),
+                                                        ModBlocks.ROOTED_RED_SAND)
+                                                .ifTrueThenProvide(BlockPredicate.matchesBlocks(ModBlocks.DRIED_DIRT),
+                                                        ModBlocks.ROOTED_DRIED_DIRT).build()),
                                 CountPlacement.of(UniformInt.of(5, 12)), PlacementUtils.HEIGHTMAP,
                                 RandomOffsetPlacement.of(
                                         TrapezoidInt.of(-2, 2, 0),
@@ -328,24 +334,13 @@ public class ModConfiguredFeatures {
                 UniformInt.of(3, 7),
                 4
         ));
-        register(context, DRIED_GRASS_PATCH_DESERT, Feature.SEQUENCE, new CompositeFeatureConfiguration(
-                HolderSet.direct(
-                        PlacementUtils.inlinePlaced(Feature.DISK, new DiskConfiguration(
-                                RuleBasedStateProvider.ifTrueThenProvide(
-                                        BlockPredicate.matchesBlocks(Blocks.SAND),
-                                        ModBlocks.DRIED_DIRT),
-                                BlockPredicate.solid(),
-                                UniformInt.of(2, 5),
-                                3
-                        )),
-                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(VegetationFeatures.DRY_GRASS),
-                                RarityFilter.onAverageOnceEvery(3),
-                                InSquarePlacement.spread(),
-                                PlacementUtils.HEIGHTMAP,
-                                CountPlacement.of(32),
-                                RandomOffsetPlacement.ofTriangle(5, 3),
-                                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE))
-                )
+        register(context, DRIED_GRASS_PATCH_DESERT, Feature.DISK, new DiskConfiguration(
+                RuleBasedStateProvider.ifTrueThenProvide(
+                        BlockPredicate.matchesBlocks(Blocks.SAND),
+                        ModBlocks.DRIED_DIRT),
+                BlockPredicate.solid(),
+                UniformInt.of(2, 5),
+                3
         ));
         register(context, WET_GRASS_PATCH, Feature.DISK, new DiskConfiguration(wetlandProvider, BlockPredicate.solid(),
                 UniformInt.of(3, 7), 4

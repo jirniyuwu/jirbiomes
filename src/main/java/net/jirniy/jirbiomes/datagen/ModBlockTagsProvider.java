@@ -22,7 +22,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT)
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
-                .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH));
+                .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH))
+                .add(ModBlocks.getKeys(ModBlocks.ROOTED_MUD, ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND));
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
@@ -81,6 +82,13 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.DRIED_GRASS_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.WET_GRASS_BLOCK))
                 .add(ModBlocks.getKey(Blocks.GRASS_BLOCK));
+        tag(ModTags.Blocks.ROOTED_BLOCKS)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_MUD))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_WETLAND))
+                .add(ModBlocks.getKey(Blocks.ROOTED_DIRT))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_DRIED_DIRT))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND));
 
         tag(ModTags.Blocks.GINKGO_LOGS)
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG))
@@ -180,6 +188,16 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.BEE_GROWABLES)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES));
 
+        tag(BlockTags.SAND)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND));
+        tag(BlockTags.CONVERTABLE_TO_MUD)
+                .add(ModBlocks.getKeys(ModBlocks.WETLAND, ModBlocks.COARSE_WETLAND, ModBlocks.ROOTED_WETLAND));
+        tag(BlockTags.SUPPORTS_BIG_DRIPLEAF)
+                .addOptionalTag(ModTags.Blocks.WET_DIRT)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_MUD));
+        tag(BlockTags.SUPPORTS_SMALL_DRIPLEAF)
+                .addOptionalTag(ModTags.Blocks.WET_DIRT);
         tag(BlockTags.CROPS)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_CROP));
         tag(BlockTags.GROWS_CROPS)
@@ -187,8 +205,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.SUPPORTS_CROPS)
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND));
         tag(BlockTags.SUPPORTS_BAMBOO)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_MUD))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT);
         tag(BlockTags.SUPPORTS_DRY_VEGETATION)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND))
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.ENDERMAN_HOLDABLE)
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
@@ -204,11 +225,17 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.SUPPORTS_SUGAR_CANE)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_MUD))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.SUPPORTS_CACTUS)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND))
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.SUPPORTS_VEGETATION)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_MUD))
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND, ModBlocks.BRIMGRASS_BLOCK))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
@@ -219,6 +246,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.POTTED_APPLE_OAK_SAPLING))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_TENEBRIS_SAPLING));
         tag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK)
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_MUD))
                 .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
@@ -256,7 +284,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(Blocks.CACTUS));
         tag(ModTags.Blocks.BARREL_CACTUS_FAST_GROWTH)
                 .add(ModBlocks.getKey(ModBlocks.DRY_FARMLAND))
-                .add(ModBlocks.getKey(ModBlocks.ROOTED_DRIED_DIRT));
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_DRIED_DIRT))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
+                .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND));
 
         tag(ModTags.Blocks.GLOWSTONE_FEATURE_PLACEABLE)
                 .add(BlockItemIds.NETHERRACK.block())
@@ -271,7 +301,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(ModTags.Blocks.PALM_PLACEABLE)
                 .addOptionalTag(BlockTags.SUPPORTS_VEGETATION)
                 .addOptionalTag(BlockTags.SUPPORTS_DRY_VEGETATION)
-                .add(BlockItemIds.SAND.block());
+                .addOptionalTag(BlockTags.SAND);
 
         tag(BlockTags.SUPPORTS_COCOA)
                 .addOptionalTag(ModTags.Blocks.PALM_LOGS);

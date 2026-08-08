@@ -13,6 +13,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -35,11 +36,22 @@ public class ModBlocks {
                     .isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
                     .mapColor(MapColor.METAL).pushReaction(PushReaction.NORMAL).sound(SoundType.COPPER_GRATE)));
 
+    public static final Block ROOTED_SAND = registerBlock("rooted_sand", properties ->
+            new FallingRootedBlock(new ColorRGBA(14406560), Blocks.SAND, properties.mapColor(MapColor.SAND)
+                    .instrument(NoteBlockInstrument.SNARE).strength(0.55F).sound(SoundType.SAND)));
+    public static final Block ROOTED_RED_SAND = registerBlock("rooted_red_sand", properties ->
+            new FallingRootedBlock(new ColorRGBA(11098145), Blocks.RED_SAND, properties.mapColor(MapColor.COLOR_ORANGE)
+                    .instrument(NoteBlockInstrument.SNARE).strength(0.55F).sound(SoundType.SAND)));
+    public static final Block ROOTED_MUD = registerBlock("rooted_mud", properties ->
+            new RootedMudBlock(properties.mapColor(MapColor.TERRACOTTA_CYAN).strength(0.55F)
+                    .isValidSpawn(Blocks::always).isRedstoneConductor(Blocks::always).isViewBlocking(Blocks::always)
+                    .isSuffocating(Blocks::always).sound(SoundType.MUD)));
+
     public static final Block DRIED_DIRT = registerBlock("dried_dirt", properties ->
             new Block(properties.strength(0.4f)
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
     public static final Block ROOTED_DRIED_DIRT = registerBlock("rooted_dried_dirt", properties ->
-            new Block(properties.strength(0.4f)
+            new RootedDirtBlock(properties.strength(0.4f)
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
     public static final Block COARSE_DRIED_DIRT = registerBlock("coarse_dried_dirt", properties ->
             new Block(properties.strength(0.4f)
@@ -58,7 +70,7 @@ public class ModBlocks {
             new Block(properties.strength(0.6f).speedFactor(0.98f)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
     public static final Block ROOTED_WETLAND = registerBlock("rooted_wetland", properties ->
-            new Block(properties.strength(0.6f).speedFactor(0.98f)
+            new RootedDirtBlock(properties.strength(0.6f).speedFactor(0.98f)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
     public static final Block COARSE_WETLAND = registerBlock("coarse_wetland", properties ->
             new Block(properties.strength(0.6f).speedFactor(0.98f)

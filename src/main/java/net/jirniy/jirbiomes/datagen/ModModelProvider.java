@@ -27,6 +27,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.IRON_GRATE);
         blockModelGenerators.createTrivialCube(ModBlocks.NETHERSTONE);
 
+        blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_SAND);
+        blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_RED_SAND);
+        blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_MUD);
         blockModelGenerators.createTrivialCube(ModBlocks.COARSE_DRIED_DIRT);
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_DRIED_DIRT);
         blockModelGenerators.createTrivialCube(ModBlocks.DRIED_DIRT);

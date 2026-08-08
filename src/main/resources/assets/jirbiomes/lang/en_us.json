@@ -8,6 +8,10 @@
   "block.jirbiomes.iron_grate": "Iron Grate",
   "block.jirbiomes.netherstone": "Netherstone",
 
+  "block.jirbiomes.rooted_mud": "Rooted Mud",
+  "block.jirbiomes.rooted_sand": "Rooted Sand",
+  "block.jirbiomes.rooted_red_sand": "Rooted Red Sand",
+
   "block.jirbiomes.dried_dirt": "Dried Dirt",
   "block.jirbiomes.rooted_dried_dirt": "Rooted Dried Dirt",
   "block.jirbiomes.coarse_dried_dirt": "Coarse Dried Dirt",
@@ -176,5 +180,6 @@
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions",
   "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log",
   "tag.item.jirbiomes.palm_logs": "Any Palm log",
-  "tag.item.jirbiomes.tenebris_logs": "Any Tenebris log"
+  "tag.item.jirbiomes.tenebris_logs": "Any Tenebris log",
+  "tag.item.jirbiomes.rooted_block": "Any Rooted block"
 }

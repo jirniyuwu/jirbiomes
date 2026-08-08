@@ -6,6 +6,7 @@ import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.client.color.block.BlockTintSources;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
 
@@ -31,6 +32,16 @@ public class RegistryModifications {
         TillableBlockRegistry.register(ModBlocks.ROOTED_WETLAND,
                 itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
                 ModBlocks.WETLAND.defaultBlockState());
+
+        TillableBlockRegistry.register(ModBlocks.ROOTED_MUD,
+                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
+                Blocks.MUD.defaultBlockState());
+        TillableBlockRegistry.register(ModBlocks.ROOTED_SAND,
+                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
+                Blocks.SAND.defaultBlockState());
+        TillableBlockRegistry.register(ModBlocks.ROOTED_RED_SAND,
+                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
+                Blocks.RED_SAND.defaultBlockState());
 
         FlattenableBlockRegistry.register(ModBlocks.DRIED_DIRT, ModBlocks.DRIED_DIRT_PATH.defaultBlockState());
         FlattenableBlockRegistry.register(ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT_PATH.defaultBlockState());

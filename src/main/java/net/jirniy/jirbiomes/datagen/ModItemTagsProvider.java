@@ -7,6 +7,7 @@ import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -20,6 +21,14 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.DIRT)
                 .add(ModItems.getKeys(ModBlocks.DRIED_DIRT, ModBlocks.COARSE_DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT))
                 .add(ModItems.getKeys(ModBlocks.WETLAND, ModBlocks.COARSE_WETLAND, ModBlocks.ROOTED_WETLAND));
+
+        tag(ModTags.Items.ROOTED_BLOCKS)
+                .add(ModItems.getKey(ModBlocks.ROOTED_MUD))
+                .add(ModItems.getKey(ModBlocks.ROOTED_WETLAND))
+                .add(ModItems.getKey(Blocks.ROOTED_DIRT))
+                .add(ModItems.getKey(ModBlocks.ROOTED_DRIED_DIRT))
+                .add(ModItems.getKey(ModBlocks.ROOTED_SAND))
+                .add(ModItems.getKey(ModBlocks.ROOTED_RED_SAND));
 
         tag(ModTags.Items.GINKGO_LOGS)
                 .add(ModItems.getKeys(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG))

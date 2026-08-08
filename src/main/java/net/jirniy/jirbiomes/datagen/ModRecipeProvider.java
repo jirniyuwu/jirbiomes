@@ -149,6 +149,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.MUD), has(Blocks.MUD))
                         .group("dirt_convertible").save(output, "wetland");
 
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROOTED_MUD, 1)
+                        .requires(Blocks.MUD).requires(Blocks.HANGING_ROOTS)
+                        .unlockedBy(getHasName(ModBlocks.ROOTED_MUD), has(ModBlocks.ROOTED_MUD))
+                        .group("rooted_dirt").save(output, "rooted_mud");
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROOTED_SAND, 1)
+                        .requires(Blocks.SAND).requires(Blocks.HANGING_ROOTS)
+                        .unlockedBy(getHasName(ModBlocks.ROOTED_SAND), has(ModBlocks.ROOTED_SAND))
+                        .group("rooted_dirt").save(output, "rooted_sand");
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROOTED_RED_SAND, 1)
+                        .requires(Blocks.RED_SAND).requires(Blocks.HANGING_ROOTS)
+                        .unlockedBy(getHasName(ModBlocks.ROOTED_RED_SAND), has(ModBlocks.ROOTED_RED_SAND))
+                        .group("rooted_dirt").save(output, "rooted_red_sand");
                 shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROOTED_DRIED_DIRT, 1)
                         .requires(ModBlocks.DRIED_DIRT).requires(Blocks.HANGING_ROOTS)
                         .unlockedBy(getHasName(ModBlocks.ROOTED_DRIED_DIRT), has(ModBlocks.ROOTED_DRIED_DIRT))

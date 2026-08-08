@@ -11,6 +11,7 @@ public class ModTags {
         public static final TagKey<Block> DRIED_DIRT = create("dried_dirt");
         public static final TagKey<Block> WET_DIRT = create("wet_dirt");
         public static final TagKey<Block> GRASS_BLOCKS = create("grass_blocks");
+        public static final TagKey<Block> ROOTED_BLOCKS = create("rooted_blocks");
 
         public static final TagKey<Block> GINKGO_LOGS = create("ginkgo_logs");
         public static final TagKey<Block> PALM_LOGS = create("palm_logs");
@@ -37,6 +38,8 @@ public class ModTags {
         public static final TagKey<Item> GINKGO_LOGS = create("ginkgo_logs");
         public static final TagKey<Item> PALM_LOGS = create("palm_logs");
         public static final TagKey<Item> TENEBRIS_LOGS = create("tenebris_logs");
+
+        public static final TagKey<Item> ROOTED_BLOCKS = create("rooted_blocks");
 
         private static TagKey<Item> create(final String name) {
             return TagKey.create(Registries.ITEM, JirniyBiomes.id(name));

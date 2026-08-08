@@ -45,6 +45,10 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.COARSE_WETLAND);
         dropSelf(ModBlocks.ROOTED_WETLAND);
 
+        dropSelf(ModBlocks.ROOTED_SAND);
+        dropSelf(ModBlocks.ROOTED_RED_SAND);
+        dropSelf(ModBlocks.ROOTED_MUD);
+
         add(ModBlocks.DRIED_GRASS_BLOCK, silkTouchOrElseDrop(ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT));
         add(ModBlocks.WET_GRASS_BLOCK, silkTouchOrElseDrop(ModBlocks.WET_GRASS_BLOCK, ModBlocks.WETLAND));
 
