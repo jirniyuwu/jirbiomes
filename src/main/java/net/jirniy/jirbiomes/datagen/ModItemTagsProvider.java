@@ -29,6 +29,13 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.getKey(ModBlocks.ROOTED_DRIED_DIRT))
                 .add(ModItems.getKey(ModBlocks.ROOTED_SAND))
                 .add(ModItems.getKey(ModBlocks.ROOTED_RED_SAND));
+        tag(ModTags.Items.FROZEN_GRASS_CRAFTABLE)
+                .add(ModItems.getKey(Blocks.SHORT_DRY_GRASS))
+                .add(ModItems.getKey(Blocks.TALL_DRY_GRASS))
+                .add(ModItems.getKey(Blocks.FERN))
+                .add(ModItems.getKey(Blocks.LARGE_FERN))
+                .add(ModItems.getKey(Blocks.SHORT_GRASS))
+                .add(ModItems.getKey(Blocks.TALL_GRASS));
 
         tag(ModTags.Items.GINKGO_LOGS)
                 .add(ModItems.getKeys(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG))

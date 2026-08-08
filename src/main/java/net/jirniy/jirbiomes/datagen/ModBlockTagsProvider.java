@@ -195,6 +195,13 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.BEE_GROWABLES)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES));
 
+        tag(ModTags.Blocks.SUPPORTS_ICE_VEGETATION)
+                .add(ModBlocks.getKey(ModBlocks.PERMAFROST_BLOCK))
+                .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))
+                .add(ModBlocks.getKey(Blocks.SNOW_BLOCK))
+                .add(ModBlocks.getKey(Blocks.PACKED_ICE))
+                .add(ModBlocks.getKey(Blocks.BLUE_ICE));
+
         tag(BlockTags.SAND)
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND));
@@ -247,6 +254,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.getKey(ModBlocks.POTTED_FROZEN_GRASS))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_BARREL_CACTUS))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_GINKGO_SAPLING))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_PALM_SAPLING))

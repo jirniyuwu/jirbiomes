@@ -55,6 +55,8 @@
   "block.jirbiomes.frost_bricks_stairs": "Frost Brick Stairs",
   "block.jirbiomes.frost_bricks_wall": "Frost Brick Wall",
 
+  "block.jirbiomes.frozen_grass": "Frozen Grass",
+  "block.jirbiomes.potted_frozen_grass": "Potted Frozen Grass",
   "block.jirbiomes.packed_snow": "Packed Snow",
   "block.jirbiomes.polished_snow": "Polished Snow",
   "block.jirbiomes.polished_snow_slab": "Polished Snow Slab",
@@ -192,5 +194,6 @@
   "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log",
   "tag.item.jirbiomes.palm_logs": "Any Palm log",
   "tag.item.jirbiomes.tenebris_logs": "Any Tenebris log",
-  "tag.item.jirbiomes.rooted_block": "Any Rooted block"
+  "tag.item.jirbiomes.rooted_block": "Any Rooted block",
+  "tag.item.jirbiomes.frozen_grass_craftable": "Craftable for Frozen Grass"
 }

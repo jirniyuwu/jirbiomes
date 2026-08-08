@@ -92,6 +92,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CATTAIL = registryKey("cattail");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE = registryKey("algae");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE_PATCH = registryKey("algae_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_GRASS = registryKey("frozen_grass");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
@@ -413,6 +414,7 @@ public class ModConfiguredFeatures {
         ));
 
         register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CATTAIL)));
+        register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.FROZEN_GRASS)));
         register(context, ALGAE, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(
                 WeightedList.<BlockState>builder()
                         .add(ModBlocks.ALGAE.defaultBlockState().setValue(AlgaeBlock.DENSE, false), 2)

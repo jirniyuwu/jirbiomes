@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.worldgen;
 
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -43,6 +44,7 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> CATTAIL_PATCH_PLACED = registryKey("cattail_patch");
     public static final ResourceKey<PlacedFeature> ALGAE_PATCH_PLACED = registryKey("algae_patch");
+    public static final ResourceKey<PlacedFeature> FROZEN_GRASS_PLACED = registryKey("frozen_grass");
 
     public static final ResourceKey<PlacedFeature> ICE_TOP_LAYER = registryKey("ice_top_layer");
     public static final ResourceKey<PlacedFeature> BLUE_ICE_ORE = registryKey("blue_ice_ore");
@@ -141,6 +143,12 @@ public class ModPlacedFeatures {
                 RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesFluids(Fluids.WATER),
                         BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(), BlockTags.AIR))));
+        register(context, FROZEN_GRASS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.FROZEN_GRASS),
+                CountPlacement.of(40), RandomOffsetPlacement.ofTriangle(7, 3),
+                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(14), PlacementUtils.FULL_RANGE,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(),
+                                ModTags.Blocks.SUPPORTS_ICE_VEGETATION))));
 
         register(context, BRIMGRASS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRIMGRASS),
                 CountPlacement.of(200), RandomOffsetPlacement.ofTriangle(7, 3),

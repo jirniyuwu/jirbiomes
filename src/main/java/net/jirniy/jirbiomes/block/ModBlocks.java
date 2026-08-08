@@ -123,6 +123,11 @@ public class ModBlocks {
     public static final Block ALGAE = registerBlock("algae", false, properties ->
             new AlgaeBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_LIGHT_GREEN).noCollision().noOcclusion().ignitedByLava().speedFactor(0.8f)
                     .noLootTable().replaceable().randomTicks().pushReaction(PushReaction.DESTROY).sound(SoundType.WET_SPONGE)));
+    public static final Block FROZEN_GRASS = registerBlock("frozen_grass", properties ->
+            new VegetationPlaceableOnBlock(ModTags.Blocks.SUPPORTS_ICE_VEGETATION, properties.instabreak().mapColor(MapColor.ICE)
+                    .noCollision().noOcclusion().ignitedByLava().offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY).sound(SoundType.GLASS)));
+    public static final Block POTTED_FROZEN_GRASS = registerBlock("potted_frozen_grass", false, properties ->
+            new FlowerPotBlock(ModBlocks.FROZEN_GRASS, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     public static final Block SALT_BLOCK = registerBlock("salt", properties ->
             new Block(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.COW_BELL)

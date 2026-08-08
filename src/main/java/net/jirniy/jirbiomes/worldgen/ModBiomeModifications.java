@@ -31,6 +31,9 @@ public class ModBiomeModifications {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BADLANDS, Biomes.WOODED_BADLANDS),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_DESERT_PLACED);
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SNOWY_PLAINS, Biomes.SNOWY_SLOPES),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FROZEN_GRASS_PLACED);
+
         BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_desert")),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BARREL_CACTUS_PATCH);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_BADLANDS),

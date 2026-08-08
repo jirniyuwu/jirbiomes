@@ -87,6 +87,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .stairs(ModBlocks.FROST_BRICKS_STAIRS)
                 .slab(ModBlocks.FROST_BRICKS_SLAB);
 
+        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.FROZEN_GRASS, ModBlocks.POTTED_FROZEN_GRASS, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createTrivialCube(ModBlocks.PACKED_SNOW);
         blockModelGenerators.family(ModBlocks.POLISHED_SNOW)
                 .wall(ModBlocks.POLISHED_SNOW_WALL)

@@ -244,6 +244,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("walls").save(output, "frost_bricks_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS_WALL, ModBlocks.FROST_BRICKS);
 
+                shapeless(RecipeCategory.MISC, ModBlocks.FROZEN_GRASS)
+                        .requires(Blocks.ICE).requires(ModTags.Items.FROZEN_GRASS_CRAFTABLE)
+                        .unlockedBy(getHasName(ModBlocks.FROZEN_GRASS), has(ModBlocks.FROZEN_GRASS))
+                        .save(output, "frozen_grass");
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PACKED_SNOW, 1)
                         .pattern("II")
                         .pattern("II")

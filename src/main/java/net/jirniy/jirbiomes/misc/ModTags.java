@@ -23,6 +23,7 @@ public class ModTags {
         public static final TagKey<Block> BARREL_CACTUSES = create("barrel_cactuses");
 
         public static final TagKey<Block> PALM_PLACEABLE = create("palm_placeable");
+        public static final TagKey<Block> SUPPORTS_ICE_VEGETATION = create("supports_ice_vegetation");
 
         public static final TagKey<Block> GLOWSTONE_FEATURE_PLACEABLE = create("glowstone_feature_placeable");
         public static final TagKey<Block> BRIMSTONE_GOLD_REPLACEABLE = create("brimstone_gold_replaceable");
@@ -40,6 +41,7 @@ public class ModTags {
         public static final TagKey<Item> TENEBRIS_LOGS = create("tenebris_logs");
 
         public static final TagKey<Item> ROOTED_BLOCKS = create("rooted_blocks");
+        public static final TagKey<Item> FROZEN_GRASS_CRAFTABLE = create("frozen_grass_craftable");
 
         private static TagKey<Item> create(final String name) {
             return TagKey.create(Registries.ITEM, JirniyBiomes.id(name));

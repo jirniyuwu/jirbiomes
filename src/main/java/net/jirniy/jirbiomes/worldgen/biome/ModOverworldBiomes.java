@@ -56,6 +56,7 @@ public class ModOverworldBiomes {
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BLUE_ICE_ORE)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.ICICLE_CLUSTER_PLACED)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.POINTED_ICICLE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FROZEN_GRASS_PLACED)
                 .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ICE_TOP_LAYER);
 
         return biome
@@ -77,6 +78,7 @@ public class ModOverworldBiomes {
         BiomeDefaultFeatures.addDefaultSoftDisks(generation);
         BiomeDefaultFeatures.addDefaultMushrooms(generation);
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BLUE_ICE_ORE)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FROZEN_GRASS_PLACED)
                 .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ICE_TOP_LAYER);
 
         return biome
