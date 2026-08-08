@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "jirbiomes:salt_deposit",
-    "jirbiomes:permafrost_caves"
+    "jirbiomes:permafrost_caves",
+    "jirbiomes:polar_desert"
   ]
 }

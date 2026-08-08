@@ -65,4 +65,24 @@ public class ModOverworldBiomes {
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();
     }
+
+    public static Biome polarDesert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        Biome.BiomeBuilder biome = OverworldBiomes.baseBiome(0.0f, 0.1f);
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.snowySpawns(mobs, false);
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        OverworldBiomes.globalOverworldGeneration(generation);
+        BiomeDefaultFeatures.addFrozenSprings(generation);
+        BiomeDefaultFeatures.addDefaultOres(generation, true);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+        BiomeDefaultFeatures.addDefaultMushrooms(generation);
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BLUE_ICE_ORE)
+                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ICE_TOP_LAYER);
+
+        return biome
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS))
+                .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x8fabf2)).build())
+                .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
+                .build();
+    }
 }

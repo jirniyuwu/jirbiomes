@@ -40,6 +40,15 @@ public class OverworldRegion extends Region {
                 .weirdness(Weirdness.FULL_RANGE)
                 .offset(0f)
                 .build().forEach(point -> builder.add(point, ModBiomes.PERMAFROST_CAVES));
+        new ParameterPointListBuilder()
+                .temperature(Temperature.FROZEN)
+                .humidity(Humidity.ARID, Humidity.DRY)
+                .continentalness(Continentalness.NEAR_INLAND, Continentalness.MID_INLAND, Continentalness.FAR_INLAND)
+                .erosion(Erosion.EROSION_0, Erosion.EROSION_1, Erosion.EROSION_2, Erosion.EROSION_3)
+                .depth(Depth.FULL_RANGE)
+                .weirdness(Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)
+                .offset(0f)
+                .build().forEach(point -> builder.add(point, ModBiomes.POLAR_DESERT));
         builder.build().forEach(mapper);
     }
 }

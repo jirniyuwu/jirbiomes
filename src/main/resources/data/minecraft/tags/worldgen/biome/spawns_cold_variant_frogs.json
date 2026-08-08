@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "jirbiomes:permafrost_caves"
+    "jirbiomes:permafrost_caves",
+    "jirbiomes:polar_desert"
   ]
 }

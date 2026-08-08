@@ -69,7 +69,19 @@ public class ModSurfaceRules {
                         ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.0f, 0.2f),
                                 makeStateRule(Blocks.PACKED_ICE))),
                         ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.2f, 0.4f),
-                                makeStateRule(ModBlocks.FROSTED_STONE)))))
+                                makeStateRule(ModBlocks.FROSTED_STONE))))),
+
+                ifTrue(isBiome(biomes, ModBiomes.POLAR_DESERT), ifTrue(not(verticalGradient("surface", VerticalAnchor.absolute(54), VerticalAnchor.absolute(56))),
+                        sequence(
+                                ifTrue(noiseCondition3d(Noises.POWDER_SNOW, 0.35, 0.6),
+                                        ifTrue(ON_FLOOR, makeStateRule(Blocks.POWDER_SNOW))),
+                                ifTrue(ON_FLOOR, makeStateRule(Blocks.SNOW_BLOCK)),
+                                ifTrue(noiseCondition3d(Noises.POWDER_SNOW, -0.35, -0.6),
+                                        ifTrue(UNDER_FLOOR, makeStateRule(ModBlocks.PACKED_SNOW))),
+                                ifTrue(UNDER_FLOOR, makeStateRule(Blocks.SNOW_BLOCK)),
+                                ifTrue(DEEP_UNDER_FLOOR, makeStateRule(ModBlocks.PACKED_SNOW)),
+                                ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.2f, 0.4f),
+                                makeStateRule(ModBlocks.FROSTED_STONE))))))
         );
     }
 
