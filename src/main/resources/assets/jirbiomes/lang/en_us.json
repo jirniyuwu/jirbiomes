@@ -55,6 +55,16 @@
   "block.jirbiomes.frost_bricks_stairs": "Frost Brick Stairs",
   "block.jirbiomes.frost_bricks_wall": "Frost Brick Wall",
 
+  "block.jirbiomes.packed_snow": "Packed Snow",
+  "block.jirbiomes.polished_snow": "Polished Snow",
+  "block.jirbiomes.polished_snow_slab": "Polished Snow Slab",
+  "block.jirbiomes.polished_snow_stairs": "Polished Snow Stairs",
+  "block.jirbiomes.polished_snow_wall": "Polished Snow Wall",
+  "block.jirbiomes.snow_bricks": "Snow Bricks",
+  "block.jirbiomes.snow_bricks_slab": "Snow Brick Slab",
+  "block.jirbiomes.snow_bricks_stairs": "Snow Brick Stairs",
+  "block.jirbiomes.snow_bricks_wall": "Snow Brick Wall",
+
   "block.jirbiomes.brimstone": "Brimstone",
   "block.jirbiomes.brimgrass_block": "Brimgrass Block",
   "block.jirbiomes.brimstone_gold_ore": "Brimstone Gold Ore",

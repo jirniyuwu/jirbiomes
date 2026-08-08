@@ -244,6 +244,49 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("walls").save(output, "frost_bricks_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS_WALL, ModBlocks.FROST_BRICKS);
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PACKED_SNOW, 1)
+                        .pattern("II")
+                        .pattern("II")
+                        .define('I', Blocks.SNOW_BLOCK)
+                        .unlockedBy(getHasName(Blocks.SNOW_BLOCK), has(Blocks.SNOW_BLOCK))
+                        .unlockedBy(getHasName(ModBlocks.PACKED_SNOW), has(ModBlocks.PACKED_SNOW))
+                        .save(output, "packed_snow");
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SNOW, Ingredient.of(ModBlocks.PACKED_SNOW))
+                        .unlockedBy(getHasName(ModBlocks.PACKED_SNOW), has(ModBlocks.PACKED_SNOW))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SNOW), has(ModBlocks.POLISHED_SNOW))
+                        .group("polished").save(output, "polished_snow");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SNOW, ModBlocks.PACKED_SNOW);
+                stairBuilder(ModBlocks.POLISHED_SNOW_STAIRS, Ingredient.of(ModBlocks.POLISHED_SNOW))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SNOW), has(ModBlocks.POLISHED_SNOW))
+                        .group("stairs").save(output, "polished_snow_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SNOW_STAIRS, ModBlocks.POLISHED_SNOW);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SNOW_SLAB, Ingredient.of(ModBlocks.POLISHED_SNOW))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SNOW), has(ModBlocks.POLISHED_SNOW))
+                        .group("slabs").save(output, "polished_snow_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SNOW_SLAB, ModBlocks.POLISHED_SNOW, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SNOW_WALL, Ingredient.of(ModBlocks.POLISHED_SNOW))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SNOW), has(ModBlocks.POLISHED_SNOW))
+                        .group("walls").save(output, "polished_snow_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SNOW_WALL, ModBlocks.POLISHED_SNOW);
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SNOW_BRICKS, Ingredient.of(ModBlocks.POLISHED_SNOW))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SNOW), has(ModBlocks.POLISHED_SNOW))
+                        .unlockedBy(getHasName(ModBlocks.SNOW_BRICKS), has(ModBlocks.SNOW_BRICKS))
+                        .group("bricks").save(output, "snow_bricks");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SNOW_BRICKS, ModBlocks.PACKED_SNOW);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SNOW_BRICKS, ModBlocks.POLISHED_SNOW);
+                stairBuilder(ModBlocks.SNOW_BRICKS_STAIRS, Ingredient.of(ModBlocks.SNOW_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SNOW_BRICKS), has(ModBlocks.SNOW_BRICKS))
+                        .group("stairs").save(output, "snow_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SNOW_BRICKS_STAIRS, ModBlocks.SNOW_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SNOW_BRICKS_SLAB, Ingredient.of(ModBlocks.SNOW_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SNOW_BRICKS), has(ModBlocks.SNOW_BRICKS))
+                        .group("slabs").save(output, "snow_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SNOW_BRICKS_SLAB, ModBlocks.SNOW_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SNOW_BRICKS_WALL, Ingredient.of(ModBlocks.SNOW_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SNOW_BRICKS), has(ModBlocks.SNOW_BRICKS))
+                        .group("walls").save(output, "snow_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SNOW_BRICKS_WALL, ModBlocks.SNOW_BRICKS);
+
                 shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.IGNITED_BRIMSTONE, 4)
                         .requires(Blocks.MAGMA_BLOCK).requires(ModBlocks.BRIMSTONE)
                         .requires(ModBlocks.BRIMSTONE).requires(Blocks.MAGMA_BLOCK)

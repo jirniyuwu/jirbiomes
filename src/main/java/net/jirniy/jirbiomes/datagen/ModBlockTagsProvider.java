@@ -23,7 +23,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT)
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
                 .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH))
-                .add(ModBlocks.getKeys(ModBlocks.ROOTED_MUD, ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND));
+                .add(ModBlocks.getKeys(ModBlocks.ROOTED_MUD, ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND))
+                .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW));
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
@@ -38,6 +39,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_FROST, ModBlocks.POLISHED_FROST_STAIRS, ModBlocks.POLISHED_FROST_SLAB, ModBlocks.POLISHED_FROST_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS, ModBlocks.FROST_BRICKS_STAIRS, ModBlocks.FROST_BRICKS_SLAB, ModBlocks.FROST_BRICKS_WALL))
+                .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))
+                .add(ModBlocks.getKeys(ModBlocks.POLISHED_SNOW, ModBlocks.POLISHED_SNOW_STAIRS, ModBlocks.POLISHED_SNOW_SLAB, ModBlocks.POLISHED_SNOW_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.SNOW_BRICKS, ModBlocks.SNOW_BRICKS_STAIRS, ModBlocks.SNOW_BRICKS_SLAB, ModBlocks.SNOW_BRICKS_WALL))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.SALT_LAMP))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BRICKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS_WALL));
@@ -170,6 +174,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_STAIRS))
+                .add(ModBlocks.getKeys(ModBlocks.SNOW_BRICKS_STAIRS, ModBlocks.POLISHED_SNOW_STAIRS))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS)).add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS_STAIRS, ModBlocks.POLISHED_FROST_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_STAIRS));
@@ -177,10 +182,12 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS_SLAB, ModBlocks.POLISHED_FROST_SLAB))
+                .add(ModBlocks.getKeys(ModBlocks.SNOW_BRICKS_SLAB, ModBlocks.POLISHED_SNOW_SLAB))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_SLAB));
         tag(BlockTags.WALLS)
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS_WALL, ModBlocks.POLISHED_FROST_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.SNOW_BRICKS_WALL, ModBlocks.POLISHED_SNOW_WALL))
                 .add(ModBlocks.getKey(ModBlocks.SALT_BRICKS_WALL));
 
         tag(BlockTags.BEE_ATTRACTIVE)
@@ -342,9 +349,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.STONE_ORE_REPLACEABLES)
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE));
         tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
-                .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE));
+                .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
+                .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW));
         tag(BlockTags.DRIPSTONE_REPLACEABLE)
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
+                .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))
                 .add(ModBlocks.getKey(Blocks.PACKED_ICE));
     }
 }

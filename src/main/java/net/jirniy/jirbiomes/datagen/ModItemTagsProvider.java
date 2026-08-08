@@ -123,7 +123,8 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
         tag(ItemTags.WALLS)
                 .add(ModItems.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL))
-                .add(ModItems.getKeys(ModBlocks.FROST_BRICKS_WALL, ModBlocks.POLISHED_FROST_WALL));
+                .add(ModItems.getKeys(ModBlocks.FROST_BRICKS_WALL, ModBlocks.POLISHED_FROST_WALL))
+                .add(ModItems.getKeys(ModBlocks.SNOW_BRICKS_WALL, ModBlocks.POLISHED_SNOW_WALL));
 
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.getKey(ModItems.APPLE_SEEDS));

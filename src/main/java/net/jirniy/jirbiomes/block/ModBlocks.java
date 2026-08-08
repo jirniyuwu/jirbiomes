@@ -98,6 +98,25 @@ public class ModBlocks {
             new SlabBlock(properties.strength(0.95f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
                     .pushReaction(PushReaction.NORMAL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
 
+    public static final Block PACKED_SNOW = registerBlock("packed_snow", properties ->
+            new Block(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.SNOW)));
+    public static final Block POLISHED_SNOW = registerBlock("polished_snow", properties ->
+            new Block(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+    public static final Block POLISHED_SNOW_STAIRS = registerBlock("polished_snow_stairs", properties ->
+            new StairBlock(POLISHED_SNOW.defaultBlockState(), properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+    public static final Block POLISHED_SNOW_SLAB = registerBlock("polished_snow_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+    public static final Block POLISHED_SNOW_WALL = registerBlock("polished_snow_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+    public static final Block SNOW_BRICKS = registerBlock("snow_bricks", properties ->
+            new Block(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+    public static final Block SNOW_BRICKS_STAIRS = registerBlock("snow_bricks_stairs", properties ->
+            new StairBlock(SNOW_BRICKS.defaultBlockState(), properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+    public static final Block SNOW_BRICKS_SLAB = registerBlock("snow_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+    public static final Block SNOW_BRICKS_WALL = registerBlock("snow_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+
     public static final Block CATTAIL = registerBlock("cattail", properties ->
             new CattailBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_BROWN).noCollision().noOcclusion().ignitedByLava()
                     .randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).sound(SoundType.CROP)));

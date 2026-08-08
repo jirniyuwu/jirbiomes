@@ -87,6 +87,16 @@ public class ModModelProvider extends FabricModelProvider {
                 .stairs(ModBlocks.FROST_BRICKS_STAIRS)
                 .slab(ModBlocks.FROST_BRICKS_SLAB);
 
+        blockModelGenerators.createTrivialCube(ModBlocks.PACKED_SNOW);
+        blockModelGenerators.family(ModBlocks.POLISHED_SNOW)
+                .wall(ModBlocks.POLISHED_SNOW_WALL)
+                .stairs(ModBlocks.POLISHED_SNOW_STAIRS)
+                .slab(ModBlocks.POLISHED_SNOW_SLAB);
+        blockModelGenerators.family(ModBlocks.SNOW_BRICKS)
+                .wall(ModBlocks.SNOW_BRICKS_WALL)
+                .stairs(ModBlocks.SNOW_BRICKS_STAIRS)
+                .slab(ModBlocks.SNOW_BRICKS_SLAB);
+
         blockModelGenerators.family(ModBlocks.GINKGO_PLANKS)
                 .stairs(ModBlocks.GINKGO_STAIRS)
                 .slab(ModBlocks.GINKGO_SLAB)
