@@ -36,26 +36,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_WETLAND);
         blockModelGenerators.createTrivialCube(ModBlocks.WETLAND);
 
-        blockModelGenerators.createTrivialCube(ModBlocks.NETHERSTONE);
-        blockModelGenerators.family(ModBlocks.POLISHED_NETHERSTONE)
-                .wall(ModBlocks.POLISHED_NETHERSTONE_WALL)
-                .stairs(ModBlocks.POLISHED_NETHERSTONE_STAIRS)
-                .slab(ModBlocks.POLISHED_NETHERSTONE_SLAB);
-        blockModelGenerators.family(ModBlocks.NETHERSTONE_BRICKS)
-                .wall(ModBlocks.NETHERSTONE_BRICKS_WALL)
-                .stairs(ModBlocks.NETHERSTONE_BRICKS_STAIRS)
-                .slab(ModBlocks.NETHERSTONE_BRICKS_SLAB);
-
-        blockModelGenerators.createTrivialCube(ModBlocks.SALT_BLOCK);
-        blockModelGenerators.family(ModBlocks.POLISHED_SALT)
-                .wall(ModBlocks.POLISHED_SALT_WALL)
-                .stairs(ModBlocks.POLISHED_SALT_STAIRS)
-                .slab(ModBlocks.POLISHED_SALT_SLAB);
-        blockModelGenerators.family(ModBlocks.SALT_BRICKS)
-                .wall(ModBlocks.SALT_BRICKS_WALL)
-                .stairs(ModBlocks.SALT_BRICKS_STAIRS)
-                .slab(ModBlocks.SALT_BRICKS_SLAB);
-
         blockModelGenerators.createTrivialBlock(ModBlocks.PERMAFROST_BLOCK, TexturedModel.COLUMN_WITH_WALL);
         blockModelGenerators.createSpeleothem(ModBlocks.ICICLE);
 
@@ -90,7 +70,36 @@ public class ModModelProvider extends FabricModelProvider {
                 .stairs(ModBlocks.PACKED_STRAW_STAIRS)
                 .slab(ModBlocks.PACKED_STRAW_SLAB);
 
-        blockModelGenerators.createTrivialCube(ModBlocks.FROSTED_STONE);
+        blockModelGenerators.family(ModBlocks.NETHERSTONE)
+                .wall(ModBlocks.NETHERSTONE_WALL)
+                .stairs(ModBlocks.NETHERSTONE_STAIRS)
+                .slab(ModBlocks.NETHERSTONE_SLAB);
+        blockModelGenerators.family(ModBlocks.POLISHED_NETHERSTONE)
+                .wall(ModBlocks.POLISHED_NETHERSTONE_WALL)
+                .stairs(ModBlocks.POLISHED_NETHERSTONE_STAIRS)
+                .slab(ModBlocks.POLISHED_NETHERSTONE_SLAB);
+        blockModelGenerators.family(ModBlocks.NETHERSTONE_BRICKS)
+                .wall(ModBlocks.NETHERSTONE_BRICKS_WALL)
+                .stairs(ModBlocks.NETHERSTONE_BRICKS_STAIRS)
+                .slab(ModBlocks.NETHERSTONE_BRICKS_SLAB);
+
+        blockModelGenerators.family(ModBlocks.SALT_BLOCK)
+                .wall(ModBlocks.SALT_BLOCK_WALL)
+                .stairs(ModBlocks.SALT_BLOCK_STAIRS)
+                .slab(ModBlocks.SALT_BLOCK_SLAB);
+        blockModelGenerators.family(ModBlocks.POLISHED_SALT)
+                .wall(ModBlocks.POLISHED_SALT_WALL)
+                .stairs(ModBlocks.POLISHED_SALT_STAIRS)
+                .slab(ModBlocks.POLISHED_SALT_SLAB);
+        blockModelGenerators.family(ModBlocks.SALT_BRICKS)
+                .wall(ModBlocks.SALT_BRICKS_WALL)
+                .stairs(ModBlocks.SALT_BRICKS_STAIRS)
+                .slab(ModBlocks.SALT_BRICKS_SLAB);
+
+        blockModelGenerators.family(ModBlocks.FROSTED_STONE)
+                .wall(ModBlocks.FROSTED_STONE_WALL)
+                .stairs(ModBlocks.FROSTED_STONE_STAIRS)
+                .slab(ModBlocks.FROSTED_STONE_SLAB);
         blockModelGenerators.family(ModBlocks.POLISHED_FROST)
                 .wall(ModBlocks.POLISHED_FROST_WALL)
                 .stairs(ModBlocks.POLISHED_FROST_STAIRS)

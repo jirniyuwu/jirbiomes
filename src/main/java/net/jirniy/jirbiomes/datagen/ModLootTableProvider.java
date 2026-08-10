@@ -59,6 +59,9 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.CATTAIL, this::createTallPlantShearsDrop);
 
         add(ModBlocks.NETHERSTONE, silkTouchOrElseDrop(ModBlocks.NETHERSTONE, Blocks.NETHERRACK));
+        dropSelf(ModBlocks.NETHERSTONE_STAIRS);
+        add(ModBlocks.NETHERSTONE_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.NETHERSTONE_WALL);
         dropSelf(ModBlocks.NETHERSTONE_BRICKS);
         dropSelf(ModBlocks.NETHERSTONE_BRICKS_STAIRS);
         add(ModBlocks.NETHERSTONE_BRICKS_SLAB, this::createSlabItemTable);
@@ -69,6 +72,9 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.POLISHED_NETHERSTONE_WALL);
 
         dropSelf(ModBlocks.SALT_BLOCK);
+        dropSelf(ModBlocks.SALT_BLOCK_STAIRS);
+        add(ModBlocks.SALT_BLOCK_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.SALT_BLOCK_WALL);
         dropSelf(ModBlocks.SALT_BRICKS);
         dropSelf(ModBlocks.SALT_BRICKS_STAIRS);
         add(ModBlocks.SALT_BRICKS_SLAB, this::createSlabItemTable);
@@ -84,6 +90,9 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropWhenSilkTouch(ModBlocks.PERMAFROST_BLOCK);
 
         add(ModBlocks.FROSTED_STONE, silkTouchOrElseDrop(ModBlocks.FROSTED_STONE, Blocks.COBBLESTONE));
+        dropSelf(ModBlocks.FROSTED_STONE_STAIRS);
+        add(ModBlocks.FROSTED_STONE_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.FROSTED_STONE_WALL);
         dropSelf(ModBlocks.FROST_BRICKS);
         dropSelf(ModBlocks.FROST_BRICKS_STAIRS);
         add(ModBlocks.FROST_BRICKS_SLAB, this::createSlabItemTable);

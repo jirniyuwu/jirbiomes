@@ -30,6 +30,9 @@
   "item.jirbiomes.algae_bucket": "Bucket of Algae",
 
   "block.jirbiomes.netherstone": "Netherstone",
+  "block.jirbiomes.netherstone_slab": "Netherstone Slab",
+  "block.jirbiomes.netherstone_stairs": "Netherstone Stairs",
+  "block.jirbiomes.netherstone_wall": "Netherstone Wall",
   "block.jirbiomes.polished_netherrack": "Polished Netherrack",
   "block.jirbiomes.polished_netherrack_slab": "Polished Netherrack Slab",
   "block.jirbiomes.polished_netherrack_stairs": "Polished Netherrack Stairs",
@@ -40,6 +43,10 @@
   "block.jirbiomes.netherrack_bricks_wall": "Netherrack Brick Wall",
 
   "block.jirbiomes.salt": "Salt",
+  "block.jirbiomes.salt_lamp": "Salt Lamp",
+  "block.jirbiomes.salt_slab": "Salt Slab",
+  "block.jirbiomes.salt_stairs": "Salt Stairs",
+  "block.jirbiomes.salt_wall": "Salt Wall",
   "block.jirbiomes.polished_salt": "Polished Salt",
   "block.jirbiomes.polished_salt_slab": "Polished Salt Slab",
   "block.jirbiomes.polished_salt_stairs": "Polished Salt Stairs",
@@ -58,6 +65,9 @@
   "block.jirbiomes.icicle": "Icicle",
 
   "block.jirbiomes.frosted_stone": "Frosted Stone",
+  "block.jirbiomes.frosted_stone_slab": "Frosted Stone Slab",
+  "block.jirbiomes.frosted_stone_stairs": "Frosted Stone Stairs",
+  "block.jirbiomes.frosted_stone_wall": "Frosted Stone Wall",
   "block.jirbiomes.polished_frost": "Polished Frost",
   "block.jirbiomes.polished_frost_slab": "Polished Frost Slab",
   "block.jirbiomes.polished_frost_stairs": "Polished Frost Stairs",
