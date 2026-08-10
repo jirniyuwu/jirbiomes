@@ -35,7 +35,6 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
         dropSelf(ModBlocks.IRON_GRATE);
-        add(ModBlocks.NETHERSTONE, silkTouchOrElseDrop(ModBlocks.NETHERSTONE, Blocks.NETHERRACK));
 
         dropSelf(ModBlocks.DRIED_DIRT);
         dropSelf(ModBlocks.COARSE_DRIED_DIRT);
@@ -59,12 +58,25 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         add(ModBlocks.CATTAIL, this::createTallPlantShearsDrop);
 
+        add(ModBlocks.NETHERSTONE, silkTouchOrElseDrop(ModBlocks.NETHERSTONE, Blocks.NETHERRACK));
+        dropSelf(ModBlocks.NETHERSTONE_BRICKS);
+        dropSelf(ModBlocks.NETHERSTONE_BRICKS_STAIRS);
+        add(ModBlocks.NETHERSTONE_BRICKS_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.NETHERSTONE_BRICKS_WALL);
+        dropSelf(ModBlocks.POLISHED_NETHERSTONE);
+        dropSelf(ModBlocks.POLISHED_NETHERSTONE_STAIRS);
+        add(ModBlocks.POLISHED_NETHERSTONE_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.POLISHED_NETHERSTONE_WALL);
+
         dropSelf(ModBlocks.SALT_BLOCK);
         dropSelf(ModBlocks.SALT_BRICKS);
         dropSelf(ModBlocks.SALT_BRICKS_STAIRS);
         add(ModBlocks.SALT_BRICKS_SLAB, this::createSlabItemTable);
         dropSelf(ModBlocks.SALT_BRICKS_WALL);
-        dropSelf(ModBlocks.SALT_LAMP);
+        dropSelf(ModBlocks.POLISHED_SALT);
+        dropSelf(ModBlocks.POLISHED_SALT_STAIRS);
+        add(ModBlocks.POLISHED_SALT_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.POLISHED_SALT_WALL);
 
         add(ModBlocks.BRIMSTONE_GOLD_ORE, createOreDrop(ModBlocks.BRIMSTONE_GOLD_ORE, Items.RAW_GOLD));
 

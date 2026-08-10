@@ -27,10 +27,6 @@ import net.minecraft.world.level.material.PushReaction;
 import java.util.function.Function;
 
 public class ModBlocks {
-    public static final Block NETHERSTONE = registerBlock("netherstone", properties ->
-            new Block(properties.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM)
-                    .requiresCorrectToolForDrops().strength(0.34F).sound(SoundType.NETHERRACK)));
-
     public static final Block IRON_GRATE = registerBlock("iron_grate", properties ->
             new WaterloggedTransparentBlock(properties.noOcclusion().strength(3f).requiresCorrectToolForDrops()
                     .isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
@@ -85,6 +81,18 @@ public class ModBlocks {
             new CustomPathBlock(WETLAND, properties.strength(0.8f).isViewBlocking(Blocks::always).isSuffocating(Blocks::always)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
 
+    public static final Block CATTAIL = registerBlock("cattail", properties ->
+            new CattailBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_BROWN).noCollision().noOcclusion().ignitedByLava()
+                    .randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).sound(SoundType.CROP)));
+    public static final Block ALGAE = registerBlock("algae", false, properties ->
+            new AlgaeBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_LIGHT_GREEN).noCollision().noOcclusion().ignitedByLava().speedFactor(0.8f)
+                    .noLootTable().replaceable().randomTicks().pushReaction(PushReaction.DESTROY).sound(SoundType.WET_SPONGE)));
+    public static final Block FROZEN_GRASS = registerBlock("frozen_grass", properties ->
+            new VegetationPlaceableOnBlock(ModTags.Blocks.SUPPORTS_ICE_VEGETATION, properties.instabreak().mapColor(MapColor.ICE)
+                    .noCollision().noOcclusion().ignitedByLava().offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY).sound(SoundType.GLASS)));
+    public static final Block POTTED_FROZEN_GRASS = registerBlock("potted_frozen_grass", false, properties ->
+            new FlowerPotBlock(ModBlocks.FROZEN_GRASS, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
     public static final Block STRAW_BLOCK = registerBlock("straw_block", properties ->
             new RotatedPillarBlock(properties.strength(0.8f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
                     .pushReaction(PushReaction.NORMAL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
@@ -117,21 +125,49 @@ public class ModBlocks {
     public static final Block SNOW_BRICKS_WALL = registerBlock("snow_bricks_wall", properties ->
             new WallBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
 
-    public static final Block CATTAIL = registerBlock("cattail", properties ->
-            new CattailBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_BROWN).noCollision().noOcclusion().ignitedByLava()
-                    .randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).sound(SoundType.CROP)));
-    public static final Block ALGAE = registerBlock("algae", false, properties ->
-            new AlgaeBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_LIGHT_GREEN).noCollision().noOcclusion().ignitedByLava().speedFactor(0.8f)
-                    .noLootTable().replaceable().randomTicks().pushReaction(PushReaction.DESTROY).sound(SoundType.WET_SPONGE)));
-    public static final Block FROZEN_GRASS = registerBlock("frozen_grass", properties ->
-            new VegetationPlaceableOnBlock(ModTags.Blocks.SUPPORTS_ICE_VEGETATION, properties.instabreak().mapColor(MapColor.ICE)
-                    .noCollision().noOcclusion().ignitedByLava().offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY).sound(SoundType.GLASS)));
-    public static final Block POTTED_FROZEN_GRASS = registerBlock("potted_frozen_grass", false, properties ->
-            new FlowerPotBlock(ModBlocks.FROZEN_GRASS, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+    public static final Block NETHERSTONE = registerBlock("netherstone", properties ->
+            new Block(properties.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(0.34F).sound(SoundType.NETHERRACK)));
+    public static final Block POLISHED_NETHERSTONE = registerBlock("polished_netherrack", properties ->
+            new Block(properties.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
+    public static final Block POLISHED_NETHERSTONE_STAIRS = registerBlock("polished_netherrack_stairs", properties ->
+            new StairBlock(POLISHED_NETHERSTONE.defaultBlockState(), properties.mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
+    public static final Block POLISHED_NETHERSTONE_SLAB = registerBlock("polished_netherrack_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
+    public static final Block POLISHED_NETHERSTONE_WALL = registerBlock("polished_netherrack_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
+    public static final Block NETHERSTONE_BRICKS = registerBlock("netherrack_bricks", properties ->
+            new Block(properties.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
+    public static final Block NETHERSTONE_BRICKS_STAIRS = registerBlock("netherrack_bricks_stairs", properties ->
+            new StairBlock(NETHERSTONE_BRICKS.defaultBlockState(), properties.mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
+    public static final Block NETHERSTONE_BRICKS_SLAB = registerBlock("netherrack_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
+    public static final Block NETHERSTONE_BRICKS_WALL = registerBlock("netherrack_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
 
     public static final Block SALT_BLOCK = registerBlock("salt", properties ->
             new Block(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.COW_BELL)
                     .requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+    public static final Block POLISHED_SALT = registerBlock("polished_salt", properties ->
+            new Block(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.COW_BELL)
+                    .requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+    public static final Block POLISHED_SALT_STAIRS = registerBlock("polished_salt_stairs", properties ->
+            new StairBlock(POLISHED_SALT.defaultBlockState(), properties.mapColor(MapColor.QUARTZ)
+                    .instrument(NoteBlockInstrument.COW_BELL).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+    public static final Block POLISHED_SALT_SLAB = registerBlock("polished_salt_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.QUARTZ)
+                    .instrument(NoteBlockInstrument.COW_BELL).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
+    public static final Block POLISHED_SALT_WALL = registerBlock("polished_salt_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.QUARTZ)
+                    .instrument(NoteBlockInstrument.COW_BELL).requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));
     public static final Block SALT_BRICKS = registerBlock("salt_bricks", properties ->
             new Block(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.COW_BELL)
                     .requiresCorrectToolForDrops().strength(1.5F).sound(SoundType.CALCITE)));

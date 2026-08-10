@@ -174,11 +174,68 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.ROOTED_DIRT), has(Blocks.ROOTED_DIRT))
                         .group("rooted_dirt").save(output, "rooted_regular_dirt");
 
-                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS, Ingredient.of(ModBlocks.SALT_BLOCK))
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE, Blocks.NETHERRACK);
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE, Ingredient.of(ModBlocks.NETHERSTONE))
+                        .unlockedBy(getHasName(ModBlocks.NETHERSTONE), has(ModBlocks.NETHERSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_NETHERSTONE), has(ModBlocks.POLISHED_NETHERSTONE))
+                        .group("polished").save(output, "polished_netherrack");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE, ModBlocks.NETHERSTONE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE, Blocks.NETHERRACK);
+                stairBuilder(ModBlocks.POLISHED_NETHERSTONE_STAIRS, Ingredient.of(ModBlocks.POLISHED_NETHERSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_NETHERSTONE), has(ModBlocks.POLISHED_NETHERSTONE))
+                        .group("stairs").save(output, "polished_netherrack_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE_STAIRS, ModBlocks.POLISHED_NETHERSTONE);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE_SLAB, Ingredient.of(ModBlocks.POLISHED_NETHERSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_NETHERSTONE), has(ModBlocks.POLISHED_NETHERSTONE))
+                        .group("slabs").save(output, "polished_netherrack_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE_SLAB, ModBlocks.POLISHED_NETHERSTONE, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE_WALL, Ingredient.of(ModBlocks.POLISHED_NETHERSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_NETHERSTONE), has(ModBlocks.POLISHED_NETHERSTONE))
+                        .group("walls").save(output, "polished_netherrack_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE_WALL, ModBlocks.POLISHED_NETHERSTONE);
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS, Ingredient.of(ModBlocks.POLISHED_NETHERSTONE))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_NETHERSTONE), has(ModBlocks.POLISHED_NETHERSTONE))
+                        .unlockedBy(getHasName(ModBlocks.NETHERSTONE_BRICKS), has(ModBlocks.NETHERSTONE_BRICKS))
+                        .group("bricks").save(output, "netherrack_bricks");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS, ModBlocks.NETHERSTONE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS, Blocks.NETHERRACK);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS, ModBlocks.POLISHED_NETHERSTONE);
+                stairBuilder(ModBlocks.NETHERSTONE_BRICKS_STAIRS, Ingredient.of(ModBlocks.NETHERSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.NETHERSTONE_BRICKS), has(ModBlocks.NETHERSTONE_BRICKS))
+                        .group("stairs").save(output, "netherrack_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS_STAIRS, ModBlocks.NETHERSTONE_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS_SLAB, Ingredient.of(ModBlocks.NETHERSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.NETHERSTONE_BRICKS), has(ModBlocks.NETHERSTONE_BRICKS))
+                        .group("slabs").save(output, "netherrack_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS_SLAB, ModBlocks.NETHERSTONE_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS_WALL, Ingredient.of(ModBlocks.NETHERSTONE_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.NETHERSTONE_BRICKS), has(ModBlocks.NETHERSTONE_BRICKS))
+                        .group("walls").save(output, "netherrack_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE_BRICKS_WALL, ModBlocks.NETHERSTONE_BRICKS);
+
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SALT, Ingredient.of(ModBlocks.SALT_BLOCK))
                         .unlockedBy(getHasName(ModBlocks.SALT_BLOCK), has(ModBlocks.SALT_BLOCK))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SALT), has(ModBlocks.POLISHED_SALT))
+                        .group("polished").save(output, "polished_salt");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SALT, ModBlocks.SALT_BLOCK);
+                stairBuilder(ModBlocks.POLISHED_SALT_STAIRS, Ingredient.of(ModBlocks.POLISHED_SALT))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SALT), has(ModBlocks.POLISHED_SALT))
+                        .group("stairs").save(output, "polished_salt_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SALT_STAIRS, ModBlocks.POLISHED_SALT);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SALT_SLAB, Ingredient.of(ModBlocks.POLISHED_SALT))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SALT), has(ModBlocks.POLISHED_SALT))
+                        .group("slabs").save(output, "polished_salt_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SALT_SLAB, ModBlocks.POLISHED_SALT, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SALT_WALL, Ingredient.of(ModBlocks.POLISHED_SALT))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SALT), has(ModBlocks.POLISHED_SALT))
+                        .group("walls").save(output, "polished_salt_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SALT_WALL, ModBlocks.POLISHED_SALT);
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS, Ingredient.of(ModBlocks.POLISHED_SALT))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_SALT), has(ModBlocks.POLISHED_SALT))
                         .unlockedBy(getHasName(ModBlocks.SALT_BRICKS), has(ModBlocks.SALT_BRICKS))
                         .group("bricks").save(output, "salt_bricks");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS, ModBlocks.SALT_BLOCK);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BRICKS, ModBlocks.POLISHED_SALT);
                 stairBuilder(ModBlocks.SALT_BRICKS_STAIRS, Ingredient.of(ModBlocks.SALT_BRICKS))
                         .unlockedBy(getHasName(ModBlocks.SALT_BRICKS), has(ModBlocks.SALT_BRICKS))
                         .group("stairs").save(output, "salt_bricks_stairs");

@@ -6,7 +6,6 @@
   "block.jirbiomes.coconut_plant": "Coconut",
 
   "block.jirbiomes.iron_grate": "Iron Grate",
-  "block.jirbiomes.netherstone": "Netherstone",
 
   "block.jirbiomes.rooted_mud": "Rooted Mud",
   "block.jirbiomes.rooted_sand": "Rooted Sand",
@@ -30,8 +29,21 @@
   "block.jirbiomes.algae": "Algae",
   "item.jirbiomes.algae_bucket": "Bucket of Algae",
 
+  "block.jirbiomes.netherstone": "Netherstone",
+  "block.jirbiomes.polished_netherrack": "Polished Netherrack",
+  "block.jirbiomes.polished_netherrack_slab": "Polished Netherrack Slab",
+  "block.jirbiomes.polished_netherrack_stairs": "Polished Netherrack Stairs",
+  "block.jirbiomes.polished_netherrack_wall": "Polished Netherrack Wall",
+  "block.jirbiomes.netherrack_bricks": "Netherrack Bricks",
+  "block.jirbiomes.netherrack_bricks_slab": "Netherrack Brick Slab",
+  "block.jirbiomes.netherrack_bricks_stairs": "Netherrack Brick Stairs",
+  "block.jirbiomes.netherrack_bricks_wall": "Netherrack Brick Wall",
+
   "block.jirbiomes.salt": "Salt",
-  "block.jirbiomes.salt_lamp": "Salt Lamp",
+  "block.jirbiomes.polished_salt": "Polished Salt",
+  "block.jirbiomes.polished_salt_slab": "Polished Salt Slab",
+  "block.jirbiomes.polished_salt_stairs": "Polished Salt Stairs",
+  "block.jirbiomes.polished_salt_wall": "Polished Salt Wall",
   "block.jirbiomes.salt_bricks": "Salt Bricks",
   "block.jirbiomes.salt_bricks_slab": "Salt Brick Slab",
   "block.jirbiomes.salt_bricks_stairs": "Salt Brick Stairs",
