@@ -57,5 +57,7 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BRIMSTONE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.IGNITED_BRIMSTONE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHARP_RIBS_SOUL_SAND_PLACED);
     }
 }

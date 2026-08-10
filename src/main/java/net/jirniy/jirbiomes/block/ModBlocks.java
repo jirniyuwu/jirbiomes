@@ -93,6 +93,10 @@ public class ModBlocks {
     public static final Block POTTED_FROZEN_GRASS = registerBlock("potted_frozen_grass", false, properties ->
             new FlowerPotBlock(ModBlocks.FROZEN_GRASS, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
+    public static final Block SHARP_RIBS = registerBlock("sharp_ribs", properties ->
+            new RibsBlock(properties.instabreak().mapColor(MapColor.QUARTZ).noCollision().noOcclusion().replaceable()
+                    .pushReaction(PushReaction.DESTROY).sound(SoundType.BONE_BLOCK).jumpFactor(0.8f)));
+
     public static final Block STRAW_BLOCK = registerBlock("straw_block", properties ->
             new RotatedPillarBlock(properties.strength(0.8f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
                     .pushReaction(PushReaction.NORMAL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
@@ -315,7 +319,7 @@ public class ModBlocks {
             new CustomGrassBlock(getKey(BRIMSTONE), ModPlacedFeatures.BRIMGRASS_BONEMEAL, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.NETHER_SPROUTS)));
     public static final Block BRIMGRASS = registerBlock("brimgrass", properties ->
-            new GenericGrassBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS)
+            new GenericPlantBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS)
                     .offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY)));
 
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->

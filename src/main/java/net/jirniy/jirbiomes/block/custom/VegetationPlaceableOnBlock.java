@@ -6,7 +6,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class VegetationPlaceableOnBlock extends GenericGrassBlock {
+public class VegetationPlaceableOnBlock extends GenericPlantBlock {
     final TagKey<Block> placeable;
 
     public VegetationPlaceableOnBlock(TagKey<Block> placeableOn, Properties properties) {

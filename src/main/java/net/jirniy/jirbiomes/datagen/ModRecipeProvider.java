@@ -52,8 +52,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         Items.DRY_TALL_GRASS
                 );
 
-                oreSmelting(List.of(ModBlocks.FROSTED_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, Blocks.STONE, 0, BASE_COOKING_TIME, "netherstone");
-                oreBlasting(List.of(ModBlocks.FROSTED_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, Blocks.STONE, 0, BASE_SMELTING_TIME, "netherstone");
+                oreSmelting(List.of(ModBlocks.FROSTED_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, Blocks.STONE, 0, BASE_COOKING_TIME, "stone_from_frosted");
+                oreBlasting(List.of(ModBlocks.FROSTED_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, Blocks.STONE, 0, BASE_SMELTING_TIME, "stone_from_frosted");
 
                 oreSmelting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, BASE_COOKING_TIME, "gold_ingot");
                 oreBlasting(List.of(ModBlocks.BRIMSTONE_GOLD_ORE), RecipeCategory.MISC, CookingBookCategory.MISC, Items.GOLD_INGOT, 1.0f, BASE_SMELTING_TIME, "gold_ingot");
@@ -86,13 +86,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.CRACKED_COCONUT), has(ModItems.CRACKED_COCONUT))
                         .save(output, "cracked_coconut");
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE, 4)
-                        .pattern("SS")
-                        .pattern("SS")
-                        .define('S', Blocks.NETHERRACK)
-                        .unlockedBy(getHasName(Blocks.NETHERRACK), has(Blocks.NETHERRACK))
-                        .unlockedBy(getHasName(ModBlocks.NETHERSTONE), has(ModBlocks.NETHERSTONE))
-                        .save(output, "netherstone");
+                shapeless(RecipeCategory.MISC, ModBlocks.SHARP_RIBS, 2)
+                        .requires(Items.BONE).requires(Items.BONE)
+                        .unlockedBy(getHasName(ModBlocks.SHARP_RIBS), has(ModBlocks.SHARP_RIBS))
+                        .save(output, "sharp_ribs");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRAW_BLOCK, 1)
                         .pattern("SS")
@@ -174,6 +171,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.ROOTED_DIRT), has(Blocks.ROOTED_DIRT))
                         .group("rooted_dirt").save(output, "rooted_regular_dirt");
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE, 4)
+                        .pattern("SS")
+                        .pattern("SS")
+                        .define('S', Blocks.NETHERRACK)
+                        .unlockedBy(getHasName(Blocks.NETHERRACK), has(Blocks.NETHERRACK))
+                        .unlockedBy(getHasName(ModBlocks.NETHERSTONE), has(ModBlocks.NETHERSTONE))
+                        .save(output, "netherstone");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE, Blocks.NETHERRACK);
                 bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_NETHERSTONE, Ingredient.of(ModBlocks.NETHERSTONE))
                         .unlockedBy(getHasName(ModBlocks.NETHERSTONE), has(ModBlocks.NETHERSTONE))

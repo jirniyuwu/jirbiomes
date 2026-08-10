@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "jirbiomes:block/sharp_ribs",
+      "y": 90
+    },
+    "axis=z": {
+      "model": "jirbiomes:block/sharp_ribs"
+    }
+  }
+}

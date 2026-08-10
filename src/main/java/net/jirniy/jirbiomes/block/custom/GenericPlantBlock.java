@@ -9,8 +9,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class GenericGrassBlock extends VegetationBlock {
-    public static final MapCodec<GenericGrassBlock> CODEC = simpleCodec(GenericGrassBlock::new);
+public class GenericPlantBlock extends VegetationBlock {
+    public static final MapCodec<GenericPlantBlock> CODEC = simpleCodec(GenericPlantBlock::new);
     private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
 
     @Override
@@ -18,7 +18,7 @@ public class GenericGrassBlock extends VegetationBlock {
         return CODEC;
     }
 
-    public GenericGrassBlock(Properties properties) {
+    public GenericPlantBlock(Properties properties) {
         super(properties);
     }
 

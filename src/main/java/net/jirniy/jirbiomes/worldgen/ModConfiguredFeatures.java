@@ -2,10 +2,7 @@ package net.jirniy.jirbiomes.worldgen;
 
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
-import net.jirniy.jirbiomes.block.custom.AlgaeBlock;
-import net.jirniy.jirbiomes.block.custom.AppleLeavesBlock;
-import net.jirniy.jirbiomes.block.custom.PlantLikeLeavesBlock;
-import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
+import net.jirniy.jirbiomes.block.custom.*;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
 import net.jirniy.jirbiomes.worldgen.feature.CoconutDecorator;
@@ -93,6 +90,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE = registryKey("algae");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE_PATCH = registryKey("algae_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_GRASS = registryKey("frozen_grass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHARP_RIBS = registryKey("sharp_ribs");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
@@ -425,6 +423,11 @@ public class ModConfiguredFeatures {
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(ALGAE),
                                 CountPlacement.of(20), RandomOffsetPlacement.ofTriangle(3, 0)))
         ));
+        register(context, SHARP_RIBS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(
+                WeightedList.<BlockState>builder()
+                        .add(ModBlocks.SHARP_RIBS.defaultBlockState().setValue(RibsBlock.AXIS, Direction.Axis.X))
+                        .add(ModBlocks.SHARP_RIBS.defaultBlockState().setValue(RibsBlock.AXIS, Direction.Axis.Z))
+        )));
         
         register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BRIMGRASS)));
         register(context, TENEBRIS_BUD, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TENEBRIS_SAPLING)));
