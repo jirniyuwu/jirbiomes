@@ -135,5 +135,32 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.getKey(ModItems.APPLE_SEEDS));
+
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_BOUNCY);
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_EXPLOSIVE);
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_FLAT)
+                .add(ModItems.getKey(ModBlocks.STRAW_BLOCK))
+                .add(ModItems.getKey(ModBlocks.PACKED_STRAW));
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_SLIDING)
+                .add(ModItems.getKey(ModBlocks.PERMAFROST_BLOCK))
+                .add(ModItems.getKeys(ModBlocks.SNOW_BRICKS, ModBlocks.PACKED_SNOW, ModBlocks.POLISHED_SNOW));
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE);
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HOT)
+                .add(ModItems.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModItems.getKey(ModBlocks.CHISELED_BRIMSTONE_BRICKS));
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_LIGHT);
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_REGULAR)
+                .add(ModItems.getKey(ModBlocks.ROOTED_MUD))
+                .add(ModItems.getKeys(ModBlocks.WETLAND, ModBlocks.COARSE_WETLAND, ModBlocks.ROOTED_WETLAND, ModBlocks.WET_GRASS_BLOCK))
+                .add(ModItems.getKeys(ModBlocks.DRIED_DIRT, ModBlocks.COARSE_DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.DRIED_GRASS_BLOCK));
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY)
+                .add(ModItems.getKey(ModBlocks.NETHERSTONE))
+                .add(ModItems.getKeys(ModBlocks.SALT_BLOCK, ModBlocks.SALT_BRICKS))
+                .add(ModItems.getKeys(ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE, ModBlocks.BRIMSTONE_GOLD_ORE))
+                .add(ModItems.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.POLISHED_BRIMSTONE, ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS));
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_FLAT);
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_SLIDING)
+                .add(ModItems.getKeys(ModBlocks.FROSTED_STONE, ModBlocks.FROST_BRICKS, ModBlocks.POLISHED_FROST));
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_STICKY);
     }
 }

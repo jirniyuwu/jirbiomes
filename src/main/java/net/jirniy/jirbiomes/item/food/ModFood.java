@@ -1,6 +1,7 @@
 package net.jirniy.jirbiomes.item.food;
 
 import com.mojang.serialization.MapCodec;
+import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModDamageTypes;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,15 +13,15 @@ import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ConsumeEffect;
 
 public class ModFood {
-    public class Properties {
+    public static class Properties {
         public static final FoodProperties PRICKLY_PEAR = new FoodProperties.Builder().nutrition(3).saturationModifier(0.4F).build();
-        public static final FoodProperties COCONUT_PROPERTIES = new FoodProperties.Builder().nutrition(6).saturationModifier(0.7F).build();
+        public static final FoodProperties COCONUT_PROPERTIES = new FoodProperties.Builder().nutrition(6).saturationModifier(0.3F).build();
     }
-    public class Effects {
-//        public static final Consumable DROP_APPLE_SEEDS = Consumables.defaultFood()
-//                .onConsume(new DropSeedsConsumeEffect(ModItems.APPLE_SEEDS, 0.25f)).build();
+    public static class Effects {
         public static final Consumable PRICKLY_PEAR_EFFECT = Consumables.defaultFood()
                 .onConsume(new DealDamageConsumeEffect(1f, ModDamageTypes.CACTUS_FOOD, 0.8f)).build();
+        public static final Consumable DROP_APPLE_SEEDS = Consumables.defaultFood()
+                .onConsume(new DropSeedsConsumeEffect(ModItems.APPLE_SEEDS, 0.25f)).build();
         public static final Consumable COCONUT_EFFECT = Consumables.defaultFood().consumeSeconds(2.8f).build();
     }
     record Type<T extends ConsumeEffect>(MapCodec<T> codec, StreamCodec<RegistryFriendlyByteBuf, T> streamCodec) {
