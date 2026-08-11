@@ -96,6 +96,9 @@ public class ModBlocks {
     public static final Block SHARP_RIBS = registerBlock("sharp_ribs", properties ->
             new RibsBlock(properties.instabreak().mapColor(MapColor.QUARTZ).noCollision().noOcclusion().replaceable()
                     .pushReaction(PushReaction.DESTROY).sound(SoundType.BONE_BLOCK).jumpFactor(0.8f)));
+    public static final Block SEA_URCHIN = registerBlock("sea_urchin", properties ->
+            new SeaUrchinBlock(properties.destroyTime(0.1f).noCollision().noOcclusion()
+                    .pushReaction(PushReaction.DESTROY).sound(SoundType.COBWEB)));
 
     public static final Block STRAW_BLOCK = registerBlock("straw_block", properties ->
             new RotatedPillarBlock(properties.strength(0.8f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()

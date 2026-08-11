@@ -51,6 +51,13 @@ public class ModBiomeModifications {
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_PATCH_PLACED);
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SEA_URCHIN_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WARM_OCEAN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SEA_URCHIN_BONUS_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SEA_URCHIN_SHIPWRECK_PLACED);
+
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.NETHERSTONE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),

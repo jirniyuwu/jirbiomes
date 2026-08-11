@@ -66,6 +66,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 oreSmoking(DRIED_FIBER_QUICK_SMELTABLE, RecipeCategory.MISC, CookingBookCategory.BLOCKS, ModItems.DRIED_FIBERS, 0.1f, BASE_SMELTING_TIME/4, "dried_fibers");
                 campfireCooking(DRIED_FIBER_QUICK_SMELTABLE, ModItems.DRIED_FIBERS, BASE_CAMPFIRE_TIME/4, 0.1f, "campfire_cooking_quick");
 
+                oreSmelting(List.of(ModBlocks.SEA_URCHIN), RecipeCategory.MISC, CookingBookCategory.MISC, Items.DYE.black(), 0.1f, BASE_COOKING_TIME, "black_dye_from_sea_urchin");
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.IRON_GRATE, 4)
                         .pattern(" S ")
                         .pattern("S S")

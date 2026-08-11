@@ -46,6 +46,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ALGAE_PATCH_PLACED = registryKey("algae_patch");
     public static final ResourceKey<PlacedFeature> FROZEN_GRASS_PLACED = registryKey("frozen_grass");
     public static final ResourceKey<PlacedFeature> SHARP_RIBS_SOUL_SAND_PLACED = registryKey("sharp_ribs_soul_sand");
+    public static final ResourceKey<PlacedFeature> SEA_URCHIN_PLACED = registryKey("sea_urchin");
+    public static final ResourceKey<PlacedFeature> SEA_URCHIN_BONUS_PLACED = registryKey("sea_urchin_bonus");
+    public static final ResourceKey<PlacedFeature> SEA_URCHIN_SHIPWRECK_PLACED = registryKey("sea_urchin_shipwreck");
 
     public static final ResourceKey<PlacedFeature> ICE_TOP_LAYER = registryKey("ice_top_layer");
     public static final ResourceKey<PlacedFeature> BLUE_ICE_ORE = registryKey("blue_ice_ore");
@@ -156,6 +159,20 @@ public class ModPlacedFeatures {
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                 Blocks.SOUL_SAND, Blocks.SOUL_SOIL))));
+        register(context, SEA_URCHIN_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SEA_URCHIN),
+                RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
+                RandomOffsetPlacement.ofTriangle(4, 3), CountPlacement.of(24), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
+        register(context, SEA_URCHIN_BONUS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SEA_URCHIN),
+                NoiseBasedCountPlacement.of(10, 400.0, 0.0),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
+        register(context, SEA_URCHIN_SHIPWRECK_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SEA_URCHIN_SHIPWRECK),
+                CountPlacement.of(24), RandomOffsetPlacement.ofTriangle(7, 3), InSquarePlacement.spread(),
+                CountPlacement.of(12), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesFluids(Fluids.WATER),
+                        BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(),
+                                ModTags.Blocks.SEA_URCHIN_SHIPWRECK_PLACEMENT))));
 
         register(context, BRIMGRASS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRIMGRASS),
                 CountPlacement.of(200), RandomOffsetPlacement.ofTriangle(7, 3),

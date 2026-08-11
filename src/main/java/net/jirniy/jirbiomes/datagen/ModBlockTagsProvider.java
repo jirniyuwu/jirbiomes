@@ -65,9 +65,14 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_STAIRS, ModBlocks.TENEBRIS_SLAB, ModBlocks.TENEBRIS_PRESSURE_PLATE, ModBlocks.TENEBRIS_BUTTON,
                         ModBlocks.TENEBRIS_FENCE, ModBlocks.TENEBRIS_FENCE_GATE, ModBlocks.TENEBRIS_TRAPDOOR, ModBlocks.TENEBRIS_DOOR));
         tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.getKey(ModBlocks.SEA_URCHIN))
                 .add(ModBlocks.getKey(ModBlocks.STRAW_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.PACKED_STRAW, ModBlocks.PACKED_STRAW_SLAB, ModBlocks.PACKED_STRAW_STAIRS))
                 .add(ModBlocks.getKeys(ModBlocks.PRICKLY_PEAR_SEED, ModBlocks.SMALL_BARREL_CACTUS, ModBlocks.LARGE_BARREL_CACTUS));
+        tag(BlockTags.SWORD_EFFICIENT)
+                .add(ModBlocks.getKey(ModBlocks.SEA_URCHIN));
+        tag(BlockTags.SHEARS_MAJOR_BREAKING_SPEED)
+                .add(ModBlocks.getKey(ModBlocks.SEA_URCHIN));
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
@@ -323,6 +328,12 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(BlockTags.SUPPORTS_VEGETATION)
                 .addOptionalTag(BlockTags.SUPPORTS_DRY_VEGETATION)
                 .addOptionalTag(BlockTags.SAND);
+        tag(ModTags.Blocks.SEA_URCHIN_SHIPWRECK_PLACEMENT)
+                .addOptionalTag(BlockTags.PLANKS)
+                .addOptionalTag(BlockTags.OVERWORLD_NATURAL_LOGS)
+                .addOptionalTag(BlockTags.WOODEN_STAIRS)
+                .addOptionalTag(BlockTags.WOODEN_SLABS)
+                .addOptionalTag(BlockTags.WOODEN_TRAPDOORS);
 
         tag(BlockTags.SUPPORTS_COCOA)
                 .addOptionalTag(ModTags.Blocks.PALM_LOGS);

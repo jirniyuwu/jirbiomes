@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "floating=true": {
+      "model": "jirbiomes:block/sea_urchin_floating"
+    },
+    "floating=false": {
+      "model": "jirbiomes:block/sea_urchin"
+    }
+  }
+}

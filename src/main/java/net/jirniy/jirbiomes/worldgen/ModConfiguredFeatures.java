@@ -91,6 +91,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE_PATCH = registryKey("algae_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_GRASS = registryKey("frozen_grass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHARP_RIBS = registryKey("sharp_ribs");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_URCHIN = registryKey("sea_urchin");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_URCHIN_SHIPWRECK = registryKey("sea_urchin_shipwreck");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
@@ -413,6 +415,12 @@ public class ModConfiguredFeatures {
 
         register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CATTAIL)));
         register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.FROZEN_GRASS)));
+        register(context, SEA_URCHIN, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(
+                ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, false))));
+        register(context, SEA_URCHIN_SHIPWRECK, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider
+                .builder(BlockStateProvider.simple(ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, true)))
+                .ifTrueThenProvide(BlockPredicate.hasSturdyFace(Direction.DOWN.getUnitVec3i(), Direction.UP),
+                        ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, false)).build()));
         register(context, ALGAE, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(
                 WeightedList.<BlockState>builder()
                         .add(ModBlocks.ALGAE.defaultBlockState().setValue(AlgaeBlock.DENSE, false), 2)
