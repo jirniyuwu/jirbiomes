@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -62,10 +63,15 @@ public class SeaUrchinBlock extends Block implements SimpleWaterloggedBlock, Bon
             livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 0));
             livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 160, 0));
             livingEntity.makeStuckInBlock(state, new Vec3(0.85, 0.85, 0.85));
-            if (level.getRandom().nextFloat() < 0.05f) {
-                level.destroyBlock(pos, false);
+            if (!level.isClientSide()) {
+                level.scheduleTick(pos, this, 6);
             }
         }
+    }
+
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        level.destroyBlock(pos, false);
     }
 
     @Override
@@ -94,12 +100,7 @@ public class SeaUrchinBlock extends Block implements SimpleWaterloggedBlock, Bon
     }
 
     @Override
-    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (!level.getBlockState(pos.below()).isFaceSturdy(level, pos.below(), Direction.UP)){
-            level.setBlock(pos, state.setValue(FLOATING, true), 1);
-        } else {
-            level.setBlock(pos, state.setValue(FLOATING, false), 1);
-        }
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
         if (!canSurvive(level.getBlockState(pos), level, pos)) {
             level.destroyBlock(pos, true);
         }
@@ -131,7 +132,7 @@ public class SeaUrchinBlock extends Block implements SimpleWaterloggedBlock, Bon
         if (state.getValue(WATERLOGGED)) {
             ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
+        return state.setValue(FLOATING, !level.getBlockState(pos.below()).isFaceSturdy(level, pos.below(), Direction.UP));
     }
 
     @Override
