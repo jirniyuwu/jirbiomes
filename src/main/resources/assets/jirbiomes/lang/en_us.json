@@ -66,6 +66,13 @@
   "block.jirbiomes.packed_straw_slab": "Packed Straw Slab",
   "block.jirbiomes.packed_straw_stairs": "Packed Straw Stairs",
 
+  "block.jirbiomes.seashell_block": "Seashell Block",
+  "block.jirbiomes.suspicious_seashells": "Suspicious Seashells",
+  "block.jirbiomes.seashell_bricks": "Seashell Bricks",
+  "block.jirbiomes.seashell_bricks_slab": "Seashell Brick Slab",
+  "block.jirbiomes.seashell_bricks_stairs": "Seashell Brick Stairs",
+  "block.jirbiomes.seashell_bricks_wall": "Seashell Brick Wall",
+
   "block.jirbiomes.permafrost_block": "Permafrost",
   "block.jirbiomes.icicle": "Icicle",
 

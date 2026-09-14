@@ -156,6 +156,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY)
                 .add(ModItems.getKeys(ModBlocks.NETHERSTONE, ModBlocks.NETHERSTONE_BRICKS, ModBlocks.POLISHED_NETHERSTONE))
                 .add(ModItems.getKeys(ModBlocks.SALT_BLOCK, ModBlocks.SALT_BRICKS, ModBlocks.POLISHED_SALT))
+                .add(ModItems.getKeys(ModBlocks.SEASHELL_BLOCK, ModBlocks.SEASHELL_BRICKS))
                 .add(ModItems.getKeys(ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE, ModBlocks.BRIMSTONE_GOLD_ORE))
                 .add(ModItems.getKeys(ModBlocks.BRIMSTONE_BRICKS, ModBlocks.POLISHED_BRIMSTONE, ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS));
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_FLAT);

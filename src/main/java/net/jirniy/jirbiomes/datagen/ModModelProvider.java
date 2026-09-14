@@ -85,6 +85,13 @@ public class ModModelProvider extends FabricModelProvider {
                 .stairs(ModBlocks.NETHERSTONE_BRICKS_STAIRS)
                 .slab(ModBlocks.NETHERSTONE_BRICKS_SLAB);
 
+        blockModelGenerators.createTrivialCube(ModBlocks.SEASHELL_BLOCK);
+        blockModelGenerators.createBrushableBlock(ModBlocks.SUSPICIOUS_SEASHELLS);
+        blockModelGenerators.family(ModBlocks.SEASHELL_BRICKS)
+                .wall(ModBlocks.SEASHELL_BRICKS_WALL)
+                .stairs(ModBlocks.SEASHELL_BRICKS_STAIRS)
+                .slab(ModBlocks.SEASHELL_BRICKS_SLAB);
+
         blockModelGenerators.family(ModBlocks.SALT_BLOCK)
                 .wall(ModBlocks.SALT_BLOCK_WALL)
                 .stairs(ModBlocks.SALT_BLOCK_STAIRS)

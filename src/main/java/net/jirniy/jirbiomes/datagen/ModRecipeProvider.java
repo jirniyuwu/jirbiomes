@@ -189,6 +189,30 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.SEASHELL), has(ModItems.SEASHELL))
                         .unlockedBy(getHasName(ModBlocks.RED_SAND_SHELLS), has(ModBlocks.RED_SAND_SHELLS))
                         .save(output, "red_sand_shells");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEASHELL_BLOCK, 1)
+                        .pattern("AA")
+                        .pattern("AA")
+                        .define('A', ModItems.SEASHELL)
+                        .unlockedBy(getHasName(ModItems.SEASHELL), has(ModItems.SEASHELL))
+                        .unlockedBy(getHasName(ModBlocks.SEASHELL_BLOCK), has(ModBlocks.SEASHELL_BLOCK))
+                        .save(output, "seashell_block");
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEASHELL_BRICKS, Ingredient.of(ModBlocks.SEASHELL_BLOCK))
+                        .unlockedBy(getHasName(ModBlocks.SEASHELL_BRICKS), has(ModBlocks.SEASHELL_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SEASHELL_BLOCK), has(ModBlocks.SEASHELL_BLOCK))
+                        .group("bricks").save(output, "seashell_bricks");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEASHELL_BRICKS, ModBlocks.SEASHELL_BLOCK);
+                stairBuilder(ModBlocks.SEASHELL_BRICKS_STAIRS, Ingredient.of(ModBlocks.SEASHELL_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SEASHELL_BRICKS), has(ModBlocks.SEASHELL_BRICKS))
+                        .group("stairs").save(output, "seashell_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEASHELL_BRICKS_STAIRS, ModBlocks.SEASHELL_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEASHELL_BRICKS_SLAB, Ingredient.of(ModBlocks.SEASHELL_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SEASHELL_BRICKS), has(ModBlocks.SEASHELL_BRICKS))
+                        .group("slabs").save(output, "seashell_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEASHELL_BRICKS_SLAB, ModBlocks.SEASHELL_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEASHELL_BRICKS_WALL, Ingredient.of(ModBlocks.SEASHELL_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.SEASHELL_BRICKS), has(ModBlocks.SEASHELL_BRICKS))
+                        .group("walls").save(output, "seashell_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEASHELL_BRICKS_WALL, ModBlocks.SEASHELL_BRICKS);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE, 4)
                         .pattern("SS")

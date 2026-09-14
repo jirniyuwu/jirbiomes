@@ -13,6 +13,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -222,6 +223,25 @@ public class ModBlocks {
     public static final Block NETHERSTONE_BRICKS_WALL = registerBlock("netherrack_bricks_wall", properties ->
             new WallBlock(properties.mapColor(MapColor.NETHER)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
+
+    public static final Block SEASHELL_BLOCK = registerBlock("seashell_block", properties ->
+            new Block(properties.mapColor(MapColor.RAW_IRON)
+                    .requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.GRAVEL)));
+    public static final Block SEASHELL_BRICKS = registerBlock("seashell_bricks", properties ->
+            new Block(properties.mapColor(MapColor.RAW_IRON)
+                    .requiresCorrectToolForDrops().strength(0.9F).sound(SoundType.TUFF)));
+    public static final Block SEASHELL_BRICKS_STAIRS = registerBlock("seashell_bricks_stairs", properties ->
+            new StairBlock(SEASHELL_BRICKS.defaultBlockState(), properties.mapColor(MapColor.RAW_IRON)
+                    .requiresCorrectToolForDrops().strength(0.9F).sound(SoundType.TUFF)));
+    public static final Block SEASHELL_BRICKS_SLAB = registerBlock("seashell_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.RAW_IRON)
+                    .requiresCorrectToolForDrops().strength(0.9F).sound(SoundType.TUFF)));
+    public static final Block SEASHELL_BRICKS_WALL = registerBlock("seashell_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.RAW_IRON)
+                    .requiresCorrectToolForDrops().strength(0.9F).sound(SoundType.TUFF)));
+    public static final Block SUSPICIOUS_SEASHELLS = registerBlockEntity("suspicious_seashells", BlockEntityTypes.BRUSHABLE_BLOCK, properties ->
+            new BrushableBlock(ModBlocks.SEASHELL_BLOCK, SoundEvents.BRUSH_GRAVEL, SoundEvents.BRUSH_GRAVEL_COMPLETED,
+                    properties.mapColor(MapColor.RAW_IRON).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SUSPICIOUS_GRAVEL)));
 
     public static final Block SALT_BLOCK = registerBlock("salt", properties ->
             new Block(properties.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.COW_BELL)
