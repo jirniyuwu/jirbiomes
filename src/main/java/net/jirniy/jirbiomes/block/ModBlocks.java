@@ -54,7 +54,7 @@ public class ModBlocks {
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
     public static final Block DRIED_GRASS_BLOCK = registerBlock("dried_grass_block", properties ->
             new CustomGrassBlock(getKey(DRIED_DIRT), VegetationPlacements.GRASS_BONEMEAL, properties.strength(0.4f).randomTicks()
-                    .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
+                    .mapColor(MapColor.GRASS).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
     public static final Block DRY_FARMLAND = registerBlock("dry_farmland", properties ->
             new CustomFarmlandBlock(DRIED_DIRT, properties.strength(0.4f).randomTicks()
                     .mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT)));
@@ -99,6 +99,13 @@ public class ModBlocks {
     public static final Block SEA_URCHIN = registerBlock("sea_urchin", properties ->
             new SeaUrchinBlock(properties.destroyTime(0.1f).noCollision().noOcclusion()
                     .pushReaction(PushReaction.DESTROY).sound(SoundType.COBWEB)));
+
+    public static final Block SAND_SHELLS = registerBlock("sand_shells", properties ->
+            new SandBlock(new ColorRGBA(0x917E6E), properties.mapColor(MapColor.RAW_IRON)
+                    .instrument(NoteBlockInstrument.SNARE).strength(0.55F).sound(SoundType.SUSPICIOUS_SAND)));
+    public static final Block RED_SAND_SHELLS = registerBlock("red_sand_shells", properties ->
+            new SandBlock(new ColorRGBA(0x8E604F), properties.mapColor(MapColor.RAW_IRON)
+                    .instrument(NoteBlockInstrument.SNARE).strength(0.55F).sound(SoundType.SUSPICIOUS_SAND)));
 
     public static final Block STRAW_BLOCK = registerBlock("straw_block", properties ->
             new RotatedPillarBlock(properties.strength(0.8f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()

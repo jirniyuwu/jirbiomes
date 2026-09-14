@@ -47,6 +47,8 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.ROOTED_SAND);
         dropSelf(ModBlocks.ROOTED_RED_SAND);
         dropSelf(ModBlocks.ROOTED_MUD);
+        add(ModBlocks.SAND_SHELLS, createMultiDropsWithoutFortune(ModBlocks.SAND_SHELLS, ModItems.SEASHELL, 1, 2));
+        add(ModBlocks.RED_SAND_SHELLS, createMultiDropsWithoutFortune(ModBlocks.RED_SAND_SHELLS, ModItems.SEASHELL, 1, 2));
 
         add(ModBlocks.DRIED_GRASS_BLOCK, silkTouchOrElseDrop(ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT));
         add(ModBlocks.WET_GRASS_BLOCK, silkTouchOrElseDrop(ModBlocks.WET_GRASS_BLOCK, ModBlocks.WETLAND));
@@ -257,6 +259,17 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
                         LootItem.lootTableItem(drop)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
                                 .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
+    }
+
+    public LootTable.Builder createMultiDropsWithoutFortune(final Block block, ItemLike drop, float min, float max) {
+        return this.createSilkTouchDispatchTable(
+                block,
+                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
+                        block,
+                        LootItem.lootTableItem(drop)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
                 )
         );
     }

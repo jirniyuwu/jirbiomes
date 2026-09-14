@@ -173,6 +173,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.ROOTED_DIRT), has(Blocks.ROOTED_DIRT))
                         .group("rooted_dirt").save(output, "rooted_regular_dirt");
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SAND_SHELLS, 1)
+                        .pattern("SA")
+                        .pattern("AS")
+                        .define('S', Blocks.SAND)
+                        .define('A', ModItems.SEASHELL)
+                        .unlockedBy(getHasName(ModItems.SEASHELL), has(ModItems.SEASHELL))
+                        .unlockedBy(getHasName(ModBlocks.SAND_SHELLS), has(ModBlocks.SAND_SHELLS))
+                        .save(output, "sand_shells");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_SAND_SHELLS, 1)
+                        .pattern("SA")
+                        .pattern("AS")
+                        .define('S', Blocks.RED_SAND)
+                        .define('A', ModItems.SEASHELL)
+                        .unlockedBy(getHasName(ModItems.SEASHELL), has(ModItems.SEASHELL))
+                        .unlockedBy(getHasName(ModBlocks.RED_SAND_SHELLS), has(ModBlocks.RED_SAND_SHELLS))
+                        .save(output, "red_sand_shells");
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERSTONE, 4)
                         .pattern("SS")
                         .pattern("SS")

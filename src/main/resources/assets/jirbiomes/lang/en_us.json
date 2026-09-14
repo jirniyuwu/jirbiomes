@@ -1,5 +1,6 @@
 {
   "item.jirbiomes.dried_fibers": "Dried Fibers",
+  "item.jirbiomes.seashell": "Seashell",
 
   "item.jirbiomes.coconut": "Coconut",
   "item.jirbiomes.cracked_coconut": "Cracked Coconut",
@@ -10,6 +11,8 @@
   "block.jirbiomes.rooted_mud": "Rooted Mud",
   "block.jirbiomes.rooted_sand": "Rooted Sand",
   "block.jirbiomes.rooted_red_sand": "Rooted Red Sand",
+  "block.jirbiomes.sand_shells": "Sand Shells",
+  "block.jirbiomes.red_sand_shells": "Red Sand Shells",
 
   "block.jirbiomes.dried_dirt": "Dried Dirt",
   "block.jirbiomes.rooted_dried_dirt": "Rooted Dried Dirt",

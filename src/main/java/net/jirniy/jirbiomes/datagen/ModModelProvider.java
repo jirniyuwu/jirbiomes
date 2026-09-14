@@ -28,6 +28,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_SAND);
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_RED_SAND);
+        blockModelGenerators.createTrivialCube(ModBlocks.SAND_SHELLS);
+        blockModelGenerators.createTrivialCube(ModBlocks.RED_SAND_SHELLS);
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_MUD);
         blockModelGenerators.createTrivialCube(ModBlocks.COARSE_DRIED_DIRT);
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_DRIED_DIRT);
@@ -183,6 +185,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.PRICKLY_PEAR, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.DRIED_FIBERS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SEASHELL, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.COCONUT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.CRACKED_COCONUT, ModelTemplates.FLAT_ITEM);
 

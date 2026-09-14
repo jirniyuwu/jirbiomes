@@ -24,6 +24,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
                 .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH))
                 .add(ModBlocks.getKeys(ModBlocks.ROOTED_MUD, ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND))
+                .add(ModBlocks.getKeys(ModBlocks.SAND_SHELLS, ModBlocks.RED_SAND_SHELLS))
                 .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW));
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
@@ -214,6 +215,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(Blocks.BLUE_ICE));
 
         tag(BlockTags.SAND)
+                .add(ModBlocks.getKeys(ModBlocks.SAND_SHELLS, ModBlocks.RED_SAND_SHELLS))
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND));
         tag(BlockTags.CONVERTABLE_TO_MUD)

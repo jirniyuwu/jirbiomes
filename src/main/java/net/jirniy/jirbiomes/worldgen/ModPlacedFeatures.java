@@ -3,6 +3,7 @@ package net.jirniy.jirbiomes.worldgen;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.misc.ModTags;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -49,6 +50,10 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SEA_URCHIN_PLACED = registryKey("sea_urchin");
     public static final ResourceKey<PlacedFeature> SEA_URCHIN_BONUS_PLACED = registryKey("sea_urchin_bonus");
     public static final ResourceKey<PlacedFeature> SEA_URCHIN_SHIPWRECK_PLACED = registryKey("sea_urchin_shipwreck");
+    public static final ResourceKey<PlacedFeature> SAND_SHELLS_BEACH = registryKey("sand_shells_beach");
+    public static final ResourceKey<PlacedFeature> SAND_SHELLS_SMALL_BEACH = registryKey("sand_shells_small_beach");
+    public static final ResourceKey<PlacedFeature> SAND_SHELLS = registryKey("sand_shells_ocean");
+    public static final ResourceKey<PlacedFeature> SAND_SHELLS_BONUS = registryKey("sand_shells_bonus_ocean");
 
     public static final ResourceKey<PlacedFeature> ICE_TOP_LAYER = registryKey("ice_top_layer");
     public static final ResourceKey<PlacedFeature> BLUE_ICE_ORE = registryKey("blue_ice_ore");
@@ -173,6 +178,40 @@ public class ModPlacedFeatures {
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesFluids(Fluids.WATER),
                         BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(),
                                 ModTags.Blocks.SEA_URCHIN_SHIPWRECK_PLACEMENT))));
+
+        register(context, SAND_SHELLS, configuredFeatures.getOrThrow(ModConfiguredFeatures.SAND_SHELLS),
+                RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(),
+                RandomOffsetPlacement.ofTriangle(4, 1), CountPlacement.of(4), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(
+                        BlockPredicate.matchesFluids(Fluids.WATER), BlockPredicate.matchesFluids(Direction.UP.getUnitVec3i(), Fluids.WATER))),
+                BiomeFilter.biome());
+        register(context, SAND_SHELLS_BONUS, configuredFeatures.getOrThrow(ModConfiguredFeatures.SAND_SHELLS_SMALL),
+                CountPlacement.of(UniformInt.of(4, 8)), InSquarePlacement.spread(),
+                RandomOffsetPlacement.ofTriangle(5, 2), CountPlacement.of(12), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(
+                        BlockPredicate.matchesFluids(Fluids.WATER), BlockPredicate.matchesFluids(Direction.UP.getUnitVec3i(), Fluids.WATER))),
+                BiomeFilter.biome());
+
+        register(context, SAND_SHELLS_BEACH, configuredFeatures.getOrThrow(ModConfiguredFeatures.SAND_SHELLS),
+                InSquarePlacement.spread(), RandomOffsetPlacement.ofTriangle(4, 1),
+                CountPlacement.of(2), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(
+                        BlockPredicate.matchesFluids(Fluids.WATER), BlockPredicate.matchesFluids(Direction.UP.getUnitVec3i(), Fluids.WATER))),
+                BiomeFilter.biome());
+        register(context, SAND_SHELLS_SMALL_BEACH, configuredFeatures.getOrThrow(ModConfiguredFeatures.SAND_SHELLS_SMALL),
+                InSquarePlacement.spread(), CountPlacement.of(40), RandomOffsetPlacement.ofTriangle(5, 0),
+                CountPlacement.of(9), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(
+                            BlockPredicate.matchesFluids(new BlockPos(1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
+                            BlockPredicate.matchesFluids(new BlockPos(-1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
+                            BlockPredicate.matchesFluids(new BlockPos(0, -1, 1), Fluids.WATER, Fluids.FLOWING_WATER),
+                            BlockPredicate.matchesFluids(new BlockPos(0, -1, -1), Fluids.WATER, Fluids.FLOWING_WATER),
+                            BlockPredicate.matchesBlocks(new BlockPos(1, -1, 0), Blocks.ICE),
+                            BlockPredicate.matchesBlocks(new BlockPos(-1, -1, 0), Blocks.ICE),
+                            BlockPredicate.matchesBlocks(new BlockPos(0, -1, 1), Blocks.ICE),
+                            BlockPredicate.matchesBlocks(new BlockPos(0, -1, -1), Blocks.ICE)
+                    )),
+                BiomeFilter.biome());
 
         register(context, BRIMGRASS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRIMGRASS),
                 CountPlacement.of(200), RandomOffsetPlacement.ofTriangle(7, 3),

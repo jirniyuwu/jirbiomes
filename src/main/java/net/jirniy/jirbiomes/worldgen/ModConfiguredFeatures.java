@@ -93,6 +93,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHARP_RIBS = registryKey("sharp_ribs");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_URCHIN = registryKey("sea_urchin");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_URCHIN_SHIPWRECK = registryKey("sea_urchin_shipwreck");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS = registryKey("sand_shells");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS_SMALL = registryKey("sand_shells_small");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
@@ -412,6 +414,15 @@ public class ModConfiguredFeatures {
                 CaveSurface.CEILING, UniformInt.of(1, 2), 0f, 5, 0.2f,
                 UniformInt.of(2, 5), 0.75F
         ));
+
+        register(context, SAND_SHELLS, Feature.ORE, new OreConfiguration(
+                List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SAND), ModBlocks.SAND_SHELLS.defaultBlockState()),
+                        OreConfiguration.target(new BlockMatchTest(Blocks.RED_SAND), ModBlocks.RED_SAND_SHELLS.defaultBlockState())),
+                28, 0f));
+        register(context, SAND_SHELLS_SMALL, Feature.ORE, new OreConfiguration(
+                List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SAND), ModBlocks.SAND_SHELLS.defaultBlockState()),
+                        OreConfiguration.target(new BlockMatchTest(Blocks.RED_SAND), ModBlocks.RED_SAND_SHELLS.defaultBlockState())),
+                8, 0.1f));
 
         register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CATTAIL)));
         register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.FROZEN_GRASS)));

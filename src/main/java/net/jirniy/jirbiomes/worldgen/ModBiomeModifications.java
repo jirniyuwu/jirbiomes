@@ -17,6 +17,7 @@ public class ModBiomeModifications {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SAVANNA_PLATEAU),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GINKGO_TREE_BONUS_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_SAVANNA),
+
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_desert")),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_PLACED);
@@ -26,6 +27,7 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_OCEAN_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_DEEP_OCEAN),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_OCEAN_PLACED);
+
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DESERT),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_DESERT_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BADLANDS, Biomes.WOODED_BADLANDS),
@@ -57,6 +59,16 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SEA_URCHIN_BONUS_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SEA_URCHIN_SHIPWRECK_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BEACH),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SAND_SHELLS_BEACH);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SNOWY_BEACH, Biomes.BEACH),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SAND_SHELLS_SMALL_BEACH);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.WARM_OCEAN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SAND_SHELLS);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WARM_OCEAN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SAND_SHELLS_BONUS);
 
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.NETHERSTONE_PLACED);
