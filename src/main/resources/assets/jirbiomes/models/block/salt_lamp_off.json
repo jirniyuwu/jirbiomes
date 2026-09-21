@@ -3,7 +3,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"salt": "jirbiomes:block/salt",
-		"base": "minecraft:block/anvil",
+		"base": "jirbiomes:block/salt_lamp_base",
 		"particle": "jirbiomes:block/salt"
 	},
 	"elements": [
