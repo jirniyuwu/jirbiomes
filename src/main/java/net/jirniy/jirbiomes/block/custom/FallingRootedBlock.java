@@ -2,6 +2,8 @@ package net.jirniy.jirbiomes.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.FallingBlockEntity;
@@ -30,6 +32,7 @@ public class FallingRootedBlock extends SandBlock implements BonemealableBlock {
     protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
         if (isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinY()) {
             FallingBlockEntity entity = FallingBlockEntity.fall(level, pos, falling.defaultBlockState());
+            level.playSound(null, pos, SoundEvents.HANGING_ROOTS_BREAK, SoundSource.BLOCKS);
             this.falling(entity);
         }
     }

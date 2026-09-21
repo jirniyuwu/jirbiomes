@@ -72,8 +72,7 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         if (state.getValue(HANGING)) {
-            return level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN)
-                    || level.getBlockState(pos.above()).is(BlockTags.CHAINS);
+            return canSupportCenter(level, pos.above(), Direction.DOWN);
         } else {
             return level.getBlockState(pos.below()).isFaceSturdy(level, pos.below(), Direction.UP);
         }
@@ -94,8 +93,7 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
         } else {
             if (level.getBlockState(pos.below()).isFaceSturdy(level, pos.below(), Direction.UP)) {
                 state = state.setValue(HANGING, false);
-            } else if (level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN)
-                    || level.getBlockState(pos.above()).is(BlockTags.CHAINS)) {
+            } else if (canSupportCenter(level, pos.above(), Direction.DOWN)) {
                 state = state.setValue(HANGING, true);
             }
         }
