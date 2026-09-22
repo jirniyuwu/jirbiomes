@@ -61,6 +61,8 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.CATTAIL, this::createTallPlantShearsDrop);
         add(ModBlocks.SEA_URCHIN, this::createShearsOrSilkTouchOnlyDrop);
         add(ModBlocks.SHARP_RIBS, silkTouchOrElseDrop(ModBlocks.SHARP_RIBS, Items.BONE));
+        dropSelf(ModBlocks.LOTUS_FLOWER);
+        dropPottedContents(ModBlocks.POTTED_LOTUS_FLOWER);
 
         add(ModBlocks.NETHERSTONE, silkTouchOrElseDrop(ModBlocks.NETHERSTONE, Blocks.NETHERRACK));
         dropSelf(ModBlocks.NETHERSTONE_STAIRS);

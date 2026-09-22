@@ -32,6 +32,8 @@ public class ModItems {
     public static final Item PRICKLY_PEAR = registerItem("prickly_pear", properties ->
             new BlockItem(ModBlocks.PRICKLY_PEAR_SEED, properties.useItemDescriptionPrefix()
                     .food(ModFood.Properties.PRICKLY_PEAR, ModFood.Effects.PRICKLY_PEAR_EFFECT)));
+    public static final Item LOTUS_FLOWER = registerItem("lotus", properties ->
+            new PlaceOnWaterBlockItem(ModBlocks.LOTUS_FLOWER, properties));
 
     public static final Item ALGAE_BUCKET = registerItem("algae_bucket", properties ->
             new PlaceWaterloggedBucketItem(ModBlocks.ALGAE, SoundEvents.BUCKET_EMPTY,

@@ -273,6 +273,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.getKey(ModBlocks.POTTED_LOTUS_FLOWER))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_FROZEN_GRASS))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_BARREL_CACTUS))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_GINKGO_SAPLING))
@@ -302,6 +303,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.SUPPORT_OVERRIDE_CACTUS_FLOWER)
                 .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS));
         tag(BlockTags.FLOWERS)
+                .add(ModBlocks.getKey(ModBlocks.LOTUS_FLOWER))
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SAPLING));
         tag(BlockTags.SPELEOTHEMS)
                 .add(ModBlocks.getKey(ModBlocks.ICICLE));

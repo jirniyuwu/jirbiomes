@@ -82,6 +82,12 @@ public class ModBlocks {
             new CustomPathBlock(WETLAND, properties.strength(0.8f).isViewBlocking(Blocks::always).isSuffocating(Blocks::always)
                     .mapColor(MapColor.TERRACOTTA_BROWN).pushReaction(PushReaction.NORMAL).sound(SoundType.WET_GRASS)));
 
+    public static final Block LOTUS_FLOWER = registerBlock("lotus", false, properties ->
+            new LotusFlowerBlock(properties.instabreak().mapColor(MapColor.COLOR_PINK).noCollision().noOcclusion().ignitedByLava()
+                    .lightLevel((state) -> 4).pushReaction(PushReaction.DESTROY).sound(SoundType.CACTUS_FLOWER)));
+    public static final Block POTTED_LOTUS_FLOWER = registerBlock("potted_lotus", false, properties ->
+            new FlowerPotBlock(ModBlocks.LOTUS_FLOWER, properties.instabreak()
+                    .lightLevel((state) -> 2).noOcclusion().pushReaction(PushReaction.DESTROY)));
     public static final Block CATTAIL = registerBlock("cattail", properties ->
             new CattailBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_BROWN).noCollision().noOcclusion().ignitedByLava()
                     .randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).sound(SoundType.CROP)));

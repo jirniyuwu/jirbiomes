@@ -93,6 +93,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.SHARP_RIBS), has(ModBlocks.SHARP_RIBS))
                         .save(output, "sharp_ribs");
 
+                shapeless(RecipeCategory.MISC, Items.DYE.pink(), 1)
+                        .requires(ModItems.LOTUS_FLOWER)
+                        .unlockedBy(getHasName(ModItems.LOTUS_FLOWER), has(ModItems.LOTUS_FLOWER))
+                        .group("pink_dye").save(output, "pink_dye_lotus");
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRAW_BLOCK, 1)
                         .pattern("SS")
                         .pattern("SS")

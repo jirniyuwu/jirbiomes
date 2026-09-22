@@ -54,6 +54,7 @@ public class RegistryModifications {
         BlockColorRegistry.register(List.of(BlockTintSources.foliage()), ModBlocks.APPLE_LEAVES);
 
         BlockColorRegistry.register(List.of(BlockTintSources.doubleTallGrass()), ModBlocks.CATTAIL);
+        BlockColorRegistry.register(List.of(BlockTintSources.constant(0x208030)), ModBlocks.LOTUS_FLOWER);
 
         StrippableBlockRegistry.register(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG);
         StrippableBlockRegistry.register(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD);
@@ -72,6 +73,7 @@ public class RegistryModifications {
         CompostableRegistry.INSTANCE.add(ModItems.BARREL_CACTUS, 0.3f);
         CompostableRegistry.INSTANCE.add(ModItems.PRICKLY_PEAR, 0.3f);
         CompostableRegistry.INSTANCE.add(ModBlocks.CATTAIL, 0.3f);
+        CompostableRegistry.INSTANCE.add(ModItems.LOTUS_FLOWER, 0.5f);
 
         FuelValueEvents.BUILD.register((builder, context) -> {
             final int BASE_TIME = context.baseSmeltTime();
@@ -81,6 +83,7 @@ public class RegistryModifications {
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CATTAIL, 40, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModTags.Blocks.BARREL_CACTUSES, 40, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.LOTUS_FLOWER, 20, 40);
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRAW_BLOCK, 40, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW, 20, 40);

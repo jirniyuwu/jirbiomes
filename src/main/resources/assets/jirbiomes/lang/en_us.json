@@ -28,6 +28,9 @@
   "block.jirbiomes.wet_farmland": "Wet Farmland",
   "block.jirbiomes.wetland_path": "Wetland Path",
 
+  "block.jirbiomes.lotus": "Lotus",
+  "item.jirbiomes.lotus": "Lotus",
+  "block.jirbiomes.potted_lotus": "Potted Lotus",
   "block.jirbiomes.cattail": "Cattail",
   "block.jirbiomes.algae": "Algae",
   "item.jirbiomes.algae_bucket": "Bucket of Algae",

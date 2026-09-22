@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "floating=false": [
+      {
+        "model": "jirbiomes:block/lotus"
+      },
+      {
+        "model": "jirbiomes:block/lotus",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/lotus",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/lotus",
+        "y": 270
+      }
+    ],
+    "floating=true": [
+      {
+        "model": "jirbiomes:block/lotus_pad"
+      },
+      {
+        "model": "jirbiomes:block/lotus_pad",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/lotus_pad",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/lotus_pad",
+        "y": 270
+      }
+    ]
+  }
+}
