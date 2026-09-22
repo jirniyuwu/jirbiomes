@@ -344,6 +344,10 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(BlockTags.WOODEN_STAIRS)
                 .addOptionalTag(BlockTags.WOODEN_SLABS)
                 .addOptionalTag(BlockTags.WOODEN_TRAPDOORS);
+        tag(ModTags.Blocks.ALGAE_SURVIVES_UNDER)
+                .add(ModBlocks.getKey(Blocks.LILY_PAD))
+                .add(ModBlocks.getKey(ModBlocks.LOTUS_FLOWER))
+                .add(ModBlocks.getKeys(Blocks.VINE, Blocks.CAVE_VINES, Blocks.CAVE_VINES_PLANT));
 
         tag(BlockTags.SUPPORTS_COCOA)
                 .addOptionalTag(ModTags.Blocks.PALM_LOGS);

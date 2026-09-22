@@ -1,6 +1,7 @@
 package net.jirniy.jirbiomes.block.custom;
 
 import net.jirniy.jirbiomes.item.ModItems;
+import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -51,7 +52,7 @@ public class AlgaeBlock extends Block implements SimpleWaterloggedBlock, Bonemea
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return state.getValue(WATERLOGGED) && (level.getBlockState(pos.above()).is(BlockTags.AIR) || level.getBlockState(pos.above()).is(Blocks.LILY_PAD));
+        return state.getValue(WATERLOGGED) && (level.getBlockState(pos.above()).is(BlockTags.AIR) || level.getBlockState(pos.above()).is(ModTags.Blocks.ALGAE_SURVIVES_UNDER));
     }
 
     @Override
