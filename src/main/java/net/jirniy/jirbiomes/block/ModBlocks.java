@@ -231,7 +231,7 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.NETHERRACK)));
 
     public static final Block SEASHELL_BLOCK = registerBlock("seashell_block", properties ->
-            new Block(properties.mapColor(MapColor.RAW_IRON)
+            new SandBlock(new ColorRGBA(0x776E65), properties.mapColor(MapColor.RAW_IRON)
                     .requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.GRAVEL)));
     public static final Block SEASHELL_BRICKS = registerBlock("seashell_bricks", properties ->
             new Block(properties.mapColor(MapColor.RAW_IRON)
