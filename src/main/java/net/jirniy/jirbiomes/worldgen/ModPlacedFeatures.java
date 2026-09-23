@@ -45,6 +45,8 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> CATTAIL_PATCH_PLACED = registryKey("cattail_patch");
     public static final ResourceKey<PlacedFeature> ALGAE_PATCH_PLACED = registryKey("algae_patch");
+    public static final ResourceKey<PlacedFeature> LOTUS_PLACED = registryKey("lotus_placed");
+    public static final ResourceKey<PlacedFeature> LOTUS_RARE_PLACED = registryKey("lotus_rare_placed");
     public static final ResourceKey<PlacedFeature> FROZEN_GRASS_PLACED = registryKey("frozen_grass");
     public static final ResourceKey<PlacedFeature> SHARP_RIBS_SOUL_SAND_PLACED = registryKey("sharp_ribs_soul_sand");
     public static final ResourceKey<PlacedFeature> SEA_URCHIN_PLACED = registryKey("sea_urchin");
@@ -146,6 +148,16 @@ public class ModPlacedFeatures {
                 BiomeFilter.biome(), CountPlacement.of(80), RandomOffsetPlacement.ofTriangle(7, 3),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesFluids(Fluids.WATER),
                         BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(), BlockTags.AIR))));
+        register(context, LOTUS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER),
+                NoiseThresholdCountPlacement.of(0.4, 1, 4),
+                RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesFluids(Direction.DOWN.getUnitVec3i(), Fluids.WATER))));
+        register(context, LOTUS_RARE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER),
+                NoiseThresholdCountPlacement.of(0.5, 0, 2),
+                RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesFluids(Direction.DOWN.getUnitVec3i(), Fluids.WATER))));
         register(context, ALGAE_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.ALGAE_PATCH),
                 RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome(), CountPlacement.of(20), RandomOffsetPlacement.ofTriangle(7, 0),

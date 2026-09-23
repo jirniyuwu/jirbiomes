@@ -42,6 +42,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -87,6 +88,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> CATTAIL = registryKey("cattail");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LOTUS_FLOWER = registryKey("lotus_flower");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE = registryKey("algae");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE_PATCH = registryKey("algae_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_GRASS = registryKey("frozen_grass");
@@ -424,6 +426,10 @@ public class ModConfiguredFeatures {
                         OreConfiguration.target(new BlockMatchTest(Blocks.RED_SAND), ModBlocks.RED_SAND_SHELLS.defaultBlockState())),
                 8, 0.1f));
 
+        register(context, LOTUS_FLOWER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider
+                .builder(BlockStateProvider.simple(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, false)))
+                .ifTrueThenProvide(BlockPredicate.matchesFluids(Direction.DOWN.getUnitVec3i(), Fluids.WATER),
+                        BlockStateProvider.simple(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, true))).build()));
         register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CATTAIL)));
         register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.FROZEN_GRASS)));
         register(context, SEA_URCHIN, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(

@@ -47,6 +47,12 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WET_GRASS_PATCH_PLACED);
 
         BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_RARE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_RARE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.CHERRY_GROVE, Biomes.MANGROVE_SWAMP),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CATTAIL_PATCH_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_PATCH_PLACED);
