@@ -29,8 +29,8 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_OCEAN_PLACED);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DESERT),
-                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_DESERT_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BADLANDS, Biomes.WOODED_BADLANDS),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_DIRT_PATCH_DESERT_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DESERT),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_DESERT_PLACED);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SNOWY_PLAINS, Biomes.SNOWY_SLOPES),

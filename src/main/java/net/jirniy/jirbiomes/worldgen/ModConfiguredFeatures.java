@@ -81,6 +81,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_APPLE_OAK_TREE_BEES_005 = registryKey("fancy_apple_oak_tree_bees_005");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_GRASS_PATCH = registryKey("dried_grass_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_DIRT_PATCH_DESERT = registryKey("dried_dirt_patch_desert");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DRIED_GRASS_PATCH_DESERT = registryKey("dried_grass_patch_desert");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WET_GRASS_PATCH = registryKey("wet_grass_patch");
 
@@ -339,13 +340,43 @@ public class ModConfiguredFeatures {
                 UniformInt.of(3, 7),
                 4
         ));
-        register(context, DRIED_GRASS_PATCH_DESERT, Feature.DISK, new DiskConfiguration(
-                RuleBasedStateProvider.ifTrueThenProvide(
-                        BlockPredicate.matchesBlocks(Blocks.SAND),
-                        ModBlocks.DRIED_DIRT),
-                BlockPredicate.solid(),
-                UniformInt.of(2, 5),
-                3
+        register(context, DRIED_DIRT_PATCH_DESERT, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                                RuleBasedStateProvider.ifTrueThenProvide(
+                                        BlockPredicate.matchesBlocks(Blocks.SAND, Blocks.SANDSTONE), ModBlocks.DRIED_DIRT)),
+                                CountPlacement.of(UniformInt.of(48, 60)),
+                                RandomOffsetPlacement.ofTriangle(5, 2),
+                                EnvironmentScanPlacement.scanningFor(
+                                        Direction.DOWN, BlockPredicate.solid(), 4)),
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                                        RuleBasedStateProvider.ifTrueThenProvide(
+                                                BlockPredicate.matchesBlocks(Blocks.SAND), ModBlocks.DRIED_DIRT)),
+                                CountPlacement.of(UniformInt.of(54, 88)),
+                                RandomOffsetPlacement.ofTriangle(6, 3)
+                        )
+                )
+        ));
+        register(context, DRIED_GRASS_PATCH_DESERT, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                                        RuleBasedStateProvider.builder().ifTrueThenProvide(
+                                                BlockPredicate.allOf(BlockPredicate.matchesBlocks(Blocks.SAND, ModBlocks.DRIED_DIRT),
+                                                        BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)),
+                                                ModBlocks.DRIED_GRASS_BLOCK
+                                        ).build()),
+                                CountPlacement.of(UniformInt.of(54, 88)),
+                                RandomOffsetPlacement.ofTriangle(7, 2),
+                                EnvironmentScanPlacement.scanningFor(
+                                        Direction.DOWN, BlockPredicate.allOf(BlockPredicate.solid(),
+                                                BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)), 4)),
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                                        RuleBasedStateProvider.ifTrueThenProvide(
+                                                BlockPredicate.matchesBlocks(Blocks.SAND), ModBlocks.DRIED_DIRT)),
+                                CountPlacement.of(UniformInt.of(60, 102)),
+                                RandomOffsetPlacement.ofTriangle(7, 3)
+                        )
+                )
         ));
         register(context, WET_GRASS_PATCH, Feature.DISK, new DiskConfiguration(wetlandProvider, BlockPredicate.solid(),
                 UniformInt.of(3, 7), 4

@@ -40,6 +40,7 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> DRIED_GRASS_PATCH_PLACED = registryKey("dried_grass_patch");
     public static final ResourceKey<PlacedFeature> DRIED_GRASS_PATCH_DESERT_PLACED = registryKey("dried_grass_desert_patch");
+    public static final ResourceKey<PlacedFeature> DRIED_DIRT_PATCH_DESERT_PLACED = registryKey("dried_dirt_desert_patch");
     public static final ResourceKey<PlacedFeature> WET_GRASS_PATCH_PLACED = registryKey("wet_grass_patch");
     public static final ResourceKey<PlacedFeature> BARREL_CACTUS_PATCH = registryKey("barrel_cactus_patch");
 
@@ -127,10 +128,20 @@ public class ModPlacedFeatures {
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(),
                 RandomOffsetPlacement.horizontal(UniformInt.of(-3, 1)), CountPlacement.of(2),
                 InSquarePlacement.spread(), NoiseThresholdCountPlacement.of(0.4, 2, 14));
-        register(context, DRIED_GRASS_PATCH_DESERT_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.DRIED_GRASS_PATCH_DESERT),
+        register(context, DRIED_DIRT_PATCH_DESERT_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.DRIED_DIRT_PATCH_DESERT),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(),
                 RandomOffsetPlacement.horizontal(UniformInt.of(-3, 1)),
                 InSquarePlacement.spread(), NoiseThresholdCountPlacement.of(0.2, 0, 2));
+        register(context, DRIED_GRASS_PATCH_DESERT_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.DRIED_GRASS_PATCH_DESERT),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(),
+                NoiseThresholdCountPlacement.of(0.2, 2, 16), InSquarePlacement.spread(),
+                BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(
+                        BlockPredicate.matchesFluids(new BlockPos(1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
+                        BlockPredicate.matchesFluids(new BlockPos(-1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
+                        BlockPredicate.matchesFluids(new BlockPos(0, -1, 1), Fluids.WATER, Fluids.FLOWING_WATER),
+                        BlockPredicate.matchesFluids(new BlockPos(0, -1, -1), Fluids.WATER, Fluids.FLOWING_WATER),
+                        BlockPredicate.matchesFluids(new BlockPos(0, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER)
+                )));
         register(context, WET_GRASS_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.WET_GRASS_PATCH),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), BiomeFilter.biome(),
                 RandomOffsetPlacement.horizontal(UniformInt.of(-3, 1)), CountPlacement.of(3),
@@ -138,7 +149,7 @@ public class ModPlacedFeatures {
 
         register(context, BARREL_CACTUS_PATCH, configuredFeatures.getOrThrow(ModConfiguredFeatures.BARREL_CACTUS_PATCH),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(),
-                RarityFilter.onAverageOnceEvery(4),
+                RarityFilter.onAverageOnceEvery(6),
                 RandomOffsetPlacement.of(UniformInt.of(-2, 3), ConstantInt.of(0)), CountPlacement.of(UniformInt.of(1, 4)),
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
                 InSquarePlacement.spread(), NoiseThresholdCountPlacement.of(0.3, 1, 2));
