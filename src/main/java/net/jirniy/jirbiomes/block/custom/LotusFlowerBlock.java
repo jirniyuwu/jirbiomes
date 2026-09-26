@@ -39,6 +39,11 @@ public class LotusFlowerBlock extends VegetationBlock implements BonemealableBlo
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
+        if (level.getFluidState(pos.below()).is(Fluids.WATER) && level.getFluidState(pos).is(Fluids.EMPTY)) {
+            level.setBlock(pos, state.setValue(FLOATING, true), 2);
+        } else {
+            level.setBlock(pos, state.setValue(FLOATING, false), 2);
+        }
         if (!canSurvive(state, level, pos)) {
             level.destroyBlock(pos, true);
         }
@@ -53,7 +58,7 @@ public class LotusFlowerBlock extends VegetationBlock implements BonemealableBlo
 
         FluidState fluidState = level.getFluidState(pos.below());
         FluidState fluidState2 = level.getFluidState(pos);
-        if (state.getValueOrElse(BlockStateProperties.WATERLOGGED, false) ||
+        if (level.getBlockState(pos.below()).getValueOrElse(BlockStateProperties.WATERLOGGED, false) ||
                 (fluidState.getType() == Fluids.WATER && fluidState2.getType() == Fluids.EMPTY)) {
             return state.setValue(FLOATING, true);
         } else {

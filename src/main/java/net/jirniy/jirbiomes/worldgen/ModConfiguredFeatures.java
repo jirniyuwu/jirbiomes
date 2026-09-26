@@ -363,7 +363,7 @@ public class ModConfiguredFeatures {
                 HolderSet.direct(
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
                                         RuleBasedStateProvider.builder().ifTrueThenProvide(
-                                                BlockPredicate.allOf(BlockPredicate.matchesBlocks(Blocks.SAND, ModBlocks.DRIED_DIRT),
+                                                BlockPredicate.allOf(BlockPredicate.matchesBlocks(Blocks.SAND, ModBlocks.DRIED_DIRT, Blocks.SANDSTONE),
                                                         BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)),
                                                 ModBlocks.DRIED_GRASS_BLOCK
                                         ).build()),
