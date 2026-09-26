@@ -99,6 +99,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS = registryKey("sand_shells");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS_SMALL = registryKey("sand_shells_small");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_LAYER = registryKey("potent_magma_layer");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_ORE = registryKey("potent_magma_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMGRASS = registryKey("brimgrass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CEILING_TENEBRIS_PATCH = registryKey("ceiling_tenebris_patch");
@@ -484,7 +486,20 @@ public class ModConfiguredFeatures {
                         .add(ModBlocks.SHARP_RIBS.defaultBlockState().setValue(RibsBlock.AXIS, Direction.Axis.X))
                         .add(ModBlocks.SHARP_RIBS.defaultBlockState().setValue(RibsBlock.AXIS, Direction.Axis.Z))
         )));
-        
+
+        register(context, POTENT_MAGMA_LAYER, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider
+                                        .ifTrueThenProvide(BlockPredicate.allOf(
+                                                BlockPredicate.matchesFluids(Fluids.LAVA),
+                                                BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)
+                                        ), ModBlocks.POTENT_MAGMA_BLOCK)),
+                                CountPlacement.of(26), RandomOffsetPlacement.ofTriangle(4, 0)))
+        ));
+        register(context, POTENT_MAGMA_ORE, Feature.ORE, new OreConfiguration(
+                List.of(OreConfiguration.target(new TagMatchTest(ModTags.Blocks.POTENT_MAGMA_ORE_REPLACEABLE),
+                        ModBlocks.POTENT_MAGMA_BLOCK.defaultBlockState())), 14));
+
         register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BRIMGRASS)));
         register(context, TENEBRIS_BUD, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TENEBRIS_SAPLING)));
         register(context, SALT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SALT_BLOCK)));

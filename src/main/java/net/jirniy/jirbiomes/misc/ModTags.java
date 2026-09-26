@@ -29,6 +29,7 @@ public class ModTags {
         public static final TagKey<Block> GLOWSTONE_FEATURE_PLACEABLE = create("glowstone_feature_placeable");
         public static final TagKey<Block> SEA_URCHIN_SHIPWRECK_PLACEMENT = create("sea_urchin_shipwreck_placement");
         public static final TagKey<Block> BRIMSTONE_GOLD_REPLACEABLE = create("brimstone_gold_replaceable");
+        public static final TagKey<Block> POTENT_MAGMA_ORE_REPLACEABLE = create("potent_magma_ore_replaceable");
 
         public static final TagKey<Block> FALLING_STALACTITE_NO_DROP = create("falling_stalactite_without_drop");
 

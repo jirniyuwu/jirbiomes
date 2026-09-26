@@ -73,6 +73,8 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> SALT_PLACED = registryKey("sea_salt");
 
+    public static final ResourceKey<PlacedFeature> POTENT_MAGMA_LAYER = registryKey("potent_magma_layer");
+    public static final ResourceKey<PlacedFeature> POTENT_MAGMA_ORE = registryKey("potent_magma_ore");
     public static final ResourceKey<PlacedFeature> NETHERSTONE_PLACED = registryKey("netherstone");
     public static final ResourceKey<PlacedFeature> BRIMSTONE_PLACED = registryKey("brimstone");
     public static final ResourceKey<PlacedFeature> IGNITED_BRIMSTONE_PLACED = registryKey("ignited_brimstone");
@@ -103,8 +105,8 @@ public class ModPlacedFeatures {
                 BiomeFilter.biome(), PlacementUtils.filteredByBlockSurvival(ModBlocks.PALM_SAPLING));
 
         register(context, ICE_TOP_LAYER, configuredFeatures.getOrThrow(ModConfiguredFeatures.ICE_TOP_LAYER),
-                CountPlacement.of(UniformInt.of(1024, 1546)), InSquarePlacement.spread(),
-                HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(20), VerticalAnchor.absolute(100)), EnvironmentScanPlacement.scanningFor(
+                CountPlacement.of(UniformInt.of(1124, 1646)), InSquarePlacement.spread(),
+                HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(8), VerticalAnchor.absolute(100)), EnvironmentScanPlacement.scanningFor(
                         Direction.DOWN, BlockPredicate.matchesBlocks(Blocks.WATER, Blocks.LAVA), 9),
                 CountPlacement.of(UniformInt.of(8, 18)), RandomOffsetPlacement.ofTriangle(6, 0),
                 BiomeFilter.biome());
@@ -277,6 +279,17 @@ public class ModPlacedFeatures {
                 RandomOffsetPlacement.of(ConstantInt.of(0), UniformInt.of(-2, -1)), InSquarePlacement.spread(), BiomeFilter.biome(),
                 BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER, Fluids.FLOWING_WATER)));
 
+        register(context, POTENT_MAGMA_ORE, configuredFeatures.getOrThrow(ModConfiguredFeatures.POTENT_MAGMA_ORE),
+                CountPlacement.of(6), HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(60), 2)),
+                InSquarePlacement.spread(), BiomeFilter.biome());
+        register(context, POTENT_MAGMA_LAYER, configuredFeatures.getOrThrow(ModConfiguredFeatures.POTENT_MAGMA_LAYER),
+                InSquarePlacement.spread(), HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(30), VerticalAnchor.aboveBottom(80)),
+                RarityFilter.onAverageOnceEvery(2), CountPlacement.of(UniformInt.of(3, 9)),
+                RandomOffsetPlacement.ofTriangle(8, 1),
+                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(
+                        BlockPredicate.matchesFluids(Fluids.LAVA),
+                        BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)
+                ), 24), BiomeFilter.biome());
         register(context, GOLD_BRIMSTONE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.GOLD_BRIMSTONE),
                 HeightRangePlacement.of(BiasedToBottomHeight.of(
                         VerticalAnchor.aboveBottom(20), VerticalAnchor.aboveBottom(200), 1)),

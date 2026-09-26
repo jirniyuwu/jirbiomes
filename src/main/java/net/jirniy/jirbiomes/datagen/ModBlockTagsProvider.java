@@ -351,6 +351,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE));
+        tag(ModTags.Blocks.POTENT_MAGMA_ORE_REPLACEABLE)
+                .addOptionalTag(BlockTags.BASE_STONE_NETHER)
+                .add(ModBlocks.getKey(Blocks.MAGMA_BLOCK));
         tag(ModTags.Blocks.PALM_PLACEABLE)
                 .addOptionalTag(BlockTags.SUPPORTS_VEGETATION)
                 .addOptionalTag(BlockTags.SUPPORTS_DRY_VEGETATION)
