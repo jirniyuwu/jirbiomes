@@ -77,6 +77,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.IRON_GRATE), has(ModBlocks.IRON_GRATE))
                         .save(output, "iron_grate");
 
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POTENT_MAGMA_BLOCK, 1)
+                        .requires(Items.FIRE_CHARGE).requires(Items.MAGMA_BLOCK)
+                        .unlockedBy(getHasName(Items.MAGMA_BLOCK), has(Items.MAGMA_BLOCK))
+                        .unlockedBy(getHasName(ModBlocks.POTENT_MAGMA_BLOCK), has(ModBlocks.POTENT_MAGMA_BLOCK))
+                        .save(output, "potent_magma");
+
                 shapeless(RecipeCategory.MISC, ModItems.APPLE_SEEDS, 1)
                         .requires(Items.APPLE)
                         .unlockedBy(getHasName(Items.APPLE), has(Items.APPLE))

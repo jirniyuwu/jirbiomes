@@ -128,8 +128,8 @@ public class ModBlocks {
                     .pushReaction(PushReaction.NORMAL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
 
     public static final Block PERMAFROST_BLOCK = registerBlock("permafrost_block", properties ->
-            new Block(properties.mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).friction(0.986f)
-                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().strength(4.5F, 7.0F)));
+            new PermafrostBlock(properties.mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).friction(0.986f)
+                    .sound(SoundType.GLASS).requiresCorrectToolForDrops().strength(4.5F, 7.0F).randomTicks()));
     public static final Block ICICLE = registerBlock("icicle", properties ->
             new IcicleBlock(PERMAFROST_BLOCK.defaultBlockState(), properties.mapColor(MapColor.COLOR_LIGHT_BLUE)
                     .forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM).noOcclusion()
@@ -294,7 +294,7 @@ public class ModBlocks {
             new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops().strength(2.8F).sound(SoundType.CINNABAR)));
     public static final Block IGNITED_BRIMSTONE = registerBlock("ignited_brimstone", properties ->
-            new MagmaLikeBlock(ModBlocks.BRIMSTONE, properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
+            new FlamingMagmaBlock(ModBlocks.BRIMSTONE, properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops().strength(2.8F).sound(SoundType.CINNABAR).lightLevel(state -> 6)));
     public static final Block BRIMSTONE_GOLD_ORE = registerBlock("brimstone_gold_ore", properties ->
             new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
@@ -350,6 +350,11 @@ public class ModBlocks {
     public static final Block CHISELED_BRIMSTONE_BRICKS = registerBlock("chiseled_brimstone_bricks", properties ->
             new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).lightLevel(state -> 7)
                     .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
+    public static final Block POTENT_MAGMA_BLOCK = registerBlock("potent_magma_block", properties ->
+            new PotentMagmaBlock(Blocks.MAGMA_BLOCK, Blocks.LAVA, properties.mapColor(MapColor.COLOR_ORANGE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).lightLevel(state -> 12)
+                    .strength(0.3F).isValidSpawn((state, blockGetter, blockPos, entityType) -> entityType.fireImmune())
+                    .postProcess((state, blockGetter, blockPos) -> blockPos.above()).emissiveRendering(state -> true)));
 
     public static final Block BRIMGRASS_BLOCK = registerBlock("brimgrass_block", properties ->
             new CustomGrassBlock(getKey(BRIMSTONE), ModPlacedFeatures.BRIMGRASS_BONEMEAL, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()

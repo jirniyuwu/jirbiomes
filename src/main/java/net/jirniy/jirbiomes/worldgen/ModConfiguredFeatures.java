@@ -253,7 +253,7 @@ public class ModConfiguredFeatures {
                         .ifTrueThenProvide(BlockPredicate.allOf(BlockPredicate.matchesBlocks(Blocks.WATER),
                                 BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)), Blocks.ICE)
                         .ifTrueThenProvide(BlockPredicate.allOf(BlockPredicate.matchesBlocks(Blocks.LAVA),
-                                BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)), Blocks.MAGMA_BLOCK).build()
+                                BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), Blocks.AIR)), ModBlocks.POTENT_MAGMA_BLOCK).build()
         ));
         register(context, BLUE_ICE_ORE, Feature.ORE, new OreConfiguration(
                 List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.BLUE_ICE.defaultBlockState()),

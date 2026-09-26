@@ -41,6 +41,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialBlock(ModBlocks.PERMAFROST_BLOCK, TexturedModel.COLUMN_WITH_WALL);
         blockModelGenerators.createSpeleothem(ModBlocks.ICICLE);
 
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.POTENT_MAGMA_BLOCK,
+                BlockModelGenerators.createRotatedVariants(BlockModelGenerators.plainModel(
+                        TexturedModel.CUBE.create(ModBlocks.POTENT_MAGMA_BLOCK, blockModelGenerators.modelOutput)))));
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.BRIMSTONE,
                 BlockModelGenerators.createRotatedVariants(BlockModelGenerators.plainModel(
                         TexturedModel.COLUMN_WITH_WALL.create(ModBlocks.BRIMSTONE, blockModelGenerators.modelOutput)))));

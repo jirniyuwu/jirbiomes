@@ -147,6 +147,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE);
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HOT)
                 .add(ModItems.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModItems.getKey(ModBlocks.POTENT_MAGMA_BLOCK))
                 .add(ModItems.getKey(ModBlocks.CHISELED_BRIMSTONE_BRICKS));
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_LIGHT);
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_REGULAR)

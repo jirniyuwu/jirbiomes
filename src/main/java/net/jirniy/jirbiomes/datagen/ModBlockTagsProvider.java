@@ -30,6 +30,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
+                .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE, ModBlocks.NETHERSTONE_STAIRS, ModBlocks.NETHERSTONE_SLAB, ModBlocks.NETHERSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_NETHERSTONE, ModBlocks.POLISHED_NETHERSTONE_STAIRS, ModBlocks.POLISHED_NETHERSTONE_SLAB, ModBlocks.POLISHED_NETHERSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE_BRICKS, ModBlocks.NETHERSTONE_BRICKS_STAIRS, ModBlocks.NETHERSTONE_BRICKS_SLAB, ModBlocks.NETHERSTONE_BRICKS_WALL))
@@ -307,6 +308,22 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SAPLING));
         tag(BlockTags.SPELEOTHEMS)
                 .add(ModBlocks.getKey(ModBlocks.ICICLE));
+        tag(BlockTags.CANNOT_SUPPORT_SEAGRASS)
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK));
+        tag(BlockTags.CANNOT_SUPPORT_KELP)
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK));
+        tag(BlockTags.CAUSES_CONTINUOUS_GEYSER_ERUPTIONS)
+                .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK));
+        tag(BlockTags.CAUSES_PERIODIC_GEYSER_ERUPTIONS)
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE));
+        tag(BlockTags.ENABLES_BUBBLE_COLUMN_DRAG_DOWN)
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK));
+        tag(BlockTags.HAPPY_GHAST_AVOIDS)
+                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK));
 
         tag(ModTags.Blocks.BARREL_CACTUSES)
                 .add(ModBlocks.getKey(ModBlocks.LARGE_BARREL_CACTUS))
@@ -372,6 +389,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
+                .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.INFINIBURN_OVERWORLD)
                 .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))

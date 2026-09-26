@@ -105,7 +105,7 @@ public class ModPlacedFeatures {
         register(context, ICE_TOP_LAYER, configuredFeatures.getOrThrow(ModConfiguredFeatures.ICE_TOP_LAYER),
                 CountPlacement.of(UniformInt.of(1024, 1546)), InSquarePlacement.spread(),
                 HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(20), VerticalAnchor.absolute(100)), EnvironmentScanPlacement.scanningFor(
-                        Direction.DOWN, BlockPredicate.matchesBlocks(Blocks.WATER), 9),
+                        Direction.DOWN, BlockPredicate.matchesBlocks(Blocks.WATER, Blocks.LAVA), 9),
                 CountPlacement.of(UniformInt.of(8, 18)), RandomOffsetPlacement.ofTriangle(6, 0),
                 BiomeFilter.biome());
         register(context, BLUE_ICE_ORE, configuredFeatures.getOrThrow(ModConfiguredFeatures.BLUE_ICE_ORE),
