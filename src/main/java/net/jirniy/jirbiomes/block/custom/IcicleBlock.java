@@ -2,6 +2,8 @@ package net.jirniy.jirbiomes.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.jirniy.jirbiomes.misc.CommonTag;
+import net.jirniy.jirbiomes.particle.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,9 +27,15 @@ public class IcicleBlock extends SpeleothemBlock {
         if (isFreeHangingStalactite(state)) {
             if (random.nextFloat() < 0.02F) {
                 Vec3 offset = state.getOffset(pos);
-                level.addParticle(ParticleTypes.DRIPPING_DRIPSTONE_WATER,
-                        pos.getX() + 0.5f + offset.x, pos.getY() + SHAPE_TIP_DOWN.min(Direction.Axis.Y) - 1/16f, pos.getZ() + 0.5f + offset.z,
-                        0.0F, 0.0F, 0.0F);
+                if (level.getBiome(pos).is(CommonTag.ofBiome("is_cold"))) {
+                    level.addParticle(ModParticles.SNOWFLAKE,
+                            pos.getX() + 0.5f + offset.x, pos.getY() + SHAPE_TIP_DOWN.min(Direction.Axis.Y) - 1/16f, pos.getZ() + 0.5f + offset.z,
+                            0.0F, 0.0F, 0.0F);
+                } else {
+                    level.addParticle(ParticleTypes.DRIPPING_DRIPSTONE_WATER,
+                            pos.getX() + 0.5f + offset.x, pos.getY() + SHAPE_TIP_DOWN.min(Direction.Axis.Y) - 1/16f, pos.getZ() + 0.5f + offset.z,
+                            0.0F, 0.0F, 0.0F);
+                }
             }
         }
     }
