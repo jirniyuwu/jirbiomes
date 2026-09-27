@@ -26,10 +26,18 @@ public class PalmFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected void createFoliage(WorldGenLevel level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
-        if (foliageAttachment.doubleTrunk()) {
-           throw new IllegalArgumentException("double trunk isnt supported for palm_foliage_placer");
-        };
         BlockPos foliagePos = foliageAttachment.pos().above(offset);
+        if (foliageAttachment.doubleTrunk()) {
+            createCross(foliagePos.offset(0, 0, 0), level, foliageSetter, random, config, leafRadius);
+            createCross(foliagePos.offset(1, 0, 0), level, foliageSetter, random, config, leafRadius);
+            createCross(foliagePos.offset(0, 0, 1), level, foliageSetter, random, config, leafRadius);
+            createCross(foliagePos.offset(1, 0, 1), level, foliageSetter, random, config, leafRadius);
+        } else {
+            createCross(foliagePos, level, foliageSetter, random, config, leafRadius);
+        }
+    }
+
+    protected void createCross(BlockPos foliagePos, WorldGenLevel level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int leafRadius) {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             for (int i = 0; i < leafRadius; i++) {
                 BlockPos dirPos = foliagePos.relative(direction, i);

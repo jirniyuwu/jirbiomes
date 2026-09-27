@@ -167,7 +167,8 @@ public class ModConfiguredFeatures {
 
         register(context, PALM_TREE, Feature.TREE, palmTreeConfig.ignoreVines().build());
         register(context, PALM_TREE_BEES_005, Feature.TREE, palmTreeConfig.ignoreVines().decorators(List.of(beehive005)).build());
-        register(context, PALM_COCONUT_TREE, Feature.TREE, palmTreeConfig.ignoreVines().decorators(List.of(new CoconutDecorator(0.3f))).build());
+        register(context, PALM_COCONUT_TREE, Feature.TREE, palmTreeConfig.ignoreVines()
+                .decorators(List.of(new CoconutDecorator(0.3f, UniformInt.of(1, 2)))).build());
 
         register(context, APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.OAK_LOG),
