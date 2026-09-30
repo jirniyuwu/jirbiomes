@@ -21,9 +21,12 @@ import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerBedBlock;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -98,6 +101,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_URCHIN_SHIPWRECK = registryKey("sea_urchin_shipwreck");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS = registryKey("sand_shells");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS_SMALL = registryKey("sand_shells_small");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_MUSHROOMS = registryKey("small_mushrooms");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_LAYER = registryKey("potent_magma_layer");
     public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_ORE = registryKey("potent_magma_ore");
@@ -459,6 +463,8 @@ public class ModConfiguredFeatures {
                 List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SAND), ModBlocks.SAND_SHELLS.defaultBlockState()),
                         OreConfiguration.target(new BlockMatchTest(Blocks.RED_SAND), ModBlocks.RED_SAND_SHELLS.defaultBlockState())),
                 8, 0.1f));
+        register(context, SMALL_MUSHROOMS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                new WeightedStateProvider(flowerBedPatchBuilder(ModBlocks.SMALL_MUSHROOMS))));
 
         register(context, LOTUS_FLOWER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider
                 .builder(BlockStateProvider.simple(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, false)))
@@ -534,4 +540,20 @@ public class ModConfiguredFeatures {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 
+    private static WeightedList.Builder<BlockState> flowerBedPatchBuilder(final Block flowerBedBlock) {
+        return segmentedBlockPatchBuilder(flowerBedBlock, 1, 4, FlowerBedBlock.AMOUNT, FlowerBedBlock.FACING);
+    }
+    private static WeightedList.Builder<BlockState> segmentedBlockPatchBuilder(
+            final Block block, final int minState, final int maxState, final IntegerProperty amountProperty, final EnumProperty<Direction> directionProperty
+    ) {
+        WeightedList.Builder<BlockState> segmentedBlockBuild = WeightedList.builder();
+
+        for (int amount = minState; amount <= maxState; amount++) {
+            for (Direction direction : Direction.Plane.HORIZONTAL) {
+                segmentedBlockBuild.add(block.defaultBlockState().setValue(amountProperty, amount).setValue(directionProperty, direction), 1);
+            }
+        }
+
+        return segmentedBlockBuild;
+    }
 }

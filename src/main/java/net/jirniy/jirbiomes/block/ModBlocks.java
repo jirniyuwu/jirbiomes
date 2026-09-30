@@ -107,6 +107,11 @@ public class ModBlocks {
             new SeaUrchinBlock(properties.destroyTime(0.1f).noCollision().noOcclusion()
                     .pushReaction(PushReaction.DESTROY).sound(SoundType.COBWEB)));
 
+    public static final Block SMALL_MUSHROOMS = registerBlock("small_mushrooms", properties ->
+            new MushroomFlowerbedBlock(properties.mapColor(MapColor.COLOR_BROWN).noCollision().lightLevel(MushroomFlowerbedBlock::getLightLevel)
+                    .postProcess((state, blockGetter, blockPos) -> blockPos)
+                    .sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY).instabreak()));
+
     public static final Block SAND_SHELLS = registerBlock("sand_shells", properties ->
             new SandBlock(new ColorRGBA(0x917E6E), properties.mapColor(MapColor.RAW_IRON)
                     .instrument(NoteBlockInstrument.SNARE).strength(0.55F).sound(SoundType.SUSPICIOUS_SAND)));

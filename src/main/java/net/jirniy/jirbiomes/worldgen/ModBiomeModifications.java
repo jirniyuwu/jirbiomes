@@ -78,6 +78,13 @@ public class ModBiomeModifications {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WARM_OCEAN),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SAND_SHELLS_BONUS);
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.MUSHROOM_FIELDS),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MUSHROOMS_PATCH_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SWAMP, Biomes.DARK_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MUSHROOMS_RARE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.MUSHROOM_FIELDS, Biomes.SWAMP, Biomes.DARK_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MUSHROOMS_CAVE_PLACED);
+
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
                 GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.NETHERSTONE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
