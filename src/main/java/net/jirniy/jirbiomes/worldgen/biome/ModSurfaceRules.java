@@ -65,7 +65,9 @@ public class ModSurfaceRules {
 
                 ifTrue(isBiome(biomes, ModBiomes.PERMAFROST_CAVES), sequence(
                         ifTrue(noiseCondition3d(Noises.ICE, 0.01f),
-                                ifTrue(ON_FLOOR, makeStateRule(Blocks.SNOW_BLOCK))),
+                                ifTrue(ON_FLOOR, ifTrue(not(verticalGradient("snow",
+                                        VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(14))),
+                                        makeStateRule(Blocks.SNOW_BLOCK)))),
                         ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.0f, 0.2f),
                                 makeStateRule(Blocks.PACKED_ICE))),
                         ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.2f, 0.4f),
