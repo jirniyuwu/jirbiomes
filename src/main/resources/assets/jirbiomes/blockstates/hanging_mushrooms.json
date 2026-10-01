@@ -1,0 +1,32 @@
+{
+  "variants": {
+    "lit=true,tip=true": [
+      {
+        "model": "jirbiomes:block/hanging_mushrooms_tip_lit_0"
+      },
+      {
+        "model": "jirbiomes:block/hanging_mushrooms_tip_lit_1"
+      },
+      {
+        "model": "jirbiomes:block/hanging_mushrooms_tip_lit_2"
+      }
+    ],
+    "lit=true,tip=false": [
+      {
+        "model": "jirbiomes:block/hanging_mushrooms_lit_0"
+      },
+      {
+        "model": "jirbiomes:block/hanging_mushrooms_lit_1"
+      },
+      {
+        "model": "jirbiomes:block/hanging_mushrooms_lit_2"
+      }
+    ],
+    "lit=false,tip=true": {
+      "model": "jirbiomes:block/hanging_mushrooms_tip"
+    },
+    "lit=false,tip=false": {
+      "model": "jirbiomes:block/hanging_mushrooms"
+    }
+  }
+}

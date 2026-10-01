@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "jirbiomes:block/hanging_mushrooms_lit_2"
+  }
+}

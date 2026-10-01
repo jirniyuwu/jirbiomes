@@ -111,6 +111,10 @@ public class ModBlocks {
             new MushroomFlowerbedBlock(properties.mapColor(MapColor.COLOR_BROWN).noCollision().lightLevel(MushroomFlowerbedBlock::getLightLevel)
                     .postProcess((state, blockGetter, blockPos) -> blockPos)
                     .sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY).instabreak()));
+    public static final Block HANGING_MUSHROOMS = registerBlock("hanging_mushrooms", properties ->
+            new HangingMushroomsBlock(SMALL_MUSHROOMS, properties.mapColor(MapColor.COLOR_BROWN).noCollision()
+                    .lightLevel(HangingMushroomsBlock::getLightLevel).ignitedByLava()
+                    .sound(SoundType.HANGING_ROOTS).pushReaction(PushReaction.DESTROY).instabreak()));
 
     public static final Block SAND_SHELLS = registerBlock("sand_shells", properties ->
             new SandBlock(new ColorRGBA(0x917E6E), properties.mapColor(MapColor.RAW_IRON)
