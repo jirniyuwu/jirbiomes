@@ -356,7 +356,7 @@ public class ModBlocks {
             new Block(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).lightLevel(state -> 7)
                     .requiresCorrectToolForDrops().strength(3F).sound(SoundType.CINNABAR)));
     public static final Block POTENT_MAGMA_BLOCK = registerBlock("potent_magma_block", properties ->
-            new PotentMagmaBlock(Blocks.MAGMA_BLOCK, Blocks.LAVA, properties.mapColor(MapColor.COLOR_ORANGE)
+            new PotentMagmaBlock(Blocks.MAGMA_BLOCK, Blocks.LAVA, 80, properties.mapColor(MapColor.COLOR_ORANGE)
                     .instrument(NoteBlockInstrument.BASEDRUM).lightLevel(state -> 12)
                     .strength(0.3F).isValidSpawn((state, blockGetter, blockPos, entityType) -> entityType.fireImmune())
                     .postProcess((state, blockGetter, blockPos) -> blockPos.above()).emissiveRendering(state -> true)));
