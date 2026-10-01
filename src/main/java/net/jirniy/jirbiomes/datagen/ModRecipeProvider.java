@@ -98,6 +98,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .requires(Items.BONE).requires(Items.BONE)
                         .unlockedBy(getHasName(ModBlocks.SHARP_RIBS), has(ModBlocks.SHARP_RIBS))
                         .save(output, "sharp_ribs");
+                shaped(RecipeCategory.DECORATIONS, ModBlocks.SMALL_MUSHROOMS, 6)
+                        .pattern("AS")
+                        .pattern("SA")
+                        .define('A', Items.BROWN_MUSHROOM)
+                        .define('S', Items.RED_MUSHROOM)
+                        .unlockedBy(getHasName(ModBlocks.SMALL_MUSHROOMS), has(ModBlocks.SMALL_MUSHROOMS))
+                        .save(output, "small_mushrooms");
 
                 shapeless(RecipeCategory.MISC, Items.DYE.pink(), 1)
                         .requires(ModItems.LOTUS_FLOWER)
