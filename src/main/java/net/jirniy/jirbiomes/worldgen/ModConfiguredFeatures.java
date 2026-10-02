@@ -102,6 +102,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS = registryKey("sand_shells");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS_SMALL = registryKey("sand_shells_small");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_MUSHROOMS = registryKey("small_mushrooms");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> HANGING_MUSHROOMS = registryKey("hanging_mushrooms");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_LAYER = registryKey("potent_magma_layer");
     public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_ORE = registryKey("potent_magma_ore");
@@ -465,6 +466,23 @@ public class ModConfiguredFeatures {
                 8, 0.1f));
         register(context, SMALL_MUSHROOMS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
                 new WeightedStateProvider(flowerBedPatchBuilder(ModBlocks.SMALL_MUSHROOMS))));
+        register(context, HANGING_MUSHROOMS, Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+                List.of(BlockColumnConfiguration.layer(
+                            TrapezoidInt.of(0, 3, 1), new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                        .add(ModBlocks.HANGING_MUSHROOMS.defaultBlockState().setValue(HangingMushroomsBlock.LIT, true)
+                                                .setValue(HangingMushroomsBlock.TIP, false), 2)
+                                        .add(ModBlocks.HANGING_MUSHROOMS.defaultBlockState().setValue(HangingMushroomsBlock.LIT, false)
+                                                .setValue(HangingMushroomsBlock.TIP, false), 1)
+                                )),
+                        BlockColumnConfiguration.layer(
+                            ConstantInt.of(1), new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                        .add(ModBlocks.HANGING_MUSHROOMS.defaultBlockState().setValue(HangingMushroomsBlock.LIT, true)
+                                                .setValue(HangingMushroomsBlock.TIP, true), 2)
+                                        .add(ModBlocks.HANGING_MUSHROOMS.defaultBlockState().setValue(HangingMushroomsBlock.LIT, false)
+                                                .setValue(HangingMushroomsBlock.TIP, true), 1)
+                                ))),
+                Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, true
+        ));
 
         register(context, LOTUS_FLOWER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider
                 .builder(BlockStateProvider.simple(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, false)))

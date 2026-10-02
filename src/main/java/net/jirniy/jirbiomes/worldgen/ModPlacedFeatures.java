@@ -60,6 +60,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SMALL_MUSHROOMS_PATCH_PLACED = registryKey("small_mushrooms_patch");
     public static final ResourceKey<PlacedFeature> SMALL_MUSHROOMS_RARE_PLACED = registryKey("small_mushrooms_rare");
     public static final ResourceKey<PlacedFeature> SMALL_MUSHROOMS_CAVE_PLACED = registryKey("small_mushrooms_cave");
+    public static final ResourceKey<PlacedFeature> HANGING_MUSHROOMS_PLACED = registryKey("hanging_mushrooms");
+    public static final ResourceKey<PlacedFeature> HANGING_MUSHROOMS_DEEP_PLACED = registryKey("hanging_mushrooms_deep");
 
     public static final ResourceKey<PlacedFeature> ICE_TOP_LAYER = registryKey("ice_top_layer");
     public static final ResourceKey<PlacedFeature> BLUE_ICE_ORE = registryKey("blue_ice_ore");
@@ -233,6 +235,26 @@ public class ModPlacedFeatures {
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
                         BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.solid(Direction.DOWN.getUnitVec3i())
+                )));
+        register(context, HANGING_MUSHROOMS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.HANGING_MUSHROOMS),
+                NoiseThresholdCountPlacement.of(0.2, 1, 3), InSquarePlacement.spread(),
+                HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(90), VerticalAnchor.absolute(120)),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(Direction.UP.getUnitVec3i()), 8),
+                BiomeFilter.biome(), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(4, 2),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(Direction.UP.getUnitVec3i()), 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                        BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.solid(Direction.UP.getUnitVec3i())
+                )));
+        register(context, HANGING_MUSHROOMS_DEEP_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.HANGING_MUSHROOMS),
+                NoiseThresholdCountPlacement.of(0.3, 1, 4), InSquarePlacement.spread(),
+                HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(20), VerticalAnchor.absolute(70)),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(Direction.UP.getUnitVec3i()), 9),
+                BiomeFilter.biome(), CountPlacement.of(48), RandomOffsetPlacement.ofTriangle(6, 2),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(Direction.UP.getUnitVec3i()), 4),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                        BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.solid(Direction.UP.getUnitVec3i())
                 )));
 
         register(context, SAND_SHELLS, configuredFeatures.getOrThrow(ModConfiguredFeatures.SAND_SHELLS),
