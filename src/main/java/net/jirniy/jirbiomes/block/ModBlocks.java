@@ -112,7 +112,7 @@ public class ModBlocks {
                     .postProcess((state, blockGetter, blockPos) -> blockPos)
                     .sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY).instabreak()));
     public static final Block HANGING_MUSHROOMS = registerBlock("hanging_mushrooms", properties ->
-            new HangingMushroomsBlock(SMALL_MUSHROOMS, properties.mapColor(MapColor.COLOR_BROWN).noCollision()
+            new HangingMushroomsBlock(properties.mapColor(MapColor.COLOR_BROWN).noCollision()
                     .lightLevel(HangingMushroomsBlock::getLightLevel).ignitedByLava()
                     .sound(SoundType.HANGING_ROOTS).pushReaction(PushReaction.DESTROY).instabreak()));
 

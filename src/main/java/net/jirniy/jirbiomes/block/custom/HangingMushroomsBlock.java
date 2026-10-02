@@ -28,11 +28,9 @@ public class HangingMushroomsBlock extends Block implements BonemealableBlock {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     private static final VoxelShape SHAPE_BASE = Block.column(14.0, 0.0, 16.0);
     private static final VoxelShape SHAPE_TIP = Block.column(14.0, 3.0, 16.0);
-    protected final ItemLike drop;
 
-    public HangingMushroomsBlock(ItemLike drop, Properties properties) {
+    public HangingMushroomsBlock(Properties properties) {
         super(properties);
-        this.drop = drop;
         this.registerDefaultState(defaultBlockState().setValue(TIP, true).setValue(LIT, false));
     }
 
@@ -41,7 +39,15 @@ public class HangingMushroomsBlock extends Block implements BonemealableBlock {
         if (itemStack.is(Items.SHEARS) && state.getValue(LIT)) {
             level.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.SHEARS_SNIP, SoundSource.BLOCKS);
             level.setBlock(pos, state.setValue(LIT, false), 2);
-            popResource(level, pos, new ItemStack(drop, level.getRandom().nextIntBetweenInclusive(1, 2)));
+
+            int dropAttempts = level.getRandom().nextIntBetweenInclusive(1, 3);
+            for (int i = 0; i < dropAttempts; i++) {
+                if (level.getRandom().nextBoolean()) {
+                    popResource(level, pos, new ItemStack(Items.BROWN_MUSHROOM, 1));
+                } else {
+                    popResource(level, pos, new ItemStack(Items.RED_MUSHROOM, 1));
+                }
+            };
             itemStack.hurtAndBreak(1, player, hand);
             return InteractionResult.SUCCESS;
         }
@@ -64,8 +70,10 @@ public class HangingMushroomsBlock extends Block implements BonemealableBlock {
                 level.setBlockAndUpdate(pos, state.setValue(LIT, true));
             }
             if (state.getValue(TIP) && random.nextFloat() < 0.5f) {
-                level.setBlockAndUpdate(pos, state.setValue(TIP, false));
-                level.setBlockAndUpdate(pos.below(), state.setValue(TIP, true).setValue(LIT, false));
+                if (level.getBlockState(pos.below()).isAir() && level.isInsideBuildHeight(pos.below())) {
+                    level.setBlockAndUpdate(pos, state.setValue(TIP, false));
+                    level.setBlockAndUpdate(pos.below(), state.setValue(TIP, true).setValue(LIT, false));
+                }
             }
         }
     }
@@ -128,8 +136,10 @@ public class HangingMushroomsBlock extends Block implements BonemealableBlock {
         if (!state.getValue(LIT)) {
             level.setBlockAndUpdate(pos, state.setValue(LIT, true));
         } else if (state.getValue(TIP)) {
-            level.setBlockAndUpdate(pos, state.setValue(TIP, false));
-            level.setBlockAndUpdate(pos.below(), state.setValue(TIP, true).setValue(LIT, false));
+            if (level.getBlockState(pos.below()).isAir() && level.isInsideBuildHeight(pos.below())) {
+                level.setBlockAndUpdate(pos.below(), state.setValue(TIP, true).setValue(LIT, false));
+                level.setBlockAndUpdate(pos, state.setValue(TIP, false));
+            }
         }
     }
 }

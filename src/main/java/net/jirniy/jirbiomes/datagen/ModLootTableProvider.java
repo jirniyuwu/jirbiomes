@@ -252,8 +252,10 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                         .hasProperty(HangingMushroomsBlock.LIT, true))
                                 .and(hasShears().invert()))
-                        .add(LootItem.lootTableItem(ModBlocks.SMALL_MUSHROOMS)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))))
+                            .add(LootItem.lootTableItem(Blocks.RED_MUSHROOM)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))))
+                            .add(LootItem.lootTableItem(Blocks.BROWN_MUSHROOM)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))))
                         .withPool(LootPool.lootPool().when(this.hasShears()).add(LootItem.lootTableItem(block)))
         ));
     }
