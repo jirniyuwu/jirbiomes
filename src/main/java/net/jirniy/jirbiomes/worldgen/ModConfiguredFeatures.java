@@ -18,7 +18,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.*;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerBedBlock;
@@ -316,12 +315,19 @@ public class ModConfiguredFeatures {
         ));
         register(context, BARREL_CACTUS_PATCH, Feature.SEQUENCE, new CompositeFeatureConfiguration(
                 HolderSet.direct(
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BARREL_CACTUS),
+                                CountPlacement.of(UniformInt.of(5, 6)), PlacementUtils.HEIGHTMAP_NO_LEAVES,
+                                RandomOffsetPlacement.of(TrapezoidInt.of(-3, 3, 0), ConstantInt.of(0)),
+                                EnvironmentScanPlacement.scanningFor(
+                                        Direction.DOWN, BlockPredicate.matchesTag(new Vec3i(0, -1, 0),
+                                                ModTags.Blocks.SUPPORTS_BARREL_CACTUS), 4),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+                        ),
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
-                                        RuleBasedStateProvider.builder(BlockStateProvider.simple(ModBlocks.ROOTED_SAND))
-                                                .ifTrueThenProvide(BlockPredicate.matchesBiomes(
-                                                        HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(Biomes.BADLANDS),
-                                                                context.lookup(Registries.BIOME).getOrThrow(Biomes.ERODED_BADLANDS),
-                                                                context.lookup(Registries.BIOME).getOrThrow(Biomes.WOODED_BADLANDS))),
+                                        RuleBasedStateProvider.builder()
+                                                .ifTrueThenProvide(BlockPredicate.matchesBlocks(Blocks.SAND, Blocks.SANDSTONE),
+                                                        ModBlocks.ROOTED_SAND)
+                                                .ifTrueThenProvide(BlockPredicate.matchesBlocks(Blocks.RED_SAND),
                                                         ModBlocks.ROOTED_RED_SAND)
                                                 .ifTrueThenProvide(BlockPredicate.matchesBlocks(ModBlocks.DRIED_DIRT),
                                                         ModBlocks.ROOTED_DRIED_DIRT).build()),
@@ -330,14 +336,6 @@ public class ModConfiguredFeatures {
                                         TrapezoidInt.of(-2, 2, 0),
                                         TrapezoidInt.of(-3, -1, 0)),
                                 BlockPredicateFilter.forPredicate(BlockPredicate.solid())
-                        ),
-                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BARREL_CACTUS),
-                                CountPlacement.of(UniformInt.of(5, 6)), PlacementUtils.HEIGHTMAP_NO_LEAVES,
-                                RandomOffsetPlacement.of(TrapezoidInt.of(-3, 3, 0), ConstantInt.of(0)),
-                                EnvironmentScanPlacement.scanningFor(
-                                        Direction.DOWN, BlockPredicate.matchesTag(new Vec3i(0, -1, 0),
-                                                ModTags.Blocks.SUPPORTS_BARREL_CACTUS), 4),
-                                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
                         )
                 )
         ));
