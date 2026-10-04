@@ -16,6 +16,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ClampedNormalInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
@@ -144,12 +146,10 @@ public class ModPlacedFeatures {
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(),
                 NoiseThresholdCountPlacement.of(0.2, 3, 16), InSquarePlacement.spread(),
                 BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(
-                        BlockPredicate.matchesFluids(new BlockPos(1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
-                        BlockPredicate.matchesFluids(new BlockPos(-1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
-                        BlockPredicate.matchesFluids(new BlockPos(0, -1, 1), Fluids.WATER, Fluids.FLOWING_WATER),
-                        BlockPredicate.matchesFluids(new BlockPos(0, -1, -1), Fluids.WATER, Fluids.FLOWING_WATER),
+                        besideFluidPredicate(Fluids.WATER, Fluids.FLOWING_WATER),
                         BlockPredicate.matchesFluids(new BlockPos(0, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
-                        BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), Blocks.GRASS_BLOCK)
+                        besideBlockPredicate(Blocks.GRASS_BLOCK, ModBlocks.WET_GRASS_BLOCK),
+                        BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), Blocks.GRASS_BLOCK, ModBlocks.WET_GRASS_BLOCK)
                 )));
         register(context, WET_GRASS_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.WET_GRASS_PATCH),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), CountPlacement.of(3),
@@ -280,14 +280,8 @@ public class ModPlacedFeatures {
                 CountPlacement.of(8), InSquarePlacement.spread(),
                 CountPlacement.of(6), RandomOffsetPlacement.ofTriangle(5, 0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
                 BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(
-                            BlockPredicate.matchesFluids(new BlockPos(1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
-                            BlockPredicate.matchesFluids(new BlockPos(-1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER),
-                            BlockPredicate.matchesFluids(new BlockPos(0, -1, 1), Fluids.WATER, Fluids.FLOWING_WATER),
-                            BlockPredicate.matchesFluids(new BlockPos(0, -1, -1), Fluids.WATER, Fluids.FLOWING_WATER),
-                            BlockPredicate.matchesBlocks(new BlockPos(1, -1, 0), Blocks.ICE),
-                            BlockPredicate.matchesBlocks(new BlockPos(-1, -1, 0), Blocks.ICE),
-                            BlockPredicate.matchesBlocks(new BlockPos(0, -1, 1), Blocks.ICE),
-                            BlockPredicate.matchesBlocks(new BlockPos(0, -1, -1), Blocks.ICE)
+                        besideFluidPredicate(Fluids.WATER, Fluids.FLOWING_WATER),
+                        besideBlockPredicate(Blocks.ICE)
                     )),
                 BiomeFilter.biome());
 
@@ -372,5 +366,23 @@ public class ModPlacedFeatures {
                                                                                           Holder<ConfiguredFeature<?, ?>> configuration,
                                                                                           PlacementModifier... modifiers) {
         register(context, key, configuration, List.of(modifiers));
+    }
+
+    public static BlockPredicate besideFluidPredicate(Fluid... fluids) {
+        return BlockPredicate.anyOf(
+                BlockPredicate.matchesFluids(new BlockPos(1, -1, 0), fluids),
+                BlockPredicate.matchesFluids(new BlockPos(-1, -1, 0), fluids),
+                BlockPredicate.matchesFluids(new BlockPos(0, -1, 1), fluids),
+                BlockPredicate.matchesFluids(new BlockPos(0, -1, -1), fluids)
+        );
+    }
+
+    public static BlockPredicate besideBlockPredicate(Block... blocks) {
+        return BlockPredicate.anyOf(
+                BlockPredicate.matchesBlocks(new BlockPos(1, -1, 0), blocks),
+                BlockPredicate.matchesBlocks(new BlockPos(-1, -1, 0), blocks),
+                BlockPredicate.matchesBlocks(new BlockPos(0, -1, 1), blocks),
+                BlockPredicate.matchesBlocks(new BlockPos(0, -1, -1), blocks)
+        );
     }
 }

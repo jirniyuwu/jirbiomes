@@ -504,7 +504,15 @@ public class ModConfiguredFeatures {
         register(context, ALGAE_PATCH, Feature.SEQUENCE, new CompositeFeatureConfiguration(
                 HolderSet.direct(
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(ALGAE),
-                                CountPlacement.of(20), RandomOffsetPlacement.ofTriangle(3, 0)))
+                                CountPlacement.of(20), RandomOffsetPlacement.ofTriangle(3, 0),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                                        BlockPredicate.matchesFluids(Fluids.WATER),
+                                        BlockPredicate.anyOf(BlockPredicate.matchesTag(
+                                                Direction.UP.getUnitVec3i(), ModTags.Blocks.ALGAE_SURVIVES_UNDER
+                                        ), BlockPredicate.matchesTag(
+                                                Direction.UP.getUnitVec3i(), BlockTags.AIR
+                                        ))
+                                ))))
         ));
         register(context, SHARP_RIBS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(
                 WeightedList.<BlockState>builder()
