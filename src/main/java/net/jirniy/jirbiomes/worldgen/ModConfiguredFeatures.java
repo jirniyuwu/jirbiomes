@@ -325,14 +325,14 @@ public class ModConfiguredFeatures {
                                                         ModBlocks.ROOTED_RED_SAND)
                                                 .ifTrueThenProvide(BlockPredicate.matchesBlocks(ModBlocks.DRIED_DIRT),
                                                         ModBlocks.ROOTED_DRIED_DIRT).build()),
-                                CountPlacement.of(UniformInt.of(5, 12)), PlacementUtils.HEIGHTMAP,
+                                CountPlacement.of(UniformInt.of(5, 12)), PlacementUtils.HEIGHTMAP_NO_LEAVES,
                                 RandomOffsetPlacement.of(
                                         TrapezoidInt.of(-2, 2, 0),
                                         TrapezoidInt.of(-3, -1, 0)),
                                 BlockPredicateFilter.forPredicate(BlockPredicate.solid())
                         ),
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BARREL_CACTUS),
-                                CountPlacement.of(UniformInt.of(5, 6)), PlacementUtils.HEIGHTMAP,
+                                CountPlacement.of(UniformInt.of(5, 6)), PlacementUtils.HEIGHTMAP_NO_LEAVES,
                                 RandomOffsetPlacement.of(TrapezoidInt.of(-3, 3, 0), ConstantInt.of(0)),
                                 EnvironmentScanPlacement.scanningFor(
                                         Direction.DOWN, BlockPredicate.matchesTag(new Vec3i(0, -1, 0),
