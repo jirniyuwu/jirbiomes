@@ -27,6 +27,17 @@ public class ModEntities {
                     .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10)
     );
 
+    public static final EntityType<Boat> TAXITE_BOAT = create(
+            "taxite_boat",
+            EntityType.Builder.of(boatFactory(() -> ModItems.TAXITE_BOAT), MobCategory.MISC)
+                    .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10)
+    );
+    public static final EntityType<ChestBoat> TAXITE_CHEST_BOAT = create(
+            "taxite_chest_boat",
+            EntityType.Builder.of(chestBoatFactory(() -> ModItems.TAXITE_CHEST_BOAT), MobCategory.MISC)
+                    .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10)
+    );
+
     public static final EntityType<Boat> PALM_BOAT = create(
             "palm_boat",
             EntityType.Builder.of(boatFactory(() -> ModItems.PALM_BOAT), MobCategory.MISC)

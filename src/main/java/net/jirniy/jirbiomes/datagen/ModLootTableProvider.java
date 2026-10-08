@@ -221,6 +221,18 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         dropSelf(ModBlocks.PROTOTAXITE_LOG);
         dropSelf(ModBlocks.PROTOTAXITE_SAPLING);
+        dropSelf(ModBlocks.TAXITE_PLANKS);
+        dropSelf(ModBlocks.TAXITE_STAIRS);
+        add(ModBlocks.TAXITE_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.TAXITE_TRAPDOOR);
+        dropSelf(ModBlocks.TAXITE_FENCE);
+        dropSelf(ModBlocks.TAXITE_FENCE_GATE);
+        add(ModBlocks.TAXITE_DOOR, this::createDoorTable);
+        dropSelf(ModBlocks.TAXITE_BUTTON);
+        dropSelf(ModBlocks.TAXITE_PRESSURE_PLATE);
+        dropSelf(ModBlocks.TAXITE_SHELF);
+        dropSelf(ModBlocks.TAXITE_SIGN);
+        dropSelf(ModBlocks.HANGING_TAXITE_SIGN);
 
         add(ModBlocks.APPLE_CROP, createCropDrops(ModBlocks.APPLE_CROP, ModBlocks.APPLE_OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)

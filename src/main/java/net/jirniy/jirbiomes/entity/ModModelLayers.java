@@ -11,6 +11,8 @@ public class ModModelLayers implements ModelLayersAccessor {
     public static final ModelLayerLocation GINKGO_CHEST_BOAT = create("chest_boat/ginkgo", BoatModel::createChestBoatModel);
     public static final ModelLayerLocation PALM_BOAT = create("boat/palm", BoatModel::createBoatModel);
     public static final ModelLayerLocation PALM_CHEST_BOAT = create("chest_boat/palm", BoatModel::createChestBoatModel);
+    public static final ModelLayerLocation TAXITE_BOAT = create("boat/taxite", BoatModel::createBoatModel);
+    public static final ModelLayerLocation TAXITE_CHEST_BOAT = create("chest_boat/taxite", BoatModel::createChestBoatModel);
 
     private static ModelLayerLocation create(final String model, ModelLayerRegistry.TexturedLayerDefinitionProvider provider) {
         return create(model, provider, "main");

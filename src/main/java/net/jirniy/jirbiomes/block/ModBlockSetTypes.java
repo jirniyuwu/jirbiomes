@@ -16,7 +16,7 @@ public class ModBlockSetTypes {
                 SoundEvents.NETHER_WOOD_TRAPDOOR_CLOSE, SoundEvents.NETHER_WOOD_TRAPDOOR_OPEN,
                 SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF, SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_ON,
                 SoundEvents.NETHER_WOOD_BUTTON_CLICK_OFF, SoundEvents.NETHER_WOOD_BUTTON_CLICK_ON);
-        public static final BlockSetType TAXITE = new BlockSetType("tenebris",
+        public static final BlockSetType TAXITE = new BlockSetType("taxite",
                 true, true, true,
                 BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.NETHER_WOOD,
                 SoundEvents.NETHER_WOOD_DOOR_CLOSE, SoundEvents.NETHER_WOOD_DOOR_OPEN,

@@ -61,6 +61,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_STAIRS, ModBlocks.GINKGO_SLAB, ModBlocks.GINKGO_PRESSURE_PLATE, ModBlocks.GINKGO_BUTTON,
                         ModBlocks.GINKGO_FENCE, ModBlocks.GINKGO_FENCE_GATE, ModBlocks.GINKGO_TRAPDOOR, ModBlocks.GINKGO_DOOR))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_PLANKS))
+                .add(ModBlocks.getKeys(ModBlocks.TAXITE_STAIRS, ModBlocks.TAXITE_SLAB, ModBlocks.TAXITE_PRESSURE_PLATE, ModBlocks.TAXITE_BUTTON,
+                        ModBlocks.TAXITE_FENCE, ModBlocks.TAXITE_FENCE_GATE, ModBlocks.TAXITE_TRAPDOOR, ModBlocks.TAXITE_DOOR))
                 .addOptionalTag(ModTags.Blocks.PALM_LOGS)
                 .add(ModBlocks.getKey(ModBlocks.PALM_PLANKS))
                 .add(ModBlocks.getKeys(ModBlocks.PALM_STAIRS, ModBlocks.PALM_SLAB, ModBlocks.PALM_PRESSURE_PLATE, ModBlocks.PALM_BUTTON,
@@ -125,66 +128,82 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_PLANKS))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PLANKS))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_PLANKS))
                 .add(ModBlocks.getKey(ModBlocks.PALM_PLANKS));
         tag(BlockTags.WOODEN_STAIRS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_STAIRS))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.PALM_STAIRS));
         tag(BlockTags.WOODEN_SLABS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SLAB))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_SLAB))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_SLAB))
                 .add(ModBlocks.getKey(ModBlocks.PALM_SLAB));
         tag(BlockTags.WOODEN_BUTTONS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_BUTTON))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_BUTTON))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_BUTTON))
                 .add(ModBlocks.getKey(ModBlocks.PALM_BUTTON));
         tag(BlockTags.WOODEN_PRESSURE_PLATES)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_PRESSURE_PLATE))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_PRESSURE_PLATE))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_PRESSURE_PLATE))
                 .add(ModBlocks.getKey(ModBlocks.PALM_PRESSURE_PLATE));
         tag(BlockTags.WOODEN_TRAPDOORS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_TRAPDOOR))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_TRAPDOOR))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_TRAPDOOR))
                 .add(ModBlocks.getKey(ModBlocks.PALM_TRAPDOOR));
         tag(BlockTags.WOODEN_DOORS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_DOOR))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_DOOR))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_DOOR))
                 .add(ModBlocks.getKey(ModBlocks.PALM_DOOR));
         tag(BlockTags.WOODEN_FENCES)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_FENCE))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_FENCE))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_FENCE))
                 .add(ModBlocks.getKey(ModBlocks.PALM_FENCE));
         tag(BlockTags.FENCE_GATES)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_FENCE_GATE))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_FENCE_GATE))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_FENCE_GATE))
                 .add(ModBlocks.getKey(ModBlocks.PALM_FENCE_GATE));
         tag(BlockTags.WOODEN_SHELVES)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SHELF))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_SHELF))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_SHELF))
                 .add(ModBlocks.getKey(ModBlocks.PALM_SHELF));
         tag(BlockTags.ALL_SIGNS)
                 .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN))
+                .add(ModBlocks.getKeys(ModBlocks.TAXITE_SIGN, ModBlocks.WALL_TAXITE_SIGN))
                 .add(ModBlocks.getKeys(ModBlocks.PALM_SIGN, ModBlocks.WALL_PALM_SIGN));
         tag(BlockTags.STANDING_SIGNS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_SIGN))
+                .add(ModBlocks.getKey(ModBlocks.TAXITE_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.PALM_SIGN));
         tag(BlockTags.WALL_SIGNS)
                 .add(ModBlocks.getKey(ModBlocks.WALL_TENEBRIS_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.WALL_GINKGO_SIGN))
+                .add(ModBlocks.getKey(ModBlocks.WALL_TAXITE_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.WALL_PALM_SIGN));
         tag(BlockTags.ALL_HANGING_SIGNS)
                 .add(ModBlocks.getKeys(ModBlocks.HANGING_TENEBRIS_SIGN, ModBlocks.HANGING_WALL_TENEBRIS_SIGN))
                 .add(ModBlocks.getKeys(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN))
+                .add(ModBlocks.getKeys(ModBlocks.HANGING_TAXITE_SIGN, ModBlocks.HANGING_WALL_TAXITE_SIGN))
                 .add(ModBlocks.getKeys(ModBlocks.HANGING_PALM_SIGN, ModBlocks.HANGING_WALL_PALM_SIGN));
         tag(BlockTags.CEILING_HANGING_SIGNS)
                 .add(ModBlocks.getKey(ModBlocks.HANGING_TENEBRIS_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.HANGING_GINKGO_SIGN))
+                .add(ModBlocks.getKey(ModBlocks.HANGING_TAXITE_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.HANGING_PALM_SIGN));
         tag(BlockTags.WALL_HANGING_SIGNS)
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_TENEBRIS_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_GINKGO_SIGN))
+                .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_TAXITE_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_PALM_SIGN));
 
         tag(BlockTags.STAIRS)

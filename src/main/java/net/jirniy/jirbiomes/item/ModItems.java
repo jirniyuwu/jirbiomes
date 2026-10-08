@@ -59,6 +59,16 @@ public class ModItems {
     public static final Item PALM_CHEST_BOAT = registerItem("palm_chest_boat", properties ->
             new BoatItem(ModEntities.PALM_CHEST_BOAT, properties.stacksTo(1)));
 
+    public static final Item TAXITE_SIGN = registerItem("taxite_sign", properties ->
+            new SignItem(ModBlocks.TAXITE_SIGN, ModBlocks.WALL_TAXITE_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
+    public static final Item HANGING_TAXITE_SIGN = registerItem("taxite_hanging_sign", properties ->
+            new HangingSignItem(ModBlocks.HANGING_TAXITE_SIGN, ModBlocks.HANGING_WALL_TAXITE_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
+
+    public static final Item TAXITE_BOAT = registerItem("taxite_boat", properties ->
+            new BoatItem(ModEntities.TAXITE_BOAT, properties.stacksTo(1)));
+    public static final Item TAXITE_CHEST_BOAT = registerItem("taxite_chest_boat", properties ->
+            new BoatItem(ModEntities.TAXITE_CHEST_BOAT, properties.stacksTo(1)));
+
     public static final Item TENEBRIS_SIGN = registerItem("tenebris_sign", properties ->
             new SignItem(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN, properties.useItemDescriptionPrefix().stacksTo(16)));
     public static final Item HANGING_TENEBRIS_SIGN = registerItem("tenebris_hanging_sign", properties ->

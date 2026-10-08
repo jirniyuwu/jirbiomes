@@ -379,6 +379,57 @@ public class ModBlocks {
             new TaxiteSaplingBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).noCollision()
                     .strength(0.8F).sound(SoundType.NETHER_WOOD).pushReaction(PushReaction.DESTROY)));
 
+    public static final Block TAXITE_PLANKS = registerBlock("taxite_planks", properties ->
+            new Block(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final Block TAXITE_STAIRS = registerBlock("taxite_stairs", properties ->
+            new StairBlock(TAXITE_PLANKS.defaultBlockState(), properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final Block TAXITE_SLAB = registerBlock("taxite_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final Block TAXITE_BUTTON = registerBlock("taxite_button", properties ->
+            new ButtonBlock(ModBlockSetTypes.Sets.TAXITE, 20, properties.noCollision().pushReaction(PushReaction.DESTROY)
+                    .strength(1.0F, 2.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final Block TAXITE_PRESSURE_PLATE = registerBlock("taxite_pressure_plate", properties ->
+            new PressurePlateBlock(ModBlockSetTypes.Sets.TAXITE, properties.noCollision().pushReaction(PushReaction.DESTROY)
+                    .strength(1.0F, 2.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final Block TAXITE_FENCE = registerBlock("taxite_fence", properties ->
+            new FenceBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final Block TAXITE_FENCE_GATE = registerBlock("taxite_fence_gate", properties ->
+            new FenceGateBlock(ModBlockSetTypes.WoodTypes.TAXITE, properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final Block TAXITE_TRAPDOOR = registerBlock("taxite_trapdoor", properties ->
+            new TrapDoorBlock(ModBlockSetTypes.Sets.TAXITE, properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY).noOcclusion()));
+    public static final Block TAXITE_DOOR = registerBlock("taxite_door", properties ->
+            new DoorBlock(ModBlockSetTypes.Sets.TAXITE, properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY).noOcclusion()));
+
+    public static final Block TAXITE_SHELF = registerBlockEntity("taxite_shelf", BlockEntityTypes.SHELF,
+            properties -> new ShelfBlock(properties.mapColor(TAXITE_PLANKS.defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS).sound(SoundType.SHELF)
+                    .ignitedByLava().strength(2.0F, 3.0F)));
+    public static final Block TAXITE_SIGN = registerBlockEntity("taxite_sign", BlockEntityTypes.SIGN, false,
+            properties -> new StandingSignBlock(ModBlockSetTypes.WoodTypes.TAXITE, properties.mapColor(TAXITE_PLANKS.defaultMapColor())
+                    .noCollision().strength(1.0F).ignitedByLava()));
+    public static final Block WALL_TAXITE_SIGN = registerBlockEntity("taxite_wall_sign", BlockEntityTypes.SIGN, false,
+            properties -> new WallSignBlock(ModBlockSetTypes.WoodTypes.TAXITE, wallVariant(TAXITE_SIGN, true,
+                    properties.mapColor(TAXITE_PLANKS.defaultMapColor())
+                            .noCollision().strength(1.0F).ignitedByLava())));
+    public static final Block HANGING_TAXITE_SIGN = registerBlockEntity("taxite_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
+            properties -> new CeilingHangingSignBlock(ModBlockSetTypes.WoodTypes.TAXITE, properties.mapColor(TAXITE_PLANKS.defaultMapColor())
+                    .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
+                    .strength(1.0F).ignitedByLava()));
+    public static final Block HANGING_WALL_TAXITE_SIGN = registerBlockEntity("taxite_wall_hanging_sign", BlockEntityTypes.HANGING_SIGN, false,
+            properties -> new WallHangingSignBlock(ModBlockSetTypes.WoodTypes.TAXITE, wallVariant(HANGING_TAXITE_SIGN, true,
+                    properties.mapColor(TAXITE_PLANKS.defaultMapColor())
+                            .forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision()
+                            .strength(1.0F).ignitedByLava())));
+
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->
             new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));
     public static final Block GINKGO_WOOD = registerBlock("ginkgo_wood", properties ->

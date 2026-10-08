@@ -608,6 +608,44 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 chestBoat(ModItems.GINKGO_CHEST_BOAT, ModItems.GINKGO_BOAT);
                 woodenBoat(ModItems.GINKGO_BOAT, ModBlocks.GINKGO_PLANKS);
 
+                shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TAXITE_PLANKS, 2)
+                        .requires(ModBlocks.PROTOTAXITE_LOG)
+                        .unlockedBy(getHasName(ModBlocks.PROTOTAXITE_LOG), has(ModBlocks.PROTOTAXITE_LOG))
+                        .group("planks").save(output, "taxite_planks");
+                stairBuilder(ModBlocks.TAXITE_STAIRS, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("wooden_stairs").save(output, "taxite_stairs");
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TAXITE_SLAB, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("wooden_slabs").save(output, "taxite_slab");
+                fenceBuilder(ModBlocks.TAXITE_FENCE, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("wooden_fences").save(output, "taxite_fence");
+                fenceGateBuilder(ModBlocks.TAXITE_FENCE_GATE, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("wooden_fence_gates").save(output, "taxite_fence_gate");
+                pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.TAXITE_PRESSURE_PLATE, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("wooden_pressure_plates").save(output, "taxite_pressure_plate");
+                buttonBuilder(ModBlocks.TAXITE_BUTTON, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("wooden_buttons").save(output, "taxite_button");
+                doorBuilder(ModBlocks.TAXITE_DOOR, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("wooden_doors").save(output, "taxite_door");
+                trapdoorBuilder(ModBlocks.TAXITE_TRAPDOOR, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("wooden_trapdoors").save(output, "taxite_trapdoor");
+                shelf(ModBlocks.TAXITE_SHELF, ModBlocks.PROTOTAXITE_LOG);
+                signBuilder(ModItems.TAXITE_SIGN, Ingredient.of(ModBlocks.TAXITE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLANKS), has(ModBlocks.TAXITE_PLANKS))
+                        .group("signs").save(output, "taxite_sign");
+                hangingSignBuilder(ModItems.HANGING_TAXITE_SIGN, Ingredient.of(ModBlocks.PROTOTAXITE_LOG))
+                        .unlockedBy(getHasName(ModBlocks.PROTOTAXITE_LOG), has(ModBlocks.PROTOTAXITE_LOG))
+                        .group("hanging_signs").save(output, "hanging_taxite_sign");
+                chestBoat(ModItems.TAXITE_CHEST_BOAT, ModItems.TAXITE_BOAT);
+                woodenBoat(ModItems.TAXITE_BOAT, ModBlocks.TAXITE_PLANKS);
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALM_WOOD, 3)
                         .pattern("LL")
                         .pattern("LL")

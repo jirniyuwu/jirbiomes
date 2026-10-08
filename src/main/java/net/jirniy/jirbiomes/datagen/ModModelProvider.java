@@ -162,7 +162,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.PALM_SAPLING, ModBlocks.POTTED_PALM_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createTrivialCube(ModBlocks.PALM_LEAVES);
         blockModelGenerators.createDoor(ModBlocks.PALM_DOOR);
-        blockModelGenerators.createTrapdoor(ModBlocks.PALM_TRAPDOOR);
+        blockModelGenerators.createOrientableTrapdoor(ModBlocks.PALM_TRAPDOOR);
         blockModelGenerators.woodProvider(ModBlocks.PALM_LOG).log(ModBlocks.PALM_LOG).wood(ModBlocks.PALM_WOOD);
         blockModelGenerators.woodProvider(ModBlocks.STRIPPED_PALM_LOG).log(ModBlocks.STRIPPED_PALM_LOG).wood(ModBlocks.STRIPPED_PALM_WOOD);
         blockModelGenerators.createShelf(ModBlocks.PALM_SHELF, ModBlocks.STRIPPED_PALM_LOG);
@@ -185,6 +185,18 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockModelGenerators.woodProvider(ModBlocks.PROTOTAXITE_LOG).log(ModBlocks.PROTOTAXITE_LOG);
         blockModelGenerators.createCrossBlockWithDefaultItem(ModBlocks.PROTOTAXITE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModelGenerators.family(ModBlocks.TAXITE_PLANKS)
+                .stairs(ModBlocks.TAXITE_STAIRS)
+                .slab(ModBlocks.TAXITE_SLAB)
+                .button(ModBlocks.TAXITE_BUTTON)
+                .fence(ModBlocks.TAXITE_FENCE)
+                .fenceGate(ModBlocks.TAXITE_FENCE_GATE)
+                .pressurePlate(ModBlocks.TAXITE_PRESSURE_PLATE);
+        createSign(ModBlocks.TAXITE_SIGN, ModBlocks.WALL_TAXITE_SIGN, ModBlocks.TAXITE_PLANKS, blockModelGenerators);
+        createHangingSign(ModBlocks.HANGING_TAXITE_SIGN, ModBlocks.HANGING_WALL_TAXITE_SIGN, ModBlocks.PROTOTAXITE_LOG, BlockFamily.Variant.WALL_HANGING_SIGN, blockModelGenerators);
+        blockModelGenerators.createDoor(ModBlocks.TAXITE_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(ModBlocks.TAXITE_TRAPDOOR);
+        blockModelGenerators.createShelf(ModBlocks.TAXITE_SHELF, ModBlocks.PROTOTAXITE_LOG);
 
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.APPLE_OAK_SAPLING, ModBlocks.POTTED_APPLE_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createCrossBlock(ModBlocks.APPLE_CROP, BlockModelGenerators.PlantType.NOT_TINTED, AppleCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
@@ -215,6 +227,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.TAXITE_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.TAXITE_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.PALM_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.PALM_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
     }
