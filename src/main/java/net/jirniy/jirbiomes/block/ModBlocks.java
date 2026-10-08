@@ -372,6 +372,13 @@ public class ModBlocks {
             new GenericPlantBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS)
                     .offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY)));
 
+    public static final Block PROTOTAXITE_LOG = registerBlock("prototaxite_hyphae", properties ->
+            new TaxiteLogBlock(properties.instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).randomTicks()
+                    .strength(4.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final Block PROTOTAXITE_SAPLING = registerBlock("prototaxite_septa", properties ->
+            new TaxiteSaplingBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).noCollision()
+                    .strength(0.8F).sound(SoundType.NETHER_WOOD).pushReaction(PushReaction.DESTROY)));
+
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->
             new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));
     public static final Block GINKGO_WOOD = registerBlock("ginkgo_wood", properties ->

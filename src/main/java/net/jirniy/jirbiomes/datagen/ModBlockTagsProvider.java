@@ -68,7 +68,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(ModTags.Blocks.TENEBRIS_LOGS)
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_PLANKS))
                 .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_STAIRS, ModBlocks.TENEBRIS_SLAB, ModBlocks.TENEBRIS_PRESSURE_PLATE, ModBlocks.TENEBRIS_BUTTON,
-                        ModBlocks.TENEBRIS_FENCE, ModBlocks.TENEBRIS_FENCE_GATE, ModBlocks.TENEBRIS_TRAPDOOR, ModBlocks.TENEBRIS_DOOR));
+                        ModBlocks.TENEBRIS_FENCE, ModBlocks.TENEBRIS_FENCE_GATE, ModBlocks.TENEBRIS_TRAPDOOR, ModBlocks.TENEBRIS_DOOR))
+                .add(ModBlocks.getKey(ModBlocks.PROTOTAXITE_LOG))
+                .add(ModBlocks.getKey(ModBlocks.PROTOTAXITE_SAPLING));
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.getKey(ModBlocks.SEA_URCHIN))
                 .add(ModBlocks.getKey(ModBlocks.STRAW_BLOCK))
@@ -368,6 +370,17 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(Blocks.LILY_PAD))
                 .add(ModBlocks.getKey(ModBlocks.LOTUS_FLOWER))
                 .add(ModBlocks.getKeys(Blocks.VINE, Blocks.CAVE_VINES, Blocks.CAVE_VINES_PLANT));
+
+        tag(ModTags.Blocks.PROTOTAXITE_PLACEABLE)
+                .addOptionalTag(ModTags.Blocks.PROTOTAXITE_ROOTS_REPLACEABLE)
+                .addOptionalTag(ModTags.Blocks.WET_DIRT)
+                .add(ModBlocks.getKey(ModBlocks.PROTOTAXITE_LOG))
+                .add(ModBlocks.getKeys(Blocks.GRASS_BLOCK, Blocks.ROOTED_DIRT, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.MYCELIUM,
+                        Blocks.MUD, ModBlocks.ROOTED_MUD, Blocks.MOSS_BLOCK, Blocks.PALE_MOSS_BLOCK));
+        tag(ModTags.Blocks.PROTOTAXITE_ROOTS_REPLACEABLE)
+                .add(ModBlocks.getKeys(Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.MYCELIUM, Blocks.PODZOL))
+                .add(ModBlocks.getKey(Blocks.MUD))
+                .add(ModBlocks.getKeys(ModBlocks.WETLAND, ModBlocks.WET_GRASS_BLOCK));
 
         tag(BlockTags.SUPPORTS_COCOA)
                 .addOptionalTag(ModTags.Blocks.PALM_LOGS);

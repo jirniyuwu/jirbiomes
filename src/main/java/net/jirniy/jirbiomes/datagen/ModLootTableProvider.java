@@ -219,6 +219,9 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropPottedContents(ModBlocks.POTTED_TENEBRIS_SAPLING);
         add(ModBlocks.TENEBRIS_LEAVES, createShearsOrSilkTouchOnlyDrop(ModBlocks.TENEBRIS_LEAVES));
 
+        dropSelf(ModBlocks.PROTOTAXITE_LOG);
+        dropSelf(ModBlocks.PROTOTAXITE_SAPLING);
+
         add(ModBlocks.APPLE_CROP, createCropDrops(ModBlocks.APPLE_CROP, ModBlocks.APPLE_OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AppleCropBlock.AGE, AppleCropBlock.MAX_AGE))));

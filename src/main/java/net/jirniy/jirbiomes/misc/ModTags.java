@@ -23,6 +23,8 @@ public class ModTags {
         public static final TagKey<Block> BARREL_CACTUSES = create("barrel_cactuses");
 
         public static final TagKey<Block> PALM_PLACEABLE = create("palm_placeable");
+        public static final TagKey<Block> PROTOTAXITE_PLACEABLE = create("prototaxite_placeable");
+        public static final TagKey<Block> PROTOTAXITE_ROOTS_REPLACEABLE = create("prototaxite_roots_replaceable");
         public static final TagKey<Block> SUPPORTS_ICE_VEGETATION = create("supports_ice_vegetation");
         public static final TagKey<Block> ALGAE_SURVIVES_UNDER = create("algae_survives_under");
 

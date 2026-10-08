@@ -139,6 +139,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_BOUNCY);
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_EXPLOSIVE);
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_FLAT)
+                .add(ModItems.getKey(ModBlocks.PROTOTAXITE_LOG))
                 .add(ModItems.getKey(ModBlocks.STRAW_BLOCK))
                 .add(ModItems.getKey(ModBlocks.PACKED_STRAW));
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_SLIDING)
