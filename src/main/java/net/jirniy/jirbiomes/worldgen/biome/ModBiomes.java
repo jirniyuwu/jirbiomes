@@ -8,6 +8,7 @@ import net.minecraft.world.level.biome.Biome;
 import terrablender.api.Regions;
 
 public class ModBiomes {
+    public static final ResourceKey<Biome> PROTOTAXITE_FOREST = registerBiomeKey("prototaxite_forest");
     public static final ResourceKey<Biome> SALT_DEPOSIT = registerBiomeKey("salt_deposit");
     public static final ResourceKey<Biome> PERMAFROST_CAVES = registerBiomeKey("permafrost_caves");
     public static final ResourceKey<Biome> POLAR_DESERT = registerBiomeKey("polar_desert");
@@ -23,6 +24,7 @@ public class ModBiomes {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
 
         register(context, BRIMSTONE_CRAGS, ModNetherBiomes.brimstoneCrags(placedFeatures, carvers));
+        register(context, PROTOTAXITE_FOREST, ModOverworldBiomes.prototaxiteForest(placedFeatures, carvers));
         register(context, SALT_DEPOSIT, ModOverworldBiomes.saltDeposit(placedFeatures, carvers));
         register(context, PERMAFROST_CAVES, ModOverworldBiomes.permafrostCaves(placedFeatures, carvers));
         register(context, POLAR_DESERT, ModOverworldBiomes.polarDesert(placedFeatures, carvers));

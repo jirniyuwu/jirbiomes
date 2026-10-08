@@ -12,6 +12,7 @@ import net.jirniy.jirbiomes.worldgen.feature.TaxiteConfiguration;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.AquaticFeatures;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -75,6 +76,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_COCONUT_TREE = registryKey("palm_tree_coconut");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE = registryKey("prototaxite");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_SMALL = registryKey("prototaxite_small");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_SEPTA = registryKey("prototaxite_septa");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_WITH_SEPTAS = registryKey("prototaxite_septas");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
@@ -107,6 +110,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_SHELLS_SMALL = registryKey("sand_shells_small");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_MUSHROOMS = registryKey("small_mushrooms");
     public static final ResourceKey<ConfiguredFeature<?, ?>> HANGING_MUSHROOMS = registryKey("hanging_mushrooms");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MUD_POOL = registryKey("mud_pool");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_LAYER = registryKey("potent_magma_layer");
     public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_ORE = registryKey("potent_magma_ore");
@@ -185,15 +189,18 @@ public class ModConfiguredFeatures {
 
         register(context, PROTOTAXITE, ModFeatures.TAXITE, new TaxiteConfiguration(
                 BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG),
-                ConstantInt.of(2), UniformInt.of(13, 17), UniformInt.of(3, 4), 0.7f
+                ConstantInt.of(2), UniformInt.of(15, 20), UniformInt.of(3, 4), 0.7f
         ));
+        register(context, PROTOTAXITE_SMALL, ModFeatures.TAXITE, new TaxiteConfiguration(
+                BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG),
+                ConstantInt.of(1), UniformInt.of(12, 16), UniformInt.of(2, 4), 0.6f
+        ));
+        register(context, PROTOTAXITE_SEPTA, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(SimpleStateProvider.simple(ModBlocks.PROTOTAXITE_SAPLING)));
         register(context, PROTOTAXITE_WITH_SEPTAS, Feature.SEQUENCE, new CompositeFeatureConfiguration(
                 HolderSet.direct(
-                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(PROTOTAXITE),
-                                PlacementUtils.HEIGHTMAP_NO_LEAVES,
-                                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING)),
-                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration(SimpleStateProvider.simple(ModBlocks.PROTOTAXITE_SAPLING)),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(PROTOTAXITE)),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(PROTOTAXITE_SEPTA),
                                 CountPlacement.of(UniformInt.of(8, 16)), RandomOffsetPlacement.of(
                                         TrapezoidInt.of(-4, 4, 0), ConstantInt.of(15)),
                                 PlacementUtils.HEIGHTMAP_NO_LEAVES, PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING)),
@@ -511,6 +518,13 @@ public class ModConfiguredFeatures {
                                                 .setValue(HangingMushroomsBlock.TIP, true), 1)
                                 ))),
                 Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, true
+        ));
+        register(context, MUD_POOL, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
+                blocks.getOrThrow(ModTags.Blocks.PROTOTAXITE_ROOTS_REPLACEABLE),
+                BlockStateProvider.simple(Blocks.MUD),
+                PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(AquaticFeatures.SEAGRASS_SHORT)),
+                CaveSurface.FLOOR, ConstantInt.of(2), 0.8F, 5, 0.1F,
+                UniformInt.of(3, 5), 0.7F
         ));
 
         register(context, LOTUS_FLOWER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider

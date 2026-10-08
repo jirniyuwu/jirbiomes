@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "jirbiomes:polar_desert"
+    "jirbiomes:polar_desert",
+    "jirbiomes:prototaxite_forest"
   ]
 }

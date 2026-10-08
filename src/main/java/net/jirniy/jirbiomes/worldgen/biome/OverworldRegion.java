@@ -49,6 +49,15 @@ public class OverworldRegion extends Region {
                 .weirdness(Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)
                 .offset(0f)
                 .build().forEach(point -> builder.add(point, ModBiomes.POLAR_DESERT));
+        new ParameterPointListBuilder()
+                .temperature(Temperature.WARM)
+                .humidity(Humidity.HUMID, Humidity.WET)
+                .continentalness(Continentalness.NEAR_INLAND, Continentalness.MID_INLAND, Continentalness.FAR_INLAND)
+                .erosion(Erosion.EROSION_6, Erosion.EROSION_5, Erosion.EROSION_4)
+                .depth(Depth.FULL_RANGE)
+                .weirdness(Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING)
+                .offset(0.04f)
+                .build().forEach(point -> builder.add(point, ModBiomes.PROTOTAXITE_FOREST));
         builder.build().forEach(mapper);
     }
 }

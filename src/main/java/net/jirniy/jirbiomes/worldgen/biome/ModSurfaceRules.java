@@ -39,12 +39,35 @@ public class ModSurfaceRules {
         );
     }
 
-    public static RuleSource overworldRules(HolderGetter<Biome> biomes) {;
+    public static RuleSource overworldRules(HolderGetter<Biome> biomes) {
         SurfaceRules.ConditionSource notUnderDeepWater = SurfaceRules.waterStartCheck(-6, -1);
         SurfaceRules.ConditionSource deepslate = SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8));
+        SurfaceRules.ConditionSource aboveWater = SurfaceRules.waterBlockCheck(0, 0);
+
+        SurfaceRules.RuleSource grassOrDirtIfUnderwater = SurfaceRules.sequence(SurfaceRules.ifTrue(aboveWater, state(Blocks.GRASS_BLOCK.defaultBlockState())), state(Blocks.DIRT.defaultBlockState()));
+        SurfaceRules.RuleSource wetGrassOrDirtIfUnderwater = SurfaceRules.sequence(SurfaceRules.ifTrue(aboveWater, state(ModBlocks.WET_GRASS_BLOCK.defaultBlockState())), state(ModBlocks.WETLAND.defaultBlockState()));
 
         return sequence(
                 ifTrue(verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK),
+
+                ifTrue(isBiome(biomes, ModBiomes.PROTOTAXITE_FOREST), sequence(
+                        SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), sequence(
+                                ifTrue(aboveWater, sequence(ifTrue(ON_FLOOR, sequence(
+                                        ifTrue(noiseCondition2d(Noises.ICE, 0.5, 1), state(Blocks.MUD.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, 0.15, 0.5), wetGrassOrDirtIfUnderwater),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -0.15, 0.15), grassOrDirtIfUnderwater),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -0.5, -0.15), wetGrassOrDirtIfUnderwater),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -1, -0.5), state(Blocks.MUD.defaultBlockState()))
+                                )))),
+                                ifTrue(aboveWater, sequence(ifTrue(UNDER_FLOOR, sequence(
+                                        ifTrue(noiseCondition2d(Noises.ICE, 0.5, 1), state(Blocks.MUD.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, 0.15, 0.5), state(ModBlocks.WETLAND.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -0.15, 0.15), state(Blocks.DIRT.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -0.5, -0.15), state(ModBlocks.WETLAND.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -1, -0.5), state(Blocks.MUD.defaultBlockState()))
+                                ))))
+                        ))
+                )),
 
                 ifTrue(isBiome(biomes, ModBiomes.SALT_DEPOSIT), sequence(
                         ifTrue(not(verticalGradient("salt", VerticalAnchor.absolute(48), VerticalAnchor.absolute(52))), sequence(

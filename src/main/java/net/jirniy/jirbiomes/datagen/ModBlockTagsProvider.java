@@ -442,7 +442,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE));
         tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
-                .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW));
+                .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))
+                .addOptionalTag(ModTags.Blocks.WET_DIRT)
+                .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.DRIPSTONE_REPLACEABLE)
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
                 .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))

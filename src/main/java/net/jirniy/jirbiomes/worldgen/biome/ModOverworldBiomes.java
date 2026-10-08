@@ -5,8 +5,10 @@ import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
+import net.minecraft.data.worldgen.placement.AquaticPlacements;
 import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.data.worldgen.placement.OrePlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.AmbientParticle;
 import net.minecraft.world.attribute.BackgroundMusic;
@@ -66,7 +68,8 @@ public class ModOverworldBiomes {
         BiomeDefaultFeatures.addPlainVegetation(generation);
         BiomeDefaultFeatures.addDefaultMushrooms(generation);
         BiomeDefaultFeatures.addDefaultExtraVegetation(generation, false);
-        generation.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.LARGE_ICICLE_PLACED)
+        generation
+                .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.LARGE_ICICLE_PLACED)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BLUE_ICE_ORE)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.ICICLE_CLUSTER_PLACED)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.POINTED_ICICLE_PLACED)
@@ -98,6 +101,41 @@ public class ModOverworldBiomes {
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS))
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x8fabf2)).build())
+                .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
+                .build();
+    }
+
+    public static Biome prototaxiteForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        Biome.BiomeBuilder biome = OverworldBiomes.baseBiome(2.0f, 2.0f);
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.swampSpawns(mobs, 40);
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+        OverworldBiomes.globalOverworldGeneration(generation);
+        generation
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LARGE_PROTOTAXITE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_PROTOTAXITE_PLACED)
+                .addFeature(GenerationStep.Decoration.LAKES, ModPlacedFeatures.MUD_POOL_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PROTOTAXITE_SEPTA_PATCH_PLACED);
+        generation
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_SURFACE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CATTAIL_PATCH_RARE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_SPARSE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MUSHROOMS_CAVE_BONUS_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HANGING_MUSHROOMS_TAXITE_PLACED);
+        BiomeDefaultFeatures.addPlainGrass(generation);
+        BiomeDefaultFeatures.addBushes(generation);
+        BiomeDefaultFeatures.addFerns(generation);
+        BiomeDefaultFeatures.addDefaultOres(generation, false);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_PLAINS);
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_PLAIN);
+        BiomeDefaultFeatures.addDefaultMushrooms(generation);
+        BiomeDefaultFeatures.addSwampExtraVegetation(generation);
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
+
+        return biome
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SWAMP))
+                .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x3A7A6A)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();
     }
