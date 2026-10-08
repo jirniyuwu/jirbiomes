@@ -21,7 +21,7 @@ public class TaxiteLogBlock extends RotatedPillarBlock implements BonemealableBl
         if (state.getValue(AXIS) == Direction.Axis.Y
                 && level.getBlockState(pos.above()).isAir()
                 && level.isInsideBuildHeight(pos.above())
-                && random.nextFloat() < 0.005f) {
+                && random.nextFloat() < 0.0025f) {
             level.setBlockAndUpdate(pos.above(), ModBlocks.PROTOTAXITE_SAPLING.defaultBlockState());
         }
     }

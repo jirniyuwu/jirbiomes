@@ -8,6 +8,7 @@ import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
 import net.jirniy.jirbiomes.worldgen.feature.CoconutDecorator;
 import net.jirniy.jirbiomes.worldgen.feature.ModFeatures;
 import net.jirniy.jirbiomes.worldgen.feature.PalmFoliagePlacer;
+import net.jirniy.jirbiomes.worldgen.feature.TaxiteConfiguration;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -36,6 +37,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.PlaceOnGroundDecorator;
@@ -71,6 +73,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE = registryKey("palm_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE_BEES_005 = registryKey("palm_tree_bees_005");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_COCONUT_TREE = registryKey("palm_tree_coconut");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE = registryKey("prototaxite");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_WITH_SEPTAS = registryKey("prototaxite_septas");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DOWNWARDS_TENEBRIS = registryKey("downwards_tenebris");
@@ -129,6 +134,10 @@ public class ModConfiguredFeatures {
         BlockStateProvider wetlandProvider = new MapStateProvider(
                 new Block[]{Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.ROOTED_DIRT, Blocks.COARSE_DIRT, Blocks.DIRT_PATH, Blocks.FARMLAND},
                 new Block[]{ModBlocks.WET_GRASS_BLOCK, ModBlocks.WETLAND, ModBlocks.ROOTED_WETLAND, ModBlocks.COARSE_WETLAND, ModBlocks.WETLAND_PATH, ModBlocks.WET_FARMLAND});
+        BlockStateProvider rootsProvider = new MapStateProvider(
+                new Block[]{Blocks.SAND, Blocks.RED_SAND, Blocks.DIRT, ModBlocks.DRIED_DIRT, ModBlocks.WETLAND, Blocks.MUD},
+                new Block[]{ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND, Blocks.ROOTED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.ROOTED_WETLAND, ModBlocks.ROOTED_MUD}
+        );
 
         PlaceOnGroundDecorator sparseLeafLitter = new PlaceOnGroundDecorator(96, 4, 2,
                 new WeightedStateProvider(VegetationFeatures.leafLitterPatchBuilder(1, 3)));
@@ -173,6 +182,28 @@ public class ModConfiguredFeatures {
         register(context, PALM_TREE_BEES_005, Feature.TREE, palmTreeConfig.ignoreVines().decorators(List.of(beehive005)).build());
         register(context, PALM_COCONUT_TREE, Feature.TREE, palmTreeConfig.ignoreVines()
                 .decorators(List.of(new CoconutDecorator(0.3f, UniformInt.of(1, 2)))).build());
+
+        register(context, PROTOTAXITE, ModFeatures.TAXITE, new TaxiteConfiguration(
+                BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG),
+                ConstantInt.of(2), UniformInt.of(13, 17), UniformInt.of(3, 4), 0.7f
+        ));
+        register(context, PROTOTAXITE_WITH_SEPTAS, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(PROTOTAXITE),
+                                PlacementUtils.HEIGHTMAP_NO_LEAVES,
+                                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING)),
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(SimpleStateProvider.simple(ModBlocks.PROTOTAXITE_SAPLING)),
+                                CountPlacement.of(UniformInt.of(8, 16)), RandomOffsetPlacement.of(
+                                        TrapezoidInt.of(-4, 4, 0), ConstantInt.of(15)),
+                                PlacementUtils.HEIGHTMAP_NO_LEAVES, PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING)),
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(rootsProvider),
+                                CountPlacement.of(UniformInt.of(64, 128)),
+                                RandomOffsetPlacement.of(TrapezoidInt.of(-2, 2, 0),
+                                        TrapezoidInt.of(-11, -2, 0)))
+                )
+        ));
 
         register(context, APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.OAK_LOG),

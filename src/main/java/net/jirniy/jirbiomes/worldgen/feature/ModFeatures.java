@@ -12,6 +12,8 @@ public class ModFeatures {
     public static final Feature<NoneFeatureConfiguration> TENEBRIS = create("tenebris", new TenebrisFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> TENEBRIS_DOWNWARDS = create("tenebris_downwards", new DownwardsTenebrisFeature(NoneFeatureConfiguration.CODEC));
 
+    public static final Feature<TaxiteConfiguration> TAXITE = create("taxite", new TaxiteFeature(TaxiteConfiguration.CODEC));
+
     public static final Feature<LargeDripstoneConfiguration> LARGE_ICICLE = create("large_icicle", new LargeIcicleFeature(LargeDripstoneConfiguration.CODEC));
 
     private static <C extends FeatureConfiguration, F extends Feature<C>> F create(final String name, final F feature) {
