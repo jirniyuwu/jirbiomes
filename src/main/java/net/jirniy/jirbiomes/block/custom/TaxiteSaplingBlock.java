@@ -38,6 +38,19 @@ public class TaxiteSaplingBlock extends VegetationPlaceableOnBlock implements Bo
     }
 
     @Override
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        super.randomTick(state, level, pos, random);
+        if (level.getBlockState(pos.below()).is(ModTags.Blocks.ROOTED_BLOCKS)
+                && level.isInsideBuildHeight(pos.above())
+                && level.getBlockState(pos.above()).isAir()
+                && level.getRawBrightness(pos, 0) >= 13
+                && random.nextFloat() < 0.01f) {
+            level.setBlockAndUpdate(pos, ModBlocks.PROTOTAXITE_LOG.defaultBlockState());
+            level.setBlockAndUpdate(pos.above(), ModBlocks.PROTOTAXITE_SAPLING.defaultBlockState());
+        }
+    }
+
+    @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }

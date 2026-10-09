@@ -376,7 +376,7 @@ public class ModBlocks {
             new TaxiteLogBlock(properties.instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).randomTicks()
                     .strength(4.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
     public static final Block PROTOTAXITE_SAPLING = registerBlock("prototaxite_septa", properties ->
-            new TaxiteSaplingBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).noCollision()
+            new TaxiteSaplingBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).noCollision().randomTicks()
                     .strength(0.8F).sound(SoundType.NETHER_WOOD).pushReaction(PushReaction.DESTROY)));
 
     public static final Block TAXITE_PLANKS = registerBlock("taxite_planks", properties ->
