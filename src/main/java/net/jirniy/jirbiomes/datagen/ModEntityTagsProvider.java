@@ -18,6 +18,8 @@ public class ModEntityTagsProvider extends FabricTagsProvider.EntityTypeTagsProv
         tag(EntityTypeTags.BOAT)
                 .add(ModEntities.getKey(ModEntities.GINKGO_BOAT))
                 .add(ModEntities.getKey(ModEntities.GINKGO_CHEST_BOAT))
+                .add(ModEntities.getKey(ModEntities.TAXITE_BOAT))
+                .add(ModEntities.getKey(ModEntities.TAXITE_CHEST_BOAT))
                 .add(ModEntities.getKey(ModEntities.PALM_BOAT))
                 .add(ModEntities.getKey(ModEntities.PALM_CHEST_BOAT));
     }
