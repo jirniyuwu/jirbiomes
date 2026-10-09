@@ -78,7 +78,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE = registryKey("prototaxite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_SMALL = registryKey("prototaxite_small");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_SEPTA = registryKey("prototaxite_septa");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_SEPTA_GROWTH = registryKey("prototaxite_septa_growth");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_WITH_SEPTAS = registryKey("prototaxite_septas");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_SMALL_WITH_SEPTAS = registryKey("prototaxite_small_septas");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DOWNWARDS_TENEBRIS = registryKey("downwards_tenebris");
@@ -139,8 +141,8 @@ public class ModConfiguredFeatures {
                 new Block[]{Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.ROOTED_DIRT, Blocks.COARSE_DIRT, Blocks.DIRT_PATH, Blocks.FARMLAND},
                 new Block[]{ModBlocks.WET_GRASS_BLOCK, ModBlocks.WETLAND, ModBlocks.ROOTED_WETLAND, ModBlocks.COARSE_WETLAND, ModBlocks.WETLAND_PATH, ModBlocks.WET_FARMLAND});
         BlockStateProvider rootsProvider = new MapStateProvider(
-                new Block[]{Blocks.SAND, Blocks.RED_SAND, Blocks.DIRT, ModBlocks.DRIED_DIRT, ModBlocks.WETLAND, Blocks.MUD},
-                new Block[]{ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND, Blocks.ROOTED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.ROOTED_WETLAND, ModBlocks.ROOTED_MUD}
+                new Block[]{Blocks.SAND, Blocks.RED_SAND, Blocks.DIRT, Blocks.GRASS_BLOCK, ModBlocks.DRIED_DIRT, ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.WETLAND, ModBlocks.WET_GRASS_BLOCK, Blocks.MUD},
+                new Block[]{ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND, Blocks.ROOTED_DIRT, Blocks.ROOTED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.ROOTED_WETLAND, ModBlocks.ROOTED_WETLAND, ModBlocks.ROOTED_MUD}
         );
 
         PlaceOnGroundDecorator sparseLeafLitter = new PlaceOnGroundDecorator(96, 4, 2,
@@ -189,20 +191,50 @@ public class ModConfiguredFeatures {
 
         register(context, PROTOTAXITE, ModFeatures.TAXITE, new TaxiteConfiguration(
                 BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG),
-                ConstantInt.of(2), UniformInt.of(15, 20), UniformInt.of(3, 4), 0.7f
+                ConstantInt.of(2), UniformInt.of(18, 25), UniformInt.of(3, 4), 0.7f, 0.6f
         ));
         register(context, PROTOTAXITE_SMALL, ModFeatures.TAXITE, new TaxiteConfiguration(
                 BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG),
-                ConstantInt.of(1), UniformInt.of(12, 16), UniformInt.of(2, 4), 0.6f
+                ConstantInt.of(1), UniformInt.of(14, 20), UniformInt.of(2, 4), 0.6f, 0.8f
         ));
         register(context, PROTOTAXITE_SEPTA, Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(SimpleStateProvider.simple(ModBlocks.PROTOTAXITE_SAPLING)));
+        register(context, PROTOTAXITE_SEPTA_GROWTH, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+                                List.of(new BlockColumnConfiguration.Layer(
+                                                UniformInt.of(1, 2), BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG)),
+                                        new BlockColumnConfiguration.Layer(
+                                                ConstantInt.of(1), BlockStateProvider.simple(ModBlocks.PROTOTAXITE_SAPLING))),
+                                Direction.UP, BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, true
+                        )),
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(rootsProvider),
+                                RandomOffsetPlacement.of(ConstantInt.of(0), ConstantInt.of(-1)))
+                )
+        ));
         register(context, PROTOTAXITE_WITH_SEPTAS, Feature.SEQUENCE, new CompositeFeatureConfiguration(
                 HolderSet.direct(
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(PROTOTAXITE)),
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(PROTOTAXITE_SEPTA),
                                 CountPlacement.of(UniformInt.of(8, 16)), RandomOffsetPlacement.of(
-                                        TrapezoidInt.of(-4, 4, 0), ConstantInt.of(15)),
+                                        TrapezoidInt.of(-4, 4, 0), ConstantInt.of(16)),
+                                RandomOffsetPlacement.of(ConstantInt.ZERO, ConstantInt.of(16)),
+                                PlacementUtils.HEIGHTMAP_NO_LEAVES, PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING)),
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(rootsProvider),
+                                CountPlacement.of(UniformInt.of(64, 128)),
+                                RandomOffsetPlacement.of(TrapezoidInt.of(-2, 2, 0),
+                                        TrapezoidInt.of(-11, -2, 0)))
+                )
+        ));
+        register(context, PROTOTAXITE_SMALL_WITH_SEPTAS, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(PROTOTAXITE_SMALL)),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(PROTOTAXITE_SEPTA),
+                                CountPlacement.of(UniformInt.of(3, 5)), RandomOffsetPlacement.of(
+                                        TrapezoidInt.of(-3, 3, 0), ConstantInt.of(16)),
+                                RandomOffsetPlacement.of(ConstantInt.ZERO, ConstantInt.of(16)),
                                 PlacementUtils.HEIGHTMAP_NO_LEAVES, PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING)),
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
                                 new SimpleBlockConfiguration(rootsProvider),

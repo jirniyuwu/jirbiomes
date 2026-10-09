@@ -115,13 +115,14 @@ public class ModOverworldBiomes {
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LARGE_PROTOTAXITE_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_PROTOTAXITE_PLACED)
                 .addFeature(GenerationStep.Decoration.LAKES, ModPlacedFeatures.MUD_POOL_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PROTOTAXITE_SEPTA_GROWTH_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PROTOTAXITE_SEPTA_PATCH_PLACED);
         generation
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_SURFACE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_PROTOTAXITE_FOREST_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CATTAIL_PATCH_RARE_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_SPARSE_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MUSHROOMS_CAVE_BONUS_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HANGING_MUSHROOMS_TAXITE_PLACED);
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MUSHROOMS_PROTOTAXITE_FOREST_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HANGING_MUSHROOMS_PROTOTAXITE_FOREST_PLACED);
         BiomeDefaultFeatures.addPlainGrass(generation);
         BiomeDefaultFeatures.addBushes(generation);
         BiomeDefaultFeatures.addFerns(generation);
@@ -135,7 +136,10 @@ public class ModOverworldBiomes {
 
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SWAMP))
-                .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x3A7A6A)).build())
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x7ff5e9)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x528777)
+                .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x49918b)
+                        .grassColorOverride(0x46bd4c).foliageColorOverride(0x64bd1c)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();
     }

@@ -54,7 +54,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ALGAE_PATCH_PLACED = registryKey("algae_patch");
     public static final ResourceKey<PlacedFeature> LOTUS_PLACED = registryKey("lotus_placed");
     public static final ResourceKey<PlacedFeature> LOTUS_RARE_PLACED = registryKey("lotus_rare_placed");
-    public static final ResourceKey<PlacedFeature> LOTUS_SURFACE_PLACED = registryKey("lotus_surface_placed");
+    public static final ResourceKey<PlacedFeature> LOTUS_PROTOTAXITE_FOREST_PLACED = registryKey("lotus_prototaxite_forest");
     public static final ResourceKey<PlacedFeature> FROZEN_GRASS_PLACED = registryKey("frozen_grass");
     public static final ResourceKey<PlacedFeature> SHARP_RIBS_SOUL_SAND_PLACED = registryKey("sharp_ribs_soul_sand");
     public static final ResourceKey<PlacedFeature> SEA_URCHIN_PLACED = registryKey("sea_urchin");
@@ -67,11 +67,12 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SMALL_MUSHROOMS_PATCH_PLACED = registryKey("small_mushrooms_patch");
     public static final ResourceKey<PlacedFeature> SMALL_MUSHROOMS_RARE_PLACED = registryKey("small_mushrooms_rare");
     public static final ResourceKey<PlacedFeature> SMALL_MUSHROOMS_CAVE_PLACED = registryKey("small_mushrooms_cave");
-    public static final ResourceKey<PlacedFeature> SMALL_MUSHROOMS_CAVE_BONUS_PLACED = registryKey("small_mushrooms_cave_bonus");
+    public static final ResourceKey<PlacedFeature> SMALL_MUSHROOMS_PROTOTAXITE_FOREST_PLACED = registryKey("small_mushrooms_prototaxite_forest");
     public static final ResourceKey<PlacedFeature> HANGING_MUSHROOMS_PLACED = registryKey("hanging_mushrooms");
-    public static final ResourceKey<PlacedFeature> HANGING_MUSHROOMS_TAXITE_PLACED = registryKey("hanging_mushrooms_taxite");
+    public static final ResourceKey<PlacedFeature> HANGING_MUSHROOMS_PROTOTAXITE_FOREST_PLACED = registryKey("hanging_mushrooms_prototaxite_forest");
     public static final ResourceKey<PlacedFeature> HANGING_MUSHROOMS_DEEP_PLACED = registryKey("hanging_mushrooms_deep");
     public static final ResourceKey<PlacedFeature> PROTOTAXITE_SEPTA_PATCH_PLACED = registryKey("prototaxite_septa_patch");
+    public static final ResourceKey<PlacedFeature> PROTOTAXITE_SEPTA_GROWTH_PLACED = registryKey("prototaxite_septa_growth");
     public static final ResourceKey<PlacedFeature> MUD_POOL_PLACED = registryKey("mud_pool");
 
     public static final ResourceKey<PlacedFeature> ICE_TOP_LAYER = registryKey("ice_top_layer");
@@ -123,11 +124,11 @@ public class ModPlacedFeatures {
         register(context, LARGE_PROTOTAXITE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_WITH_SEPTAS),
                 NoiseThresholdCountPlacement.of(0.2, 1, 3),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(), InSquarePlacement.spread(),
-                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(4),
+                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(3),
                 BlockPredicateFilter.forPredicate(BlockPredicate.not(
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
                 ));
-        register(context, SMALL_PROTOTAXITE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_SMALL),
+        register(context, SMALL_PROTOTAXITE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_SMALL_WITH_SEPTAS),
                 NoiseThresholdCountPlacement.of(0.2, 3, 1),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(), InSquarePlacement.spread(),
                 PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(3),
@@ -206,7 +207,7 @@ public class ModPlacedFeatures {
                 RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_NO_LEAVES,
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesFluids(Direction.DOWN.getUnitVec3i(), Fluids.WATER))), BiomeFilter.biome());
-        register(context, LOTUS_SURFACE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER),
+        register(context, LOTUS_PROTOTAXITE_FOREST_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER),
                 NoiseThresholdCountPlacement.of(-0.2, 2, 0),
                 RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_NO_LEAVES,
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
@@ -254,8 +255,15 @@ public class ModPlacedFeatures {
                                 ModTags.Blocks.SEA_URCHIN_SHIPWRECK_PLACEMENT))));
         register(context, PROTOTAXITE_SEPTA_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_SEPTA),
                 NoiseThresholdCountPlacement.of(0.4f, 1, 2), RarityFilter.onAverageOnceEvery(4),
-                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(16),
-                RandomOffsetPlacement.ofTriangle(5, 2), PlacementUtils.HEIGHTMAP_NO_LEAVES,
+                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(8),
+                RandomOffsetPlacement.ofTriangle(7, 2), PlacementUtils.HEIGHTMAP_NO_LEAVES,
+                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), BlockPredicateFilter.forPredicate(
+                        BlockPredicate.not(BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
+                ));
+        register(context, PROTOTAXITE_SEPTA_GROWTH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_SEPTA_GROWTH),
+                NoiseThresholdCountPlacement.of(0.1f, 3, 2), RarityFilter.onAverageOnceEvery(6),
+                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(3),
+                RandomOffsetPlacement.ofTriangle(6, 2), PlacementUtils.HEIGHTMAP_NO_LEAVES,
                 PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), BlockPredicateFilter.forPredicate(
                         BlockPredicate.not(BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
                 ));
@@ -292,7 +300,7 @@ public class ModPlacedFeatures {
                         BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.solid(Direction.DOWN.getUnitVec3i())
                 )));
-        register(context, SMALL_MUSHROOMS_CAVE_BONUS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SMALL_MUSHROOMS),
+        register(context, SMALL_MUSHROOMS_PROTOTAXITE_FOREST_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SMALL_MUSHROOMS),
                 NoiseThresholdCountPlacement.of(0.3, 2, 6), InSquarePlacement.spread(),
                 HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(30), VerticalAnchor.absolute(120)),
                 EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(Direction.DOWN.getUnitVec3i()), 12),
@@ -312,7 +320,7 @@ public class ModPlacedFeatures {
                         BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.solid(Direction.UP.getUnitVec3i())
                 )));
-        register(context, HANGING_MUSHROOMS_TAXITE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.HANGING_MUSHROOMS),
+        register(context, HANGING_MUSHROOMS_PROTOTAXITE_FOREST_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.HANGING_MUSHROOMS),
                 NoiseThresholdCountPlacement.of(0.2, 1, 3), InSquarePlacement.spread(),
                 HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(100), VerticalAnchor.absolute(130)),
                 EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(Direction.UP.getUnitVec3i()), 8),

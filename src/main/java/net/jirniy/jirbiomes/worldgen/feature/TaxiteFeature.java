@@ -30,42 +30,50 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
         int topHeight = context.config().topHeight().sample(random);
         int bottomHeight = context.config().bottomHeight().sample(random);
         float cornerProbability = context.config().cornerProbability();
+        float topBlockProbability = context.config().topBlockProbability();
 
-        for (int i = 0; i < topHeight; i++) {
-            int currentRadius;
-            float currentProbability = cornerProbability;
-            if (i == topHeight - 1) {
-                currentRadius = 1;
-                currentProbability = 0;
-            } else if (i >= topHeight * 0.8) {
-                currentRadius = (int) Math.floor(radius * 0.35);
-            } else if (i >= topHeight * 0.6) {
-                if (i >= topHeight * 0.8 - 1) {
+        try {
+            for (int i = 0; i < topHeight; i++) {
+                int currentRadius;
+                float currentProbability = cornerProbability;
+                if (i == topHeight - 1) {
+                    currentRadius = 1;
                     currentProbability = 0;
+                    if (random.nextFloat() < topBlockProbability) {
+                        trySetBlock(trunkProvider.getState(level, random, pos.above(i + 1)), pos.above(i + 1), level);
+                    }
+                } else if (i >= topHeight * 0.8) {
+                    currentRadius = (int) Math.floor(radius * 0.35);
+                } else if (i >= topHeight * 0.6) {
+                    if (i >= topHeight * 0.8 - 1) {
+                        currentProbability = 0;
+                    }
+                    currentRadius = (int) Math.floor(radius * 0.75);
+                } else {
+                    if (i >= topHeight * 0.6 - 1) {
+                        currentProbability = 0;
+                    }
+                    currentRadius = radius;
                 }
-                currentRadius = (int) Math.floor(radius * 0.75);
-            } else {
-                if (i >= topHeight * 0.6 - 1) {
-                    currentProbability = 0;
+
+                placeRadius(trunkProvider, currentRadius, currentProbability, level, pos.above(i), random);
+            }
+            for (int i = 0; i < bottomHeight; i++) {
+                int currentRadius;
+                if (i == bottomHeight - 1) {
+                    currentRadius = 1;
+                } else if (i >= bottomHeight * 0.75) {
+                    currentRadius = (int) Math.floor(radius * 0.35);
+                } else if (i >= bottomHeight * 0.45) {
+                    currentRadius = (int) Math.floor(radius * 0.75);
+                } else {
+                    currentRadius = radius;
                 }
-                currentRadius = radius;
-            }
 
-            placeRadius(trunkProvider, currentRadius, currentProbability, level, pos.above(i), random);
-        }
-        for (int i = 0; i < bottomHeight; i++) {
-            int currentRadius;
-            if (i == bottomHeight - 1) {
-                currentRadius = 1;
-            } else if (i >= bottomHeight * 0.75) {
-                currentRadius = (int) Math.floor(radius * 0.35);
-            } else if (i >= bottomHeight * 0.45) {
-                currentRadius = (int) Math.floor(radius * 0.75);
-            } else {
-                currentRadius = radius;
+                placeRadius(trunkProvider, currentRadius, cornerProbability, level, pos.below(i), random);
             }
-
-            placeRadius(trunkProvider, currentRadius, cornerProbability, level, pos.below(i), random);
+        } catch (Exception e) {
+            return false;
         }
 
         return true;
@@ -73,7 +81,8 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
 
     private void placeRadius(BlockStateProvider block, int radius, float cornerProbability, WorldGenLevel level, BlockPos pos, RandomSource random) {
         switch (radius) {
-            case 1 -> {trySetBlock(block.getState(level, random, pos), pos, level);
+            case 1 -> {
+                trySetBlock(block.getState(level, random, pos), pos, level);
                 for (Direction dir : HORIZONTAL_DIRECTIONS) {
                     BlockPos dirPos = pos.offset(dir.getUnitVec3i());
                     trySetBlock(block.getState(level, random, dirPos), dirPos, level);
