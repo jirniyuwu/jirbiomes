@@ -79,6 +79,8 @@ public class ModOverworldBiomes {
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES))
                 .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.SNOWFLAKE, 0.0005f))
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x95d3e6)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xa2d5f5)
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x8fabf2)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();
@@ -100,6 +102,8 @@ public class ModOverworldBiomes {
 
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS))
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x95d3e6)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xa2d5f5)
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x8fabf2)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();
@@ -137,7 +141,7 @@ public class ModOverworldBiomes {
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SWAMP))
                 .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x7ff5e9)
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x528777)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x325747)
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x49918b)
                         .grassColorOverride(0x46bd4c).foliageColorOverride(0x64bd1c)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
