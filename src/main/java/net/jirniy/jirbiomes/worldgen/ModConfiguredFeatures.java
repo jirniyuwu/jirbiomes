@@ -191,12 +191,13 @@ public class ModConfiguredFeatures {
                 .decorators(List.of(new CoconutDecorator(0.3f, UniformInt.of(1, 2)))).build());
 
         register(context, PROTOTAXITE, ModFeatures.TAXITE, new TaxiteConfiguration(
-                simpleState(ModBlocks.PROTOTAXITE_LOG),
-                ConstantInt.of(2), UniformInt.of(18, 25), UniformInt.of(3, 4), 0.7f, 0.6f
+                simpleState(ModBlocks.PROTOTAXITE_LOG), ConstantInt.of(2),
+                UniformInt.of(18, 25), UniformInt.of(3, 4),
+                0.7f, 0.6f, false
         ));
         register(context, PROTOTAXITE_SMALL, ModFeatures.TAXITE, new TaxiteConfiguration(
-                simpleState(ModBlocks.PROTOTAXITE_LOG),
-                ConstantInt.of(1), UniformInt.of(14, 20), UniformInt.of(2, 4), 0.6f, 0.8f
+                simpleState(ModBlocks.PROTOTAXITE_LOG), ConstantInt.of(1),
+                UniformInt.of(14, 20), UniformInt.of(2, 4), 0.6f, 0.8f, false
         ));
         register(context, PROTOTAXITE_SEPTA, Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(SimpleStateProvider.simple(ModBlocks.PROTOTAXITE_SAPLING)));
@@ -560,7 +561,7 @@ public class ModConfiguredFeatures {
                 simpleState(Blocks.MUD),
                 PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(AquaticFeatures.SEAGRASS_SHORT)),
                 CaveSurface.FLOOR, ConstantInt.of(2), 0.8F, 5, 0.1F,
-                UniformInt.of(3, 5), 0.7F
+                UniformInt.of(3, 4), 0.7F
         ));
 
         register(context, LOTUS_FLOWER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider

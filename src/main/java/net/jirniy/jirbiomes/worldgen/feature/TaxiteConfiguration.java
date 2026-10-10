@@ -13,7 +13,8 @@ public record TaxiteConfiguration(
         IntProvider topHeight,
         IntProvider bottomHeight,
         float cornerProbability,
-        float topBlockProbability
+        float topBlockProbability,
+        boolean alwaysPlace
 ) implements FeatureConfiguration {
     public static final Codec<Float> CHANCE_RANGE = Codec.floatRange(0.0f, 1.0f);
     public static final Codec<TaxiteConfiguration> CODEC = RecordCodecBuilder.create(i -> i.group(
@@ -22,7 +23,8 @@ public record TaxiteConfiguration(
             IntProviders.codec(1, 60).fieldOf("top_height").forGetter(TaxiteConfiguration::topHeight),
             IntProviders.codec(1, 60).fieldOf("bottom_height").forGetter(TaxiteConfiguration::bottomHeight),
             CHANCE_RANGE.fieldOf("corner_probability").forGetter(TaxiteConfiguration::cornerProbability),
-            CHANCE_RANGE.fieldOf("top_block_probability").forGetter(TaxiteConfiguration::topBlockProbability)
+            CHANCE_RANGE.fieldOf("top_block_probability").forGetter(TaxiteConfiguration::topBlockProbability),
+            Codec.BOOL.optionalFieldOf("always_place", false).forGetter(TaxiteConfiguration::alwaysPlace)
         ).apply(i, TaxiteConfiguration::new)
     );
 }

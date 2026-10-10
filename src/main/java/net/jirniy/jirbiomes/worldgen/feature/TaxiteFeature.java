@@ -32,6 +32,10 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
         float cornerProbability = context.config().cornerProbability();
         float topBlockProbability = context.config().topBlockProbability();
 
+        if (!context.config().alwaysPlace() && !canPlace(level, topHeight, radius, pos)) {
+            return false;
+        }
+
         try {
             for (int i = 0; i < topHeight; i++) {
                 int currentRadius;
@@ -79,78 +83,98 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
         return true;
     }
 
+    protected boolean canPlace(WorldGenLevel level, int height, int radius, BlockPos pos) {
+        for (int i = 1; i < height * 0.7; i++) {
+            if (!level.getBlockState(pos.above(i)).canBeReplaced()) {
+                return false;
+            }
+        }
+        for (Direction dir : HORIZONTAL_DIRECTIONS) {
+            for (int i = 1; i <= radius; i++) {
+                BlockPos dirPos = pos.relative(dir, i).above((int)Math.floor(height * 0.15));
+                if (!level.getBlockState(dirPos).canBeReplaced()) {
+                    return false;
+                }
+            }
+            if (!level.getBlockState(pos.above((int)Math.floor(height * 0.15)).relative(dir).relative(dir.getClockWise())).canBeReplaced()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void placeRadius(BlockStateProvider block, int radius, float cornerProbability, WorldGenLevel level, BlockPos pos, RandomSource random) {
         switch (radius) {
             case 1 -> {
                 trySetBlock(block.getState(level, random, pos), pos, level);
                 for (Direction dir : HORIZONTAL_DIRECTIONS) {
-                    BlockPos dirPos = pos.offset(dir.getUnitVec3i());
+                    BlockPos dirPos = pos.relative(dir);
                     trySetBlock(block.getState(level, random, dirPos), dirPos, level);
                     if (random.nextFloat() < cornerProbability) {
                         trySetBlock(block.getState(level, random,
-                                        dirPos.offset(dir.getCounterClockWise().getUnitVec3i())),
-                                dirPos.offset(dir.getCounterClockWise().getUnitVec3i()), level);
+                                        dirPos.relative(dir.getCounterClockWise())),
+                                dirPos.relative(dir.getCounterClockWise()), level);
                     }
                 }
             }
             case 2 -> {
                 for (Direction dir : HORIZONTAL_DIRECTIONS) {
-                    BlockPos dirPos = pos.offset(dir.getUnitVec3i().multiply(2));
+                    BlockPos dirPos = pos.relative(dir, 2);
                     trySetBlock(block.getState(level, random, dirPos), dirPos, level);
                     if (random.nextFloat() < cornerProbability) {
                         trySetBlock(block.getState(level, random,
-                                        dirPos.offset(dir.getCounterClockWise().getUnitVec3i())),
-                                dirPos.offset(dir.getCounterClockWise().getUnitVec3i()), level);
+                                        dirPos.relative(dir.getCounterClockWise())),
+                                dirPos.relative(dir.getCounterClockWise()), level);
                     }
                     if (random.nextFloat() < cornerProbability) {
                         trySetBlock(block.getState(level, random,
-                                        dirPos.offset(dir.getClockWise().getUnitVec3i())),
-                                dirPos.offset(dir.getClockWise().getUnitVec3i()), level);
+                                        dirPos.relative(dir.getClockWise())),
+                                dirPos.relative(dir.getClockWise()), level);
                     }
                 }
                 placeRadius(block, 1, 1f, level, pos, random);
             }
             case 3 -> {
                 for (Direction dir : HORIZONTAL_DIRECTIONS) {
-                    BlockPos dirPos = pos.offset(dir.getUnitVec3i().multiply(3));
+                    BlockPos dirPos = pos.relative(dir, 3);
                     trySetBlock(block.getState(level, random, dirPos), dirPos, level);
                     if (random.nextFloat() < cornerProbability) {
                         trySetBlock(block.getState(level, random,
-                                        dirPos.offset(dir.getCounterClockWise().getUnitVec3i())),
-                                dirPos.offset(dir.getCounterClockWise().getUnitVec3i()), level);
+                                        dirPos.relative(dir.getCounterClockWise())),
+                                dirPos.relative(dir.getCounterClockWise()), level);
                     }
                     if (random.nextFloat() < cornerProbability) {
                         trySetBlock(block.getState(level, random,
-                                        dirPos.offset(dir.getClockWise().getUnitVec3i())),
-                                dirPos.offset(dir.getClockWise().getUnitVec3i()), level);
+                                        dirPos.relative(dir.getClockWise())),
+                                dirPos.relative(dir.getClockWise()), level);
                     }
 
-                    BlockPos diagPos = pos.offset(dir.getUnitVec3i().multiply(2))
-                            .offset(dir.getClockWise().getUnitVec3i().multiply(2));
+                    BlockPos diagPos = pos.relative(dir, 2)
+                            .relative(dir.getClockWise(), 2);
                     trySetBlock(block.getState(level, random, diagPos), diagPos, level);
                 }
                 placeRadius(block, 2, 1f, level, pos, random);
             }
             case 4 -> {
                 for (Direction dir : HORIZONTAL_DIRECTIONS) {
-                    BlockPos dirPos = pos.offset(dir.getUnitVec3i().multiply(4));
+                    BlockPos dirPos = pos.relative(dir, 4);
                     trySetBlock(block.getState(level, random, dirPos), dirPos, level);
                     if (random.nextFloat() < cornerProbability) {
                         trySetBlock(block.getState(level, random,
-                                        dirPos.offset(dir.getCounterClockWise().getUnitVec3i())),
-                                dirPos.offset(dir.getCounterClockWise().getUnitVec3i()), level);
+                                        dirPos.relative(dir.getCounterClockWise())),
+                                dirPos.relative(dir.getCounterClockWise()), level);
                     }
                     if (random.nextFloat() < cornerProbability) {
                         trySetBlock(block.getState(level, random,
-                                        dirPos.offset(dir.getClockWise().getUnitVec3i())),
-                                dirPos.offset(dir.getClockWise().getUnitVec3i()), level);
+                                        dirPos.relative(dir.getClockWise())),
+                                dirPos.relative(dir.getClockWise()), level);
                     }
 
-                    BlockPos diagPos1 = pos.offset(dir.getUnitVec3i().multiply(3))
-                            .offset(dir.getClockWise().getUnitVec3i().multiply(2));
+                    BlockPos diagPos1 = pos.relative(dir, 3)
+                            .relative(dir.getClockWise(), 2);
                     trySetBlock(block.getState(level, random, diagPos1), diagPos1, level);
-                    BlockPos diagPos2 = pos.offset(dir.getUnitVec3i().multiply(2))
-                            .offset(dir.getClockWise().getUnitVec3i().multiply(3));
+                    BlockPos diagPos2 = pos.relative(dir, 2)
+                            .relative(dir.getClockWise(), 3);
                     trySetBlock(block.getState(level, random, diagPos2), diagPos2, level);
                 }
                 placeRadius(block, 3, 1f, level, pos, random);

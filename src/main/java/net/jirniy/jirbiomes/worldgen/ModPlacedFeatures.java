@@ -124,14 +124,14 @@ public class ModPlacedFeatures {
         register(context, LARGE_PROTOTAXITE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_WITH_SEPTAS),
                 NoiseThresholdCountPlacement.of(0.2, 1, 3),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), InSquarePlacement.spread(), BiomeFilter.biome(),
-                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(4),
+                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(3),
                 BlockPredicateFilter.forPredicate(BlockPredicate.not(
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
                 ));
         register(context, SMALL_PROTOTAXITE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_SMALL_WITH_SEPTAS),
                 NoiseThresholdCountPlacement.of(0.2, 3, 1),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), InSquarePlacement.spread(), BiomeFilter.biome(),
-                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(3),
+                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(2),
                 BlockPredicateFilter.forPredicate(BlockPredicate.not(
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
                 ));
@@ -268,8 +268,9 @@ public class ModPlacedFeatures {
                         BlockPredicate.not(BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
                 ));
         register(context, MUD_POOL_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.MUD_POOL),
-                NoiseThresholdCountPlacement.of(0.2f, 2, 1), RarityFilter.onAverageOnceEvery(6),
-                InSquarePlacement.spread(), BiomeFilter.biome(), PlacementUtils.HEIGHTMAP_NO_LEAVES,
+                NoiseThresholdCountPlacement.of(0.2f, 2, 1), RarityFilter.onAverageOnceEvery(12),
+                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(UniformInt.of(2, 5)),
+                RandomOffsetPlacement.ofTriangle(5, 2), PlacementUtils.HEIGHTMAP_NO_LEAVES,
                 PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), BlockPredicateFilter.forPredicate(
                         BlockPredicate.not(BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
                 ));
