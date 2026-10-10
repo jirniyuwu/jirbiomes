@@ -52,11 +52,11 @@ public class OverworldRegion extends Region {
         new ParameterPointListBuilder()
                 .temperature(Temperature.WARM)
                 .humidity(Humidity.HUMID, Humidity.WET)
-                .continentalness(Continentalness.NEAR_INLAND, Continentalness.MID_INLAND, Continentalness.FAR_INLAND)
+                .continentalness(Continentalness.NEAR_INLAND, Continentalness.MID_INLAND)
                 .erosion(Erosion.EROSION_6, Erosion.EROSION_5, Erosion.EROSION_4)
                 .depth(Depth.FULL_RANGE)
                 .weirdness(Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING)
-                .offset(0.03f)
+                .offset(0.07f)
                 .build().forEach(point -> builder.add(point, ModBiomes.PROTOTAXITE_FOREST));
         builder.build().forEach(mapper);
     }

@@ -53,18 +53,18 @@ public class ModSurfaceRules {
                 ifTrue(isBiome(biomes, ModBiomes.PROTOTAXITE_FOREST), sequence(
                         SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), sequence(
                                 ifTrue(aboveWater, sequence(ifTrue(ON_FLOOR, sequence(
-                                        ifTrue(noiseCondition2d(Noises.ICE, 0.5, 1), state(Blocks.MUD.defaultBlockState())),
-                                        ifTrue(noiseCondition2d(Noises.ICE, 0.15, 0.5), wetGrassOrDirtIfUnderwater),
-                                        ifTrue(noiseCondition2d(Noises.ICE, -0.15, 0.15), grassOrDirtIfUnderwater),
-                                        ifTrue(noiseCondition2d(Noises.ICE, -0.5, -0.15), wetGrassOrDirtIfUnderwater),
-                                        ifTrue(noiseCondition2d(Noises.ICE, -1, -0.5), state(Blocks.MUD.defaultBlockState()))
+                                        ifTrue(noiseCondition2d(Noises.ICE, 0.5, 2), state(Blocks.MUD.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, 0.1, 0.5), wetGrassOrDirtIfUnderwater),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -0.1, 0.1), grassOrDirtIfUnderwater),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -0.5, -0.1), wetGrassOrDirtIfUnderwater),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -2, -0.5), state(Blocks.MUD.defaultBlockState()))
                                 )))),
                                 ifTrue(aboveWater, sequence(ifTrue(UNDER_FLOOR, sequence(
-                                        ifTrue(noiseCondition2d(Noises.ICE, 0.5, 1), state(Blocks.MUD.defaultBlockState())),
-                                        ifTrue(noiseCondition2d(Noises.ICE, 0.15, 0.5), state(ModBlocks.WETLAND.defaultBlockState())),
-                                        ifTrue(noiseCondition2d(Noises.ICE, -0.15, 0.15), state(Blocks.DIRT.defaultBlockState())),
-                                        ifTrue(noiseCondition2d(Noises.ICE, -0.5, -0.15), state(ModBlocks.WETLAND.defaultBlockState())),
-                                        ifTrue(noiseCondition2d(Noises.ICE, -1, -0.5), state(Blocks.MUD.defaultBlockState()))
+                                        ifTrue(noiseCondition2d(Noises.ICE, 0.52, 2), state(Blocks.MUD.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, 0.1, 0.52), state(ModBlocks.WETLAND.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -0.1, 0.1), state(Blocks.DIRT.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -0.52, -0.1), state(ModBlocks.WETLAND.defaultBlockState())),
+                                        ifTrue(noiseCondition2d(Noises.ICE, -2, -0.52), state(Blocks.MUD.defaultBlockState()))
                                 ))))
                         ))
                 )),

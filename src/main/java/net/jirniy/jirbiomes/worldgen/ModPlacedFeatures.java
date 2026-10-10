@@ -123,14 +123,14 @@ public class ModPlacedFeatures {
 
         register(context, LARGE_PROTOTAXITE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_WITH_SEPTAS),
                 NoiseThresholdCountPlacement.of(0.2, 1, 3),
-                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(), InSquarePlacement.spread(),
-                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(3),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), InSquarePlacement.spread(), BiomeFilter.biome(),
+                PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(4),
                 BlockPredicateFilter.forPredicate(BlockPredicate.not(
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
                 ));
         register(context, SMALL_PROTOTAXITE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.PROTOTAXITE_SMALL_WITH_SEPTAS),
                 NoiseThresholdCountPlacement.of(0.2, 3, 1),
-                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome(), InSquarePlacement.spread(),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), InSquarePlacement.spread(), BiomeFilter.biome(),
                 PlacementUtils.filteredByBlockSurvival(ModBlocks.PROTOTAXITE_SAPLING), RarityFilter.onAverageOnceEvery(3),
                 BlockPredicateFilter.forPredicate(BlockPredicate.not(
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG))
@@ -209,7 +209,7 @@ public class ModPlacedFeatures {
                         BlockPredicate.matchesFluids(Direction.DOWN.getUnitVec3i(), Fluids.WATER))), BiomeFilter.biome());
         register(context, LOTUS_PROTOTAXITE_FOREST_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER),
                 NoiseThresholdCountPlacement.of(-0.2, 2, 0),
-                RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_NO_LEAVES,
+                RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_NO_LEAVES,
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.anyOf(
                                 BlockPredicate.matchesFluids(Direction.DOWN.getUnitVec3i(), Fluids.WATER),
