@@ -5,6 +5,7 @@ import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.custom.*;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
+import net.jirniy.jirbiomes.worldgen.blockstate.WeightedStateProviderProvider;
 import net.jirniy.jirbiomes.worldgen.feature.CoconutDecorator;
 import net.jirniy.jirbiomes.worldgen.feature.ModFeatures;
 import net.jirniy.jirbiomes.worldgen.feature.PalmFoliagePlacer;
@@ -160,26 +161,26 @@ public class ModConfiguredFeatures {
         register(context, DOWNWARDS_TENEBRIS, ModFeatures.TENEBRIS_DOWNWARDS, new NoneFeatureConfiguration());
 
         TreeConfiguration.TreeConfigurationBuilder ginkgoTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(ModBlocks.GINKGO_LOG),
+                simpleState(ModBlocks.GINKGO_LOG),
                 new FancyTrunkPlacer(9, 4, 1),
-                BlockStateProvider.simple(ModBlocks.GINKGO_LEAVES),
+                simpleState(ModBlocks.GINKGO_LEAVES),
                 new AcaciaFoliagePlacer(UniformInt.of(2, 3), ConstantInt.of(0)),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
                 belowTrunkProvider
         );
         TreeConfiguration.TreeConfigurationBuilder oldGrowthGinkgoTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(ModBlocks.GINKGO_LOG),
+                simpleState(ModBlocks.GINKGO_LOG),
                 new FancyTrunkPlacer(11, 6, 1),
-                BlockStateProvider.simple(ModBlocks.GINKGO_LEAVES),
+                simpleState(ModBlocks.GINKGO_LEAVES),
                 new AcaciaFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
                 belowTrunkProvider
         );
 
         TreeConfiguration.TreeConfigurationBuilder palmTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(ModBlocks.PALM_LOG),
+                simpleState(ModBlocks.PALM_LOG),
                 new StraightTrunkPlacer(6, 1, 0),
-                BlockStateProvider.simple(ModBlocks.PALM_LEAVES),
+                simpleState(ModBlocks.PALM_LEAVES),
                 new PalmFoliagePlacer(UniformInt.of(4, 6), ConstantInt.of(0)),
                 new TwoLayersFeatureSize(1, 0, 1),
                 palmTreeBelowTrunkProvider);
@@ -190,11 +191,11 @@ public class ModConfiguredFeatures {
                 .decorators(List.of(new CoconutDecorator(0.3f, UniformInt.of(1, 2)))).build());
 
         register(context, PROTOTAXITE, ModFeatures.TAXITE, new TaxiteConfiguration(
-                BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG),
+                simpleState(ModBlocks.PROTOTAXITE_LOG),
                 ConstantInt.of(2), UniformInt.of(18, 25), UniformInt.of(3, 4), 0.7f, 0.6f
         ));
         register(context, PROTOTAXITE_SMALL, ModFeatures.TAXITE, new TaxiteConfiguration(
-                BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG),
+                simpleState(ModBlocks.PROTOTAXITE_LOG),
                 ConstantInt.of(1), UniformInt.of(14, 20), UniformInt.of(2, 4), 0.6f, 0.8f
         ));
         register(context, PROTOTAXITE_SEPTA, Feature.SIMPLE_BLOCK,
@@ -203,9 +204,9 @@ public class ModConfiguredFeatures {
                 HolderSet.direct(
                         PlacementUtils.inlinePlaced(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                                 List.of(new BlockColumnConfiguration.Layer(
-                                                UniformInt.of(1, 2), BlockStateProvider.simple(ModBlocks.PROTOTAXITE_LOG)),
+                                                UniformInt.of(1, 2), simpleState(ModBlocks.PROTOTAXITE_LOG)),
                                         new BlockColumnConfiguration.Layer(
-                                                ConstantInt.of(1), BlockStateProvider.simple(ModBlocks.PROTOTAXITE_SAPLING))),
+                                                ConstantInt.of(1), simpleState(ModBlocks.PROTOTAXITE_SAPLING))),
                                 Direction.UP, BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, true
                         )),
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
@@ -245,7 +246,7 @@ public class ModConfiguredFeatures {
         ));
 
         register(context, APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(Blocks.OAK_LOG),
+                simpleState(Blocks.OAK_LOG),
                 new StraightTrunkPlacer(4, 2, 0),
                 new WeightedStateProvider(
                         WeightedList.<BlockState>builder()
@@ -257,7 +258,7 @@ public class ModConfiguredFeatures {
                 belowTrunkProvider).ignoreVines().build()
         );
         register(context, APPLE_OAK_TREE_BEES_005, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(Blocks.OAK_LOG),
+                simpleState(Blocks.OAK_LOG),
                 new StraightTrunkPlacer(4, 2, 0),
                 new WeightedStateProvider(
                         WeightedList.<BlockState>builder()
@@ -270,7 +271,7 @@ public class ModConfiguredFeatures {
         );
 
         register(context, FANCY_APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(Blocks.OAK_LOG),
+                simpleState(Blocks.OAK_LOG),
                 new FancyTrunkPlacer(3, 11, 0),
                 new WeightedStateProvider(
                         WeightedList.<BlockState>builder()
@@ -282,7 +283,7 @@ public class ModConfiguredFeatures {
                 belowTrunkProvider).ignoreVines().build()
         );
         register(context, FANCY_APPLE_OAK_TREE_BEES_005, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(Blocks.OAK_LOG),
+                simpleState(Blocks.OAK_LOG),
                 new FancyTrunkPlacer(3, 11, 0),
                 new WeightedStateProvider(
                         WeightedList.<BlockState>builder()
@@ -371,14 +372,17 @@ public class ModConfiguredFeatures {
 
         register(context, BARREL_CACTUS, Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(
-                        BlockColumnConfiguration.layer(UniformInt.of(0, 2), BlockStateProvider.simple(ModBlocks.LARGE_BARREL_CACTUS)),
+                        BlockColumnConfiguration.layer(UniformInt.of(0, 2), simpleState(ModBlocks.LARGE_BARREL_CACTUS)),
                         BlockColumnConfiguration.layer(ConstantInt.of(1),
-                                new WeightedStateProvider(WeightedList.<BlockState>builder()
-                                        .add(ModBlocks.PRICKLY_PEAR_SEED.defaultBlockState(), 2)
-                                        .add(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState().setValue(SmallBarrelCactusBlock.AGE, 1), 5)
-                                        .add(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState().setValue(SmallBarrelCactusBlock.AGE, 2), 5)
-                                        .add(Blocks.CACTUS_FLOWER.defaultBlockState(), 1)
-                                        .add(Blocks.AIR.defaultBlockState(), 9)
+                                new WeightedStateProviderProvider(WeightedList.<BlockStateProvider>builder()
+                                        .add(SimpleStateProvider.simple(ModBlocks.PRICKLY_PEAR_SEED.defaultBlockState()), 2)
+                                        .add(SimpleStateProvider.simple(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState()
+                                                .setValue(SmallBarrelCactusBlock.AGE, 1)), 5)
+                                        .add(SimpleStateProvider.simple(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState()
+                                                .setValue(SmallBarrelCactusBlock.AGE, 2)), 5)
+                                        .add(RuleBasedStateProvider.ifTrueThenProvide(BlockPredicate
+                                                .matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.LARGE_BARREL_CACTUS), Blocks.CACTUS_FLOWER), 1)
+                                        .add(SimpleStateProvider.simple(Blocks.AIR.defaultBlockState()), 9)
                                 ))
                 ),
                 Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, false
@@ -479,7 +483,7 @@ public class ModConfiguredFeatures {
                 PlacementUtils.inlinePlaced(Feature.SEQUENCE, new CompositeFeatureConfiguration(
                                 HolderSet.direct(
                                         PlacementUtils.inlinePlaced(Feature.DISK, new DiskConfiguration(
-                                                BlockStateProvider.simple(ModBlocks.BRIMSTONE),
+                                                simpleState(ModBlocks.BRIMSTONE),
                                                 BlockPredicate.allOf(
                                                         BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE)),
                                                         BlockPredicate.not(BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE_GOLD_ORE))
@@ -505,19 +509,19 @@ public class ModConfiguredFeatures {
                                             .add(ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState(), 3)
                                 ))),
                 7, 17, 3, 2,
-                BlockStateProvider.simple(Blocks.AIR), 1, 1,
+                simpleState(Blocks.AIR), 1, 1,
                 BlockPredicate.allOf(BlockPredicate.anyOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.not(BlockPredicate.solid())),
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE))
         ));
 
         register(context, CEILING_TENEBRIS_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
                 blocks.getOrThrow(ModTags.Blocks.BRIMSTONE_GOLD_REPLACEABLE),
-                BlockStateProvider.simple(ModBlocks.BRIMSTONE),
+                simpleState(ModBlocks.BRIMSTONE),
                 PlacementUtils.inlinePlaced(Feature.WEIGHTED_RANDOM_SELECTOR, new WeightedRandomFeatureConfiguration(
                         WeightedList.<Holder<PlacedFeature>>builder()
                                 .add(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DOWNWARDS_TENEBRIS)), 1)
                                 .add(PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
-                                        BlockStateProvider.simple(ModBlocks.TENEBRIS_LEAVES.defaultBlockState()
+                                        simpleState(ModBlocks.TENEBRIS_LEAVES.defaultBlockState()
                                                 .setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.CEILING)))), 4)
                                 .build())),
                 CaveSurface.CEILING, UniformInt.of(1, 2), 0f, 5, 0.2f,
@@ -553,22 +557,22 @@ public class ModConfiguredFeatures {
         ));
         register(context, MUD_POOL, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
                 blocks.getOrThrow(ModTags.Blocks.PROTOTAXITE_ROOTS_REPLACEABLE),
-                BlockStateProvider.simple(Blocks.MUD),
+                simpleState(Blocks.MUD),
                 PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(AquaticFeatures.SEAGRASS_SHORT)),
                 CaveSurface.FLOOR, ConstantInt.of(2), 0.8F, 5, 0.1F,
                 UniformInt.of(3, 5), 0.7F
         ));
 
         register(context, LOTUS_FLOWER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider
-                .builder(BlockStateProvider.simple(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, false)))
+                .builder(simpleState(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, false)))
                 .ifTrueThenProvide(BlockPredicate.matchesFluids(Direction.DOWN.getUnitVec3i(), Fluids.WATER),
-                        BlockStateProvider.simple(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, true))).build()));
-        register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CATTAIL)));
-        register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.FROZEN_GRASS)));
-        register(context, SEA_URCHIN, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(
+                        simpleState(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, true))).build()));
+        register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.CATTAIL)));
+        register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.FROZEN_GRASS)));
+        register(context, SEA_URCHIN, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(
                 ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, false))));
         register(context, SEA_URCHIN_SHIPWRECK, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider
-                .builder(BlockStateProvider.simple(ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, true)))
+                .builder(simpleState(ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, true)))
                 .ifTrueThenProvide(BlockPredicate.hasSturdyFace(Direction.DOWN.getUnitVec3i(), Direction.UP),
                         ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, false)).build()));
         register(context, ALGAE, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(
@@ -608,9 +612,9 @@ public class ModConfiguredFeatures {
                 List.of(OreConfiguration.target(new TagMatchTest(ModTags.Blocks.POTENT_MAGMA_ORE_REPLACEABLE),
                         ModBlocks.POTENT_MAGMA_BLOCK.defaultBlockState())), 14));
 
-        register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BRIMGRASS)));
-        register(context, TENEBRIS_BUD, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TENEBRIS_SAPLING)));
-        register(context, SALT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SALT_BLOCK)));
+        register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.BRIMGRASS)));
+        register(context, TENEBRIS_BUD, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.TENEBRIS_SAPLING)));
+        register(context, SALT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.SALT_BLOCK)));
 
         register(context, NETHERSTONE, Feature.ORE, new OreConfiguration(
                 List.of(OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), ModBlocks.NETHERSTONE.defaultBlockState())), 32));
@@ -656,5 +660,11 @@ public class ModConfiguredFeatures {
         }
 
         return segmentedBlockBuild;
+    }
+    public static BlockStateProvider simpleState(Block block) {
+        return simpleState(block.defaultBlockState());
+    }
+    public static BlockStateProvider simpleState(BlockState state) {
+        return BlockStateProvider.simple(state);
     }
 }

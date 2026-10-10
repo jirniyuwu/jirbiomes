@@ -9,8 +9,9 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 
 public class ModBlockStateProviderType<P extends BlockStateProvider> {
     public static final BlockStateProviderType<MapStateProvider> MAP_STATE_PROVIDER = registerProvider(
-            "map_state_provider", MapStateProvider.CODEC
-    );
+            "map_state_provider", MapStateProvider.CODEC);
+    public static final BlockStateProviderType<WeightedStateProviderProvider> WEIGHTED_STATE_PROVIDER_PROVIDER = registerProvider(
+            "weighted_state_provider_provider", WeightedStateProviderProvider.CODEC);
 
     private static <P extends BlockStateProvider> BlockStateProviderType<P> registerProvider(final String name, final MapCodec<P> codec) {
         return Registry.register(BuiltInRegistries.BLOCKSTATE_PROVIDER_TYPE, JirniyBiomes.id(name), new BlockStateProviderType<>(codec));
