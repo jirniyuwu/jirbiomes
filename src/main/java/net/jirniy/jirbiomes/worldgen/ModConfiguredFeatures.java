@@ -572,7 +572,7 @@ public class ModConfiguredFeatures {
         register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.CATTAIL)));
         register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.FROZEN_GRASS)));
         register(context, SNOWY_BUSH, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(
-                ModBlocks.SNOWY_BUSH.defaultBlockState().setValue(SnowloggableVegetationBlock.SNOWLOGGABLE_LAYERS, 1))));
+                ModBlocks.SNOWY_BUSH.defaultBlockState().setValue(SnowloggableVegetationBlock.SNOWLOGGED_LAYERS, 1))));
         register(context, SEA_URCHIN, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(
                 ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, false))));
         register(context, SEA_URCHIN_SHIPWRECK, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider

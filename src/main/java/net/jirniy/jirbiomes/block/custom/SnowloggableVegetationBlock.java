@@ -34,20 +34,20 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.Nullable;
 
 public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
-    public static final IntegerProperty SNOWLOGGABLE_LAYERS = IntegerProperty.create("snowloggable", 0, 7);
+    public static final IntegerProperty SNOWLOGGED_LAYERS = IntegerProperty.create("snowlogged", 0, 7);
     private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 14.0);
     private static final VoxelShape[] LAYER_SHAPES = Block.boxes(8, height -> Block.column(16.0, 0.0, height * 2));
 
     public SnowloggableVegetationBlock(TagKey<Block> placeableOn, Properties properties) {
         super(placeableOn, properties);
-        registerDefaultState(defaultBlockState().setValue(SNOWLOGGABLE_LAYERS, 0));
+        registerDefaultState(defaultBlockState().setValue(SNOWLOGGED_LAYERS, 0));
     }
 
     @Override
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack destroyedWith) {
         super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
-        if (state.getValue(SNOWLOGGABLE_LAYERS) > 0 && canSnowSurvive(state, level, pos)) {
-            level.setBlockAndUpdate(pos, Blocks.SNOW.defaultBlockState().setValue(SnowLayerBlock.LAYERS, state.getValue(SNOWLOGGABLE_LAYERS)));
+        if (state.getValue(SNOWLOGGED_LAYERS) > 0 && canSnowSurvive(state, level, pos)) {
+            level.setBlockAndUpdate(pos, Blocks.SNOW.defaultBlockState().setValue(SnowLayerBlock.LAYERS, state.getValue(SNOWLOGGED_LAYERS)));
             if (player.isCreative() || destroyedWith.isCorrectToolForDrops(Blocks.SNOW.defaultBlockState())) {
                 level.destroyBlock(pos, true, player);
             }
@@ -57,14 +57,14 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
     @Override
     protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbour, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
         if (!canSnowSurvive(state, level, pos)) {
-            return this.defaultBlockState().setValue(SNOWLOGGABLE_LAYERS, 0);
+            return this.defaultBlockState().setValue(SNOWLOGGED_LAYERS, 0);
         }
         return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
     }
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-//        if (state.getValue(SNOWLOGGABLE_LAYERS) < level.getGameRules().get(GameRules.MAX_SNOW_ACCUMULATION_HEIGHT)
+//        if (state.getValue(SNOWLOGGED_LAYERS) < level.getGameRules().get(GameRules.MAX_SNOW_ACCUMULATION_HEIGHT)
 //                && level.isRainingAt(pos) && level.canSeeSky(pos.above())
 //                && level.getBiome(pos).value().getPrecipitationAt(pos, level.getSeaLevel()) == Biome.Precipitation.SNOW
 //                && level.isInsideBuildHeight(pos) && level.getBrightness(LightLayer.BLOCK, pos) < 10) {
@@ -76,8 +76,8 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
 
     protected void incrementLayer(BlockState state, Level level, BlockPos pos) {
         if (canSnowSurvive(state, level, pos)) {
-            if (state.getValue(SNOWLOGGABLE_LAYERS) < 7) {
-                level.setBlockAndUpdate(pos, state.setValue(SNOWLOGGABLE_LAYERS, state.getValue(SNOWLOGGABLE_LAYERS) + 1));
+            if (state.getValue(SNOWLOGGED_LAYERS) < 7) {
+                level.setBlockAndUpdate(pos, state.setValue(SNOWLOGGED_LAYERS, state.getValue(SNOWLOGGED_LAYERS) + 1));
             } else {
                 level.setBlockAndUpdate(pos, Blocks.SNOW.defaultBlockState().setValue(SnowLayerBlock.LAYERS, 8));
             }
@@ -94,27 +94,27 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return state.getValue(SNOWLOGGABLE_LAYERS) > 0 ? Shapes.or(SHAPE, LAYER_SHAPES[state.getValue(SNOWLOGGABLE_LAYERS)]) : SHAPE;
+        return state.getValue(SNOWLOGGED_LAYERS) > 0 ? Shapes.or(SHAPE, LAYER_SHAPES[state.getValue(SNOWLOGGED_LAYERS)]) : SHAPE;
     }
 
     @Override
     protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return state.getValue(SNOWLOGGABLE_LAYERS) > 0 ? LAYER_SHAPES[state.getValue(SNOWLOGGABLE_LAYERS) - 1] : Shapes.empty();
+        return state.getValue(SNOWLOGGED_LAYERS) > 0 ? LAYER_SHAPES[state.getValue(SNOWLOGGED_LAYERS) - 1] : Shapes.empty();
     }
 
     @Override
     protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.getValue(SNOWLOGGABLE_LAYERS) > 0 ? LAYER_SHAPES[state.getValue(SNOWLOGGABLE_LAYERS) - 1] : Shapes.empty();
+        return state.getValue(SNOWLOGGED_LAYERS) > 0 ? LAYER_SHAPES[state.getValue(SNOWLOGGED_LAYERS) - 1] : Shapes.empty();
     }
 
     @Override
     protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return state.getValue(SNOWLOGGABLE_LAYERS) > 0 ? Shapes.or(SHAPE, LAYER_SHAPES[state.getValue(SNOWLOGGABLE_LAYERS)]) : SHAPE;
+        return state.getValue(SNOWLOGGED_LAYERS) > 0 ? Shapes.or(SHAPE, LAYER_SHAPES[state.getValue(SNOWLOGGED_LAYERS)]) : SHAPE;
     }
 
     @Override
     protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        return !context.getItemInHand().is(this.asItem()) && state.getValue(SNOWLOGGABLE_LAYERS) <= 1;
+        return !context.getItemInHand().is(this.asItem()) && state.getValue(SNOWLOGGED_LAYERS) <= 1;
     }
 
     @Override
@@ -132,7 +132,7 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState state = context.getLevel().getBlockState(context.getClickedPos());
         if (state.is(Blocks.SNOW) && state.getValue(SnowLayerBlock.LAYERS) < 8) {
-            return this.defaultBlockState().setValue(SNOWLOGGABLE_LAYERS, state.getValue(SnowLayerBlock.LAYERS));
+            return this.defaultBlockState().setValue(SNOWLOGGED_LAYERS, state.getValue(SnowLayerBlock.LAYERS));
         } else {
             return super.getStateForPlacement(context);
         }
@@ -145,6 +145,6 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
 
     @Override
     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(SNOWLOGGABLE_LAYERS);
+        builder.add(SNOWLOGGED_LAYERS);
     }
 }

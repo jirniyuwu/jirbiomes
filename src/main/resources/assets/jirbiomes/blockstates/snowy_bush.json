@@ -1,27 +1,27 @@
 {
   "variants": {
-    "snowloggable=0": {
+    "snowlogged=0": {
       "model": "jirbiomes:block/snowy_bush"
     },
-    "snowloggable=1": {
+    "snowlogged=1": {
       "model": "jirbiomes:block/snowy_bush_1"
     },
-    "snowloggable=2": {
+    "snowlogged=2": {
       "model": "jirbiomes:block/snowy_bush_2"
     },
-    "snowloggable=3": {
+    "snowlogged=3": {
       "model": "jirbiomes:block/snowy_bush_3"
     },
-    "snowloggable=4": {
+    "snowlogged=4": {
       "model": "jirbiomes:block/snowy_bush_4"
     },
-    "snowloggable=5": {
+    "snowlogged=5": {
       "model": "jirbiomes:block/snowy_bush_5"
     },
-    "snowloggable=6": {
+    "snowlogged=6": {
       "model": "jirbiomes:block/snowy_bush_6"
     },
-    "snowloggable=7": {
+    "snowlogged=7": {
       "model": "jirbiomes:block/snowy_bush_7"
     }
   }
