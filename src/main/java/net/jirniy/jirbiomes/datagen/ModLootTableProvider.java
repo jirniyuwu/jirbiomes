@@ -86,6 +86,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.SEASHELL_BRICKS_SLAB, this::createSlabItemTable);
         dropSelf(ModBlocks.SEASHELL_BRICKS_WALL);
 
+        dropSelf(ModBlocks.SALT_LAMP);
         dropSelf(ModBlocks.SALT_BLOCK);
         dropSelf(ModBlocks.SALT_BLOCK_STAIRS);
         add(ModBlocks.SALT_BLOCK_SLAB, this::createSlabItemTable);
