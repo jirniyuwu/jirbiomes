@@ -35,6 +35,9 @@ public class ModBiomeModifications {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DESERT),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_DESERT_PLACED);
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.ICE_SPIKES),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SNOWY_BUSH_PLACED);
+
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SNOWY_PLAINS, Biomes.SNOWY_SLOPES),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FROZEN_GRASS_PLACED);
 

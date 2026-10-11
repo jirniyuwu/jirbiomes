@@ -26,6 +26,7 @@ public class ModTags {
         public static final TagKey<Block> PROTOTAXITE_PLACEABLE = create("prototaxite_placeable");
         public static final TagKey<Block> PROTOTAXITE_ROOTS_REPLACEABLE = create("prototaxite_roots_replaceable");
         public static final TagKey<Block> SUPPORTS_ICE_VEGETATION = create("supports_ice_vegetation");
+        public static final TagKey<Block> SUPPORTS_SNOWLOGGABLE_VEGETATION = create("supports_snowloggable_vegetation");
         public static final TagKey<Block> ALGAE_SURVIVES_UNDER = create("algae_survives_under");
 
         public static final TagKey<Block> GLOWSTONE_FEATURE_PLACEABLE = create("glowstone_feature_placeable");

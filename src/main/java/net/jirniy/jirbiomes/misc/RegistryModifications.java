@@ -53,6 +53,7 @@ public class RegistryModifications {
 
         BlockColorRegistry.register(List.of(BlockTintSources.foliage()), ModBlocks.APPLE_LEAVES);
 
+        BlockColorRegistry.register(List.of(BlockTintSources.grass()), ModBlocks.SNOWY_BUSH);
         BlockColorRegistry.register(List.of(BlockTintSources.doubleTallGrass()), ModBlocks.CATTAIL);
         BlockColorRegistry.register(List.of(BlockTintSources.constant(0x208030)), ModBlocks.LOTUS_FLOWER);
 

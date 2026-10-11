@@ -402,6 +402,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("walls").save(output, "frost_bricks_wall");
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROST_BRICKS_WALL, ModBlocks.FROST_BRICKS);
 
+                shapeless(RecipeCategory.DECORATIONS, ModBlocks.SNOWY_BUSH)
+                        .requires(Items.SNOWBALL).requires(Items.SNOWBALL).requires(Items.SNOWBALL)
+                        .requires(Items.BUSH)
+                        .unlockedBy(getHasName(ModBlocks.SNOWY_BUSH), has(ModBlocks.SNOWY_BUSH))
+                        .save(output, "snowy_bush");
                 shapeless(RecipeCategory.MISC, ModBlocks.FROZEN_GRASS)
                         .requires(Blocks.ICE).requires(ModTags.Items.FROZEN_GRASS_CRAFTABLE)
                         .unlockedBy(getHasName(ModBlocks.FROZEN_GRASS), has(ModBlocks.FROZEN_GRASS))

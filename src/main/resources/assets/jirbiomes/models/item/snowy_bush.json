@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jirbiomes:block/snowy_bush_underlay",
+    "layer1": "jirbiomes:block/snowy_bush_overlay"
+  }
+}

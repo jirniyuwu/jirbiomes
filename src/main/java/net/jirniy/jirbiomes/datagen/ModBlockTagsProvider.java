@@ -241,6 +241,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(Blocks.SNOW_BLOCK))
                 .add(ModBlocks.getKey(Blocks.PACKED_ICE))
                 .add(ModBlocks.getKey(Blocks.BLUE_ICE));
+        tag(ModTags.Blocks.SUPPORTS_SNOWLOGGABLE_VEGETATION)
+                .addOptionalTag(BlockTags.SUPPORTS_VEGETATION)
+                .add(ModBlocks.getKey(Blocks.SNOW_BLOCK));
 
         tag(BlockTags.SAND)
                 .add(ModBlocks.getKeys(ModBlocks.SAND_SHELLS, ModBlocks.RED_SAND_SHELLS))

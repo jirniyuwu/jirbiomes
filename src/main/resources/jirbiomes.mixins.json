@@ -5,6 +5,8 @@
   "mixins": [
     "GlowstoneFeatureMixin",
     "SheepEdibleMixin",
+    "SnowLayerMixin",
+    "SnowyBlockMixin",
     "SpeleothemMixin"
   ],
   "injectors": {

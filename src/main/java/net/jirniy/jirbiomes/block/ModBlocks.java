@@ -99,6 +99,9 @@ public class ModBlocks {
                     .noCollision().noOcclusion().ignitedByLava().offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY).sound(SoundType.GLASS)));
     public static final Block POTTED_FROZEN_GRASS = registerBlock("potted_frozen_grass", false, properties ->
             new FlowerPotBlock(ModBlocks.FROZEN_GRASS, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+    public static final Block SNOWY_BUSH = registerBlock("snowy_bush", properties ->
+            new SnowloggableVegetationBlock(ModTags.Blocks.SUPPORTS_SNOWLOGGABLE_VEGETATION, properties.instabreak().mapColor(MapColor.SNOW)
+                    .randomTicks().replaceable().noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY).sound(SoundType.SNOW)));
 
     public static final Block SHARP_RIBS = registerBlock("sharp_ribs", properties ->
             new RibsBlock(properties.instabreak().mapColor(MapColor.QUARTZ).noCollision().noOcclusion().replaceable()

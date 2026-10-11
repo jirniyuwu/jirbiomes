@@ -106,6 +106,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE = registryKey("algae");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALGAE_PATCH = registryKey("algae_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_GRASS = registryKey("frozen_grass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SNOWY_BUSH = registryKey("snowy_bush");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHARP_RIBS = registryKey("sharp_ribs");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_URCHIN = registryKey("sea_urchin");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_URCHIN_SHIPWRECK = registryKey("sea_urchin_shipwreck");
@@ -570,6 +571,8 @@ public class ModConfiguredFeatures {
                         simpleState(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, true))).build()));
         register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.CATTAIL)));
         register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.FROZEN_GRASS)));
+        register(context, SNOWY_BUSH, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(
+                ModBlocks.SNOWY_BUSH.defaultBlockState().setValue(SnowloggableVegetationBlock.SNOWLOGGABLE_LAYERS, 1))));
         register(context, SEA_URCHIN, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(
                 ModBlocks.SEA_URCHIN.defaultBlockState().setValue(SeaUrchinBlock.WATERLOGGED, true).setValue(SeaUrchinBlock.FLOATING, false))));
         register(context, SEA_URCHIN_SHIPWRECK, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(RuleBasedStateProvider

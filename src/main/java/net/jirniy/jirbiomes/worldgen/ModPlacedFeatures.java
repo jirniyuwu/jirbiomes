@@ -56,6 +56,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> LOTUS_RARE_PLACED = registryKey("lotus_rare_placed");
     public static final ResourceKey<PlacedFeature> LOTUS_PROTOTAXITE_FOREST_PLACED = registryKey("lotus_prototaxite_forest");
     public static final ResourceKey<PlacedFeature> FROZEN_GRASS_PLACED = registryKey("frozen_grass");
+    public static final ResourceKey<PlacedFeature> SNOWY_BUSH_PLACED = registryKey("snowy_bush");
     public static final ResourceKey<PlacedFeature> SHARP_RIBS_SOUL_SAND_PLACED = registryKey("sharp_ribs_soul_sand");
     public static final ResourceKey<PlacedFeature> SEA_URCHIN_PLACED = registryKey("sea_urchin");
     public static final ResourceKey<PlacedFeature> SEA_URCHIN_BONUS_PLACED = registryKey("sea_urchin_bonus");
@@ -233,6 +234,13 @@ public class ModPlacedFeatures {
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(),
                                 ModTags.Blocks.SUPPORTS_ICE_VEGETATION))));
+        register(context, SNOWY_BUSH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SNOWY_BUSH),
+                RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_NO_LEAVES,
+                BiomeFilter.biome(), CountPlacement.of(24), RandomOffsetPlacement.ofTriangle(5, 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(
+                        BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesBlocks(Blocks.SNOW)
+                )));
         register(context, SHARP_RIBS_SOUL_SAND_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.SHARP_RIBS),
                 CountPlacement.of(6), RandomOffsetPlacement.ofTriangle(4, 3),
                 InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(32), PlacementUtils.FULL_RANGE,
