@@ -4,13 +4,14 @@ import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.effect.custom.FlamingEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 
 public class ModEffects {
     public static final Holder<MobEffect> FLAMING = registerMobEffect("flaming",
-            new FlamingEffect(MobEffectCategory.HARMFUL, 0xFFAA3F));
+            new FlamingEffect(MobEffectCategory.HARMFUL, 0xFFAA3F, ParticleTypes.LAVA));
 
     private static Holder<MobEffect> registerMobEffect(String name, MobEffect effect) {
         return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, JirniyBiomes.id(name), effect);

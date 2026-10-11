@@ -1,5 +1,6 @@
 package net.jirniy.jirbiomes.effect.custom;
 
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -9,11 +10,16 @@ public class FlamingEffect extends MobEffect {
     public FlamingEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
+    public FlamingEffect(MobEffectCategory category, int color, ParticleOptions particleOptions) {
+        super(category, color, particleOptions);
+    }
 
     @Override
     public boolean applyEffectTick(ServerLevel serverLevel, LivingEntity mob, int amplification) {
         if (!mob.fireImmune()) {
-            mob.setRemainingFireTicks(20);
+            if (mob.getRemainingFireTicks() < 40 * amplification) {
+                mob.setRemainingFireTicks(40 * amplification);
+            }
             mob.setSharedFlagOnFire(true);
         }
         return super.applyEffectTick(serverLevel, mob, amplification);
