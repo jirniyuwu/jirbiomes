@@ -15,10 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
@@ -27,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -64,13 +62,13 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-//        if (state.getValue(SNOWLOGGED_LAYERS) < level.getGameRules().get(GameRules.MAX_SNOW_ACCUMULATION_HEIGHT)
-//                && level.isRainingAt(pos) && level.canSeeSky(pos.above())
-//                && level.getBiome(pos).value().getPrecipitationAt(pos, level.getSeaLevel()) == Biome.Precipitation.SNOW
-//                && level.isInsideBuildHeight(pos) && level.getBrightness(LightLayer.BLOCK, pos) < 10) {
-//            incrementLayer(state, level, pos);
-//        }
-        // cant figure it out
+        if (level.getBrightness(LightLayer.BLOCK, pos) >= 10) {
+            meltLayer(state, level, pos);
+        } else if (state.getValue(SNOWLOGGED_LAYERS) < level.getGameRules().get(GameRules.MAX_SNOW_ACCUMULATION_HEIGHT)
+                && level.canSeeSky(pos.above()) && level.isRaining()
+                && level.getBiome(pos).value().coldEnoughToSnow(pos, level.getSeaLevel())) {
+            incrementLayer(state, level, pos);
+        }
         super.randomTick(state, level, pos, random);
     }
 
@@ -81,6 +79,11 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
             } else {
                 level.setBlockAndUpdate(pos, Blocks.SNOW.defaultBlockState().setValue(SnowLayerBlock.LAYERS, 8));
             }
+        }
+    }
+    protected void meltLayer(BlockState state, Level level, BlockPos pos) {
+        if (state.getValue(SNOWLOGGED_LAYERS) >= 1 && level.getBrightness(LightLayer.BLOCK, pos) >= 12) {
+            level.setBlockAndUpdate(pos, state.setValue(SNOWLOGGED_LAYERS, 0));
         }
     }
 
