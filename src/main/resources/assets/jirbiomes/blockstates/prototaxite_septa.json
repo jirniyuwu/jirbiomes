@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jirbiomes:block/prototaxite_septa_0"
+      },
+      {
+        "model": "jirbiomes:block/prototaxite_septa_1"
+      },
+      {
+        "model": "jirbiomes:block/prototaxite_septa_2"
+      }
+    ]
+  }
+}

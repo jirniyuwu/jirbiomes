@@ -47,20 +47,23 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
                         trySetBlock(trunkProvider.getState(level, random, pos.above(i + 1)), pos.above(i + 1), level);
                     }
                 } else if (i >= topHeight * 0.8) {
+                    if (i >= topHeight - 2) {
+                        currentProbability = 0;
+                    }
                     currentRadius = (int) Math.floor(radius * 0.35);
                 } else if (i >= topHeight * 0.6) {
-                    if (i >= topHeight * 0.8 - 1) {
+                    if (i >= topHeight * 0.8 - 1 && (int)Math.floor(radius * 0.35) != radius) {
                         currentProbability = 0;
                     }
                     currentRadius = (int) Math.floor(radius * 0.75);
                 } else {
-                    if (i >= topHeight * 0.6 - 1) {
+                    if (i >= topHeight * 0.6 - 1 && (int)Math.floor(radius * 0.75) != radius) {
                         currentProbability = 0;
                     }
                     currentRadius = radius;
                 }
 
-                placeRadius(trunkProvider, currentRadius, currentProbability, level, pos.above(i), random);
+                placeRadius(trunkProvider, Math.max(currentRadius, 1), currentProbability, level, pos.above(i), random);
             }
             for (int i = 0; i < bottomHeight; i++) {
                 int currentRadius;
@@ -74,7 +77,7 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
                     currentRadius = radius;
                 }
 
-                placeRadius(trunkProvider, currentRadius, cornerProbability, level, pos.below(i), random);
+                placeRadius(trunkProvider, Math.max(currentRadius, 1), cornerProbability, level, pos.below(i), random);
             }
         } catch (Exception e) {
             return false;

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "ambientocclusion": true,
+  "textures": {
+    "cross": "jirbiomes:block/prototaxite_septa_2"
+  }
+}

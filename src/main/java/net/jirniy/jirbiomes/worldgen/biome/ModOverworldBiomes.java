@@ -127,6 +127,7 @@ public class ModOverworldBiomes {
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_SPARSE_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MUSHROOMS_PROTOTAXITE_FOREST_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HANGING_MUSHROOMS_PROTOTAXITE_FOREST_PLACED);
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FOREST_FLOWERS);
         BiomeDefaultFeatures.addPlainGrass(generation);
         BiomeDefaultFeatures.addBushes(generation);
         BiomeDefaultFeatures.addFerns(generation);

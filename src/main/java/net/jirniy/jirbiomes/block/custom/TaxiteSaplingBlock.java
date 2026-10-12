@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.Map;
 
 public class TaxiteSaplingBlock extends VegetationPlaceableOnBlock implements BonemealableBlock {
-    private static final VoxelShape SHAPE = Block.column(10.0, 0.0, 14.0);
+    private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 14.0);
     public static Map<Block, Block> ROOT_CONVERSION = Map.ofEntries(
             Map.entry(Blocks.SAND, ModBlocks.ROOTED_SAND),
             Map.entry(Blocks.RED_SAND, ModBlocks.ROOTED_RED_SAND),

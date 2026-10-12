@@ -184,7 +184,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.TENEBRIS_SAPLING, ModBlocks.POTTED_TENEBRIS_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         blockModelGenerators.woodProvider(ModBlocks.PROTOTAXITE_LOG).log(ModBlocks.PROTOTAXITE_LOG);
-        blockModelGenerators.createCrossBlockWithDefaultItem(ModBlocks.PROTOTAXITE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.family(ModBlocks.TAXITE_PLANKS)
                 .stairs(ModBlocks.TAXITE_STAIRS)
                 .slab(ModBlocks.TAXITE_SLAB)
