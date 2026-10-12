@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gamerules.GameRules;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -70,6 +71,17 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
             incrementLayer(state, level, pos);
         }
         super.randomTick(state, level, pos, random);
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
+        if (!canSnowSurvive(state, level, pos)) {
+            level.setBlockAndUpdate(pos, state.setValue(SNOWLOGGED_LAYERS, 0));
+        }
+        if (!canSurvive(state, level, pos)) {
+            level.destroyBlock(pos, true);
+        }
+        super.neighborChanged(state, level, pos, block, orientation, movedByPiston);
     }
 
     protected void incrementLayer(BlockState state, Level level, BlockPos pos) {
