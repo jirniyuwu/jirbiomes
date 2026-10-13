@@ -16,15 +16,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SnowLayerBlock;
-import net.minecraft.world.level.block.VegetationBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gamerules.GameRules;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -40,6 +38,18 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
     public SnowloggableVegetationBlock(TagKey<Block> placeableOn, Properties properties) {
         super(placeableOn, properties);
         registerDefaultState(defaultBlockState().setValue(SNOWLOGGED_LAYERS, 0));
+    }
+
+    @Override // only runs in worldgen feature
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (state.getValue(SNOWLOGGED_LAYERS) > 0) {
+            if (pos.getY() < level.getHeight(Heightmap.Types.MOTION_BLOCKING, pos)) {
+                level.setBlock(pos, state.setValue(SNOWLOGGED_LAYERS, 0), 2);
+            } else if (level.getBlockState(pos.below()).getBlock() instanceof SnowyBlock) {
+                level.neighborShapeChanged(Direction.UP, pos.below(), pos, state, 2, 1);
+            }
+        }
+        super.tick(state, level, pos, random);
     }
 
     @Override
