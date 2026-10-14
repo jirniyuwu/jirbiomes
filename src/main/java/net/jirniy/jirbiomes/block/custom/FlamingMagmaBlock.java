@@ -16,6 +16,7 @@ public class FlamingMagmaBlock extends MagmaLikeBlock {
 
     @Override
     public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
+        entity.clearFreeze();
         if (!entity.isSteppingCarefully() && entity instanceof LivingEntity && !entity.fireImmune()) {
             ((LivingEntity) entity).addEffect(new MobEffectInstance(ModEffects.FLAMING, 20, 0));
         }

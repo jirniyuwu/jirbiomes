@@ -17,11 +17,9 @@ public class FlamingEffect extends MobEffect {
     @Override
     public boolean applyEffectTick(ServerLevel serverLevel, LivingEntity mob, int amplification) {
         if (!mob.fireImmune()) {
-            if (mob.getRemainingFireTicks() < 40 * amplification) {
-                mob.setRemainingFireTicks(40 * amplification);
-            }
-            mob.setSharedFlagOnFire(true);
+            mob.igniteForTicks(40 * amplification);
         }
+        mob.clearFreeze();
         return super.applyEffectTick(serverLevel, mob, amplification);
     }
 
