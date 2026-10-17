@@ -5,7 +5,7 @@ import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.custom.*;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.particle.ModParticles;
-import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
+import net.jirniy.jirbiomes.worldgen.ModPlacements;
 import net.jirniy.jirbiomes.worldgen.ModTreeGrowers;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -374,7 +374,7 @@ public class ModBlocks {
                     .postProcess((state, blockGetter, blockPos) -> blockPos.above()).emissiveRendering(state -> true)));
 
     public static final Block BRIMGRASS_BLOCK = registerBlock("brimgrass_block", properties ->
-            new CustomGrassBlock(getKey(BRIMSTONE), ModPlacedFeatures.BRIMGRASS_BONEMEAL, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()
+            new CustomGrassBlock(getKey(BRIMSTONE), ModPlacements.BRIMGRASS_BONEMEAL, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.NETHER_SPROUTS)));
     public static final Block BRIMGRASS = registerBlock("brimgrass", properties ->
             new GenericPlantBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS)

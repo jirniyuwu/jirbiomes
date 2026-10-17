@@ -1,7 +1,7 @@
 package net.jirniy.jirbiomes.worldgen.biome;
 
 import net.jirniy.jirbiomes.particle.ModParticles;
-import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
+import net.jirniy.jirbiomes.worldgen.ModPlacements;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
@@ -32,23 +32,23 @@ public class ModNetherBiomes {
                 .addSpawn(MobCategory.CREATURE, 60, new MobSpawnSettings.SpawnerData(EntityTypes.STRIDER, 1, 2)).build();
         BiomeGenerationSettings.Builder biomeBuilder = (new BiomeGenerationSettings.Builder(placedFeatures, carvers))
                 .addCarver(Carvers.NETHER_CAVE)
-                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.BRIMSTONE_RUINS)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TENEBRIS_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TENEBRIS_BUD_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BRIMGRASS_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TENEBRIS_CEILING_PLACED)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.GOLD_BRIMSTONE_PLACED)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacements.BRIMSTONE_RUINS)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.TENEBRIS_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.TENEBRIS_BUD_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.BRIMGRASS_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.TENEBRIS_CEILING_PLACED)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.GOLD_BRIMSTONE_PLACED)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE_EXTRA)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacements.BRIMSTONE_GLOWSTONE)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacements.BRIMSTONE_GLOWSTONE_EXTRA)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addNetherDefaultOres(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.POTENT_MAGMA_LAYER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.POTENT_MAGMA_LAYER);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false).temperature(4.0F).downfall(0.0F)

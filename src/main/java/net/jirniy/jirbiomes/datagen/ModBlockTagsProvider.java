@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.references.BlockItemIds;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 
@@ -365,12 +364,6 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND));
 
-        tag(ModTags.Blocks.GLOWSTONE_FEATURE_PLACEABLE)
-                .add(BlockItemIds.NETHERRACK.block())
-                .add(BlockItemIds.BLACKSTONE.block())
-                .add(BlockItemIds.BASALT.block())
-                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
-                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(ModTags.Blocks.BRIMSTONE_GOLD_REPLACEABLE)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
@@ -403,6 +396,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.MYCELIUM, Blocks.PODZOL))
                 .add(ModBlocks.getKey(Blocks.MUD))
                 .add(ModBlocks.getKeys(ModBlocks.WETLAND, ModBlocks.WET_GRASS_BLOCK));
+        tag(ModTags.Blocks.HANGING_MUSHROOMS_CANNOT_GENERATE_UNDER)
+                .add(ModBlocks.getKeys(Blocks.RED_MUSHROOM_BLOCK, Blocks.BROWN_MUSHROOM_BLOCK, ModBlocks.PROTOTAXITE_LOG));
 
         tag(BlockTags.SUPPORTS_COCOA)
                 .addOptionalTag(ModTags.Blocks.PALM_LOGS);

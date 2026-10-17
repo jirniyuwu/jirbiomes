@@ -1,7 +1,7 @@
 package net.jirniy.jirbiomes.worldgen.biome;
 
 import net.jirniy.jirbiomes.particle.ModParticles;
-import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
+import net.jirniy.jirbiomes.worldgen.ModPlacements;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
@@ -27,7 +27,7 @@ public class ModOverworldBiomes {
         MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(mobs);
         BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers)
-                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacedFeatures.SALT_PLACED);
+                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacements.SALT_PLACED);
         OverworldBiomes.globalOverworldGeneration(generation);
         BiomeDefaultFeatures.addDefaultOres(generation);
         BiomeDefaultFeatures.addDefaultSoftDisks(generation);
@@ -69,12 +69,12 @@ public class ModOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(generation);
         BiomeDefaultFeatures.addDefaultExtraVegetation(generation, false);
         generation
-                .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.LARGE_ICICLE_PLACED)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BLUE_ICE_ORE)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.ICICLE_CLUSTER_PLACED)
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.POINTED_ICICLE_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FROZEN_GRASS_PLACED)
-                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ICE_TOP_LAYER);
+                .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacements.LARGE_ICICLE_PLACED)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.BLUE_ICE_ORE)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacements.ICICLE_CLUSTER_PLACED)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacements.POINTED_ICICLE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.FROZEN_GRASS_PLACED)
+                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacements.ICE_TOP_LAYER);
 
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES))
@@ -96,9 +96,9 @@ public class ModOverworldBiomes {
         BiomeDefaultFeatures.addDefaultOres(generation, true);
         BiomeDefaultFeatures.addDefaultSoftDisks(generation);
         BiomeDefaultFeatures.addDefaultMushrooms(generation);
-        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.BLUE_ICE_ORE)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FROZEN_GRASS_PLACED)
-                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ICE_TOP_LAYER);
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.BLUE_ICE_ORE)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.FROZEN_GRASS_PLACED)
+                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ModPlacements.ICE_TOP_LAYER);
 
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS))
@@ -116,17 +116,17 @@ public class ModOverworldBiomes {
         BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
         OverworldBiomes.globalOverworldGeneration(generation);
         generation
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LARGE_PROTOTAXITE_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_PROTOTAXITE_PLACED)
-                .addFeature(GenerationStep.Decoration.LAKES, ModPlacedFeatures.MUD_POOL_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PROTOTAXITE_SEPTA_GROWTH_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PROTOTAXITE_SEPTA_PATCH_PLACED);
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.LARGE_PROTOTAXITE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.SMALL_PROTOTAXITE_PLACED)
+                .addFeature(GenerationStep.Decoration.LAKES, ModPlacements.MUD_POOL_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.PROTOTAXITE_SEPTA_GROWTH_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.PROTOTAXITE_SEPTA_PATCH_PLACED);
         generation
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_PROTOTAXITE_FOREST_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CATTAIL_PATCH_RARE_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_SPARSE_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MUSHROOMS_PROTOTAXITE_FOREST_PLACED)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HANGING_MUSHROOMS_PROTOTAXITE_FOREST_PLACED);
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.LOTUS_PROTOTAXITE_FOREST_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.CATTAIL_PATCH_RARE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.ALGAE_SPARSE_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.SMALL_MUSHROOMS_PROTOTAXITE_FOREST_PLACED)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacements.HANGING_MUSHROOMS_PROTOTAXITE_FOREST_PLACED);
         generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FOREST_FLOWERS);
         BiomeDefaultFeatures.addPlainGrass(generation);
         BiomeDefaultFeatures.addBushes(generation);

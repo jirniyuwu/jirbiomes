@@ -1,6 +1,6 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
+import net.jirniy.jirbiomes.worldgen.ModPlacements;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -34,7 +34,7 @@ public class CustomGrassBlock extends SpreadingSnowyBlock implements Bonemealabl
     public CustomGrassBlock(ResourceKey<Block> replaceable, final BlockBehaviour.Properties properties) {
         super(properties, replaceable);
         this.replaceable = replaceable;
-        this.placement = ModPlacedFeatures.NOOP;
+        this.placement = ModPlacements.NOOP;
         this.canBonemeal = false;
     }
 

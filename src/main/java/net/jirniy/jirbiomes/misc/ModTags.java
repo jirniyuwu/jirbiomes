@@ -28,8 +28,8 @@ public class ModTags {
         public static final TagKey<Block> SUPPORTS_ICE_VEGETATION = create("supports_ice_vegetation");
         public static final TagKey<Block> SUPPORTS_SNOWLOGGABLE_VEGETATION = create("supports_snowloggable_vegetation");
         public static final TagKey<Block> ALGAE_SURVIVES_UNDER = create("algae_survives_under");
+        public static final TagKey<Block> HANGING_MUSHROOMS_CANNOT_GENERATE_UNDER = create("hanging_mushrooms_cannot_generate_under");
 
-        public static final TagKey<Block> GLOWSTONE_FEATURE_PLACEABLE = create("glowstone_feature_placeable");
         public static final TagKey<Block> SEA_URCHIN_SHIPWRECK_PLACEMENT = create("sea_urchin_shipwreck_placement");
         public static final TagKey<Block> BRIMSTONE_GOLD_REPLACEABLE = create("brimstone_gold_replaceable");
         public static final TagKey<Block> POTENT_MAGMA_ORE_REPLACEABLE = create("potent_magma_ore_replaceable");
