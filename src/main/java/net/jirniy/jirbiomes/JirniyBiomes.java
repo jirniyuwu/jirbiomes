@@ -13,7 +13,6 @@ import net.jirniy.jirbiomes.worldgen.ModBiomeModifications;
 import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
 import net.jirniy.jirbiomes.worldgen.biome.ModSurfaceRules;
 import net.jirniy.jirbiomes.worldgen.blockstate.ModBlockStateProviderType;
-import net.jirniy.jirbiomes.worldgen.feature.ModFeatures;
 import net.jirniy.jirbiomes.worldgen.feature.ModFoliagePlacerTypes;
 import net.jirniy.jirbiomes.worldgen.feature.ModTreeDecoratorTypes;
 import net.minecraft.resources.Identifier;
@@ -28,7 +27,6 @@ public class JirniyBiomes implements ModInitializer, TerraBlenderApi {
 
 	@Override
 	public void onInitialize() {
-		ModFeatures.register();
 		ModFoliagePlacerTypes.register();
 		ModTreeDecoratorTypes.register();
 		ModBlockStateProviderType.register();

@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.jirniy.jirbiomes.datagen.*;
 import net.jirniy.jirbiomes.misc.ModDamageTypes;
-import net.jirniy.jirbiomes.worldgen.ModConfiguredFeatures;
+import net.jirniy.jirbiomes.worldgen.ModFeatures;
 import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
 import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
 import net.minecraft.core.RegistrySetBuilder;
@@ -26,7 +26,7 @@ public class JirniyBiomesDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
-		registryBuilder.add(Registries.FEATURE, ModConfiguredFeatures::bootstrap);
+		registryBuilder.add(Registries.FEATURE, ModFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.DAMAGE_TYPE, ModDamageTypes::bootstrap);
 		registryBuilder.add(Registries.BIOME, ModBiomes::bootstrap);

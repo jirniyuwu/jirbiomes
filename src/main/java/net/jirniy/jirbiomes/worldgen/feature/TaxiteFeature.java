@@ -1,38 +1,49 @@
 package net.jirniy.jirbiomes.worldgen.feature;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
-public class TaxiteFeature extends Feature<TaxiteConfiguration> {
+public record TaxiteFeature(
+        BlockStateProvider trunk,
+        IntProvider radius,
+        IntProvider topHeight,
+        IntProvider bottomHeight,
+        float cornerProbability,
+        float topBlockProbability,
+        boolean alwaysPlace
+) implements Feature {
     private static final Direction[] HORIZONTAL_DIRECTIONS = new Direction[]{Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST};
-
-    public TaxiteFeature(Codec<TaxiteConfiguration> codec) {
-        super(codec);
-    }
+    public static final MapCodec<TaxiteFeature> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
+                    BlockStateProvider.DIRECT_CODEC.fieldOf("trunk").forGetter(TaxiteFeature::trunk),
+                    IntProviders.codec(1, 4).fieldOf("radius").forGetter(TaxiteFeature::radius),
+                    IntProviders.codec(1, 60).fieldOf("top_height").forGetter(TaxiteFeature::topHeight),
+                    IntProviders.codec(1, 60).fieldOf("bottom_height").forGetter(TaxiteFeature::bottomHeight),
+                    Codec.floatRange(0.0f, 1.0f).fieldOf("corner_probability").forGetter(TaxiteFeature::cornerProbability),
+                    Codec.floatRange(0.0f, 1.0f).fieldOf("top_block_probability").forGetter(TaxiteFeature::topBlockProbability),
+                    Codec.BOOL.optionalFieldOf("always_place", false).forGetter(TaxiteFeature::alwaysPlace)
+            ).apply(i, TaxiteFeature::new)
+    );
 
     // this is a mess
     @Override
-    public boolean place(FeaturePlaceContext<TaxiteConfiguration> context) {
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        BlockPos pos = context.origin();
+    public boolean place(WorldGenLevel level, ChunkGenerator chunkGenerator, RandomSource random, BlockPos origin) {
+        int radius = this.radius.sample(random);
+        int topHeight = this.topHeight.sample(random);
+        int bottomHeight = this.bottomHeight.sample(random);
 
-        BlockStateProvider trunkProvider = context.config().trunk();
-        int radius = context.config().radius().sample(random);
-        int topHeight = context.config().topHeight().sample(random);
-        int bottomHeight = context.config().bottomHeight().sample(random);
-        float cornerProbability = context.config().cornerProbability();
-        float topBlockProbability = context.config().topBlockProbability();
-
-        if (!context.config().alwaysPlace() && !canPlace(level, topHeight, radius, pos)) {
+        if (alwaysPlace && !canPlace(level, topHeight, radius, origin)) {
             return false;
         }
 
@@ -44,7 +55,7 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
                     currentRadius = 1;
                     currentProbability = 0;
                     if (random.nextFloat() < topBlockProbability) {
-                        trySetBlock(trunkProvider.getState(level, random, pos.above(i + 1)), pos.above(i + 1), level);
+                        trySetBlock(trunk.getState(level, random, origin.above(i + 1)), origin.above(i + 1), level);
                     }
                 } else if (i >= topHeight * 0.8) {
                     if (i >= topHeight - 2) {
@@ -63,7 +74,7 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
                     currentRadius = radius;
                 }
 
-                placeRadius(trunkProvider, Math.max(currentRadius, 1), currentProbability, level, pos.above(i), random);
+                placeRadius(trunk, Math.max(currentRadius, 1), currentProbability, level, origin.above(i), random);
             }
             for (int i = 0; i < bottomHeight; i++) {
                 int currentRadius;
@@ -77,7 +88,7 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
                     currentRadius = radius;
                 }
 
-                placeRadius(trunkProvider, Math.max(currentRadius, 1), cornerProbability, level, pos.below(i), random);
+                placeRadius(trunk, Math.max(currentRadius, 1), cornerProbability, level, origin.below(i), random);
             }
         } catch (Exception e) {
             return false;
@@ -190,5 +201,10 @@ public class TaxiteFeature extends Feature<TaxiteConfiguration> {
         if (!level.getBlockState(pos).is(BlockTags.FEATURES_CANNOT_REPLACE)) {
             level.setBlock(pos, state, 3);
         }
+    }
+
+    @Override
+    public MapCodec<? extends Feature> codec() {
+        return CODEC;
     }
 }
