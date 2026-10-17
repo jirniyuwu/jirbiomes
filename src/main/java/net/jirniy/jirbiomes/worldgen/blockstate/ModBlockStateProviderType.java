@@ -7,16 +7,16 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 public class ModBlockStateProviderType<P extends BlockStateProvider> {
-    public static final MapCodec<MapStateProvider> MAP_STATE_PROVIDER = registerProvider(
+    public static final MapCodec<MapStateProvider> MAP_STATE_PROVIDER = register(
             "map_state_provider", MapStateProvider.CODEC);
-    public static final MapCodec<WeightedStateProviderProvider> WEIGHTED_STATE_PROVIDER_PROVIDER = registerProvider(
+    public static final MapCodec<WeightedStateProviderProvider> WEIGHTED_STATE_PROVIDER_PROVIDER = register(
             "weighted_state_provider_provider", WeightedStateProviderProvider.CODEC);
 
-    private static <P extends BlockStateProvider> MapCodec<P> registerProvider(final String name, final MapCodec<P> codec) {
+    private static <T extends BlockStateProvider> MapCodec<T> register(String name, MapCodec<T> codec) {
         return Registry.register(BuiltInRegistries.BLOCK_STATE_PROVIDER_TYPE, JirniyBiomes.id(name), codec);
     }
 
     public static void register() {
-        JirniyBiomes.LOGGER.info("registering block state providers for " + JirniyBiomes.MOD_ID);
+        JirniyBiomes.LOGGER.info("registering block state providers for for " + JirniyBiomes.MOD_ID);
     }
 }

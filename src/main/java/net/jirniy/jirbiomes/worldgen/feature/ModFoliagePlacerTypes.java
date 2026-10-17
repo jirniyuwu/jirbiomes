@@ -12,7 +12,7 @@ public class ModFoliagePlacerTypes<P extends FoliagePlacer> {
     private final MapCodec<P> codec;
 
     private static <P extends FoliagePlacer> FoliagePlacerType<P> create(final String name, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.FOLIAGE_PLACER_TYPE, JirniyBiomes.id(name), new FoliagePlacerType(codec));
+        return Registry.register(BuiltInRegistries.FOLIAGE_PLACER_TYPE, JirniyBiomes.id(name), new FoliagePlacerType<>(codec));
     }
     public ModFoliagePlacerTypes(final MapCodec<P> codec) {
         this.codec = codec;

@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.jirniy.jirbiomes.block.custom.PlantLikeLeavesBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -17,25 +18,25 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 public record TenebrisFeature(
-        BlockStateProvider trunk,
+        Holder<BlockStateProvider> trunk,
         IntProvider height,
         Direction direction,
-        BlockStateProvider leaves,
+        Holder<BlockStateProvider> leaves,
         IntProvider leavesHeight,
-        BlockStateProvider tipBlock
+        Holder<BlockStateProvider> tipBlock
 ) implements Feature {
     public static final MapCodec<TenebrisFeature> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-                    BlockStateProvider.DIRECT_CODEC.fieldOf("trunk").forGetter(TenebrisFeature::trunk),
+                    BlockStateProvider.CODEC.fieldOf("trunk").forGetter(TenebrisFeature::trunk),
                     IntProviders.codec(1, 32).fieldOf("height").forGetter(TenebrisFeature::height),
                     Direction.VERTICAL_CODEC.fieldOf("direction").forGetter(TenebrisFeature::direction),
-                    BlockStateProvider.DIRECT_CODEC.fieldOf("leaves").forGetter(TenebrisFeature::leaves),
+                    BlockStateProvider.CODEC.fieldOf("leaves").forGetter(TenebrisFeature::leaves),
                     IntProviders.codec(0, 4).fieldOf("leaves_height").forGetter(TenebrisFeature::leavesHeight),
-                    BlockStateProvider.DIRECT_CODEC.fieldOf("tip_block").forGetter(TenebrisFeature::tipBlock)
+                    BlockStateProvider.CODEC.fieldOf("tip_block").forGetter(TenebrisFeature::tipBlock)
             ).apply(i, TenebrisFeature::new)
     );
 
     @Override
-    public MapCodec<? extends Feature> codec() {
+    public MapCodec<TenebrisFeature> codec() {
         return CODEC;
     }
 
@@ -44,14 +45,15 @@ public record TenebrisFeature(
         int height = this.height.sample(random);
         int leavesHeight = this.leavesHeight.sample(random);
 
+        BlockStateProvider trunk = this.trunk.value();
+        BlockStateProvider leaves = this.leaves.value();
+        BlockStateProvider tipBlock = this.tipBlock.value();
+
         for (int i = 0; i < height; i++) {
             if (!level.getBlockState(origin.above(i)).canBeReplaced()) {
                 return false;
             }
         }
-
-//        int height = random.nextIntBetweenInclusive(3, 4);
-//        int leavesHeight = random.nextIntBetweenInclusive(0, 1);
 
         for (int i = 0; i <= height + 1; i++) {
             BlockPos pos = origin.relative(direction, i);

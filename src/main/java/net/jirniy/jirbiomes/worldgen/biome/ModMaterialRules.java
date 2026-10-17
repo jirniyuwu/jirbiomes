@@ -2,27 +2,33 @@ package net.jirniy.jirbiomes.worldgen.biome;
 
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.material.VanillaMaterialConditions;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
-import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.material.MaterialRules;
+import net.minecraft.world.level.levelgen.material.condition.MaterialCondition;
+import net.minecraft.world.level.levelgen.material.rule.MaterialRule;
 
-import static net.minecraft.world.level.levelgen.SurfaceRules.*;
+import static net.minecraft.world.level.levelgen.material.MaterialRules.*;
 
-public class ModSurfaceRules {
-    private static final RuleSource BEDROCK = makeStateRule(Blocks.BEDROCK);
+public class ModMaterialRules {
+    private static final MaterialRule BEDROCK = makeStateRule(Blocks.BEDROCK);
 
-    public static RuleSource netherRules(HolderGetter<Biome> biomes) {
-        ConditionSource aboveNetherLavaLevel = yBlockCheck(VerticalAnchor.absolute(31), 0);
-        ConditionSource aboveNetherLavaSurface = yBlockCheck(VerticalAnchor.absolute(32), 0);
-        ConditionSource netherBandAroundLavaLevelBottom = yStartCheck(VerticalAnchor.absolute(30), 0);
-        ConditionSource netherBandAroundLavaLevelTop = not(yStartCheck(VerticalAnchor.absolute(35), 0));
-        ConditionSource closeToCeiling = yBlockCheck(VerticalAnchor.belowTop(5), 0);
-        ConditionSource hole = hole();
-        ConditionSource netherrack = noiseCondition2d(Noises.NETHERRACK, 0.54);
-        
+    public static MaterialRule netherRules(final RegistryAccess registryAccess) {
+        HolderGetter<MaterialCondition> conditions = registryAccess.lookupOrThrow(Registries.MATERIAL_CONDITION);
+        HolderGetter<Biome> biomes = registryAccess.lookupOrThrow(Registries.BIOME);
+
+        MaterialCondition aboveNetherLavaLevel = yBlockCheck(VerticalAnchor.absolute(31), 0);
+        MaterialCondition onFloor = MaterialRules.getCondition(conditions, VanillaMaterialConditions.ON_FLOOR);
+        MaterialCondition underCeiling = MaterialRules.getCondition(conditions, VanillaMaterialConditions.UNDER_CEILING);
+        MaterialCondition underFloor = MaterialRules.getCondition(conditions, VanillaMaterialConditions.UNDER_FLOOR);
+        MaterialCondition deepUnderFloor = MaterialRules.getCondition(conditions, VanillaMaterialConditions.DEEP_UNDER_FLOOR);
+
         return sequence(
                 ifTrue(verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK),
                 ifTrue(not(verticalGradient("bedrock_roof", VerticalAnchor.belowTop(5), VerticalAnchor.top())), BEDROCK),
@@ -30,36 +36,43 @@ public class ModSurfaceRules {
                 ifTrue(isBiome(biomes, ModBiomes.BRIMSTONE_CRAGS), sequence(
                         ifTrue(noiseCondition3d(Noises.SPAGHETTI_3D_1, -0.025, 0.025),
                                 makeStateRule(ModBlocks.IGNITED_BRIMSTONE)),
-                        ifTrue(ON_FLOOR, sequence(ifTrue(noiseCondition3d(Noises.ICE, -0.05),
+                        ifTrue(onFloor, sequence(ifTrue(noiseCondition3d(Noises.ICE, -0.05),
                                 ifTrue(aboveNetherLavaLevel, makeStateRule(ModBlocks.BRIMGRASS_BLOCK))))),
-                        ifTrue(UNDER_CEILING, makeStateRule(ModBlocks.BRIMSTONE)),
-                        ifTrue(UNDER_FLOOR, makeStateRule(ModBlocks.BRIMSTONE)),
-                        ifTrue(DEEP_UNDER_FLOOR, makeStateRule(ModBlocks.IGNITED_BRIMSTONE)),
+                        ifTrue(underCeiling, makeStateRule(ModBlocks.BRIMSTONE)),
+                        ifTrue(underFloor, makeStateRule(ModBlocks.BRIMSTONE)),
+                        ifTrue(deepUnderFloor, makeStateRule(ModBlocks.IGNITED_BRIMSTONE)),
                         ifTrue(noiseCondition3d(Noises.GRAVEL_LAYER, 0.1), makeStateRule(ModBlocks.NETHERSTONE))))
         );
     }
 
-    public static RuleSource overworldRules(HolderGetter<Biome> biomes) {
-        SurfaceRules.ConditionSource notUnderDeepWater = SurfaceRules.waterStartCheck(-6, -1);
-        SurfaceRules.ConditionSource deepslate = SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8));
-        SurfaceRules.ConditionSource aboveWater = SurfaceRules.waterBlockCheck(0, 0);
+    public static MaterialRule overworldRules(final RegistryAccess registryAccess) {
+        HolderGetter<MaterialCondition> conditions = registryAccess.lookupOrThrow(Registries.MATERIAL_CONDITION);
+        HolderGetter<Biome> biomes = registryAccess.lookupOrThrow(Registries.BIOME);
 
-        SurfaceRules.RuleSource grassOrDirtIfUnderwater = SurfaceRules.sequence(SurfaceRules.ifTrue(aboveWater, state(Blocks.GRASS_BLOCK.defaultBlockState())), state(Blocks.DIRT.defaultBlockState()));
-        SurfaceRules.RuleSource wetGrassOrDirtIfUnderwater = SurfaceRules.sequence(SurfaceRules.ifTrue(aboveWater, state(ModBlocks.WET_GRASS_BLOCK.defaultBlockState())), state(ModBlocks.WETLAND.defaultBlockState()));
+        MaterialCondition notUnderDeepWater = waterStartCheck(-6, -1);
+        MaterialCondition deepslate = verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8));
+        MaterialCondition aboveWater = waterBlockCheck(0, 0);
+        MaterialCondition onFloor = MaterialRules.getCondition(conditions, VanillaMaterialConditions.ON_FLOOR);
+        MaterialCondition underCeiling = MaterialRules.getCondition(conditions, VanillaMaterialConditions.UNDER_CEILING);
+        MaterialCondition underFloor = MaterialRules.getCondition(conditions, VanillaMaterialConditions.UNDER_FLOOR);
+        MaterialCondition deepUnderFloor = MaterialRules.getCondition(conditions, VanillaMaterialConditions.DEEP_UNDER_FLOOR);
+
+        MaterialRule grassOrDirtIfUnderwater = sequence(ifTrue(aboveWater, state(Blocks.GRASS_BLOCK.defaultBlockState())), state(Blocks.DIRT.defaultBlockState()));
+        MaterialRule wetGrassOrDirtIfUnderwater = sequence(ifTrue(aboveWater, state(ModBlocks.WET_GRASS_BLOCK.defaultBlockState())), state(ModBlocks.WETLAND.defaultBlockState()));
 
         return sequence(
                 ifTrue(verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK),
 
                 ifTrue(isBiome(biomes, ModBiomes.PROTOTAXITE_FOREST), sequence(
-                        SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), sequence(
-                                ifTrue(aboveWater, sequence(ifTrue(ON_FLOOR, sequence(
+                        ifTrue(abovePreliminarySurface(), sequence(
+                                ifTrue(aboveWater, sequence(ifTrue(onFloor, sequence(
                                         ifTrue(noiseCondition2d(Noises.ICE, 0.5, 2), state(Blocks.MUD.defaultBlockState())),
                                         ifTrue(noiseCondition2d(Noises.ICE, 0.1, 0.5), wetGrassOrDirtIfUnderwater),
                                         ifTrue(noiseCondition2d(Noises.ICE, -0.1, 0.1), grassOrDirtIfUnderwater),
                                         ifTrue(noiseCondition2d(Noises.ICE, -0.5, -0.1), wetGrassOrDirtIfUnderwater),
                                         ifTrue(noiseCondition2d(Noises.ICE, -2, -0.5), state(Blocks.MUD.defaultBlockState()))
                                 )))),
-                                ifTrue(aboveWater, sequence(ifTrue(UNDER_FLOOR, sequence(
+                                ifTrue(aboveWater, sequence(ifTrue(underFloor, sequence(
                                         ifTrue(noiseCondition2d(Noises.ICE, 0.52, 2), state(Blocks.MUD.defaultBlockState())),
                                         ifTrue(noiseCondition2d(Noises.ICE, 0.1, 0.52), state(ModBlocks.WETLAND.defaultBlockState())),
                                         ifTrue(noiseCondition2d(Noises.ICE, -0.1, 0.1), state(Blocks.DIRT.defaultBlockState())),
@@ -71,7 +84,7 @@ public class ModSurfaceRules {
 
                 ifTrue(isBiome(biomes, ModBiomes.SALT_DEPOSIT), sequence(
                         ifTrue(not(verticalGradient("salt", VerticalAnchor.absolute(48), VerticalAnchor.absolute(52))), sequence(
-                                ifTrue(UNDER_FLOOR, sequence(
+                                ifTrue(underFloor, ifTrue(abovePreliminarySurface(), sequence(
                                         ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.09f, 0.09f),
                                                 makeStateRule(Blocks.SAND)),
                                         ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.29f, 0.29f),
@@ -81,14 +94,14 @@ public class ModSurfaceRules {
                                         ifTrue(noiseCondition2d(Noises.ORE_GAP, -0.64f, 0.64f),
                                                 makeStateRule(Blocks.CALCITE)),
                                         makeStateRule(Blocks.SAND)
-                                )),
-                                ifTrue(DEEP_UNDER_FLOOR, makeStateRule(Blocks.SANDSTONE))
+                                ))),
+                                ifTrue(deepUnderFloor, makeStateRule(Blocks.SANDSTONE))
                         ))
                     )),
 
                 ifTrue(isBiome(biomes, ModBiomes.PERMAFROST_CAVES), sequence(
                         ifTrue(noiseCondition3d(Noises.ICE, 0.01f),
-                                ifTrue(ON_FLOOR, ifTrue(not(verticalGradient("snow",
+                                ifTrue(onFloor, ifTrue(not(verticalGradient("snow",
                                         VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(14))),
                                         makeStateRule(Blocks.SNOW_BLOCK)))),
                         ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.0f, 0.2f),
@@ -99,18 +112,18 @@ public class ModSurfaceRules {
                 ifTrue(isBiome(biomes, ModBiomes.POLAR_DESERT), ifTrue(not(verticalGradient("surface", VerticalAnchor.absolute(54), VerticalAnchor.absolute(56))),
                         sequence(
                                 ifTrue(noiseCondition3d(Noises.POWDER_SNOW, 0.35, 0.6),
-                                        ifTrue(ON_FLOOR, makeStateRule(Blocks.POWDER_SNOW))),
-                                ifTrue(ON_FLOOR, makeStateRule(Blocks.SNOW_BLOCK)),
+                                        ifTrue(onFloor, makeStateRule(Blocks.POWDER_SNOW))),
+                                ifTrue(onFloor, makeStateRule(Blocks.SNOW_BLOCK)),
                                 ifTrue(noiseCondition3d(Noises.POWDER_SNOW, -0.35, -0.6),
-                                        ifTrue(UNDER_FLOOR, makeStateRule(ModBlocks.PACKED_SNOW))),
-                                ifTrue(UNDER_FLOOR, makeStateRule(Blocks.SNOW_BLOCK)),
-                                ifTrue(DEEP_UNDER_FLOOR, makeStateRule(ModBlocks.PACKED_SNOW)),
+                                        ifTrue(underFloor, makeStateRule(ModBlocks.PACKED_SNOW))),
+                                ifTrue(underFloor, makeStateRule(Blocks.SNOW_BLOCK)),
+                                ifTrue(deepUnderFloor, makeStateRule(ModBlocks.PACKED_SNOW)),
                                 ifTrue(not(deepslate), ifTrue(noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, -0.2f, 0.4f),
                                 makeStateRule(ModBlocks.FROSTED_STONE))))))
         );
     }
 
-    private static RuleSource makeStateRule(Block block) {
+    private static MaterialRule makeStateRule(Block block) {
         return state(block.defaultBlockState());
     }
 }

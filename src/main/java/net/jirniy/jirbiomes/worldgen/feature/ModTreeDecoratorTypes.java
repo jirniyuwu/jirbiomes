@@ -13,7 +13,7 @@ public class ModTreeDecoratorTypes<P extends TreeDecorator> {
     private final MapCodec<P> codec;
 
     private static <P extends TreeDecorator> TreeDecoratorType<P> create(final String name, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.TREE_DECORATOR_TYPE, JirniyBiomes.id(name), new TreeDecoratorType(codec));
+        return Registry.register(BuiltInRegistries.TREE_DECORATOR_TYPE, JirniyBiomes.id(name), new TreeDecoratorType<>(codec));
     }
 
     public ModTreeDecoratorTypes(final MapCodec<P> codec) {

@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -16,7 +17,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 public record TaxiteFeature(
-        BlockStateProvider trunk,
+        Holder<BlockStateProvider> trunkProvider,
         IntProvider radius,
         IntProvider topHeight,
         IntProvider bottomHeight,
@@ -26,7 +27,7 @@ public record TaxiteFeature(
 ) implements Feature {
     private static final Direction[] HORIZONTAL_DIRECTIONS = new Direction[]{Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST};
     public static final MapCodec<TaxiteFeature> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-                    BlockStateProvider.DIRECT_CODEC.fieldOf("trunk").forGetter(TaxiteFeature::trunk),
+                    BlockStateProvider.CODEC.fieldOf("trunk").forGetter(TaxiteFeature::trunkProvider),
                     IntProviders.codec(1, 4).fieldOf("radius").forGetter(TaxiteFeature::radius),
                     IntProviders.codec(1, 60).fieldOf("top_height").forGetter(TaxiteFeature::topHeight),
                     IntProviders.codec(1, 60).fieldOf("bottom_height").forGetter(TaxiteFeature::bottomHeight),
@@ -35,6 +36,10 @@ public record TaxiteFeature(
                     Codec.BOOL.optionalFieldOf("always_place", false).forGetter(TaxiteFeature::alwaysPlace)
             ).apply(i, TaxiteFeature::new)
     );
+    @Override
+    public MapCodec<TaxiteFeature> codec() {
+        return CODEC;
+    }
 
     // this is a mess
     @Override
@@ -42,6 +47,7 @@ public record TaxiteFeature(
         int radius = this.radius.sample(random);
         int topHeight = this.topHeight.sample(random);
         int bottomHeight = this.bottomHeight.sample(random);
+        BlockStateProvider trunk = trunkProvider.value();
 
         if (alwaysPlace && !canPlace(level, topHeight, radius, origin)) {
             return false;
@@ -201,10 +207,5 @@ public record TaxiteFeature(
         if (!level.getBlockState(pos).is(BlockTags.FEATURES_CANNOT_REPLACE)) {
             level.setBlock(pos, state, 3);
         }
-    }
-
-    @Override
-    public MapCodec<? extends Feature> codec() {
-        return CODEC;
     }
 }

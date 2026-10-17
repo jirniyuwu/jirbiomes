@@ -28,7 +28,8 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 
 import java.util.function.Function;
 
-import static net.jirniy.jirbiomes.block.ModBlockUtils.*;
+import static net.jirniy.jirbiomes.block.ModBlockUtils.logProperties;
+import static net.jirniy.jirbiomes.block.ModBlockUtils.wallVariant;
 
 public class ModBlocks {
     public static final Block IRON_GRATE = registerBlock("iron_grate", properties ->

@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -34,7 +35,7 @@ import java.util.Optional;
 
 // copied from large dripstone feature and just replaced dripstone with mod blocks
 public record LargeIcicleFeature(
-        BlockStateProvider blockProvider,
+        Holder<BlockStateProvider> blockProvider,
         HolderSet<Block> replaceableBlocks,
         int floorToCeilingSearchRange,
         IntProvider columnRadius,
@@ -48,7 +49,7 @@ public record LargeIcicleFeature(
 ) implements Feature {
     public static final MapCodec<LargeIcicleFeature> CODEC = RecordCodecBuilder.mapCodec(
             i -> i.group(
-                            BlockStateProvider.DIRECT_CODEC.fieldOf("block_provider").forGetter(LargeIcicleFeature::blockProvider),
+                            BlockStateProvider.CODEC.fieldOf("block_provider").forGetter(LargeIcicleFeature::blockProvider),
                             RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(LargeIcicleFeature::replaceableBlocks),
                             Codec.intRange(1, 512).optionalFieldOf("floor_to_ceiling_search_range", 30).forGetter(LargeIcicleFeature::floorToCeilingSearchRange),
                             IntProviders.codec(1, 16).fieldOf("column_radius").forGetter(LargeIcicleFeature::columnRadius),
@@ -70,6 +71,7 @@ public record LargeIcicleFeature(
 
     @Override
     public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
+        BlockStateProvider blockProvider = blockProvider().value();
         if (!isEmptyOrWater(level, origin)) {
             return false;
         }
@@ -135,7 +137,7 @@ public record LargeIcicleFeature(
 
         for (BlockPos.MutableBlockPos pos = origin.atY(range.floor() + 2).mutable(); pos.getY() < range.ceiling() - 1; pos.move(Direction.UP)) {
             BlockPos windAdjustedPos = wind.offset(pos);
-            if (isEmptyOrWater(level, windAdjustedPos) || level.getBlockState(windAdjustedPos).is(blockProvider.getState(level, random, windAdjustedPos).getBlock())) {
+            if (isEmptyOrWater(level, windAdjustedPos) || level.getBlockState(windAdjustedPos).is(blockProvider.value().getState(level, random, windAdjustedPos).getBlock())) {
                 level.setBlock(windAdjustedPos, Blocks.CREEPER_HEAD.defaultBlockState(), 2);
             }
         }

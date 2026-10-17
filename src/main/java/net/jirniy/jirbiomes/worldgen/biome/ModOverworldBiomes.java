@@ -10,6 +10,7 @@ import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.attribute.AmbientParticle;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributes;
@@ -18,11 +19,11 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class ModOverworldBiomes {
-    public static Biome saltDeposit(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+    public static Biome saltDeposit(HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
         Biome.BiomeBuilder biome = OverworldBiomes.baseBiome(0.9f, 0.5f);
         MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(mobs);
@@ -42,7 +43,7 @@ public class ModOverworldBiomes {
                 .build();
     }
 
-    public static Biome permafrostCaves(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+    public static Biome permafrostCaves(HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
         Biome.BiomeBuilder biome = OverworldBiomes.baseBiome(0.0f, 0.5f);
         MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.dripstoneCavesSpawns(mobs);
@@ -79,14 +80,14 @@ public class ModOverworldBiomes {
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES))
                 .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.SNOWFLAKE, 0.0005f))
-                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x95d3e6)
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xa2d5f5)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(0x95d3e6))
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, ARGB.vector3fFromRGB24(0xa2d5f5))
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x8fabf2)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();
     }
 
-    public static Biome polarDesert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+    public static Biome polarDesert(HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
         Biome.BiomeBuilder biome = OverworldBiomes.baseBiome(0.0f, 0.1f);
         MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.snowySpawns(mobs, false);
@@ -102,14 +103,14 @@ public class ModOverworldBiomes {
 
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS))
-                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x95d3e6)
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xa2d5f5)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(0x95d3e6))
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, ARGB.vector3fFromRGB24(0xa2d5f5))
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x8fabf2)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())
                 .build();
     }
 
-    public static Biome prototaxiteForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+    public static Biome prototaxiteForest(HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
         Biome.BiomeBuilder biome = OverworldBiomes.baseBiome(2.0f, 2.0f);
         MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.swampSpawns(mobs, 40);
@@ -141,8 +142,8 @@ public class ModOverworldBiomes {
 
         return biome
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SWAMP))
-                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x7ff5e9)
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x325747)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(0x7ff5e9))
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, ARGB.vector3fFromRGB24(0x325747))
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x49918b)
                         .grassColorOverride(0x46bd4c).foliageColorOverride(0x64bd1c)).build())
                 .mobSpawnSettings(mobs.build()).generationSettings(generation.build())

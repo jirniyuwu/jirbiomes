@@ -34,7 +34,6 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.PlaceOnGroundDecorator;
@@ -127,26 +126,26 @@ public class ModFeatures {
         context.register(NOOP, new NoOpFeature());
 
         Holder<BlockStateProvider> belowTrunkProvider = blockStateProviders.getOrThrow(BlockStateProviders.SOIL_BENEATH_TREE);
-        Holder<BlockStateProvider> palmTreeBelowTrunkProvider = Holder.direct(new MapStateProvider(
+        Holder<BlockStateProvider> palmTreeBelowTrunkProvider = Holder.<BlockStateProvider>direct(new MapStateProvider(
                 new Block[]{Blocks.SAND, Blocks.GRASS_BLOCK, Blocks.DIRT, ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT, Blocks.WATER, Blocks.AIR},
                 new Block[]{Blocks.SAND, Blocks.DIRT, Blocks.DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.PALM_LOG, ModBlocks.PALM_LOG}
         ));
 
-        Holder<BlockStateProvider> driedDirtProvider = Holder.direct(new MapStateProvider(
+        Holder<BlockStateProvider> driedDirtProvider = Holder.<BlockStateProvider>direct(new MapStateProvider(
                 new Block[]{Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.ROOTED_DIRT, Blocks.COARSE_DIRT, Blocks.DIRT_PATH, Blocks.FARMLAND},
                 new Block[]{ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.COARSE_DRIED_DIRT, ModBlocks.DRIED_DIRT_PATH, ModBlocks.DRY_FARMLAND}));
-        Holder<BlockStateProvider> wetlandProvider = Holder.direct(new MapStateProvider(
+        Holder<BlockStateProvider> wetlandProvider = Holder.<BlockStateProvider>direct(new MapStateProvider(
                 new Block[]{Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.ROOTED_DIRT, Blocks.COARSE_DIRT, Blocks.DIRT_PATH, Blocks.FARMLAND},
                 new Block[]{ModBlocks.WET_GRASS_BLOCK, ModBlocks.WETLAND, ModBlocks.ROOTED_WETLAND, ModBlocks.COARSE_WETLAND, ModBlocks.WETLAND_PATH, ModBlocks.WET_FARMLAND}));
-        Holder<BlockStateProvider> rootsProvider = Holder.direct(new MapStateProvider(
+        Holder<BlockStateProvider> rootsProvider = Holder.<BlockStateProvider>direct(new MapStateProvider(
                 new Block[]{Blocks.SAND, Blocks.RED_SAND, Blocks.DIRT, Blocks.GRASS_BLOCK, ModBlocks.DRIED_DIRT, ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.WETLAND, ModBlocks.WET_GRASS_BLOCK, Blocks.MUD},
                 new Block[]{ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND, Blocks.ROOTED_DIRT, Blocks.ROOTED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.ROOTED_WETLAND, ModBlocks.ROOTED_WETLAND, ModBlocks.ROOTED_MUD}));
 
         PlaceOnGroundDecorator sparseLeafLitter = new PlaceOnGroundDecorator(
-                96, 4, 2, Holder.direct(new WeightedStateProvider(VegetationFeatures.leafLitterPatchBuilder(1, 3)))
+                96, 4, 2, Holder.<BlockStateProvider>direct(new WeightedStateProvider(VegetationFeatures.leafLitterPatchBuilder(1, 3)))
         );
         PlaceOnGroundDecorator thickLeafLitter = new PlaceOnGroundDecorator(
-                150, 2, 2, Holder.direct(new WeightedStateProvider(VegetationFeatures.leafLitterPatchBuilder(1, 4)))
+                150, 2, 2, Holder.<BlockStateProvider>direct(new WeightedStateProvider(VegetationFeatures.leafLitterPatchBuilder(1, 4)))
         );
 
         BeehiveDecorator beehive0002 = new BeehiveDecorator(0.002F);
@@ -156,11 +155,11 @@ public class ModFeatures {
         BeehiveDecorator beehive = new BeehiveDecorator(1.0F);
 
         context.register(TENEBRIS, new TenebrisFeature(
-                simpleState(ModBlocks.TENEBRIS_LOG), UniformInt.of(3, 4), Direction.UP,
-                simpleState(ModBlocks.TENEBRIS_LEAVES), UniformInt.of(0, 1), simpleState(Blocks.SHROOMLIGHT)));
+                simpleStateHolder(ModBlocks.TENEBRIS_LOG), UniformInt.of(3, 4), Direction.UP,
+                simpleStateHolder(ModBlocks.TENEBRIS_LEAVES), UniformInt.of(0, 1), simpleStateHolder(Blocks.SHROOMLIGHT)));
         context.register(DOWNWARDS_TENEBRIS, new TenebrisFeature(
-                simpleState(ModBlocks.TENEBRIS_LOG), UniformInt.of(2, 7), Direction.DOWN,
-                simpleState(ModBlocks.TENEBRIS_LEAVES), UniformInt.of(1, 2), simpleState(Blocks.SHROOMLIGHT)));
+                simpleStateHolder(ModBlocks.TENEBRIS_LOG), UniformInt.of(2, 7), Direction.DOWN,
+                simpleStateHolder(ModBlocks.TENEBRIS_LEAVES), UniformInt.of(1, 2), simpleStateHolder(Blocks.SHROOMLIGHT)));
 
         TreeFeature.Builder ginkgoTreeConfig = new TreeFeature.Builder(
                 simpleState(ModBlocks.GINKGO_LOG),
@@ -193,12 +192,12 @@ public class ModFeatures {
                 .decorators(List.of(new CoconutDecorator(0.3f, UniformInt.of(1, 2)))).build());
 
         context.register(PROTOTAXITE, new TaxiteFeature(
-                simpleState(ModBlocks.PROTOTAXITE_LOG), ConstantInt.of(2),
+                simpleStateHolder(ModBlocks.PROTOTAXITE_LOG), ConstantInt.of(2),
                 UniformInt.of(18, 25), UniformInt.of(3, 4),
                 0.7f, 0.6f, false
         ));
         context.register(PROTOTAXITE_SMALL, new TaxiteFeature(
-                simpleState(ModBlocks.PROTOTAXITE_LOG), ConstantInt.of(1),
+                simpleStateHolder(ModBlocks.PROTOTAXITE_LOG), ConstantInt.of(1),
                 UniformInt.of(14, 20), UniformInt.of(2, 4), 0.6f, 0.8f, false
         ));
         context.register(PROTOTAXITE_SEPTA, new SimpleBlockFeature(simpleState(ModBlocks.PROTOTAXITE_SAPLING)));
@@ -344,7 +343,7 @@ public class ModFeatures {
                 ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F),
                 0.1F, 3, 8));
         context.register(LARGE_ICICLE, new LargeIcicleFeature(
-                simpleState(ModBlocks.PERMAFROST_BLOCK), blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE), 30,
+                simpleStateHolder(ModBlocks.PERMAFROST_BLOCK), blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE), 30,
                 ClampedInt.of(UniformInt.of(3, 19), 3, 16),
                 UniformFloat.of(0.4F, 2.0F), 0.33F, UniformFloat.of(0.3F, 0.9F),
                 UniformFloat.of(0.4F, 1.0F), UniformFloat.of(0.0F, 0.3F), 4, 0.6F));
@@ -369,16 +368,16 @@ public class ModFeatures {
                 List.of(
                         BlockColumnFeature.layer(UniformInt.of(0, 2), simpleState(ModBlocks.LARGE_BARREL_CACTUS)),
                         BlockColumnFeature.layer(ConstantInt.of(1),
-                                new WeightedStateProviderProvider(WeightedList.<BlockStateProvider>builder()
-                                        .add(simpleState(ModBlocks.PRICKLY_PEAR_SEED.defaultBlockState()), 2)
-                                        .add(simpleState(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState()
+                                new WeightedStateProviderProvider(WeightedList.<Holder<BlockStateProvider>>builder()
+                                        .add(simpleStateHolder(ModBlocks.PRICKLY_PEAR_SEED.defaultBlockState()), 2)
+                                        .add(simpleStateHolder(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState()
                                                 .setValue(SmallBarrelCactusBlock.AGE, 1)), 5)
-                                        .add(simpleState(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState()
+                                        .add(simpleStateHolder(ModBlocks.SMALL_BARREL_CACTUS.defaultBlockState()
                                                 .setValue(SmallBarrelCactusBlock.AGE, 2)), 5)
-                                        .add(RuleBasedStateProvider.ifTrueThenProvide(BlockPredicate
+                                        .add(Holder.direct(RuleBasedStateProvider.ifTrueThenProvide(BlockPredicate
                                                 .matchesBlocks(Direction.DOWN.getUnitVec3i(), List.of(ModBlocks.LARGE_BARREL_CACTUS)), 
-                                                Blocks.CACTUS_FLOWER), 1)
-                                        .add(simpleState(Blocks.AIR.defaultBlockState()), 9)
+                                                Blocks.CACTUS_FLOWER)), 1)
+                                        .add(simpleStateHolder(Blocks.AIR.defaultBlockState()), 9)
                                 ))
                 ),
                 Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, false
@@ -487,18 +486,18 @@ public class ModFeatures {
                         CountPlacement.of(1), OffsetPlacement.vertical(ConstantInt.of(-1))),
                 3, 0, 0, 2,
                 blocks.getOrThrow(ModTags.Blocks.BRIMSTONE_GOLD_REPLACEABLE),
-                Holder.direct(new MapStateProvider(
+                Holder.<BlockStateProvider>direct(new MapStateProvider(
                         new Block[]{ModBlocks.BRIMSTONE, ModBlocks.IGNITED_BRIMSTONE},
-                        List.of(new WeightedStateProvider(
+                        List.<Holder<BlockStateProvider>>of(Holder.direct(new WeightedStateProvider(
                                     WeightedList.<BlockState>builder()
                                             .add(ModBlocks.BRIMSTONE.defaultBlockState(), 2)
                                             .add(ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState(), 1)
-                                ),
-                                new WeightedStateProvider(
+                                )),
+                                Holder.direct(new WeightedStateProvider(
                                     WeightedList.<BlockState>builder()
                                             .add(ModBlocks.IGNITED_BRIMSTONE.defaultBlockState(), 1)
                                             .add(ModBlocks.BRIMSTONE_GOLD_ORE.defaultBlockState(), 3)
-                                )))),
+                                ))))),
                 7, 17, 3, 2,
                 simpleStateHolder(Blocks.AIR), 1, 1,
                 BlockPredicate.allOf(BlockPredicate.anyOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.not(BlockPredicate.solid())),
@@ -650,15 +649,15 @@ public class ModFeatures {
         return segmentedBlockBuild;
     }
     public static BlockStateProvider simpleState(Block block) {
-        return simpleState(block.defaultBlockState());
+        return BlockStateProvider.of(block);
     }
     public static BlockStateProvider simpleState(BlockState state) {
-        return new SimpleStateProvider(state);
+        return BlockStateProvider.of(state);
     }
     public static Holder<BlockStateProvider> simpleStateHolder(Block block) {
-        return Holder.direct(simpleState(block.defaultBlockState()));
+        return BlockStateProvider.holderOf(block);
     }
     public static Holder<BlockStateProvider> simpleStateHolder(BlockState state) {
-        return Holder.direct(new SimpleStateProvider(state));
+        return BlockStateProvider.holderOf(state);
     }
 }
