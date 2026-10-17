@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -56,7 +57,7 @@ public class AppleLeavesBlock extends TintedParticleLeavesBlock {
 
             ItemStackTemplate drop = new ItemStackTemplate(Items.APPLE);
             if (!player.addItem(drop.create())) {
-                player.drop(drop.create(), false);
+                player.drop(drop.create(), false, Prediction.PREDICTED);
             }
             return InteractionResult.SUCCESS;
         }

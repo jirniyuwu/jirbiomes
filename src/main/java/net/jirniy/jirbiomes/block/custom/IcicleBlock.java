@@ -1,7 +1,5 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.jirniy.jirbiomes.misc.CommonTag;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.minecraft.core.BlockPos;
@@ -16,8 +14,6 @@ import net.minecraft.world.level.block.state.properties.SpeleothemThickness;
 import net.minecraft.world.phys.Vec3;
 
 public class IcicleBlock extends SpeleothemBlock {
-    public static final MapCodec<IcicleBlock> CODEC = RecordCodecBuilder.mapCodec((i) -> i.group(BlockState.CODEC.fieldOf("block_to_grow_on").forGetter((b) -> b.blockToGrowOn), propertiesCodec()).apply(i, IcicleBlock::new));
-
     public IcicleBlock(BlockState blockToGrowOn, Properties properties) {
         super(blockToGrowOn, properties);
     }
@@ -47,11 +43,6 @@ public class IcicleBlock extends SpeleothemBlock {
         } else {
             super.fallOn(level, state, pos, entity, fallDistance);
         }
-    }
-
-    @Override
-    public MapCodec<? extends SpeleothemBlock> codec() {
-        return CODEC;
     }
 
     @Override

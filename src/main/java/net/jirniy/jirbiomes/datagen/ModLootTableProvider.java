@@ -10,9 +10,7 @@ import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -23,8 +21,9 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -237,19 +236,19 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.HANGING_TAXITE_SIGN);
 
         add(ModBlocks.APPLE_CROP, createCropDrops(ModBlocks.APPLE_CROP, ModBlocks.APPLE_OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)
-                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AppleCropBlock.AGE, AppleCropBlock.MAX_AGE))));
+                MatchBlock.blockMatches(blocks, ModBlocks.APPLE_CROP,
+                        StatePropertiesPredicate.Builder.properties().hasProperty(AppleCropBlock.AGE, AppleCropBlock.MAX_AGE))));
         add(ModBlocks.APPLE_LEAVES, createLeavesDrops(ModBlocks.APPLE_LEAVES, Blocks.OAK_SAPLING, 0.05f));
         dropSelf(ModBlocks.APPLE_OAK_SAPLING);
 
         dropOther(ModBlocks.PRICKLY_PEAR_SEED, ModItems.PRICKLY_PEAR);
         this.add(ModBlocks.SMALL_BARREL_CACTUS, block -> this.applyExplosionDecay(block,
                 LootTable.lootTable().withPool(LootPool.lootPool()
-                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.SMALL_BARREL_CACTUS)
-                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                        .when(MatchBlock.blockMatches(blocks, ModBlocks.SMALL_BARREL_CACTUS,
+                                StatePropertiesPredicate.Builder.properties()
                                         .hasProperty(SmallBarrelCactusBlock.AGE, 1))
-                        .or(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.SMALL_BARREL_CACTUS)
-                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                        .or(MatchBlock.blockMatches(blocks, ModBlocks.SMALL_BARREL_CACTUS,
+                                StatePropertiesPredicate.Builder.properties()
                                         .hasProperty(SmallBarrelCactusBlock.AGE, 2))))
                         .add(LootItem.lootTableItem(ModItems.BARREL_CACTUS)))
         ));
@@ -257,22 +256,22 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         this.add(ModBlocks.COCONUT_PLANT, block -> this.applyExplosionDecay(block,
                 LootTable.lootTable().withPool(LootPool.lootPool()
-                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.COCONUT_PLANT)
-                                .setProperties(StatePropertiesPredicate.Builder.properties()
-                                        .hasProperty(CoconutBlock.AGE, 2)))
+                        .when(MatchBlock.blockMatches(blocks, ModBlocks.COCONUT_PLANT,
+                                        StatePropertiesPredicate.Builder.properties()
+                                                .hasProperty(CoconutBlock.AGE, 2)))
                         .add(LootItem.lootTableItem(ModItems.COCONUT)))
         ));
 
         this.add(ModBlocks.HANGING_MUSHROOMS, block -> this.applyExplosionDecay(block,
                 LootTable.lootTable().withPool(LootPool.lootPool()
-                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.HANGING_MUSHROOMS)
-                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                        .when(MatchBlock.blockMatches(blocks, ModBlocks.HANGING_MUSHROOMS,
+                                StatePropertiesPredicate.Builder.properties()
                                         .hasProperty(HangingMushroomsBlock.LIT, true))
-                                .and(hasShears().invert()))
+                                .and(InvertedLootItemCondition.invert(this.hasShears())))
                             .add(LootItem.lootTableItem(Blocks.RED_MUSHROOM)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))))
+                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1))))
                             .add(LootItem.lootTableItem(Blocks.BROWN_MUSHROOM)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))))
+                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 1)))))
                         .withPool(LootPool.lootPool().when(this.hasShears()).add(LootItem.lootTableItem(block)))
         ));
     }
@@ -291,26 +290,25 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         return LootTable.lootTable().withPool(LootPool.lootPool().when(this.hasShears()).add(LootItem.lootTableItem(block)));
     }
 
-    public LootTable.Builder createMultiOreDrops(final Block block, ItemLike drop, float min, float max) {
-        HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+    public LootTable.Builder createMultiOreDrops(final Block block, ItemLike drop, int min, int max) {
         return this.createSilkTouchDispatchTable(
                 block,
                 (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                         block,
                         LootItem.lootTableItem(drop)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+                                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(min, max)))
                                 .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
                 )
         );
     }
 
-    public LootTable.Builder createMultiDropsWithoutFortune(final Block block, ItemLike drop, float min, float max) {
+    public LootTable.Builder createMultiDropsWithoutFortune(final Block block, ItemLike drop, int min, int max) {
         return this.createSilkTouchDispatchTable(
                 block,
                 (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
                         block,
                         LootItem.lootTableItem(drop)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+                                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(min, max)))
                 )
         );
     }

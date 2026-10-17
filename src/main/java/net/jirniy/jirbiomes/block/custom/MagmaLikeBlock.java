@@ -1,7 +1,5 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -18,15 +16,6 @@ import net.minecraft.world.level.redstone.Orientation;
 import org.jspecify.annotations.Nullable;
 
 public class MagmaLikeBlock extends Block {
-    public static final MapCodec<MagmaLikeBlock> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance
-                    .group(Block.CODEC.fieldOf("on_contact_water").forGetter(block -> block.waterTurningInto), propertiesCodec())
-                    .apply(instance, MagmaLikeBlock::new)
-    );
-    @Override
-    public MapCodec<? extends MagmaLikeBlock> codec() {
-        return CODEC;
-    }
     protected final Block waterTurningInto;
 
     public MagmaLikeBlock(Block onContactWater, Properties properties) {

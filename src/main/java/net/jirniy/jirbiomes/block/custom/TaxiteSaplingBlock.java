@@ -10,6 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -56,19 +57,19 @@ public class TaxiteSaplingBlock extends VegetationPlaceableOnBlock implements Bo
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, BonemealSource source) {
         return level.getBlockState(pos.above()).isAir()
                 && level.isInsideBuildHeight(pos.above())
                 && level.getBlockState(pos.below()).is(ModTags.Blocks.PROTOTAXITE_PLACEABLE);
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         return random.nextBoolean();
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         level.setBlockAndUpdate(pos, ModBlocks.PROTOTAXITE_LOG.defaultBlockState());
         level.setBlockAndUpdate(pos.above(), ModBlocks.PROTOTAXITE_SAPLING.defaultBlockState());
         if (level.getBlockState(pos.below()).is(ModTags.Blocks.PROTOTAXITE_ROOTS_REPLACEABLE)) {

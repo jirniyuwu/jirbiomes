@@ -249,7 +249,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.SAND_SHELLS, ModBlocks.RED_SAND_SHELLS))
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_SAND))
                 .add(ModBlocks.getKey(ModBlocks.ROOTED_RED_SAND));
-        tag(BlockTags.CONVERTABLE_TO_MUD)
+        tag(BlockTags.CONVERTIBLE_TO_MUD)
                 .add(ModBlocks.getKeys(ModBlocks.WETLAND, ModBlocks.COARSE_WETLAND, ModBlocks.ROOTED_WETLAND));
         tag(BlockTags.SUPPORTS_BIG_DRIPLEAF)
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
@@ -414,11 +414,6 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.GUARDED_BY_PIGLINS)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE));
 
-        tag(BlockTags.NETHER_CARVER_REPLACEABLES)
-                .add(ModBlocks.getKey(ModBlocks.BRIMGRASS_BLOCK))
-                .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
-                .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
-                .add(ModBlocks.getKey(ModBlocks.BRIMSTONE));
         tag(BlockTags.BASE_STONE_NETHER)
                 .add(ModBlocks.getKey(ModBlocks.NETHERSTONE))
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
@@ -443,11 +438,6 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE));
         tag(BlockTags.STONE_ORE_REPLACEABLES)
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE));
-        tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
-                .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
-                .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))
-                .addOptionalTag(ModTags.Blocks.WET_DIRT)
-                .addOptionalTag(ModTags.Blocks.DRIED_DIRT);
         tag(BlockTags.DRIPSTONE_REPLACEABLE)
                 .add(ModBlocks.getKey(ModBlocks.FROSTED_STONE))
                 .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))

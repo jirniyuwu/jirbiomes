@@ -7,7 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 
@@ -25,7 +25,7 @@ public class PalmFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected void createFoliage(WorldGenLevel level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
+    protected void createFoliage(WorldGenLevel level, FoliageSetter foliageSetter, RandomSource random, TreeFeature config, int treeHeight, FoliageAttachment foliageAttachment, int foliageHeight, int leafRadius, int offset) {
         BlockPos foliagePos = foliageAttachment.pos().above(offset);
         if (foliageAttachment.doubleTrunk()) {
             createCross(foliagePos.offset(0, 0, 0), level, foliageSetter, random, config, leafRadius);
@@ -37,7 +37,7 @@ public class PalmFoliagePlacer extends FoliagePlacer {
         }
     }
 
-    protected void createCross(BlockPos foliagePos, WorldGenLevel level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int leafRadius) {
+    protected void createCross(BlockPos foliagePos, WorldGenLevel level, FoliageSetter foliageSetter, RandomSource random, TreeFeature config, int leafRadius) {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             for (int i = 0; i < leafRadius; i++) {
                 BlockPos dirPos = foliagePos.relative(direction, i);
@@ -50,7 +50,7 @@ public class PalmFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    public int foliageHeight(RandomSource random, int treeHeight, TreeConfiguration config) {
+    public int foliageHeight(RandomSource random, int treeHeight, TreeFeature tree) {
         return 0;
     }
 

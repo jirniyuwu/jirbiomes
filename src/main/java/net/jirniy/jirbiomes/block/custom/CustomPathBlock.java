@@ -1,7 +1,5 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -20,18 +18,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CustomPathBlock extends Block {
-    public static final MapCodec<CustomPathBlock> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance
-                    .group(Block.CODEC.fieldOf("placement").forGetter(block -> block.placement), propertiesCodec())
-                    .apply(instance, CustomPathBlock::new)
-    );
     private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 15.0);
     protected final Block placement;
-
-    @Override
-    public MapCodec<CustomPathBlock> codec() {
-        return CODEC;
-    }
 
     public CustomPathBlock(Block placement, final BlockBehaviour.Properties properties) {
         super(properties);

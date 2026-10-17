@@ -1,10 +1,10 @@
 package net.jirniy.jirbiomes.misc;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
-import net.fabricmc.fabric.api.registry.*;
+import net.fabricmc.fabric.api.item.v1.BlockTransformerHelper;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
-import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.world.level.block.Blocks;
 
@@ -14,39 +14,28 @@ public class RegistryModifications {
     public static void register() {
         JirniyBiomes.LOGGER.info("registering block registry modifications for " + JirniyBiomes.MOD_ID);
 
-        TillableBlockRegistry.register(ModBlocks.DRIED_DIRT,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                ModBlocks.DRY_FARMLAND.defaultBlockState());
-        TillableBlockRegistry.register(ModBlocks.DRIED_GRASS_BLOCK,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                ModBlocks.DRY_FARMLAND.defaultBlockState());
-        TillableBlockRegistry.register(ModBlocks.ROOTED_DRIED_DIRT,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                ModBlocks.DRIED_DIRT.defaultBlockState());
-        TillableBlockRegistry.register(ModBlocks.WETLAND,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                ModBlocks.WET_FARMLAND.defaultBlockState());
-        TillableBlockRegistry.register(ModBlocks.WET_GRASS_BLOCK,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                ModBlocks.WET_FARMLAND.defaultBlockState());
-        TillableBlockRegistry.register(ModBlocks.ROOTED_WETLAND,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                ModBlocks.WETLAND.defaultBlockState());
+        BlockTransformerHelper.registerTilling(ModBlocks.DRIED_DIRT, ModBlocks.DRY_FARMLAND);
+        BlockTransformerHelper.registerTilling(ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT_PATH);
+        BlockTransformerHelper.registerTilling(ModBlocks.ROOTED_DRIED_DIRT, ModBlocks.DRIED_DIRT);
+        BlockTransformerHelper.registerTilling(ModBlocks.WETLAND, ModBlocks.WET_FARMLAND);
+        BlockTransformerHelper.registerTilling(ModBlocks.WET_GRASS_BLOCK, ModBlocks.WETLAND_PATH);
+        BlockTransformerHelper.registerTilling(ModBlocks.ROOTED_WETLAND, ModBlocks.WETLAND);
 
-        TillableBlockRegistry.register(ModBlocks.ROOTED_MUD,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                Blocks.MUD.defaultBlockState());
-        TillableBlockRegistry.register(ModBlocks.ROOTED_SAND,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                Blocks.SAND.defaultBlockState());
-        TillableBlockRegistry.register(ModBlocks.ROOTED_RED_SAND,
-                itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
-                Blocks.RED_SAND.defaultBlockState());
+        BlockTransformerHelper.registerTilling(ModBlocks.ROOTED_MUD, Blocks.MUD);
+        BlockTransformerHelper.registerTilling(ModBlocks.ROOTED_SAND, Blocks.SAND);
+        BlockTransformerHelper.registerTilling(ModBlocks.ROOTED_RED_SAND, Blocks.RED_SAND);
 
-        FlattenableBlockRegistry.register(ModBlocks.DRIED_DIRT, ModBlocks.DRIED_DIRT_PATH.defaultBlockState());
-        FlattenableBlockRegistry.register(ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT_PATH.defaultBlockState());
-        FlattenableBlockRegistry.register(ModBlocks.WETLAND, ModBlocks.WETLAND_PATH.defaultBlockState());
-        FlattenableBlockRegistry.register(ModBlocks.WET_GRASS_BLOCK, ModBlocks.WETLAND_PATH.defaultBlockState());
+        BlockTransformerHelper.registerFlattening(ModBlocks.DRIED_DIRT, ModBlocks.DRIED_DIRT_PATH);
+        BlockTransformerHelper.registerFlattening(ModBlocks.DRIED_GRASS_BLOCK, ModBlocks.DRIED_DIRT_PATH);
+        BlockTransformerHelper.registerFlattening(ModBlocks.WETLAND, ModBlocks.WETLAND_PATH);
+        BlockTransformerHelper.registerFlattening(ModBlocks.WET_GRASS_BLOCK, ModBlocks.WETLAND_PATH);
+
+        BlockTransformerHelper.registerStripping(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG);
+        BlockTransformerHelper.registerStripping(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD);
+        BlockTransformerHelper.registerStripping(ModBlocks.PALM_LOG, ModBlocks.STRIPPED_PALM_LOG);
+        BlockTransformerHelper.registerStripping(ModBlocks.PALM_WOOD, ModBlocks.STRIPPED_PALM_WOOD);
+        BlockTransformerHelper.registerStripping(ModBlocks.TENEBRIS_LOG, ModBlocks.STRIPPED_TENEBRIS_LOG);
+        BlockTransformerHelper.registerStripping(ModBlocks.TENEBRIS_WOOD, ModBlocks.STRIPPED_TENEBRIS_WOOD);
 
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), ModBlocks.DRIED_GRASS_BLOCK);
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), ModBlocks.WET_GRASS_BLOCK);
@@ -57,30 +46,6 @@ public class RegistryModifications {
         BlockColorRegistry.register(List.of(BlockTintSources.doubleTallGrass()), ModBlocks.CATTAIL);
         BlockColorRegistry.register(List.of(BlockTintSources.constant(0x208030)), ModBlocks.LOTUS_FLOWER);
 
-        StrippableBlockRegistry.register(ModBlocks.GINKGO_LOG, ModBlocks.STRIPPED_GINKGO_LOG);
-        StrippableBlockRegistry.register(ModBlocks.GINKGO_WOOD, ModBlocks.STRIPPED_GINKGO_WOOD);
-        StrippableBlockRegistry.register(ModBlocks.PALM_LOG, ModBlocks.STRIPPED_PALM_LOG);
-        StrippableBlockRegistry.register(ModBlocks.PALM_WOOD, ModBlocks.STRIPPED_PALM_WOOD);
-        StrippableBlockRegistry.register(ModBlocks.TENEBRIS_LOG, ModBlocks.STRIPPED_TENEBRIS_LOG);
-        StrippableBlockRegistry.register(ModBlocks.TENEBRIS_WOOD, ModBlocks.STRIPPED_TENEBRIS_WOOD);
-
-        CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.3f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_LEAVES, 0.3f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_SAPLING, 0.3f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.PALM_LEAVES, 0.3f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.PALM_SAPLING, 0.3f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_LEAVES, 0.5f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_OAK_SAPLING, 0.5f);
-        CompostableRegistry.INSTANCE.add(ModItems.BARREL_CACTUS, 0.3f);
-        CompostableRegistry.INSTANCE.add(ModItems.PRICKLY_PEAR, 0.3f);
-        CompostableRegistry.INSTANCE.add(ModBlocks.CATTAIL, 0.3f);
-        CompostableRegistry.INSTANCE.add(ModItems.LOTUS_FLOWER, 0.5f);
-
-        FuelValueEvents.BUILD.register((builder, context) -> {
-            final int BASE_TIME = context.baseSmeltTime();
-            builder.add(ModItems.DRIED_FIBERS, BASE_TIME/6);
-            builder.add(ModBlocks.STRAW_BLOCK, BASE_TIME);
-        });
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CATTAIL, 40, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModTags.Blocks.BARREL_CACTUSES, 40, 60);
