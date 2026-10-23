@@ -394,6 +394,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(Blocks.LILY_PAD))
                 .add(ModBlocks.getKey(ModBlocks.LOTUS_FLOWER))
                 .add(ModBlocks.getKeys(Blocks.VINE, Blocks.CAVE_VINES, Blocks.CAVE_VINES_PLANT));
+        tag(ModTags.Blocks.HANGING_MUSHROOM_CANNOT_GENERATE_UNDER)
+                .add(ModBlocks.getKey(ModBlocks.PROTOTAXITE_LOG))
+                .add(ModBlocks.getKeys(Blocks.BROWN_MUSHROOM_BLOCK, Blocks.MUSHROOM_STEM, Blocks.RED_MUSHROOM_BLOCK));
 
         tag(ModTags.Blocks.PROTOTAXITE_PLACEABLE)
                 .addOptionalTag(ModTags.Blocks.PROTOTAXITE_ROOTS_REPLACEABLE)

@@ -327,6 +327,8 @@ public class ModPlacedFeatures {
                 BiomeFilter.biome(), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(4, 2),
                 EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(Direction.UP.getUnitVec3i()), 3),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                        BlockPredicate.not(BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(),
+                                ModTags.Blocks.HANGING_MUSHROOM_CANNOT_GENERATE_UNDER)),
                         BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.solid(Direction.UP.getUnitVec3i())
                 )));
@@ -337,8 +339,9 @@ public class ModPlacedFeatures {
                 BiomeFilter.biome(), CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(4, 2),
                 EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(Direction.UP.getUnitVec3i()), 3),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                        BlockPredicate.not(BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(),
+                                ModTags.Blocks.HANGING_MUSHROOM_CANNOT_GENERATE_UNDER)),
                         BlockPredicate.ONLY_IN_AIR_PREDICATE,
-                        BlockPredicate.not(BlockPredicate.matchesBlocks(Direction.UP.getUnitVec3i(), ModBlocks.PROTOTAXITE_LOG)),
                         BlockPredicate.solid(Direction.UP.getUnitVec3i())
                 )));
         register(context, HANGING_MUSHROOMS_DEEP_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.HANGING_MUSHROOMS),
@@ -348,6 +351,8 @@ public class ModPlacedFeatures {
                 BiomeFilter.biome(), CountPlacement.of(48), RandomOffsetPlacement.ofTriangle(6, 2),
                 EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(Direction.UP.getUnitVec3i()), 4),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                        BlockPredicate.not(BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(),
+                                ModTags.Blocks.HANGING_MUSHROOM_CANNOT_GENERATE_UNDER)),
                         BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.solid(Direction.UP.getUnitVec3i())
                 )));
