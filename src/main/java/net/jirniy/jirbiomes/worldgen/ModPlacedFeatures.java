@@ -86,6 +86,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BRIMGRASS_BONEMEAL = registryKey("brimgrass_bonemeal");
     public static final ResourceKey<PlacedFeature> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
     public static final ResourceKey<PlacedFeature> TENEBRIS_PLACED = registryKey("tenebris_tree");
+    public static final ResourceKey<PlacedFeature> TENEBRIS_LARGE_PLACED = registryKey("tenebris_large");
     public static final ResourceKey<PlacedFeature> TENEBRIS_BUD_PLACED = registryKey("tenebris_bud");
     public static final ResourceKey<PlacedFeature> TENEBRIS_CEILING_PLACED = registryKey("tenebris_ceiling");
 
@@ -396,14 +397,20 @@ public class ModPlacedFeatures {
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                 ModBlocks.BRIMGRASS_BLOCK))));
         register(context, BRIMSTONE_RUINS, configuredFeatures.getOrThrow(ModConfiguredFeatures.GOLD_BRIMSTONE_RUINS),
-                CountPlacement.of(UniformInt.of(3, 5)), InSquarePlacement.spread(),
+                CountPlacement.of(UniformInt.of(5, 7)), InSquarePlacement.spread(),
                 HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(50), VerticalAnchor.aboveBottom(180)),
                 EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(),
                         BlockPredicate.anyOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesFluids(Fluids.LAVA, Fluids.FLOWING_LAVA)), 12),
                 RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
 
         register(context, TENEBRIS_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.TENEBRIS),
-                InSquarePlacement.spread(), BiomeFilter.biome(), CountPlacement.of(32), PlacementUtils.FULL_RANGE,
+                BiomeFilter.biome(), CountPlacement.of(12), PlacementUtils.FULL_RANGE, InSquarePlacement.spread(),
+                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
+                                ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE)), 9));
+        register(context, TENEBRIS_LARGE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.LARGE_TENEBRIS_WITH_GRASS),
+                BiomeFilter.biome(), NoiseThresholdCountPlacement.of(0.2f, 2, 12),
+                PlacementUtils.FULL_RANGE, InSquarePlacement.spread(),
                 EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                         BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                 ModBlocks.BRIMGRASS_BLOCK, ModBlocks.BRIMSTONE)), 9));

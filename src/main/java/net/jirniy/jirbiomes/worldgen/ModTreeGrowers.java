@@ -40,13 +40,13 @@ public class ModTreeGrowers {
 
     public static final TreeGrower TENEBRIS = new TreeGrower(
             "tenebris",
-            0.0F,
+            0.1F,
             Optional.empty(),
             Optional.empty(),
             Optional.of(ModConfiguredFeatures.TENEBRIS),
-            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.LARGE_TENEBRIS),
             Optional.of(ModConfiguredFeatures.TENEBRIS),
-            Optional.empty()
+            Optional.of(ModConfiguredFeatures.LARGE_TENEBRIS)
     );
 
 }

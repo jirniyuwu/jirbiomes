@@ -84,7 +84,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITE_SMALL_WITH_SEPTAS = registryKey("prototaxite_small_septas");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS = registryKey("tenebris");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DOWNWARDS_TENEBRIS = registryKey("downwards_tenebris");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_TENEBRIS = registryKey("tenebris_large");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_TENEBRIS_WITH_GRASS = registryKey("tenebris_large_with_grass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DOWNWARDS_TENEBRIS = registryKey("tenebris_downwards");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIMSTONE_RUINS = registryKey("brimstone_ruins");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLD_BRIMSTONE_RUINS = registryKey("gold_brimstone_ruins");
 
@@ -160,6 +162,21 @@ public class ModConfiguredFeatures {
 
         register(context, TENEBRIS, ModFeatures.TENEBRIS, new NoneFeatureConfiguration());
         register(context, DOWNWARDS_TENEBRIS, ModFeatures.TENEBRIS_DOWNWARDS, new NoneFeatureConfiguration());
+        register(context, LARGE_TENEBRIS, ModFeatures.LARGE_TENEBRIS, new NoneFeatureConfiguration());
+        register(context, LARGE_TENEBRIS_WITH_GRASS, Feature.SEQUENCE, new CompositeFeatureConfiguration(
+                HolderSet.direct(
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(RuleBasedStateProvider.ifTrueThenProvide(
+                                        BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE), ModBlocks.BRIMGRASS_BLOCK)),
+                                CountPlacement.of(UniformInt.of(96, 128)),
+                                RandomOffsetPlacement.of(TrapezoidInt.of(-4, 4, 0), ConstantInt.of(1)),
+                                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(
+                                        BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(), BlockTags.AIR),
+                                        BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE)), 4)
+                        ),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(LARGE_TENEBRIS))
+                )
+        ));
 
         TreeConfiguration.TreeConfigurationBuilder ginkgoTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
                 simpleState(ModBlocks.GINKGO_LOG),
@@ -490,8 +507,17 @@ public class ModConfiguredFeatures {
                                                         BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE)),
                                                         BlockPredicate.not(BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE_GOLD_ORE))
                                                 ),
-                                                UniformInt.of(4, 6), 2),
+                                                UniformInt.of(5, 6), 2),
                                                 RandomOffsetPlacement.vertical(ConstantInt.of(-2))),
+                                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                                new SimpleBlockConfiguration(RuleBasedStateProvider.ifTrueThenProvide(
+                                                        BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE), ModBlocks.BRIMGRASS_BLOCK)),
+                                                CountPlacement.of(UniformInt.of(128, 196)),
+                                                RandomOffsetPlacement.of(TrapezoidInt.of(-6, 6, 0), ConstantInt.of(1)),
+                                                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(
+                                                        BlockPredicate.matchesTag(Direction.UP.getUnitVec3i(), BlockTags.AIR),
+                                                        BlockPredicate.matchesBlocks(ModBlocks.BRIMSTONE)), 4)
+                                        ),
                                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BRIMSTONE_RUINS),
                                                 CountPlacement.of(1))
                                 )),

@@ -11,6 +11,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 public class ModFeatures {
     public static final Feature<NoneFeatureConfiguration> TENEBRIS = create("tenebris", new TenebrisFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> TENEBRIS_DOWNWARDS = create("tenebris_downwards", new DownwardsTenebrisFeature(NoneFeatureConfiguration.CODEC));
+    public static final Feature<NoneFeatureConfiguration> LARGE_TENEBRIS = create("large_tenebris", new LargeTenebrisFeature(NoneFeatureConfiguration.CODEC));
 
     public static final Feature<TaxiteConfiguration> TAXITE = create("taxite", new TaxiteFeature(TaxiteConfiguration.CODEC));
 

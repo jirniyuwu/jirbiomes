@@ -33,6 +33,7 @@ public class ModNetherBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = (new BiomeGenerationSettings.Builder(placedFeatures, carvers))
                 .addCarver(Carvers.NETHER_CAVE)
                 .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.BRIMSTONE_RUINS)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TENEBRIS_LARGE_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TENEBRIS_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TENEBRIS_BUD_PLACED)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BRIMGRASS_PLACED)

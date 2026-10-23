@@ -46,6 +46,25 @@ public class PileusBlock extends Block implements BonemealableBlock {
     }
 
     @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        BlockState belowState = level.getBlockState(pos.below());
+        BlockState newState = state;
+        if (belowState.is(this) || belowState.isFaceSturdy(level, pos.below(), Direction.UP)) {
+            newState = state.getValue(SHAPE) == PileusShapes.GROUNDED && level.getBlockState(pos.above()).isAir()
+                    ? state.setValue(SHAPE, PileusShapes.GROUNDED)
+                    : state.setValue(SHAPE, PileusShapes.FULL);
+        } else if (belowState.isAir()) {
+            newState = state.setValue(SHAPE, PileusShapes.HANGING);
+        } else {
+            newState = state.setValue(SHAPE, PileusShapes.SUPPORTING);
+        }
+        if (!state.equals(newState)) {
+            level.setBlock(pos, newState, 18);
+        }
+        super.tick(state, level, pos, random);
+    }
+
+    @Override
     protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbour, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
         BlockState belowState = level.getBlockState(pos.below());
         if (belowState.is(this) || belowState.isFaceSturdy(level, pos.below(), Direction.UP)) {
