@@ -703,6 +703,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 chestBoat(ModItems.PALM_CHEST_BOAT, ModItems.PALM_BOAT);
                 woodenBoat(ModItems.PALM_BOAT, ModBlocks.PALM_PLANKS);
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_PILEUS, 2)
+                        .pattern("LL")
+                        .pattern("LL")
+                        .define('L', ModBlocks.TENEBRIS_LEAVES)
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_PILEUS), has(ModBlocks.TENEBRIS_PILEUS))
+                        .unlockedBy(getHasName(ModBlocks.TENEBRIS_LEAVES), has(ModBlocks.TENEBRIS_LEAVES))
+                        .save(output, "tenebris_pileus");
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_SAPLING, 2)
                         .pattern("S")
                         .pattern("L")

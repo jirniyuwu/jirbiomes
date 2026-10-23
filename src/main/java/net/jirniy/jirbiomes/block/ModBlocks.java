@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -643,6 +644,9 @@ public class ModBlocks {
 
     public static final Block TENEBRIS_LEAVES = registerBlock("tenebris_leaves", properties ->
             new PlantLikeLeavesBlock(properties.noCollision().instabreak().sound(SoundType.NETHER_SPROUTS).pushReaction(PushReaction.DESTROY)));
+    public static final Block TENEBRIS_PILEUS = registerBlock("tenebris_pileus", properties ->
+            new PileusBlock(TENEBRIS_LEAVES.defaultBlockState().setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.CEILING),
+                    properties.sound(SoundType.NETHER_SPROUTS).strength(0.3f)));
     public static final Block TENEBRIS_SAPLING = registerBlock("tenebris_bud", properties ->
             new SaplingBlock(ModTreeGrowers.TENEBRIS, properties.mapColor(MapColor.COLOR_PURPLE).noCollision().lightLevel(state -> 7)
                     .instabreak().sound(SoundType.NETHER_SPROUTS).pushReaction(PushReaction.DESTROY)));

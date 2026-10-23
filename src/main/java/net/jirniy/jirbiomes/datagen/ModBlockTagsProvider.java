@@ -75,6 +75,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.PROTOTAXITE_LOG))
                 .add(ModBlocks.getKey(ModBlocks.PROTOTAXITE_SAPLING));
         tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_PILEUS))
                 .add(ModBlocks.getKey(ModBlocks.SEA_URCHIN))
                 .add(ModBlocks.getKey(ModBlocks.STRAW_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.PACKED_STRAW, ModBlocks.PACKED_STRAW_SLAB, ModBlocks.PACKED_STRAW_STAIRS))
@@ -82,6 +83,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.getKey(ModBlocks.SEA_URCHIN));
         tag(BlockTags.SHEARS_MAJOR_BREAKING_SPEED)
+                .add(ModBlocks.getKey(ModBlocks.TENEBRIS_PILEUS))
                 .add(ModBlocks.getKey(ModBlocks.SEA_URCHIN));
 
         tag(BlockTags.NEEDS_STONE_TOOL)

@@ -220,6 +220,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.TENEBRIS_SAPLING);
         dropPottedContents(ModBlocks.POTTED_TENEBRIS_SAPLING);
         add(ModBlocks.TENEBRIS_LEAVES, createShearsOrSilkTouchOnlyDrop(ModBlocks.TENEBRIS_LEAVES));
+        add(ModBlocks.TENEBRIS_PILEUS, createShearsOrSilkTouchOnlyDrop(ModBlocks.TENEBRIS_PILEUS));
 
         dropSelf(ModBlocks.PROTOTAXITE_LOG);
         dropSelf(ModBlocks.PROTOTAXITE_SAPLING);

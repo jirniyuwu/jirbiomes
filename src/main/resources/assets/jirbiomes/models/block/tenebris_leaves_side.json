@@ -3,7 +3,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"leaf": "jirbiomes:block/tenebris_leaves",
-		"particle": "jirbiomes:block/tenebris_leaves"
+		"particle": "jirbiomes:block/tenebris_leaves_particle"
 	},
 	"elements": [
 		{

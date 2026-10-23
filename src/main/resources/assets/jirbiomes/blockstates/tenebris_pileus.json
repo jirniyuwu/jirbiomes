@@ -1,0 +1,72 @@
+{
+  "variants": {
+    "shape=full": [
+      {
+        "model": "jirbiomes:block/tenebris_pileus"
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus",
+        "y": 270
+      }
+    ],
+    "shape=hanging": [
+      {
+        "model": "jirbiomes:block/tenebris_pileus_hanging"
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_hanging",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_hanging",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_hanging",
+        "y": 270
+      }
+    ],
+    "shape=supporting": [
+      {
+        "model": "jirbiomes:block/tenebris_pileus_supporting"
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_supporting",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_supporting",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_supporting",
+        "y": 270
+      }
+    ],
+    "shape=grounded": [
+      {
+        "model": "jirbiomes:block/tenebris_pileus_grounded"
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_grounded",
+        "y": 90
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_grounded",
+        "y": 180
+      },
+      {
+        "model": "jirbiomes:block/tenebris_pileus_grounded",
+        "y": 270
+      }
+    ]
+  }
+}
