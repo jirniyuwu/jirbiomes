@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes;
 
 import net.fabricmc.api.ModInitializer;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.block.ModFluids;
 import net.jirniy.jirbiomes.effect.ModEffects;
 import net.jirniy.jirbiomes.entity.ModEntities;
 import net.jirniy.jirbiomes.entity.ModModelLayers;
@@ -33,6 +34,7 @@ public class JirniyBiomes implements ModInitializer, TerraBlenderApi {
 		ModTreeDecoratorTypes.register();
 		ModBlockStateProviderType.register();
 
+		ModFluids.register();
 		ModItems.register();
 		ModBlocks.register();
 		ModCreativeModeTabs.register();

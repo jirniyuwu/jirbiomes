@@ -244,6 +244,11 @@
   "item.jirbiomes.prickly_pear": "Опунция",
   "block.jirbiomes.prickly_pear_seed": "Росток опунции",
 
+  "item.jirbiomes.tarr_bucket": "Ведро Деготи",
+  "block.jirbiomes.solid_tarr": "Твёрдая Дёготь",
+  "fluid.jirbiomes.flowing_tarr": "Дёготь",
+  "fluid.jirbiomes.tarr": "Дёготь",
+
   "effect.jirbiomes.flaming": "Воспламенение",
 
   "biome.jirbiomes.salt_deposit": "Соляное отложение",

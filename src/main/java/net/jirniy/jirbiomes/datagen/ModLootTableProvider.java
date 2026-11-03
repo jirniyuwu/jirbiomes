@@ -36,6 +36,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
         dropSelf(ModBlocks.IRON_GRATE);
+        dropSelf(ModBlocks.SOLID_TARR);
 
         dropSelf(ModBlocks.DRIED_DIRT);
         dropSelf(ModBlocks.COARSE_DRIED_DIRT);

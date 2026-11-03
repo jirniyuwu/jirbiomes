@@ -84,6 +84,8 @@ public class RegistryModifications {
             final int BASE_TIME = context.baseSmeltTime();
             builder.add(ModItems.DRIED_FIBERS, BASE_TIME/6);
             builder.add(ModBlocks.STRAW_BLOCK, BASE_TIME);
+            builder.add(ModItems.TARR_BUCKET, BASE_TIME*160);
+            builder.add(ModBlocks.SOLID_TARR, BASE_TIME*8);
         });
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CATTAIL, 40, 100);
@@ -94,6 +96,8 @@ public class RegistryModifications {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW, 20, 40);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_SLAB, 20, 40);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_STAIRS, 20, 40);
+
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SOLID_TARR, 80, 2);
 
         Registry<Block> blockRegistry = BuiltInRegistries.BLOCK;
         blockRegistry.addAlias(JirniyBiomes.id("icicle"), JirniyBiomes.id("thick_icicle"));

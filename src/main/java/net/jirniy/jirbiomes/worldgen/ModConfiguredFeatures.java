@@ -32,6 +32,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.LakeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
@@ -124,6 +125,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> TENEBRIS_BUD = registryKey("tenebris_bud");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CEILING_TENEBRIS_PATCH = registryKey("ceiling_tenebris_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SALT = registryKey("salt");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TARR_LAKE = registryKey("tarr_lake");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -645,6 +647,18 @@ public class ModConfiguredFeatures {
         register(context, BRIMGRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.BRIMGRASS)));
         register(context, TENEBRIS_BUD, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.TENEBRIS_SAPLING)));
         register(context, SALT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.SALT_BLOCK)));
+
+        register(context, TARR_LAKE, Feature.LAKE, new LakeFeature.Configuration(
+                simpleState(ModBlocks.TARR),
+                new WeightedStateProvider(
+                        WeightedList.<BlockState>builder()
+                                .add(Blocks.SMOOTH_BASALT.defaultBlockState(), 4)
+                                .add(Blocks.COBBLED_DEEPSLATE.defaultBlockState(), 3)
+                                .add(Blocks.DEEPSLATE.defaultBlockState(), 1)),
+                BlockPredicate.alwaysTrue(),
+                BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE)),
+                BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE))
+        ));
 
         register(context, NETHERSTONE, Feature.ORE, new OreConfiguration(
                 List.of(OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), ModBlocks.NETHERSTONE.defaultBlockState())), 32));

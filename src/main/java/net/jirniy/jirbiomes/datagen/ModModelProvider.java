@@ -25,6 +25,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.createTrivialCube(ModBlocks.IRON_GRATE);
+        blockModelGenerators.createTrivialCube(ModBlocks.SOLID_TARR);
 
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_SAND);
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_RED_SAND);
@@ -216,6 +217,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.CRACKED_COCONUT, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.ALGAE_BUCKET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.TARR_BUCKET, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModBlocks.TENEBRIS_LEAVES.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.SALT_LAMP.asItem(), ModelTemplates.FLAT_ITEM);

@@ -17,6 +17,7 @@ public class JirniyBiomesDataGenerator implements DataGeneratorEntrypoint {
 
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModBlockTagsProvider::new);
+		pack.addProvider(ModFluidTagsProvider::new);
 		pack.addProvider(ModItemTagsProvider::new);
 		pack.addProvider(ModEntityTagsProvider::new);
 		pack.addProvider(ModLootTableProvider::new);

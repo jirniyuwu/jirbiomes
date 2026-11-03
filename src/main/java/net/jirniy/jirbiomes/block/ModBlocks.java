@@ -680,6 +680,14 @@ public class ModBlocks {
     public static final Block POTTED_BARREL_CACTUS = registerBlock("potted_barrel_cactus", false, properties ->
             new FlowerPotBlock(ModBlocks.SMALL_BARREL_CACTUS, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
+    public static final Block SOLID_TARR = registerBlock("solid_tarr", properties ->
+            new Block(properties.strength(1.4f).requiresCorrectToolForDrops().mapColor(MapColor.COLOR_BLACK)
+                    .ignitedByLava().sound(SoundType.NETHERRACK)));
+    public static final Block TARR = registerBlock("tarr", false, properties ->
+            new LiquidBlock(ModFluids.FLOWING_TARR, properties.mapColor(MapColor.COLOR_BLACK).replaceable().noCollision()
+                    .randomTicks().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable()
+                    .liquid().sound(SoundType.EMPTY)));
+
     private static Block registerBlock(String name, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));
         if (addItem) {

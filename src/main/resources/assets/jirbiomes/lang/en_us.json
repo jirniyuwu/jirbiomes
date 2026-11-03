@@ -244,6 +244,11 @@
   "item.jirbiomes.prickly_pear": "Prickly Pear",
   "block.jirbiomes.prickly_pear_seed": "Prickly Pear Seed",
 
+  "item.jirbiomes.tarr_bucket": "Tarr Bucket",
+  "block.jirbiomes.solid_tarr": "Solid Tarr",
+  "fluid.jirbiomes.flowing_tarr": "Tarr",
+  "fluid.jirbiomes.tarr": "Tarr",
+
   "effect.jirbiomes.flaming": "Flaming",
 
   "biome.jirbiomes.salt_deposit": "Salt Deposit",

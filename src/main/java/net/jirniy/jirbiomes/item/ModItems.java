@@ -3,6 +3,7 @@ package net.jirniy.jirbiomes.item;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.block.ModFluids;
 import net.jirniy.jirbiomes.entity.ModEntities;
 import net.jirniy.jirbiomes.item.custom.PlaceWaterloggedBucketItem;
 import net.jirniy.jirbiomes.item.food.ModFood;
@@ -38,6 +39,8 @@ public class ModItems {
     public static final Item ALGAE_BUCKET = registerItem("algae_bucket", properties ->
             new PlaceWaterloggedBucketItem(ModBlocks.ALGAE, SoundEvents.BUCKET_EMPTY,
                     properties.stacksTo(1).usingConvertsTo(Items.BUCKET).useItemDescriptionPrefix()));
+    public static final Item TARR_BUCKET = registerItem("tarr_bucket", properties ->
+            new BucketItem(ModFluids.TARR, properties.stacksTo(1).craftRemainder(Items.BUCKET).useItemDescriptionPrefix()));
 
     public static final Item GINKGO_SIGN = registerItem("ginkgo_sign", properties ->
             new SignItem(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));

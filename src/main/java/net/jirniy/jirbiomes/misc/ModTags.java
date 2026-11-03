@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 public class ModTags {
     public static class Blocks {
@@ -52,6 +53,14 @@ public class ModTags {
 
         private static TagKey<Item> create(final String name) {
             return TagKey.create(Registries.ITEM, JirniyBiomes.id(name));
+        }
+    }
+
+    public static class Fluids {
+        public static final TagKey<Fluid> TARR = create("tarr");
+
+        private static TagKey<Fluid> create(final String name) {
+            return TagKey.create(Registries.FLUID, JirniyBiomes.id(name));
         }
     }
 }

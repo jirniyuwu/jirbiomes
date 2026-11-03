@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.jirniy.jirbiomes.misc.ModTags;
@@ -149,6 +150,10 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.getKey(ModItems.APPLE_SEEDS));
+
+        tag(ConventionalItemTags.BUCKETS)
+                .add(ModItems.getKey(ModItems.ALGAE_BUCKET))
+                .add(ModItems.getKey(ModItems.TARR_BUCKET));
 
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_BOUNCY);
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_EXPLOSIVE);

@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.misc.CommonTag;
+import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -11,6 +12,13 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 public class ModBiomeModifications {
     public static void register() {
         JirniyBiomes.LOGGER.info("registering biome modifications for " + JirniyBiomes.MOD_ID);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DEEP_DARK),
+                GenerationStep.Decoration.LAKES, ModPlacedFeatures.TARR_LAKE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_MOUNTAIN),
+                GenerationStep.Decoration.LAKES, ModPlacedFeatures.TARR_LAKE_RARE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.PROTOTAXITE_FOREST),
+                GenerationStep.Decoration.LAKES, ModPlacedFeatures.TARR_LAKE_RARE_PLACED);
 
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_SAVANNA),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GINKGO_TREE_PLACED);

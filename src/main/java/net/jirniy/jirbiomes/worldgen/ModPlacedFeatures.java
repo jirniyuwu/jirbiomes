@@ -91,6 +91,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> TENEBRIS_CEILING_PLACED = registryKey("tenebris_ceiling");
 
     public static final ResourceKey<PlacedFeature> SALT_PLACED = registryKey("sea_salt");
+    public static final ResourceKey<PlacedFeature> TARR_LAKE_PLACED = registryKey("tarr_lake");
+    public static final ResourceKey<PlacedFeature> TARR_LAKE_RARE_PLACED = registryKey("tarr_lake_rare");
 
     public static final ResourceKey<PlacedFeature> POTENT_MAGMA_LAYER = registryKey("potent_magma_layer");
     public static final ResourceKey<PlacedFeature> POTENT_MAGMA_ORE = registryKey("potent_magma_ore");
@@ -430,6 +432,15 @@ public class ModPlacedFeatures {
                 NoiseThresholdCountPlacement.of(0.4f, 40, 200),
                 RandomOffsetPlacement.of(ConstantInt.of(0), UniformInt.of(-2, -1)), InSquarePlacement.spread(), BiomeFilter.biome(),
                 BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER, Fluids.FLOWING_WATER)));
+
+        register(context, TARR_LAKE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.TARR_LAKE),
+                NoiseThresholdCountPlacement.of(0.4f, 1, 3), InSquarePlacement.spread(),
+                HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(80), 2)),
+                RarityFilter.onAverageOnceEvery(4), BiomeFilter.biome());
+        register(context, TARR_LAKE_RARE_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.TARR_LAKE),
+                NoiseThresholdCountPlacement.of(0.5f, 0, 2), InSquarePlacement.spread(),
+                HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(100), 2)),
+                RarityFilter.onAverageOnceEvery(6), BiomeFilter.biome());
 
         register(context, POTENT_MAGMA_ORE, configuredFeatures.getOrThrow(ModConfiguredFeatures.POTENT_MAGMA_ORE),
                 CountPlacement.of(6), HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(60), 2)),
