@@ -143,7 +143,7 @@ public class ModBlocks {
     public static final Block PERMAFROST_BLOCK = registerBlock("permafrost_block", properties ->
             new PermafrostBlock(properties.mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).friction(0.986f)
                     .sound(SoundType.GLASS).requiresCorrectToolForDrops().strength(4.5F, 7.0F).randomTicks()));
-    public static final Block ICICLE = registerBlock("icicle", properties ->
+    public static final Block THICK_ICICLE = registerBlock("thick_icicle", properties ->
             new IcicleBlock(PERMAFROST_BLOCK.defaultBlockState(), properties.mapColor(MapColor.COLOR_LIGHT_BLUE)
                     .forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM).noOcclusion()
                     .sound(SoundType.GLASS).randomTicks().strength(0.5F, 0.2F)
@@ -152,21 +152,21 @@ public class ModBlocks {
 
     public static final Block PACKED_SNOW = registerBlock("packed_snow", properties ->
             new Block(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.SNOW)));
-    public static final Block POLISHED_SNOW = registerBlock("polished_snow", properties ->
+    public static final Block POLISHED_SNOW = registerBlock("polished_packed_snow", properties ->
             new Block(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
-    public static final Block POLISHED_SNOW_STAIRS = registerBlock("polished_snow_stairs", properties ->
+    public static final Block POLISHED_SNOW_STAIRS = registerBlock("polished_packed_snow_stairs", properties ->
             new StairBlock(POLISHED_SNOW.defaultBlockState(), properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
-    public static final Block POLISHED_SNOW_SLAB = registerBlock("polished_snow_slab", properties ->
+    public static final Block POLISHED_SNOW_SLAB = registerBlock("polished_packed_snow_slab", properties ->
             new SlabBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
-    public static final Block POLISHED_SNOW_WALL = registerBlock("polished_snow_wall", properties ->
+    public static final Block POLISHED_SNOW_WALL = registerBlock("polished_packed_snow_wall", properties ->
             new WallBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
-    public static final Block SNOW_BRICKS = registerBlock("snow_bricks", properties ->
+    public static final Block PACKED_SNOW_BRICKS = registerBlock("packed_snow_bricks", properties ->
             new Block(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
-    public static final Block SNOW_BRICKS_STAIRS = registerBlock("snow_bricks_stairs", properties ->
-            new StairBlock(SNOW_BRICKS.defaultBlockState(), properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
-    public static final Block SNOW_BRICKS_SLAB = registerBlock("snow_bricks_slab", properties ->
+    public static final Block PACKED_SNOW_BRICKS_STAIRS = registerBlock("packed_snow_bricks_stairs", properties ->
+            new StairBlock(PACKED_SNOW_BRICKS.defaultBlockState(), properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
+    public static final Block PACKED_SNOW_BRICKS_SLAB = registerBlock("packed_snow_bricks_slab", properties ->
             new SlabBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
-    public static final Block SNOW_BRICKS_WALL = registerBlock("snow_bricks_wall", properties ->
+    public static final Block PACKED_SNOW_BRICKS_WALL = registerBlock("packed_snow_bricks_wall", properties ->
             new WallBlock(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.7F).sound(SoundType.SNOW)));
 
     public static final Block FROSTED_STONE = registerBlock("frosted_stone", properties ->

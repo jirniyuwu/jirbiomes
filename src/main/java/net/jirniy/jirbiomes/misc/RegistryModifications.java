@@ -6,13 +6,17 @@ import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.client.color.block.BlockTintSources;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
 
 public class RegistryModifications {
     public static void register() {
-        JirniyBiomes.LOGGER.info("registering block registry modifications for " + JirniyBiomes.MOD_ID);
+        JirniyBiomes.LOGGER.info("registering registry modifications for " + JirniyBiomes.MOD_ID);
 
         TillableBlockRegistry.register(ModBlocks.DRIED_DIRT,
                 itemUsageContext -> !itemUsageContext.isSecondaryUseActive(),
@@ -90,5 +94,27 @@ public class RegistryModifications {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW, 20, 40);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_SLAB, 20, 40);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_STAIRS, 20, 40);
+
+        Registry<Block> blockRegistry = BuiltInRegistries.BLOCK;
+        blockRegistry.addAlias(JirniyBiomes.id("icicle"), JirniyBiomes.id("thick_icicle"));
+        blockRegistry.addAlias(JirniyBiomes.id("polished_snow"), JirniyBiomes.id("polished_packed_snow"));
+        blockRegistry.addAlias(JirniyBiomes.id("polished_snow_stairs"), JirniyBiomes.id("polished_packed_snow_stairs"));
+        blockRegistry.addAlias(JirniyBiomes.id("polished_snow_slab"), JirniyBiomes.id("polished_packed_snow_slab"));
+        blockRegistry.addAlias(JirniyBiomes.id("polished_snow_wall"), JirniyBiomes.id("polished_packed_snow_wall"));
+        blockRegistry.addAlias(JirniyBiomes.id("snow_bricks"), JirniyBiomes.id("packed_snow_bricks"));
+        blockRegistry.addAlias(JirniyBiomes.id("snow_bricks_stairs"), JirniyBiomes.id("packed_snow_bricks_stairs"));
+        blockRegistry.addAlias(JirniyBiomes.id("snow_bricks_slab"), JirniyBiomes.id("packed_snow_bricks_slab"));
+        blockRegistry.addAlias(JirniyBiomes.id("snow_bricks_wall"), JirniyBiomes.id("packed_snow_bricks_wall"));
+
+        Registry<Item> itemRegistry = BuiltInRegistries.ITEM;
+        itemRegistry.addAlias(JirniyBiomes.id("icicle"), JirniyBiomes.id("thick_icicle"));
+        itemRegistry.addAlias(JirniyBiomes.id("polished_snow"), JirniyBiomes.id("polished_packed_snow"));
+        itemRegistry.addAlias(JirniyBiomes.id("polished_snow_stairs"), JirniyBiomes.id("polished_packed_snow_stairs"));
+        itemRegistry.addAlias(JirniyBiomes.id("polished_snow_slab"), JirniyBiomes.id("polished_packed_snow_slab"));
+        itemRegistry.addAlias(JirniyBiomes.id("polished_snow_wall"), JirniyBiomes.id("polished_packed_snow_wall"));
+        itemRegistry.addAlias(JirniyBiomes.id("snow_bricks"), JirniyBiomes.id("packed_snow_bricks"));
+        itemRegistry.addAlias(JirniyBiomes.id("snow_bricks_stairs"), JirniyBiomes.id("packed_snow_bricks_stairs"));
+        itemRegistry.addAlias(JirniyBiomes.id("snow_bricks_slab"), JirniyBiomes.id("packed_snow_bricks_slab"));
+        itemRegistry.addAlias(JirniyBiomes.id("snow_bricks_wall"), JirniyBiomes.id("packed_snow_bricks_wall"));
     }
 }

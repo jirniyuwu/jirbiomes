@@ -145,7 +145,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.WALLS)
                 .add(ModItems.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL))
                 .add(ModItems.getKeys(ModBlocks.FROST_BRICKS_WALL, ModBlocks.POLISHED_FROST_WALL))
-                .add(ModItems.getKeys(ModBlocks.SNOW_BRICKS_WALL, ModBlocks.POLISHED_SNOW_WALL));
+                .add(ModItems.getKeys(ModBlocks.PACKED_SNOW_BRICKS_WALL, ModBlocks.POLISHED_SNOW_WALL));
 
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.getKey(ModItems.APPLE_SEEDS));
@@ -158,7 +158,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.getKey(ModBlocks.PACKED_STRAW));
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_SLIDING)
                 .add(ModItems.getKey(ModBlocks.PERMAFROST_BLOCK))
-                .add(ModItems.getKeys(ModBlocks.SNOW_BRICKS, ModBlocks.PACKED_SNOW, ModBlocks.POLISHED_SNOW));
+                .add(ModItems.getKeys(ModBlocks.PACKED_SNOW_BRICKS, ModBlocks.PACKED_SNOW, ModBlocks.POLISHED_SNOW));
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE);
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HOT)
                 .add(ModItems.getKey(ModBlocks.IGNITED_BRIMSTONE))

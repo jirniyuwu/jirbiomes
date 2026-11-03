@@ -102,7 +102,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         add(ModBlocks.BRIMSTONE_GOLD_ORE, createOreDrop(ModBlocks.BRIMSTONE_GOLD_ORE, Items.RAW_GOLD));
 
-        dropWhenSilkTouch(ModBlocks.ICICLE);
+        dropWhenSilkTouch(ModBlocks.THICK_ICICLE);
         dropWhenSilkTouch(ModBlocks.PERMAFROST_BLOCK);
 
         add(ModBlocks.FROSTED_STONE, silkTouchOrElseDrop(ModBlocks.FROSTED_STONE, Blocks.COBBLESTONE));
@@ -122,10 +122,10 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.SNOWY_BUSH, this::createShearsOrSilkTouchOnlyDrop);
         dropPottedContents(ModBlocks.POTTED_FROZEN_GRASS);
         dropSelf(ModBlocks.PACKED_SNOW);
-        dropSelf(ModBlocks.SNOW_BRICKS);
-        dropSelf(ModBlocks.SNOW_BRICKS_STAIRS);
-        add(ModBlocks.SNOW_BRICKS_SLAB, this::createSlabItemTable);
-        dropSelf(ModBlocks.SNOW_BRICKS_WALL);
+        dropSelf(ModBlocks.PACKED_SNOW_BRICKS);
+        dropSelf(ModBlocks.PACKED_SNOW_BRICKS_STAIRS);
+        add(ModBlocks.PACKED_SNOW_BRICKS_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.PACKED_SNOW_BRICKS_WALL);
         dropSelf(ModBlocks.POLISHED_SNOW);
         dropSelf(ModBlocks.POLISHED_SNOW_STAIRS);
         add(ModBlocks.POLISHED_SNOW_SLAB, this::createSlabItemTable);

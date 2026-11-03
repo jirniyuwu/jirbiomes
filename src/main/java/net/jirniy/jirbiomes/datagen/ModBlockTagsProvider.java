@@ -46,7 +46,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.FROST_BRICKS, ModBlocks.FROST_BRICKS_STAIRS, ModBlocks.FROST_BRICKS_SLAB, ModBlocks.FROST_BRICKS_WALL))
                 .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_SNOW, ModBlocks.POLISHED_SNOW_STAIRS, ModBlocks.POLISHED_SNOW_SLAB, ModBlocks.POLISHED_SNOW_WALL))
-                .add(ModBlocks.getKeys(ModBlocks.SNOW_BRICKS, ModBlocks.SNOW_BRICKS_STAIRS, ModBlocks.SNOW_BRICKS_SLAB, ModBlocks.SNOW_BRICKS_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.PACKED_SNOW_BRICKS, ModBlocks.PACKED_SNOW_BRICKS_STAIRS, ModBlocks.PACKED_SNOW_BRICKS_SLAB, ModBlocks.PACKED_SNOW_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.SEASHELL_BLOCK, ModBlocks.SUSPICIOUS_SEASHELLS))
                 .add(ModBlocks.getKeys(ModBlocks.SEASHELL_BRICKS, ModBlocks.SEASHELL_BRICKS_STAIRS, ModBlocks.SEASHELL_BRICKS_SLAB, ModBlocks.SEASHELL_BRICKS_WALL))
                 .add(ModBlocks.getKey(ModBlocks.SALT_LAMP))
@@ -210,7 +210,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_STAIRS))
-                .add(ModBlocks.getKeys(ModBlocks.SNOW_BRICKS_STAIRS, ModBlocks.POLISHED_SNOW_STAIRS))
+                .add(ModBlocks.getKeys(ModBlocks.PACKED_SNOW_BRICKS_STAIRS, ModBlocks.POLISHED_SNOW_STAIRS))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS)).add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.FROSTED_STONE_STAIRS, ModBlocks.POLISHED_FROST_STAIRS, ModBlocks.FROST_BRICKS))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE_STAIRS, ModBlocks.POLISHED_NETHERSTONE_STAIRS, ModBlocks.NETHERSTONE_BRICKS_STAIRS))
@@ -219,14 +219,14 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.SLABS)
                 .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_SLAB, ModBlocks.POLISHED_BRIMSTONE_SLAB, ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB))
-                .add(ModBlocks.getKeys(ModBlocks.SNOW_BRICKS_SLAB, ModBlocks.POLISHED_SNOW_SLAB))
+                .add(ModBlocks.getKeys(ModBlocks.PACKED_SNOW_BRICKS_SLAB, ModBlocks.POLISHED_SNOW_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.FROSTED_STONE_SLAB, ModBlocks.POLISHED_FROST_SLAB, ModBlocks.FROST_BRICKS_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE_SLAB, ModBlocks.POLISHED_NETHERSTONE_SLAB, ModBlocks.NETHERSTONE_BRICKS_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BLOCK_SLAB, ModBlocks.POLISHED_SALT_SLAB, ModBlocks.SALT_BRICKS_SLAB))
                 .add(ModBlocks.getKey(ModBlocks.SEASHELL_BRICKS_SLAB));
         tag(BlockTags.WALLS)
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
-                .add(ModBlocks.getKeys(ModBlocks.SNOW_BRICKS_WALL, ModBlocks.POLISHED_SNOW_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.PACKED_SNOW_BRICKS_WALL, ModBlocks.POLISHED_SNOW_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.FROSTED_STONE_WALL, ModBlocks.FROST_BRICKS_WALL, ModBlocks.POLISHED_FROST_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE_WALL, ModBlocks.POLISHED_NETHERSTONE_WALL, ModBlocks.NETHERSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BLOCK_WALL, ModBlocks.POLISHED_SALT_WALL, ModBlocks.SALT_BRICKS_WALL))
@@ -333,7 +333,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.LOTUS_FLOWER))
                 .add(ModBlocks.getKey(ModBlocks.TENEBRIS_SAPLING));
         tag(BlockTags.SPELEOTHEMS)
-                .add(ModBlocks.getKey(ModBlocks.ICICLE));
+                .add(ModBlocks.getKey(ModBlocks.THICK_ICICLE));
         tag(BlockTags.CANNOT_SUPPORT_SEAGRASS)
                 .add(ModBlocks.getKey(ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK));
@@ -412,7 +412,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.SUPPORTS_COCOA)
                 .addOptionalTag(ModTags.Blocks.PALM_LOGS);
         tag(ModTags.Blocks.FALLING_STALACTITE_NO_DROP)
-                .add(ModBlocks.getKey(ModBlocks.ICICLE));
+                .add(ModBlocks.getKey(ModBlocks.THICK_ICICLE));
 
         tag(BlockTags.GOLD_ORES)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE));

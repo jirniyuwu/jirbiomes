@@ -39,7 +39,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.WETLAND);
 
         blockModelGenerators.createTrivialBlock(ModBlocks.PERMAFROST_BLOCK, TexturedModel.COLUMN_WITH_WALL);
-        blockModelGenerators.createSpeleothem(ModBlocks.ICICLE);
+        blockModelGenerators.createSpeleothem(ModBlocks.THICK_ICICLE);
         blockModelGenerators.createFlowerBed(ModBlocks.SMALL_MUSHROOMS);
 
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.POTENT_MAGMA_BLOCK,
@@ -128,10 +128,10 @@ public class ModModelProvider extends FabricModelProvider {
                 .wall(ModBlocks.POLISHED_SNOW_WALL)
                 .stairs(ModBlocks.POLISHED_SNOW_STAIRS);
         createSlabWithSides(ModBlocks.POLISHED_SNOW, ModBlocks.POLISHED_SNOW_SLAB, blockModelGenerators);
-        blockModelGenerators.family(ModBlocks.SNOW_BRICKS)
-                .wall(ModBlocks.SNOW_BRICKS_WALL)
-                .stairs(ModBlocks.SNOW_BRICKS_STAIRS)
-                .slab(ModBlocks.SNOW_BRICKS_SLAB);
+        blockModelGenerators.family(ModBlocks.PACKED_SNOW_BRICKS)
+                .wall(ModBlocks.PACKED_SNOW_BRICKS_WALL)
+                .stairs(ModBlocks.PACKED_SNOW_BRICKS_STAIRS)
+                .slab(ModBlocks.PACKED_SNOW_BRICKS_SLAB);
 
         blockModelGenerators.family(ModBlocks.GINKGO_PLANKS)
                 .stairs(ModBlocks.GINKGO_STAIRS)
@@ -219,7 +219,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModBlocks.TENEBRIS_LEAVES.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.SALT_LAMP.asItem(), ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModBlocks.ICICLE.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModBlocks.THICK_ICICLE.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.SHARP_RIBS.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.SEA_URCHIN.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.HANGING_MUSHROOMS.asItem(), ModelTemplates.FLAT_ITEM);

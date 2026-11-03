@@ -360,7 +360,7 @@ public class ModConfiguredFeatures {
 
         // copied from dripstone features
         register(context, ICICLE_CLUSTER, Feature.SPELEOTHEM_CLUSTER, new SpeleothemClusterConfiguration(
-                ModBlocks.PERMAFROST_BLOCK.defaultBlockState(), ModBlocks.ICICLE.defaultBlockState(),
+                ModBlocks.PERMAFROST_BLOCK.defaultBlockState(), ModBlocks.THICK_ICICLE.defaultBlockState(),
                 blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE), 12, UniformInt.of(3, 6), UniformInt.of(2, 8),
                 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F),
                 ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F),
@@ -373,7 +373,7 @@ public class ModConfiguredFeatures {
         FeatureUtils.register(context, POINTED_ICICLE, Feature.SIMPLE_RANDOM_SELECTOR, new CompositeFeatureConfiguration(
                 HolderSet.direct(PlacementUtils.inlinePlaced(Feature.SPELEOTHEM,
                         new SpeleothemConfiguration(ModBlocks.PERMAFROST_BLOCK.defaultBlockState(),
-                                ModBlocks.ICICLE.defaultBlockState(),
+                                ModBlocks.THICK_ICICLE.defaultBlockState(),
                                 blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE),
                                 0.2F, 0.7F,
                                 0.5F, 0.5F),
@@ -382,7 +382,7 @@ public class ModConfiguredFeatures {
                                 RandomOffsetPlacement.vertical(ConstantInt.of(1))),
                         PlacementUtils.inlinePlaced(Feature.SPELEOTHEM,
                                 new SpeleothemConfiguration(ModBlocks.PERMAFROST_BLOCK.defaultBlockState(),
-                                        ModBlocks.ICICLE.defaultBlockState(), blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE),
+                                        ModBlocks.THICK_ICICLE.defaultBlockState(), blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE),
                                         0.2F, 0.7F,
                                         0.5F, 0.5F),
                                                 EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(),
