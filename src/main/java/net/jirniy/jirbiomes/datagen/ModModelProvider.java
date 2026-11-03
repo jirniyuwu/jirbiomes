@@ -64,8 +64,8 @@ public class ModModelProvider extends FabricModelProvider {
                 .slab(ModBlocks.CRACKED_BRIMSTONE_BRICKS_SLAB);
         blockModelGenerators.family(ModBlocks.POLISHED_BRIMSTONE)
                 .wall(ModBlocks.POLISHED_BRIMSTONE_WALL)
-                .stairs(ModBlocks.POLISHED_BRIMSTONE_STAIRS)
-                .slab(ModBlocks.POLISHED_BRIMSTONE_SLAB);
+                .stairs(ModBlocks.POLISHED_BRIMSTONE_STAIRS);
+        createSlabWithSides(ModBlocks.POLISHED_BRIMSTONE, ModBlocks.POLISHED_BRIMSTONE_SLAB, blockModelGenerators);
         blockModelGenerators.family(ModBlocks.BRIMSTONE_BRICKS)
                 .wall(ModBlocks.BRIMSTONE_BRICKS_WALL)
                 .stairs(ModBlocks.BRIMSTONE_BRICKS_STAIRS)
@@ -82,8 +82,8 @@ public class ModModelProvider extends FabricModelProvider {
                 .slab(ModBlocks.NETHERSTONE_SLAB);
         blockModelGenerators.family(ModBlocks.POLISHED_NETHERSTONE)
                 .wall(ModBlocks.POLISHED_NETHERSTONE_WALL)
-                .stairs(ModBlocks.POLISHED_NETHERSTONE_STAIRS)
-                .slab(ModBlocks.POLISHED_NETHERSTONE_SLAB);
+                .stairs(ModBlocks.POLISHED_NETHERSTONE_STAIRS);
+        createSlabWithSides(ModBlocks.POLISHED_NETHERSTONE, ModBlocks.POLISHED_NETHERSTONE_SLAB, blockModelGenerators);
         blockModelGenerators.family(ModBlocks.NETHERSTONE_BRICKS)
                 .wall(ModBlocks.NETHERSTONE_BRICKS_WALL)
                 .stairs(ModBlocks.NETHERSTONE_BRICKS_STAIRS)
@@ -102,8 +102,8 @@ public class ModModelProvider extends FabricModelProvider {
                 .slab(ModBlocks.SALT_BLOCK_SLAB);
         blockModelGenerators.family(ModBlocks.POLISHED_SALT)
                 .wall(ModBlocks.POLISHED_SALT_WALL)
-                .stairs(ModBlocks.POLISHED_SALT_STAIRS)
-                .slab(ModBlocks.POLISHED_SALT_SLAB);
+                .stairs(ModBlocks.POLISHED_SALT_STAIRS);
+        createSlabWithSides(ModBlocks.POLISHED_SALT, ModBlocks.POLISHED_SALT_SLAB, blockModelGenerators);
         blockModelGenerators.family(ModBlocks.SALT_BRICKS)
                 .wall(ModBlocks.SALT_BRICKS_WALL)
                 .stairs(ModBlocks.SALT_BRICKS_STAIRS)
@@ -115,8 +115,8 @@ public class ModModelProvider extends FabricModelProvider {
                 .slab(ModBlocks.FROSTED_STONE_SLAB);
         blockModelGenerators.family(ModBlocks.POLISHED_FROST)
                 .wall(ModBlocks.POLISHED_FROST_WALL)
-                .stairs(ModBlocks.POLISHED_FROST_STAIRS)
-                .slab(ModBlocks.POLISHED_FROST_SLAB);
+                .stairs(ModBlocks.POLISHED_FROST_STAIRS);
+        createSlabWithSides(ModBlocks.POLISHED_FROST, ModBlocks.POLISHED_FROST_SLAB, blockModelGenerators);
         blockModelGenerators.family(ModBlocks.FROST_BRICKS)
                 .wall(ModBlocks.FROST_BRICKS_WALL)
                 .stairs(ModBlocks.FROST_BRICKS_STAIRS)
@@ -126,8 +126,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.PACKED_SNOW);
         blockModelGenerators.family(ModBlocks.POLISHED_SNOW)
                 .wall(ModBlocks.POLISHED_SNOW_WALL)
-                .stairs(ModBlocks.POLISHED_SNOW_STAIRS)
-                .slab(ModBlocks.POLISHED_SNOW_SLAB);
+                .stairs(ModBlocks.POLISHED_SNOW_STAIRS);
+        createSlabWithSides(ModBlocks.POLISHED_SNOW, ModBlocks.POLISHED_SNOW_SLAB, blockModelGenerators);
         blockModelGenerators.family(ModBlocks.SNOW_BRICKS)
                 .wall(ModBlocks.SNOW_BRICKS_WALL)
                 .stairs(ModBlocks.SNOW_BRICKS_STAIRS)
@@ -304,5 +304,17 @@ public class ModModelProvider extends FabricModelProvider {
                         .select(Direction.NORTH, BlockModelGenerators.Y_ROT_180)
                         .select(Direction.EAST, BlockModelGenerators.Y_ROT_270)));
         generator.registerSimpleFlatItemModel(hangingSign.asItem());
+    }
+    private void createSlabWithSides(Block full, Block slab, BlockModelGenerators generator) {
+        TextureMapping textures = TextureMapping.cube(full);
+        TextureMapping slabTextures = TextureMapping.column(
+                TextureMapping.getBlockTexture(slab, "_side"), textures.get(TextureSlot.TOP)
+        );
+        MultiVariant bottom = BlockModelGenerators.plainVariant(ModelTemplates.SLAB_BOTTOM.create(slab, slabTextures, generator.modelOutput));
+        MultiVariant top = BlockModelGenerators.plainVariant(ModelTemplates.SLAB_TOP.create(slab, slabTextures, generator.modelOutput));
+        MultiVariant doubleSlab = BlockModelGenerators.plainVariant(
+                ModelTemplates.CUBE_COLUMN.createWithOverride(slab, "_double", slabTextures, generator.modelOutput)
+        );
+        generator.blockStateOutput.accept(BlockModelGenerators.createSlab(slab, bottom, top, doubleSlab));
     }
 }
