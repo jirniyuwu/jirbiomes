@@ -14,6 +14,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public class ModBlocks {
@@ -369,13 +371,16 @@ public class ModBlocks {
                     .strength(0.3F).isValidSpawn((state, blockGetter, blockPos, entityType) -> entityType.fireImmune())
                     .postProcess((state, blockGetter, blockPos) -> blockPos.above()).emissiveRendering(state -> true)));
 
-    public static final Block TARR = registerBlock("tarr", false, properties ->
-            new LiquidBlock(ModFluids.FLOWING_TARR, properties.mapColor(MapColor.COLOR_BLACK).replaceable().noCollision()
-                    .randomTicks().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable()
-                    .liquid().sound(SoundType.EMPTY)));
     public static final Block SOLID_TARR = registerBlock("solid_tarr", properties ->
             new Block(properties.strength(1.4f).requiresCorrectToolForDrops().mapColor(MapColor.COLOR_BLACK)
                     .ignitedByLava().sound(SoundType.NETHERRACK)));
+    public static final Block TARR = registerBlock("tarr", false, properties ->
+            new TarrLiquidBlock(ModFluids.FLOWING_TARR,
+                    Map.of(FluidTags.WATER, SOLID_TARR.defaultBlockState(),
+                        FluidTags.LAVA, Blocks.MAGMA_BLOCK.defaultBlockState()),
+                    properties.mapColor(MapColor.COLOR_BLACK).replaceable().noCollision()
+                            .randomTicks().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable()
+                            .liquid().sound(SoundType.EMPTY)));
     public static final Block SOLID_TARR_STAIRS = registerBlock("solid_tarr_stairs", properties ->
             new StairBlock(SOLID_TARR.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
                     .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));

@@ -1,7 +1,10 @@
 package net.jirniy.jirbiomes.block;
 
+import net.fabricmc.fabric.api.registry.fluid.EntityFluidInteractionRegistry;
+import net.fabricmc.fabric.api.registry.fluid.FluidBehavior;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.fluid.TarrFluid;
+import net.jirniy.jirbiomes.misc.ModTags;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -37,5 +40,11 @@ public class ModFluids {
 
     public static void register() {
         JirniyBiomes.LOGGER.info("registering fluids for " + JirniyBiomes.MOD_ID);
+
+        EntityFluidInteractionRegistry.register(ModTags.Fluids.TARR, FluidBehavior.simple()
+                .allowSwimming(true).allowBoats(false).enableDrowning(true)
+                .movementSlowdown(0.7f, 0.85f).allowSprinting(false)
+                .makeMobsFloat(true).makeRiddenMobsFloat(true)
+                .build());
     }
 }

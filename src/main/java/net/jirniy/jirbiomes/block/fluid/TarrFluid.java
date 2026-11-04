@@ -3,7 +3,14 @@ package net.jirniy.jirbiomes.block.fluid;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.ModFluids;
 import net.jirniy.jirbiomes.item.ModItems;
+import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.particle.ModParticles;
+import net.minecraft.client.Camera;
+import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.fog.FogData;
+import net.minecraft.client.renderer.fog.environment.FogEnvironment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
@@ -32,6 +39,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.FogType;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -222,6 +230,38 @@ public abstract class TarrFluid extends FlowingFluid {
         @Override
         public boolean isSource(final FluidState fluidState) {
             return true;
+        }
+    }
+
+    public static class TarrFogEnvironment extends FogEnvironment {
+        private static final int COLOR = 0xFF08070A;
+
+        @Override
+        public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
+            return COLOR;
+        }
+
+        @Override
+        public void setupFog(FogData fog, Camera camera, ClientLevel level, float renderDistance, DeltaTracker deltaTracker) {
+            if (camera.entity().isSpectator()) {
+                fog.environmentalStart = -8.0F;
+                fog.environmentalEnd = renderDistance * 0.4F;
+            } else {
+                fog.environmentalStart = 0.3F;
+                fog.environmentalEnd = 0.85F;
+            }
+
+            fog.skyEnd = fog.environmentalEnd;
+            fog.cloudEnd = fog.environmentalEnd;
+        }
+
+        @Override
+        public boolean isApplicable(@Nullable FogType fogType, Entity entity) {
+            Camera camera = Minecraft.getInstance().gameRenderer.mainCamera();
+            ClientLevel level = Minecraft.getInstance().level;
+            FluidState fluidState = level.getFluidState(camera.blockPosition());
+            return fluidState.is(ModTags.Fluids.TARR)
+                    && camera.position().y < camera.blockPosition().getY() + fluidState.getHeight(level, camera.blockPosition());
         }
     }
 }
