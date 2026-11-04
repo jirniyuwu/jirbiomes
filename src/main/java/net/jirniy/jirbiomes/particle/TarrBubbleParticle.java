@@ -11,7 +11,7 @@ import net.minecraft.util.RandomSource;
 public class TarrBubbleParticle extends SingleQuadParticle {
     protected TarrBubbleParticle(ClientLevel level, double x, double y, double z, double xa, double ya, double za, TextureAtlasSprite sprite) {
         super(level, x, y, z, xa, ya, za, sprite);
-        this.setSize(0.02F, 0.02F);
+        this.setSize(0.04f, 0.04f);
         this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.2F);
         this.xd = xa * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
         this.yd = ya * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;

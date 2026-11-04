@@ -17,6 +17,7 @@ public class TarrBubblePopParticle extends SingleQuadParticle {
             final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
     ) {
         super(level, x, y, z, sprites.first());
+        this.setSize(0.08f, 0.08f);
         this.sprites = sprites;
         this.lifetime = random.nextIntBetweenInclusive(8, 12);
         this.gravity = 0.001F;
