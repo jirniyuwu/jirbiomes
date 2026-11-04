@@ -3,7 +3,9 @@ package net.jirniy.jirbiomes;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.jirniy.jirbiomes.datagen.*;
+import net.jirniy.jirbiomes.datagen.tag.*;
 import net.jirniy.jirbiomes.misc.ModDamageTypes;
+import net.jirniy.jirbiomes.villager.ModVillagerTrades;
 import net.jirniy.jirbiomes.worldgen.ModConfiguredFeatures;
 import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
 import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
@@ -20,6 +22,7 @@ public class JirniyBiomesDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModFluidTagsProvider::new);
 		pack.addProvider(ModItemTagsProvider::new);
 		pack.addProvider(ModEntityTagsProvider::new);
+		pack.addProvider(ModVillagerTradeTags::new);
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModRegistryDataProvider::new);
@@ -31,5 +34,6 @@ public class JirniyBiomesDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.DAMAGE_TYPE, ModDamageTypes::bootstrap);
 		registryBuilder.add(Registries.BIOME, ModBiomes::bootstrap);
+		registryBuilder.add(Registries.VILLAGER_TRADE, ModVillagerTrades::bootstrap);
 	}
 }

@@ -1,4 +1,4 @@
-package net.jirniy.jirbiomes.datagen;
+package net.jirniy.jirbiomes.datagen.tag;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
