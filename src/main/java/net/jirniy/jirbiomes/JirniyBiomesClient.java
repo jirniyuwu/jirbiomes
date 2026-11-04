@@ -7,9 +7,7 @@ import net.fabricmc.fabric.impl.client.rendering.EntityRendererRegistryImpl;
 import net.jirniy.jirbiomes.block.ModFluids;
 import net.jirniy.jirbiomes.entity.ModEntities;
 import net.jirniy.jirbiomes.entity.ModModelLayers;
-import net.jirniy.jirbiomes.particle.ModDripParticle;
-import net.jirniy.jirbiomes.particle.ModLeavesParticle;
-import net.jirniy.jirbiomes.particle.ModParticles;
+import net.jirniy.jirbiomes.particle.*;
 import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.client.particle.FallingLeavesParticle;
 import net.minecraft.client.renderer.block.FluidModel;
@@ -24,6 +22,8 @@ public class JirniyBiomesClient implements ClientModInitializer {
         ParticleProviderRegistry.getInstance().register(ModParticles.SNOWFLAKE, ModLeavesParticle.SnowflakeProvider::new);
         ParticleProviderRegistry.getInstance().register(ModParticles.BRIMGRASS_SPORES, ModDripParticle.BrimgrassAmbientProvider::new);
 
+        ParticleProviderRegistry.getInstance().register(ModParticles.TARR_BUBBLE, TarrBubbleParticle.Provider::new);
+        ParticleProviderRegistry.getInstance().register(ModParticles.TARR_BUBBLE_POP, TarrBubblePopParticle.Provider::new);
         ParticleProviderRegistry.getInstance().register(ModParticles.DRIPPING_TARR, ModDripParticle.TarrHangProvider::new);
         ParticleProviderRegistry.getInstance().register(ModParticles.FALLING_TARR, ModDripParticle.TarrFallProvider::new);
         ParticleProviderRegistry.getInstance().register(ModParticles.LANDING_TARR, ModDripParticle.TarrLandProvider::new);

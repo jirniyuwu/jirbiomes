@@ -10,6 +10,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
@@ -68,6 +69,31 @@ public abstract class TarrFluid extends FlowingFluid {
             }
         }
         super.randomTick(level, pos, fluidState, random);
+    }
+
+    @Override
+    public void animateTick(final Level level, final BlockPos pos, final FluidState fluidState, final RandomSource random) {
+        if (fluidState.isSource()) {
+            if (random.nextInt(200) == 0) {
+                double xx = pos.getX() + random.nextDouble();
+                double yy = pos.getY() + random.nextDouble()*0.8+0.1;
+                double zz = pos.getZ() + random.nextDouble();
+                level.addParticle(ModParticles.TARR_BUBBLE, xx, yy, zz, 0.0, 0.0, 0.0);
+            }
+
+            if (!level.getBlockState(pos.above()).isSolidRender() && random.nextInt(600) == 0) {
+                level.playLocalSound(
+                        pos.getX(),
+                        pos.getY(),
+                        pos.getZ(),
+                        SoundEvents.LAVA_AMBIENT,
+                        SoundSource.AMBIENT,
+                        0.2F + random.nextFloat() * 0.2F,
+                        0.9F + random.nextFloat() * 0.15F,
+                        false
+                );
+            }
+        }
     }
 
     @Override
