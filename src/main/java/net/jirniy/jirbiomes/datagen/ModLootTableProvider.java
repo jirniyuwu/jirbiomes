@@ -36,7 +36,6 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
         dropSelf(ModBlocks.IRON_GRATE);
-        dropSelf(ModBlocks.SOLID_TARR);
 
         dropSelf(ModBlocks.DRIED_DIRT);
         dropSelf(ModBlocks.COARSE_DRIED_DIRT);
@@ -100,6 +99,19 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.POLISHED_SALT_STAIRS);
         add(ModBlocks.POLISHED_SALT_SLAB, this::createSlabItemTable);
         dropSelf(ModBlocks.POLISHED_SALT_WALL);
+
+        dropSelf(ModBlocks.SOLID_TARR);
+        dropSelf(ModBlocks.SOLID_TARR_STAIRS);
+        add(ModBlocks.SOLID_TARR_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.SOLID_TARR_WALL);
+        dropSelf(ModBlocks.TARR_BRICKS);
+        dropSelf(ModBlocks.TARR_BRICKS_STAIRS);
+        add(ModBlocks.TARR_BRICKS_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.TARR_BRICKS_WALL);
+        dropSelf(ModBlocks.POLISHED_TARR);
+        dropSelf(ModBlocks.POLISHED_TARR_STAIRS);
+        add(ModBlocks.POLISHED_TARR_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.POLISHED_TARR_WALL);
 
         add(ModBlocks.BRIMSTONE_GOLD_ORE, createOreDrop(ModBlocks.BRIMSTONE_GOLD_ORE, Items.RAW_GOLD));
 

@@ -25,7 +25,6 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.createTrivialCube(ModBlocks.IRON_GRATE);
-        blockModelGenerators.createTrivialCube(ModBlocks.SOLID_TARR);
 
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_SAND);
         blockModelGenerators.createTrivialCube(ModBlocks.ROOTED_RED_SAND);
@@ -109,6 +108,19 @@ public class ModModelProvider extends FabricModelProvider {
                 .wall(ModBlocks.SALT_BRICKS_WALL)
                 .stairs(ModBlocks.SALT_BRICKS_STAIRS)
                 .slab(ModBlocks.SALT_BRICKS_SLAB);
+
+        blockModelGenerators.family(ModBlocks.SOLID_TARR)
+                .wall(ModBlocks.SOLID_TARR_WALL)
+                .stairs(ModBlocks.SOLID_TARR_STAIRS)
+                .slab(ModBlocks.SOLID_TARR_SLAB);
+        blockModelGenerators.family(ModBlocks.POLISHED_TARR)
+                .wall(ModBlocks.POLISHED_TARR_WALL)
+                .stairs(ModBlocks.POLISHED_TARR_STAIRS);
+        createSlabWithSides(ModBlocks.POLISHED_TARR, ModBlocks.POLISHED_TARR_SLAB, blockModelGenerators);
+        blockModelGenerators.family(ModBlocks.TARR_BRICKS)
+                .wall(ModBlocks.TARR_BRICKS_WALL)
+                .stairs(ModBlocks.TARR_BRICKS_STAIRS)
+                .slab(ModBlocks.TARR_BRICKS_SLAB);
 
         blockModelGenerators.family(ModBlocks.FROSTED_STONE)
                 .wall(ModBlocks.FROSTED_STONE_WALL)

@@ -30,7 +30,6 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
-                .add(ModBlocks.getKey(ModBlocks.SOLID_TARR))
                 .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE, ModBlocks.NETHERSTONE_STAIRS, ModBlocks.NETHERSTONE_SLAB, ModBlocks.NETHERSTONE_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_NETHERSTONE, ModBlocks.POLISHED_NETHERSTONE_STAIRS, ModBlocks.POLISHED_NETHERSTONE_SLAB, ModBlocks.POLISHED_NETHERSTONE_WALL))
@@ -53,7 +52,10 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.SALT_LAMP))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BLOCK, ModBlocks.SALT_BLOCK_STAIRS, ModBlocks.SALT_BLOCK_SLAB, ModBlocks.SALT_BLOCK_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_SALT, ModBlocks.POLISHED_SALT_STAIRS, ModBlocks.POLISHED_SALT_SLAB, ModBlocks.POLISHED_SALT_WALL))
-                .add(ModBlocks.getKeys(ModBlocks.SALT_BRICKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS_WALL));
+                .add(ModBlocks.getKeys(ModBlocks.SALT_BRICKS, ModBlocks.SALT_BRICKS_STAIRS, ModBlocks.SALT_BRICKS_SLAB, ModBlocks.SALT_BRICKS_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.SOLID_TARR, ModBlocks.SOLID_TARR_STAIRS, ModBlocks.SOLID_TARR_SLAB, ModBlocks.SOLID_TARR_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.POLISHED_TARR, ModBlocks.POLISHED_TARR_STAIRS, ModBlocks.POLISHED_TARR_SLAB, ModBlocks.POLISHED_TARR_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.TARR_BRICKS, ModBlocks.TARR_BRICKS_STAIRS, ModBlocks.TARR_BRICKS_SLAB, ModBlocks.TARR_BRICKS_WALL));
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.getKey(ModBlocks.STRAW_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.PACKED_STRAW, ModBlocks.PACKED_STRAW_SLAB, ModBlocks.PACKED_STRAW_STAIRS))
@@ -90,7 +92,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.getKey(ModBlocks.BRIMSTONE_GOLD_ORE))
                 .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
-                .add(ModBlocks.getKey(ModBlocks.SOLID_TARR))
+                .add(ModBlocks.getKeys(ModBlocks.SOLID_TARR, ModBlocks.SOLID_TARR_STAIRS, ModBlocks.SOLID_TARR_SLAB, ModBlocks.SOLID_TARR_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.POLISHED_TARR, ModBlocks.POLISHED_TARR_STAIRS, ModBlocks.POLISHED_TARR_SLAB, ModBlocks.POLISHED_TARR_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.TARR_BRICKS, ModBlocks.TARR_BRICKS_STAIRS, ModBlocks.TARR_BRICKS_SLAB, ModBlocks.TARR_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE, ModBlocks.BRIMGRASS_BLOCK, ModBlocks.IGNITED_BRIMSTONE))
                 .add(ModBlocks.getKey(ModBlocks.CHISELED_BRIMSTONE_BRICKS))
                 .add(ModBlocks.getKeys(ModBlocks.MOSSY_BRIMSTONE_BRICKS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_SLAB, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
@@ -213,10 +217,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_STAIRS))
                 .add(ModBlocks.getKeys(ModBlocks.PACKED_SNOW_BRICKS_STAIRS, ModBlocks.POLISHED_SNOW_STAIRS))
-                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS)).add(ModBlocks.getKey(ModBlocks.SALT_BLOCK))
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_STAIRS, ModBlocks.POLISHED_BRIMSTONE_STAIRS, ModBlocks.CRACKED_BRIMSTONE_BRICKS_STAIRS, ModBlocks.MOSSY_BRIMSTONE_BRICKS_STAIRS))
                 .add(ModBlocks.getKeys(ModBlocks.FROSTED_STONE_STAIRS, ModBlocks.POLISHED_FROST_STAIRS, ModBlocks.FROST_BRICKS))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE_STAIRS, ModBlocks.POLISHED_NETHERSTONE_STAIRS, ModBlocks.NETHERSTONE_BRICKS_STAIRS))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BLOCK_STAIRS, ModBlocks.POLISHED_SALT_STAIRS, ModBlocks.SALT_BRICKS_STAIRS))
+                .add(ModBlocks.getKeys(ModBlocks.SOLID_TARR_STAIRS, ModBlocks.POLISHED_TARR_STAIRS, ModBlocks.TARR_BRICKS_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.SEASHELL_BRICKS_STAIRS));
         tag(BlockTags.SLABS)
                 .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_SLAB))
@@ -225,6 +230,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.FROSTED_STONE_SLAB, ModBlocks.POLISHED_FROST_SLAB, ModBlocks.FROST_BRICKS_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE_SLAB, ModBlocks.POLISHED_NETHERSTONE_SLAB, ModBlocks.NETHERSTONE_BRICKS_SLAB))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BLOCK_SLAB, ModBlocks.POLISHED_SALT_SLAB, ModBlocks.SALT_BRICKS_SLAB))
+                .add(ModBlocks.getKeys(ModBlocks.SOLID_TARR_SLAB, ModBlocks.POLISHED_TARR_SLAB, ModBlocks.TARR_BRICKS_SLAB))
                 .add(ModBlocks.getKey(ModBlocks.SEASHELL_BRICKS_SLAB));
         tag(BlockTags.WALLS)
                 .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE_BRICKS_WALL, ModBlocks.POLISHED_BRIMSTONE_WALL, ModBlocks.CRACKED_BRIMSTONE_BRICKS_WALL, ModBlocks.MOSSY_BRIMSTONE_BRICKS_WALL))
@@ -232,6 +238,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.FROSTED_STONE_WALL, ModBlocks.FROST_BRICKS_WALL, ModBlocks.POLISHED_FROST_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE_WALL, ModBlocks.POLISHED_NETHERSTONE_WALL, ModBlocks.NETHERSTONE_BRICKS_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BLOCK_WALL, ModBlocks.POLISHED_SALT_WALL, ModBlocks.SALT_BRICKS_WALL))
+                .add(ModBlocks.getKeys(ModBlocks.SOLID_TARR_WALL, ModBlocks.POLISHED_TARR_WALL, ModBlocks.TARR_BRICKS_WALL))
                 .add(ModBlocks.getKey(ModBlocks.SEASHELL_BRICKS_WALL));
 
         tag(BlockTags.BEE_ATTRACTIVE)

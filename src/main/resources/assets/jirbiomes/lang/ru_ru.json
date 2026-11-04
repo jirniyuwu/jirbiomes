@@ -66,6 +66,22 @@
   "block.jirbiomes.salt_bricks_stairs": "Ступеньки из соляного кирпича",
   "block.jirbiomes.salt_bricks_wall": "Ограда из соляного кирпича",
 
+  "item.jirbiomes.tarr_bucket": "Ведро деготи",
+  "fluid.jirbiomes.flowing_tarr": "Дёготь",
+  "fluid.jirbiomes.tarr": "Дёготь",
+  "block.jirbiomes.solid_tarr": "Твёрдая дёготь",
+  "block.jirbiomes.solid_tarr_slab": "Дегтярная плита",
+  "block.jirbiomes.solid_tarr_stairs": "Дегтярные ступеньки",
+  "block.jirbiomes.solid_tarr_wall": "Дегтярная ограда",
+  "block.jirbiomes.polished_tarr": "Полированная дёготь",
+  "block.jirbiomes.polished_tarr_slab": "Плита из полированной деготи",
+  "block.jirbiomes.polished_tarr_stairs": "Ступеньки из полированной деготи",
+  "block.jirbiomes.polished_tarr_wall": "Ограда из полированной денготи",
+  "block.jirbiomes.tarr_bricks": "Дегтярные кирпичи",
+  "block.jirbiomes.tarr_bricks_slab": "Плита из дегтярного кирпича",
+  "block.jirbiomes.tarr_bricks_stairs": "Ступеньки из дегтярного кирпича",
+  "block.jirbiomes.tarr_bricks_wall": "Ограда из дегтярного кирпича",
+
   "block.jirbiomes.straw_block": "Солома",
   "block.jirbiomes.packed_straw": "Плотная солома",
   "block.jirbiomes.packed_straw_slab": "Плита из плотной соломы",
@@ -243,11 +259,6 @@
   "block.jirbiomes.potted_barrel_cactus": "Бочко-кактус в горшке",
   "item.jirbiomes.prickly_pear": "Опунция",
   "block.jirbiomes.prickly_pear_seed": "Росток опунции",
-
-  "item.jirbiomes.tarr_bucket": "Ведро Деготи",
-  "block.jirbiomes.solid_tarr": "Твёрдая Дёготь",
-  "fluid.jirbiomes.flowing_tarr": "Дёготь",
-  "fluid.jirbiomes.tarr": "Дёготь",
 
   "effect.jirbiomes.flaming": "Воспламенение",
 

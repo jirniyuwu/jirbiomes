@@ -66,6 +66,22 @@
   "block.jirbiomes.salt_bricks_stairs": "Salt Brick Stairs",
   "block.jirbiomes.salt_bricks_wall": "Salt Brick Wall",
 
+  "item.jirbiomes.tarr_bucket": "Tarr Bucket",
+  "fluid.jirbiomes.flowing_tarr": "Tarr",
+  "fluid.jirbiomes.tarr": "Tarr",
+  "block.jirbiomes.solid_tarr": "Solid Tarr",
+  "block.jirbiomes.solid_tarr_slab": "Tarr Slab",
+  "block.jirbiomes.solid_tarr_stairs": "Tarr Stairs",
+  "block.jirbiomes.solid_tarr_wall": "Tarr Wall",
+  "block.jirbiomes.polished_tarr": "Polished Tarr",
+  "block.jirbiomes.polished_tarr_slab": "Polished Tarr Slab",
+  "block.jirbiomes.polished_tarr_stairs": "Polished Tarr Stairs",
+  "block.jirbiomes.polished_tarr_wall": "Polished Tarr Wall",
+  "block.jirbiomes.tarr_bricks": "Tarr Bricks",
+  "block.jirbiomes.tarr_bricks_slab": "Tarr Brick Slab",
+  "block.jirbiomes.tarr_bricks_stairs": "Tarr Brick Stairs",
+  "block.jirbiomes.tarr_bricks_wall": "Tarr Brick Wall",
+
   "block.jirbiomes.straw_block": "Straw Block",
   "block.jirbiomes.packed_straw": "Packed Straw",
   "block.jirbiomes.packed_straw_slab": "Packed Straw Slab",
@@ -243,11 +259,6 @@
   "block.jirbiomes.potted_barrel_cactus": "Potted Barrel Cactus",
   "item.jirbiomes.prickly_pear": "Prickly Pear",
   "block.jirbiomes.prickly_pear_seed": "Prickly Pear Seed",
-
-  "item.jirbiomes.tarr_bucket": "Tarr Bucket",
-  "block.jirbiomes.solid_tarr": "Solid Tarr",
-  "fluid.jirbiomes.flowing_tarr": "Tarr",
-  "fluid.jirbiomes.tarr": "Tarr",
 
   "effect.jirbiomes.flaming": "Flaming",
 

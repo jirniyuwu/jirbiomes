@@ -369,6 +369,47 @@ public class ModBlocks {
                     .strength(0.3F).isValidSpawn((state, blockGetter, blockPos, entityType) -> entityType.fireImmune())
                     .postProcess((state, blockGetter, blockPos) -> blockPos.above()).emissiveRendering(state -> true)));
 
+    public static final Block TARR = registerBlock("tarr", false, properties ->
+            new LiquidBlock(ModFluids.FLOWING_TARR, properties.mapColor(MapColor.COLOR_BLACK).replaceable().noCollision()
+                    .randomTicks().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable()
+                    .liquid().sound(SoundType.EMPTY)));
+    public static final Block SOLID_TARR = registerBlock("solid_tarr", properties ->
+            new Block(properties.strength(1.4f).requiresCorrectToolForDrops().mapColor(MapColor.COLOR_BLACK)
+                    .ignitedByLava().sound(SoundType.NETHERRACK)));
+    public static final Block SOLID_TARR_STAIRS = registerBlock("solid_tarr_stairs", properties ->
+            new StairBlock(SOLID_TARR.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block SOLID_TARR_SLAB = registerBlock("solid_tarr_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block SOLID_TARR_WALL = registerBlock("solid_tarr_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block POLISHED_TARR = registerBlock("polished_tarr", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block POLISHED_TARR_STAIRS = registerBlock("polished_tarr_stairs", properties ->
+            new StairBlock(POLISHED_TARR.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block POLISHED_TARR_SLAB = registerBlock("polished_tarr_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block POLISHED_TARR_WALL = registerBlock("polished_tarr_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block TARR_BRICKS = registerBlock("tarr_bricks", properties ->
+            new Block(properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block TARR_BRICKS_STAIRS = registerBlock("tarr_bricks_stairs", properties ->
+            new StairBlock(TARR_BRICKS.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block TARR_BRICKS_SLAB = registerBlock("tarr_bricks_slab", properties ->
+            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+    public static final Block TARR_BRICKS_WALL = registerBlock("tarr_bricks_wall", properties ->
+            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
+                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+
     public static final Block BRIMGRASS_BLOCK = registerBlock("brimgrass_block", properties ->
             new CustomGrassBlock(getKey(BRIMSTONE), ModPlacedFeatures.BRIMGRASS_BONEMEAL, properties.mapColor(MapColor.TERRACOTTA_PURPLE).randomTicks()
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.1F).sound(SoundType.NETHER_SPROUTS)));
@@ -679,14 +720,6 @@ public class ModBlocks {
                     .strength(0.07f).sound(SoundType.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY)));
     public static final Block POTTED_BARREL_CACTUS = registerBlock("potted_barrel_cactus", false, properties ->
             new FlowerPotBlock(ModBlocks.SMALL_BARREL_CACTUS, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
-
-    public static final Block SOLID_TARR = registerBlock("solid_tarr", properties ->
-            new Block(properties.strength(1.4f).requiresCorrectToolForDrops().mapColor(MapColor.COLOR_BLACK)
-                    .ignitedByLava().sound(SoundType.NETHERRACK)));
-    public static final Block TARR = registerBlock("tarr", false, properties ->
-            new LiquidBlock(ModFluids.FLOWING_TARR, properties.mapColor(MapColor.COLOR_BLACK).replaceable().noCollision()
-                    .randomTicks().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable()
-                    .liquid().sound(SoundType.EMPTY)));
 
     private static Block registerBlock(String name, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));

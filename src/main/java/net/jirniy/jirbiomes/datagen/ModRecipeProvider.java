@@ -346,6 +346,54 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.SALT_LAMP), has(ModBlocks.SALT_LAMP))
                         .save(output, "salt_lamp");
 
+                stairBuilder(ModBlocks.SOLID_TARR_STAIRS, Ingredient.of(ModBlocks.SOLID_TARR))
+                        .unlockedBy(getHasName(ModBlocks.SOLID_TARR), has(ModBlocks.SOLID_TARR))
+                        .group("stairs").save(output, "solid_tarr_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOLID_TARR_STAIRS, ModBlocks.SOLID_TARR);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOLID_TARR_SLAB, Ingredient.of(ModBlocks.SOLID_TARR))
+                        .unlockedBy(getHasName(ModBlocks.SOLID_TARR), has(ModBlocks.SOLID_TARR))
+                        .group("slabs").save(output, "solid_tarr_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOLID_TARR_SLAB, ModBlocks.SOLID_TARR, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOLID_TARR_WALL, Ingredient.of(ModBlocks.SOLID_TARR))
+                        .unlockedBy(getHasName(ModBlocks.SOLID_TARR), has(ModBlocks.SOLID_TARR))
+                        .group("walls").save(output, "solid_tarr_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOLID_TARR_WALL, ModBlocks.SOLID_TARR);
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_TARR, Ingredient.of(ModBlocks.SOLID_TARR))
+                        .unlockedBy(getHasName(ModBlocks.SOLID_TARR), has(ModBlocks.SOLID_TARR))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_TARR), has(ModBlocks.POLISHED_TARR))
+                        .group("polished").save(output, "polished_tarr");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_TARR, ModBlocks.SOLID_TARR);
+                stairBuilder(ModBlocks.POLISHED_TARR_STAIRS, Ingredient.of(ModBlocks.POLISHED_TARR))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_TARR), has(ModBlocks.POLISHED_TARR))
+                        .group("stairs").save(output, "polished_tarr_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_TARR_STAIRS, ModBlocks.POLISHED_TARR);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_TARR_SLAB, Ingredient.of(ModBlocks.POLISHED_TARR))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_TARR), has(ModBlocks.POLISHED_TARR))
+                        .group("slabs").save(output, "polished_tarr_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_TARR_SLAB, ModBlocks.POLISHED_TARR, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_TARR_WALL, Ingredient.of(ModBlocks.POLISHED_TARR))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_TARR), has(ModBlocks.POLISHED_TARR))
+                        .group("walls").save(output, "polished_tarr_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_TARR_WALL, ModBlocks.POLISHED_TARR);
+                bricksBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TARR_BRICKS, Ingredient.of(ModBlocks.POLISHED_TARR))
+                        .unlockedBy(getHasName(ModBlocks.POLISHED_TARR), has(ModBlocks.POLISHED_TARR))
+                        .unlockedBy(getHasName(ModBlocks.TARR_BRICKS), has(ModBlocks.TARR_BRICKS))
+                        .group("bricks").save(output, "tarr_bricks");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TARR_BRICKS, ModBlocks.SOLID_TARR);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TARR_BRICKS, ModBlocks.POLISHED_TARR);
+                stairBuilder(ModBlocks.TARR_BRICKS_STAIRS, Ingredient.of(ModBlocks.TARR_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.TARR_BRICKS), has(ModBlocks.TARR_BRICKS))
+                        .group("stairs").save(output, "tarr_bricks_stairs");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TARR_BRICKS_STAIRS, ModBlocks.TARR_BRICKS);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TARR_BRICKS_SLAB, Ingredient.of(ModBlocks.TARR_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.TARR_BRICKS), has(ModBlocks.TARR_BRICKS))
+                        .group("slabs").save(output, "tarr_bricks_slab");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TARR_BRICKS_SLAB, ModBlocks.TARR_BRICKS, 2);
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TARR_BRICKS_WALL, Ingredient.of(ModBlocks.TARR_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.TARR_BRICKS), has(ModBlocks.TARR_BRICKS))
+                        .group("walls").save(output, "tarr_bricks_wall");
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TARR_BRICKS_WALL, ModBlocks.TARR_BRICKS);
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FROSTED_STONE, 4)
                         .pattern("BI")
                         .pattern("IB")
