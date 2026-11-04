@@ -85,7 +85,6 @@ public class RegistryModifications {
             builder.add(ModItems.DRIED_FIBERS, BASE_TIME/6);
             builder.add(ModBlocks.STRAW_BLOCK, BASE_TIME);
             builder.add(ModItems.TARR_BUCKET, BASE_TIME*160);
-            builder.add(ModBlocks.SOLID_TARR, BASE_TIME*8);
         });
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CATTAIL, 40, 100);

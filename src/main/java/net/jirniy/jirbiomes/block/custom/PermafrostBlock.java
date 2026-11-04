@@ -1,6 +1,7 @@
 package net.jirniy.jirbiomes.block.custom;
 
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.block.ModFluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +24,7 @@ public class PermafrostBlock extends Block {
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         Direction[] waterAdjacent = getAdjacentToBlockDirections(Blocks.WATER, Arrays.stream(Direction.values()).toList(), level, pos);
         Direction[] lavaAdjacent = getAdjacentToBlockDirections(Blocks.LAVA,  Arrays.stream(Direction.values()).toList(), level, pos);
+        Direction[] tarrAdjacent = getAdjacentToBlockDirections(ModBlocks.TARR,  Arrays.stream(Direction.values()).toList(), level, pos);
         for (Direction dir : waterAdjacent) {
             if (level.getFluidState(pos.relative(dir)).isSourceOfType(Fluids.WATER) && random.nextFloat() < 0.1f) {
                 level.setBlockAndUpdate(pos.relative(dir), Blocks.ICE.defaultBlockState());
@@ -31,6 +33,11 @@ public class PermafrostBlock extends Block {
         for (Direction dir : lavaAdjacent) {
             if (level.getFluidState(pos.relative(dir)).isSourceOfType(Fluids.LAVA) && random.nextFloat() < 0.4f) {
                 level.setBlockAndUpdate(pos.relative(dir), ModBlocks.POTENT_MAGMA_BLOCK.defaultBlockState());
+            }
+        }
+        for (Direction dir : tarrAdjacent) {
+            if (level.getFluidState(pos.relative(dir)).isSourceOfType(ModFluids.TARR) && random.nextFloat() < 0.6f) {
+                level.setBlockAndUpdate(pos.relative(dir), ModBlocks.SOLID_TARR.defaultBlockState());
             }
         }
     }
