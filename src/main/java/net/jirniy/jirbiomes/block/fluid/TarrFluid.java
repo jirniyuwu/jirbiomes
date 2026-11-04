@@ -18,7 +18,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
@@ -98,10 +97,9 @@ public abstract class TarrFluid extends FlowingFluid {
 
     @Override
     protected void entityInside(final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier) {
-        effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
         if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20));
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 10));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 40));
         }
     }
 

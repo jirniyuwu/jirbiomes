@@ -93,6 +93,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SALT_PLACED = registryKey("sea_salt");
     public static final ResourceKey<PlacedFeature> TARR_LAKE_PLACED = registryKey("tarr_lake");
     public static final ResourceKey<PlacedFeature> TARR_LAKE_RARE_PLACED = registryKey("tarr_lake_rare");
+    public static final ResourceKey<PlacedFeature> TARR_SPRING_PLACED = registryKey("tarr_spring");
 
     public static final ResourceKey<PlacedFeature> POTENT_MAGMA_LAYER = registryKey("potent_magma_layer");
     public static final ResourceKey<PlacedFeature> POTENT_MAGMA_ORE = registryKey("potent_magma_ore");
@@ -441,6 +442,11 @@ public class ModPlacedFeatures {
                 NoiseThresholdCountPlacement.of(0.5f, 0, 2), InSquarePlacement.spread(),
                 HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(100), 2)),
                 RarityFilter.onAverageOnceEvery(6), BiomeFilter.biome());
+        register(context, TARR_SPRING_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.TARR_SPRING),
+                CountPlacement.of(UniformInt.of(1, 2)), InSquarePlacement.spread(),
+                HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.aboveBottom(3), VerticalAnchor.aboveBottom(16), 3)),
+                RarityFilter.onAverageOnceEvery(64), BiomeFilter.biome(),
+                BlockPredicateFilter.forPredicate(BlockPredicate.solid(Direction.UP.getUnitVec3i())));
 
         register(context, POTENT_MAGMA_ORE, configuredFeatures.getOrThrow(ModConfiguredFeatures.POTENT_MAGMA_ORE),
                 CountPlacement.of(6), HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(60), 2)),

@@ -13,6 +13,8 @@ public class ModBiomeModifications {
     public static void register() {
         JirniyBiomes.LOGGER.info("registering biome modifications for " + JirniyBiomes.MOD_ID);
 
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_OVERWORLD),
+                GenerationStep.Decoration.FLUID_SPRINGS, ModPlacedFeatures.TARR_SPRING_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DEEP_DARK),
                 GenerationStep.Decoration.LAKES, ModPlacedFeatures.TARR_LAKE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_MOUNTAIN),

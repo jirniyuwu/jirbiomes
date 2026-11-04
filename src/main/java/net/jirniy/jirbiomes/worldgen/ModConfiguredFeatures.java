@@ -2,6 +2,7 @@ package net.jirniy.jirbiomes.worldgen;
 
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.ModBlocks;
+import net.jirniy.jirbiomes.block.ModFluids;
 import net.jirniy.jirbiomes.block.custom.*;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.worldgen.blockstate.MapStateProvider;
@@ -13,9 +14,7 @@ import net.jirniy.jirbiomes.worldgen.feature.TaxiteConfiguration;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.AquaticFeatures;
-import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.features.VegetationFeatures;
+import net.minecraft.data.worldgen.features.*;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -126,6 +125,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CEILING_TENEBRIS_PATCH = registryKey("ceiling_tenebris_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SALT = registryKey("salt");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TARR_LAKE = registryKey("tarr_lake");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TARR_SPRING = registryKey("tarr_spring");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -658,6 +658,11 @@ public class ModConfiguredFeatures {
                 BlockPredicate.alwaysTrue(),
                 BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.FEATURES_CANNOT_REPLACE)),
                 BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE))
+        ));
+        register(context, TARR_SPRING, Feature.SPRING, new SpringConfiguration(
+                ModFluids.TARR.defaultFluidState(),
+                true, 5, 0,
+                HolderSet.direct(Block::builtInRegistryHolder, Blocks.DEEPSLATE, Blocks.TUFF)
         ));
 
         register(context, NETHERSTONE, Feature.ORE, new OreConfiguration(
