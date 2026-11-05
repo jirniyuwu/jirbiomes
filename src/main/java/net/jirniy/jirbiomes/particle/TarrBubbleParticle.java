@@ -21,6 +21,7 @@ public class TarrBubbleParticle extends SingleQuadParticle {
 
     @Override
     public void tick() {
+        this.onGround = false;
         this.xo = this.x;
         this.yo = this.y;
         this.zo = this.z;
