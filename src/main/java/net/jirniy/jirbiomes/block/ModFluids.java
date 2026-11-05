@@ -44,7 +44,7 @@ public class ModFluids {
         EntityFluidInteractionRegistry.register(ModTags.Fluids.TARR, FluidBehavior.simple()
                 .allowSwimming(true).allowBoats(false).enableDrowning(true)
                 .movementSlowdown(0.7f, 0.85f).allowSprinting(false)
-                .makeMobsFloat(true).makeRiddenMobsFloat(true)
+                .makeMobsFloat(true).makeRiddenMobsFloat(true).flowingPushScale(0.24f)
                 .build());
     }
 }

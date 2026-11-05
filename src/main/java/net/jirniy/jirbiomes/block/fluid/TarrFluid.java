@@ -26,6 +26,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -40,6 +41,7 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.FogType;
+import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -105,9 +107,23 @@ public abstract class TarrFluid extends FlowingFluid {
 
     @Override
     protected void entityInside(final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier) {
+        entity.resetFallDistance();
         if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60));
             livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 40));
+        }
+        if (entity instanceof ItemEntity itemEntity) {
+            if (itemEntity.getFluidHeight(ModTags.Fluids.TARR) > 0.1F) {
+                itemEntity.setOnGround(false);
+                Vec3 movement = itemEntity.getDeltaMovement();
+                float multiplier = 0.9f;
+                itemEntity.setDeltaMovement(movement.x * multiplier, movement.y * multiplier, movement.z * multiplier);
+                if (level.getFluidState(pos.above()).is(ModTags.Fluids.TARR)) {
+                    itemEntity.addDeltaMovement(new Vec3(0, 0.026, 0));
+                } else {
+                    itemEntity.addDeltaMovement(new Vec3(0, 0.023, 0));
+                }
+            }
         }
     }
 
@@ -234,7 +250,7 @@ public abstract class TarrFluid extends FlowingFluid {
     }
 
     public static class TarrFogEnvironment extends FogEnvironment {
-        private static final int COLOR = 0xFF08070A;
+        private static final int COLOR = 0xF708070A;
 
         @Override
         public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
@@ -244,7 +260,7 @@ public abstract class TarrFluid extends FlowingFluid {
         @Override
         public void setupFog(FogData fog, Camera camera, ClientLevel level, float renderDistance, DeltaTracker deltaTracker) {
             if (camera.entity().isSpectator()) {
-                fog.environmentalStart = -8.0F;
+                fog.environmentalStart = -4.0F;
                 fog.environmentalEnd = renderDistance * 0.4F;
             } else {
                 fog.environmentalStart = 0.3F;
