@@ -2,8 +2,8 @@ package net.jirniy.jirbiomes.worldgen;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.jirniy.jirbiomes.JirniyBiomes;
-import net.jirniy.jirbiomes.misc.CommonTag;
 import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
@@ -31,7 +31,7 @@ public class ModBiomeModifications {
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WOODED_BADLANDS),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.DRIED_GRASS_PATCH_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_desert")),
+        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_DESERT),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BEACH, Biomes.SNOWY_BEACH),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PALM_TREE_BEACH_PLACED);
@@ -51,25 +51,25 @@ public class ModBiomeModifications {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SNOWY_PLAINS, Biomes.SNOWY_SLOPES),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FROZEN_GRASS_PLACED);
 
-        BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_desert")),
+        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_DESERT),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BARREL_CACTUS_PATCH);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_BADLANDS),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BARREL_CACTUS_PATCH);
 
-        BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
+        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_SWAMP),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WET_GRASS_PATCH_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WET_GRASS_PATCH_PLACED);
 
-        BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
+        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_SWAMP),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_RARE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_RARE_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.CHERRY_GROVE, Biomes.MANGROVE_SWAMP, Biomes.FLOWER_FOREST),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
+        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_SWAMP),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CATTAIL_PATCH_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.tag(CommonTag.ofBiome("is_swamp")),
+        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_SWAMP),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_PATCH_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ALGAE_PATCH_PLACED);

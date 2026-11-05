@@ -2,7 +2,7 @@ package net.jirniy.jirbiomes.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.jirniy.jirbiomes.misc.CommonTag;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,7 +27,7 @@ public class IcicleBlock extends SpeleothemBlock {
         if (isFreeHangingStalactite(state)) {
             if (random.nextFloat() < 0.02F) {
                 Vec3 offset = state.getOffset(pos);
-                if (level.getBiome(pos).is(CommonTag.ofBiome("is_cold"))) {
+                if (level.getBiome(pos).is(ConventionalBiomeTags.IS_COLD)) {
                     level.addParticle(ModParticles.SNOWFLAKE,
                             pos.getX() + 0.5f + offset.x, pos.getY() + SHAPE_TIP_DOWN.min(Direction.Axis.Y) - 1/16f, pos.getZ() + 0.5f + offset.z,
                             0.0F, 0.0F, 0.0F);
