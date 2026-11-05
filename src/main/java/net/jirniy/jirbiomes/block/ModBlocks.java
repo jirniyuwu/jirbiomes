@@ -382,14 +382,14 @@ public class ModBlocks {
                             .randomTicks().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable()
                             .liquid().sound(SoundType.EMPTY)));
     public static final Block SOLID_TARR_STAIRS = registerBlock("solid_tarr_stairs", properties ->
-            new StairBlock(SOLID_TARR.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK)
-                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+            new StairBlock(SOLID_TARR.defaultBlockState(), properties.mapColor(MapColor.COLOR_BLACK).ignitedByLava()
+                    .requiresCorrectToolForDrops().strength(1.4f).sound(SoundType.NETHERRACK)));
     public static final Block SOLID_TARR_SLAB = registerBlock("solid_tarr_slab", properties ->
-            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK)
-                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+            new SlabBlock(properties.mapColor(MapColor.COLOR_BLACK).ignitedByLava()
+                    .requiresCorrectToolForDrops().strength(1.4f).sound(SoundType.NETHERRACK)));
     public static final Block SOLID_TARR_WALL = registerBlock("solid_tarr_wall", properties ->
-            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK)
-                    .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));
+            new WallBlock(properties.mapColor(MapColor.COLOR_BLACK).ignitedByLava()
+                    .requiresCorrectToolForDrops().strength(1.4f).sound(SoundType.NETHERRACK)));
     public static final Block POLISHED_TARR = registerBlock("polished_tarr", properties ->
             new Block(properties.mapColor(MapColor.COLOR_BLACK)
                     .requiresCorrectToolForDrops().strength(1.6F).sound(SoundType.NETHERRACK)));

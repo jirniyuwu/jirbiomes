@@ -31,7 +31,7 @@ public class JirniyBiomesClient implements ClientModInitializer {
         FluidRenderingRegistry.register(ModFluids.TARR, ModFluids.FLOWING_TARR, new FluidModel.Unbaked(
                 new Material(JirniyBiomes.id("block/tarr_still")),
                 new Material(JirniyBiomes.id("block/tarr_flow")),
-                new Material(JirniyBiomes.id("block/tarr_overlay")),
+                null,
                 BlockTintSources.constant(ARGB.opaque(0xFFFFFF))
         ));
 

@@ -96,7 +96,10 @@ public class RegistryModifications {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_SLAB, 20, 40);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_STAIRS, 20, 40);
 
-        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SOLID_TARR, 80, 2);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SOLID_TARR, 80, 1);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SOLID_TARR_SLAB, 80, 1);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SOLID_TARR_STAIRS, 80, 1);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SOLID_TARR_WALL, 80, 1);
 
         Registry<Block> blockRegistry = BuiltInRegistries.BLOCK;
         blockRegistry.addAlias(JirniyBiomes.id("icicle"), JirniyBiomes.id("thick_icicle"));
