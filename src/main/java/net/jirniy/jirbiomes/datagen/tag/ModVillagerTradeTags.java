@@ -24,6 +24,9 @@ public class ModVillagerTradeTags extends FabricTagsProvider<VillagerTrade> {
                 .add(TagEntry.element(ModVillagerTrades.FARMER_3_COCONUT_EMERALD.identifier()))
                 .add(TagEntry.element(ModVillagerTrades.FARMER_3_EMERALD_PRICKLY_PEAR.identifier()));
 
+        getOrCreateRawBuilder(VillagerTradeTags.MASON_LEVEL_2)
+                .add(TagEntry.element(ModVillagerTrades.MASON_2_EMERALD_SALT.identifier()));
+
         getOrCreateRawBuilder(VillagerTradeTags.WANDERING_TRADER_BUYING)
                 .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_SALT_LAMP_EMERALD.identifier()))
                 .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_DRIED_FIBERS_EMERALD.identifier()));

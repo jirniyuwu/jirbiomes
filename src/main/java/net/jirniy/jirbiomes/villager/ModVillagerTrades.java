@@ -20,6 +20,8 @@ public class ModVillagerTrades {
     public static final ResourceKey<VillagerTrade> FARMER_3_COCONUT_EMERALD = createKey("farmer/3/coconut_emerald");
     public static final ResourceKey<VillagerTrade> FARMER_3_EMERALD_PRICKLY_PEAR = createKey("farmer/3/emerald_prickly_pear");
 
+    public static final ResourceKey<VillagerTrade> MASON_2_EMERALD_SALT = createKey("mason/2/emerald_salt");
+
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_DRIED_FIBERS_EMERALD = createKey("wandering_trader/dried_fibers_emerald");
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_SALT_LAMP_EMERALD = createKey("wandering_trader/salt_lamp_emerald");
 
@@ -63,6 +65,11 @@ public class ModVillagerTrades {
                 8, 8, 0.05F, Optional.empty(), List.of()
         ));
 
+        context.register(MASON_2_EMERALD_SALT, new VillagerTrade(
+                new TradeCost(Items.EMERALD, 1),
+                new ItemStackTemplate(ModBlocks.SALT_BLOCK.asItem(), 16),
+                16, 8, 0.05F, Optional.empty(), List.of()
+        ));
 
         context.register(WANDERING_TRADER_DRIED_FIBERS_EMERALD, new VillagerTrade(
                 new TradeCost(ModItems.DRIED_FIBERS, 16),
