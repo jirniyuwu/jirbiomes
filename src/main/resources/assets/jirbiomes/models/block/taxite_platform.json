@@ -3,6 +3,7 @@
   "textures": {
     "log": "jirbiomes:block/taxite_platform",
     "bottom": "jirbiomes:block/platform_bottom",
+    "hanging": "jirbiomes:block/platform_hanging",
     "particle": "jirbiomes:block/prototaxite_hyphae"
   }
 }

@@ -3,6 +3,7 @@
   "textures": {
     "log": "jirbiomes:block/pale_oak_platform",
     "bottom": "jirbiomes:block/platform_bottom",
+    "hanging": "jirbiomes:block/platform_hanging",
     "particle": "minecraft:block/pale_oak_log"
   }
 }

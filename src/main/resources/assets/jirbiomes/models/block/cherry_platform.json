@@ -3,6 +3,7 @@
   "textures": {
     "log": "jirbiomes:block/cherry_platform",
     "bottom": "jirbiomes:block/platform_bottom",
+    "hanging": "jirbiomes:block/platform_hanging",
     "particle": "minecraft:block/cherry_log"
   }
 }

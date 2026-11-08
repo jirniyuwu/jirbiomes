@@ -3,6 +3,7 @@
   "textures": {
     "log": "jirbiomes:block/palm_platform_wet",
     "bottom": "jirbiomes:block/platform_bottom",
+    "hanging": "jirbiomes:block/platform_hanging",
     "particle": "jirbiomes:block/palm_log"
   }
 }
