@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -44,10 +45,19 @@ public class TarrLiquidBlock extends LiquidBlock {
             BlockPos neighborPos = pos.relative(dir);
             FluidState neighborFluid = level.getFluidState(neighborPos);
 
+            if (dir == Direction.DOWN && neighborFluid.is(FluidTags.WATER)) {
+                continue;
+            }
+
             for (TagKey<Fluid> fluidTag : turnsInto.keySet()) {
                 if (neighborFluid.is(fluidTag)) {
-                    level.setBlockAndUpdate(pos, turnsInto.get(fluidTag));
-                    level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 0.7F);
+                    if (dir == Direction.DOWN) {
+                        level.setBlockAndUpdate(pos.below(), turnsInto.get(fluidTag));
+                        level.playSound(null, pos.below(), SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 0.7F);
+                    } else {
+                        level.setBlockAndUpdate(pos, turnsInto.get(fluidTag));
+                        level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 0.7F);
+                    }
                     return true;
                 }
             }

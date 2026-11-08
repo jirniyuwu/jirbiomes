@@ -160,7 +160,7 @@ public abstract class TarrFluid extends FlowingFluid {
 
     @Override
     public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
-        return state.getHeight(level, pos) >= 0.44444445F && other.is(FluidTags.WATER);
+        return state.getHeight(level, pos) >= 0.44444445F && (other.is(FluidTags.WATER) || other.is(FluidTags.LAVA));
     }
 
     @Override
@@ -192,9 +192,10 @@ public abstract class TarrFluid extends FlowingFluid {
     protected void spreadTo(final LevelAccessor level, final BlockPos pos, final BlockState state, final Direction direction, final FluidState target) {
         if (direction == Direction.DOWN) {
             FluidState fluidState = level.getFluidState(pos);
-            if (fluidState.is(FluidTags.LAVA) || fluidState.is(FluidTags.WATER)) {
+            if (fluidState.is(FluidTags.WATER) || fluidState.is(FluidTags.LAVA)) {
                 if (state.getBlock() instanceof LiquidBlock) {
                     level.setBlock(pos, ModBlocks.SOLID_TARR.defaultBlockState(), 3);
+                    level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 0.7F);
                 }
 
                 return;
@@ -216,7 +217,7 @@ public abstract class TarrFluid extends FlowingFluid {
 
     @Override
     public Optional<SoundEvent> getPickupSound() {
-        return Optional.of(SoundEvents.BUCKET_FILL_SULFUR_CUBE);
+        return Optional.of(SoundEvents.BUCKET_FILL_LAVA);
     }
 
     public static class Flowing extends TarrFluid {
