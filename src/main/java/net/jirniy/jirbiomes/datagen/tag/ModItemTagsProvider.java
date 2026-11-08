@@ -134,6 +134,10 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.getKey(ModItems.GINKGO_CHEST_BOAT))
                 .add(ModItems.getKey(ModItems.TAXITE_CHEST_BOAT))
                 .add(ModItems.getKey(ModItems.PALM_CHEST_BOAT));
+        tag(ModTags.Items.WOODEN_PLATFORMS)
+                .add(ModItems.getKeys(ModBlocks.OAK_PLATFORM, ModBlocks.DARK_OAK_PLATFORM, ModBlocks.PALE_OAK_PLATFORM, ModBlocks.BIRCH_PLATFORM, ModBlocks.SPRUCE_PLATFORM))
+                .add(ModItems.getKeys(ModBlocks.ACACIA_PLATFORM, ModBlocks.JUNGLE_PLATFORM, ModBlocks.MANGROVE_PLATFORM, ModBlocks.CHERRY_PLATFORM, ModBlocks.BAMBOO_PLATFORM))
+                .add(ModItems.getKeys(ModBlocks.GINKGO_PLATFORM, ModBlocks.PALM_PLATFORM, ModBlocks.TAXITE_PLATFORM));
 
         tag(ItemTags.STONE_CRAFTING_MATERIALS)
                 .add(ModItems.getKey(ModBlocks.BRIMSTONE));

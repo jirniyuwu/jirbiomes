@@ -147,6 +147,17 @@
   "block.jirbiomes.mossy_brimstone_bricks_stairs": "Mossy Brimstone Brick Stairs",
   "block.jirbiomes.mossy_brimstone_bricks_wall": "Mossy Brimstone Brick Wall",
 
+  "block.jirbiomes.oak_platform": "Oak Platform",
+  "block.jirbiomes.birch_platform": "Birch Platform",
+  "block.jirbiomes.spruce_platform": "Spruce Platform",
+  "block.jirbiomes.acacia_platform": "Acacia Platform",
+  "block.jirbiomes.jungle_platform": "Jungle Platform",
+  "block.jirbiomes.dark_oak_platform": "Dark Oak Platform",
+  "block.jirbiomes.mangrove_platform": "Mangrove Platform",
+  "block.jirbiomes.cherry_platform": "Cherry Platform",
+  "block.jirbiomes.bamboo_platform": "Bamboo Platform",
+  "block.jirbiomes.pale_oak_platform": "Pale Oak Platform",
+
   "block.jirbiomes.ginkgo_planks": "Ginkgo Planks",
   "block.jirbiomes.ginkgo_log": "Ginkgo Log",
   "block.jirbiomes.ginkgo_wood": "Ginkgo Wood",
@@ -173,6 +184,7 @@
   "entity.jirbiomes.ginkgo_boat": "Ginkgo Boat",
   "item.jirbiomes.ginkgo_chest_boat": "Ginkgo Chest Boat",
   "entity.jirbiomes.ginkgo_chest_boat": "Ginkgo Chest Boat",
+  "block.jirbiomes.ginkgo_platform": "Ginkgo Platform",
 
   "block.jirbiomes.palm_planks": "Palm Planks",
   "block.jirbiomes.palm_log": "Palm Log",
@@ -200,6 +212,7 @@
   "entity.jirbiomes.palm_boat": "Palm Boat",
   "item.jirbiomes.palm_chest_boat": "Palm Chest Boat",
   "entity.jirbiomes.palm_chest_boat": "Palm Chest Boat",
+  "block.jirbiomes.palm_platform": "Palm Platform",
 
   "block.jirbiomes.tenebris_planks": "Tenebris Planks",
   "block.jirbiomes.tenebris_stem": "Tenebris Stem",
@@ -246,6 +259,7 @@
   "entity.jirbiomes.taxite_boat": "Taxite Boat",
   "item.jirbiomes.taxite_chest_boat": "Taxite Chest Boat",
   "entity.jirbiomes.taxite_chest_boat": "Taxite Chest Boat",
+  "block.jirbiomes.taxite_platform": "Taxite Platform",
 
   "item.jirbiomes.apple_seeds": "Apple Seeds",
   "block.jirbiomes.apple_crop": "Apple Tree Crop",
@@ -272,6 +286,7 @@
   "death.attack.cactus_food.player": "%1$s wasn't looking at what they were eating while trying to escape %2$s",
 
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions",
+  "tag.item.jirbiomes.wooden_platforms": "Wooden Platforms",
   "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log",
   "tag.item.jirbiomes.palm_logs": "Any Palm log",
   "tag.item.jirbiomes.tenebris_logs": "Any Tenebris log",

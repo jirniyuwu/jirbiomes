@@ -422,6 +422,37 @@ public class ModBlocks {
             new GenericPlantBlock(properties.replaceable().noCollision().instabreak().sound(SoundType.NETHER_SPROUTS)
                     .offsetType(BlockBehaviour.OffsetType.XYZ).pushReaction(PushReaction.DESTROY)));
 
+    public static final Block OAK_PLATFORM = registerBlock("oak_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()));
+    public static final Block SPRUCE_PLATFORM = registerBlock("spruce_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.COLOR_BROWN).ignitedByLava()));
+    public static final Block BIRCH_PLATFORM = registerBlock("birch_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.QUARTZ).ignitedByLava()));
+    public static final Block JUNGLE_PLATFORM = registerBlock("jungle_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()));
+    public static final Block ACACIA_PLATFORM = registerBlock("acacia_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.STONE).ignitedByLava()));
+    public static final Block CHERRY_PLATFORM = registerBlock("cherry_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.CHERRY_WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_GRAY).ignitedByLava()));
+    public static final Block DARK_OAK_PLATFORM = registerBlock("dark_oak_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.COLOR_BROWN).ignitedByLava()));
+    public static final Block PALE_OAK_PLATFORM = registerBlock("pale_oak_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.STONE).ignitedByLava()));
+    public static final Block MANGROVE_PLATFORM = registerBlock("mangrove_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()));
+    public static final Block BAMBOO_PLATFORM = registerBlock("bamboo_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.BAMBOO_WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.PLANT).ignitedByLava()));
+
     public static final Block PROTOTAXITE_LOG = registerBlock("prototaxite_hyphae", properties ->
             new TaxiteLogBlock(properties.instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).randomTicks()
                     .strength(4.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
@@ -458,6 +489,9 @@ public class ModBlocks {
             new DoorBlock(ModBlockSetTypes.Sets.TAXITE, properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
                     .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()
                     .pushReaction(PushReaction.DESTROY).noOcclusion()));
+    public static final Block TAXITE_PLATFORM = registerBlock("taxite_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.NETHER_WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()));
 
     public static final Block TAXITE_SHELF = registerBlockEntity("taxite_shelf", BlockEntityTypes.SHELF,
             properties -> new ShelfBlock(properties.mapColor(TAXITE_PLANKS.defaultMapColor())
@@ -530,6 +564,9 @@ public class ModBlocks {
             new DoorBlock(ModBlockSetTypes.Sets.GINKGO, properties.mapColor(MapColor.SAND)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
                     .pushReaction(PushReaction.DESTROY).noOcclusion()));
+    public static final Block GINKGO_PLATFORM = registerBlock("ginkgo_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()));
 
     public static final Block GINKGO_SHELF = registerBlockEntity("ginkgo_shelf", BlockEntityTypes.SHELF,
             properties -> new ShelfBlock(properties.mapColor(GINKGO_PLANKS.defaultMapColor())
@@ -606,6 +643,9 @@ public class ModBlocks {
             new DoorBlock(ModBlockSetTypes.Sets.PALM, properties.mapColor(MapColor.EMERALD)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
                     .pushReaction(PushReaction.DESTROY).noOcclusion()));
+    public static final Block PALM_PLATFORM = registerBlock("palm_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()));
 
     public static final Block PALM_SHELF = registerBlockEntity("palm_shelf", BlockEntityTypes.SHELF,
             properties -> new ShelfBlock(properties.mapColor(PALM_PLANKS.defaultMapColor())
@@ -752,6 +792,16 @@ public class ModBlocks {
         Block toRegister = blockProperties.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));
         registerBlockItem(name, toRegister, itemProperties);
         return Registry.register(BuiltInRegistries.BLOCK, JirniyBiomes.id(name), toRegister);
+    }
+    private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> blockProperties, Function<Item.Properties, Item> itemProperties) {
+        Block block = blockProperties.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, JirniyBiomes.id(name))));
+        Item item = Registry.register(BuiltInRegistries.ITEM, JirniyBiomes.id(name),
+                itemProperties.apply(new Item.Properties().useBlockDescriptionPrefix()
+                        .setId(ResourceKey.create(Registries.ITEM, JirniyBiomes.id((name))))));
+        CreativeModeTabEvents.modifyOutputEvent(ResourceKey.create(Registries.CREATIVE_MODE_TAB, JirniyBiomes.id("jirbiomes_tab"))).register(output -> {
+            output.accept(item);
+        });
+        return Registry.register(BuiltInRegistries.BLOCK, JirniyBiomes.id(name), block);
     }
 
     public static ResourceKey<Block> getKey(Block block) {

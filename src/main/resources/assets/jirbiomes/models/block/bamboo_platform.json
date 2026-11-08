@@ -1,0 +1,8 @@
+{
+  "parent": "jirbiomes:block/platform",
+  "textures": {
+    "log": "jirbiomes:block/bamboo_platform",
+    "bottom": "jirbiomes:block/platform_bottom",
+    "particle": "minecraft:block/bamboo_block"
+  }
+}

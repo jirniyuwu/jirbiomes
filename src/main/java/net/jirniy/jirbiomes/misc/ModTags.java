@@ -14,6 +14,8 @@ public class ModTags {
         public static final TagKey<Block> GRASS_BLOCKS = create("grass_blocks");
         public static final TagKey<Block> ROOTED_BLOCKS = create("rooted_blocks");
 
+        public static final TagKey<Block> WOODEN_PLATFORMS = create("wooden_platforms");
+
         public static final TagKey<Block> GINKGO_LOGS = create("ginkgo_logs");
         public static final TagKey<Block> PALM_LOGS = create("palm_logs");
         public static final TagKey<Block> TENEBRIS_LOGS = create("tenebris_logs");
@@ -44,6 +46,8 @@ public class ModTags {
     }
 
     public static class Items {
+        public static final TagKey<Item> WOODEN_PLATFORMS = create("wooden_platforms");
+
         public static final TagKey<Item> GINKGO_LOGS = create("ginkgo_logs");
         public static final TagKey<Item> PALM_LOGS = create("palm_logs");
         public static final TagKey<Item> TENEBRIS_LOGS = create("tenebris_logs");

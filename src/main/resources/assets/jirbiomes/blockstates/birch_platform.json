@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "waterlogged=false,axis=z":
+    {
+      "model": "jirbiomes:block/birch_platform",
+      "y": 90
+    },
+    "waterlogged=true,axis=z":
+    {
+      "model": "jirbiomes:block/birch_platform_wet",
+      "y": 90
+    },
+    "waterlogged=false,axis=x":
+    {
+      "model": "jirbiomes:block/birch_platform",
+      "y": 0
+    },
+    "waterlogged=true,axis=x":
+    {
+      "model": "jirbiomes:block/birch_platform_wet",
+      "y": 0
+    }
+  }
+}

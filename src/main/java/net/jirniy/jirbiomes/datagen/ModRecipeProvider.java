@@ -609,6 +609,97 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.BARREL_CACTUS), has(ModItems.BARREL_CACTUS))
                         .save(output, "cactus_from_barrel_cactus");
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.OAK_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.OAK_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.OAK_PLATFORM), has(ModBlocks.OAK_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.OAK_LOG), has(Blocks.OAK_LOG))
+                        .group("platform").save(output, "oak_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BIRCH_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.BIRCH_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.BIRCH_PLATFORM), has(ModBlocks.BIRCH_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.BIRCH_LOG), has(Blocks.BIRCH_LOG))
+                        .group("platform").save(output, "birch_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPRUCE_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.SPRUCE_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.SPRUCE_PLATFORM), has(ModBlocks.SPRUCE_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.SPRUCE_LOG), has(Blocks.SPRUCE_LOG))
+                        .group("platform").save(output, "spruce_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNGLE_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.JUNGLE_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.JUNGLE_PLATFORM), has(ModBlocks.JUNGLE_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.JUNGLE_LOG), has(Blocks.JUNGLE_LOG))
+                        .group("platform").save(output, "jungle_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ACACIA_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.ACACIA_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.ACACIA_PLATFORM), has(ModBlocks.ACACIA_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.ACACIA_LOG), has(Blocks.ACACIA_LOG))
+                        .group("platform").save(output, "acacia_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DARK_OAK_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.DARK_OAK_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.DARK_OAK_PLATFORM), has(ModBlocks.DARK_OAK_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.DARK_OAK_LOG), has(Blocks.DARK_OAK_LOG))
+                        .group("platform").save(output, "dark_oak_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MANGROVE_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.MANGROVE_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.MANGROVE_PLATFORM), has(ModBlocks.MANGROVE_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.MANGROVE_LOG), has(Blocks.MANGROVE_LOG))
+                        .group("platform").save(output, "mangrove_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHERRY_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.CHERRY_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.CHERRY_PLATFORM), has(ModBlocks.CHERRY_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.CHERRY_LOG), has(Blocks.CHERRY_LOG))
+                        .group("platform").save(output, "cherry_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_OAK_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.PALE_OAK_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.PALE_OAK_PLATFORM), has(ModBlocks.PALE_OAK_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
+                        .group("platform").save(output, "pale_oak_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.BAMBOO_BLOCK)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.BAMBOO_PLATFORM), has(ModBlocks.BAMBOO_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.BAMBOO_BLOCK), has(Blocks.BAMBOO_BLOCK))
+                        .group("platform").save(output, "bamboo_platform");
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GINKGO_WOOD, 3)
                         .pattern("LL")
                         .pattern("LL")
@@ -660,6 +751,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("hanging_signs").save(output, "hanging_ginkgo_sign");
                 chestBoat(ModItems.GINKGO_CHEST_BOAT, ModItems.GINKGO_BOAT);
                 woodenBoat(ModItems.GINKGO_BOAT, ModBlocks.GINKGO_PLANKS);
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GINKGO_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', ModBlocks.GINKGO_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_PLATFORM), has(ModBlocks.GINKGO_PLATFORM))
+                        .unlockedBy(getHasName(ModBlocks.GINKGO_LOG), has(ModBlocks.GINKGO_LOG))
+                        .group("platform").save(output, "ginkgo_platform");
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TAXITE_PLANKS, 2)
                         .requires(ModBlocks.PROTOTAXITE_LOG)
@@ -698,6 +798,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("hanging_signs").save(output, "hanging_taxite_sign");
                 chestBoat(ModItems.TAXITE_CHEST_BOAT, ModItems.TAXITE_BOAT);
                 woodenBoat(ModItems.TAXITE_BOAT, ModBlocks.TAXITE_PLANKS);
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TAXITE_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', ModBlocks.PROTOTAXITE_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.TAXITE_PLATFORM), has(ModBlocks.TAXITE_PLATFORM))
+                        .unlockedBy(getHasName(ModBlocks.PROTOTAXITE_LOG), has(ModBlocks.PROTOTAXITE_LOG))
+                        .group("platform").save(output, "taxite_platform");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALM_WOOD, 3)
                         .pattern("LL")
@@ -750,6 +859,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("hanging_signs").save(output, "hanging_palm_sign");
                 chestBoat(ModItems.PALM_CHEST_BOAT, ModItems.PALM_BOAT);
                 woodenBoat(ModItems.PALM_BOAT, ModBlocks.PALM_PLANKS);
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALM_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', ModBlocks.PALM_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.PALM_PLATFORM), has(ModBlocks.PALM_PLATFORM))
+                        .unlockedBy(getHasName(ModBlocks.PALM_LOG), has(ModBlocks.PALM_LOG))
+                        .group("platform").save(output, "palm_platform");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TENEBRIS_PILEUS, 2)
                         .pattern("LL")

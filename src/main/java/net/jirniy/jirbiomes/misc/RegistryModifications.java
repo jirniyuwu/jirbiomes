@@ -85,8 +85,10 @@ public class RegistryModifications {
             builder.add(ModItems.DRIED_FIBERS, BASE_TIME/6);
             builder.add(ModBlocks.STRAW_BLOCK, BASE_TIME);
             builder.add(ModItems.TARR_BUCKET, BASE_TIME*160);
+            builder.add(ModTags.Items.WOODEN_PLATFORMS, BASE_TIME/2);
         });
 
+        FlammableBlockRegistry.getDefaultInstance().add(ModTags.Blocks.WOODEN_PLATFORMS, 20, 60);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CATTAIL, 40, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModTags.Blocks.BARREL_CACTUSES, 40, 60);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.LOTUS_FLOWER, 20, 40);

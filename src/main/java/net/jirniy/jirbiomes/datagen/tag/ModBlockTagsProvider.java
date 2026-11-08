@@ -57,6 +57,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.POLISHED_TARR, ModBlocks.POLISHED_TARR_STAIRS, ModBlocks.POLISHED_TARR_SLAB, ModBlocks.POLISHED_TARR_WALL))
                 .add(ModBlocks.getKeys(ModBlocks.TARR_BRICKS, ModBlocks.TARR_BRICKS_STAIRS, ModBlocks.TARR_BRICKS_SLAB, ModBlocks.TARR_BRICKS_WALL));
         tag(BlockTags.MINEABLE_WITH_AXE)
+                .addOptionalTag(ModTags.Blocks.WOODEN_PLATFORMS)
                 .add(ModBlocks.getKey(ModBlocks.STRAW_BLOCK))
                 .add(ModBlocks.getKeys(ModBlocks.PACKED_STRAW, ModBlocks.PACKED_STRAW_SLAB, ModBlocks.PACKED_STRAW_STAIRS))
                 .add(ModBlocks.getKey(ModBlocks.COCONUT_PLANT))
@@ -213,6 +214,10 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_GINKGO_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_TAXITE_SIGN))
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_PALM_SIGN));
+        tag(ModTags.Blocks.WOODEN_PLATFORMS)
+                .add(ModBlocks.getKeys(ModBlocks.OAK_PLATFORM, ModBlocks.DARK_OAK_PLATFORM, ModBlocks.PALE_OAK_PLATFORM, ModBlocks.BIRCH_PLATFORM, ModBlocks.SPRUCE_PLATFORM))
+                .add(ModBlocks.getKeys(ModBlocks.ACACIA_PLATFORM, ModBlocks.JUNGLE_PLATFORM, ModBlocks.MANGROVE_PLATFORM, ModBlocks.CHERRY_PLATFORM, ModBlocks.BAMBOO_PLATFORM))
+                .add(ModBlocks.getKeys(ModBlocks.GINKGO_PLATFORM, ModBlocks.PALM_PLATFORM, ModBlocks.TAXITE_PLATFORM));
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.getKey(ModBlocks.PACKED_STRAW_STAIRS))

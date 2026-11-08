@@ -1,0 +1,8 @@
+{
+  "parent": "jirbiomes:block/platform",
+  "textures": {
+    "log": "jirbiomes:block/palm_platform",
+    "bottom": "jirbiomes:block/platform_bottom",
+    "particle": "jirbiomes:block/palm_log"
+  }
+}

@@ -172,6 +172,17 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.POLISHED_BRIMSTONE_SLAB, this::createSlabItemTable);
         dropSelf(ModBlocks.POLISHED_BRIMSTONE_WALL);
 
+        dropSelf(ModBlocks.OAK_PLATFORM);
+        dropSelf(ModBlocks.PALE_OAK_PLATFORM);
+        dropSelf(ModBlocks.ACACIA_PLATFORM);
+        dropSelf(ModBlocks.BAMBOO_PLATFORM);
+        dropSelf(ModBlocks.BIRCH_PLATFORM);
+        dropSelf(ModBlocks.CHERRY_PLATFORM);
+        dropSelf(ModBlocks.DARK_OAK_PLATFORM);
+        dropSelf(ModBlocks.JUNGLE_PLATFORM);
+        dropSelf(ModBlocks.MANGROVE_PLATFORM);
+        dropSelf(ModBlocks.SPRUCE_PLATFORM);
+
         dropSelf(ModBlocks.GINKGO_LOG);
         dropSelf(ModBlocks.STRIPPED_GINKGO_LOG);
         dropSelf(ModBlocks.GINKGO_WOOD);
@@ -190,6 +201,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.GINKGO_SHELF);
         dropSelf(ModBlocks.GINKGO_SIGN);
         dropSelf(ModBlocks.HANGING_GINKGO_SIGN);
+        dropSelf(ModBlocks.GINKGO_PLATFORM);
 
         add(ModBlocks.GINKGO_LEAVES, createLeavesDrops(ModBlocks.GINKGO_LEAVES, ModBlocks.GINKGO_SAPLING, 0.05f));
 
@@ -211,6 +223,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.PALM_SHELF);
         dropSelf(ModBlocks.PALM_SIGN);
         dropSelf(ModBlocks.HANGING_PALM_SIGN);
+        dropSelf(ModBlocks.PALM_PLATFORM);
 
         add(ModBlocks.PALM_LEAVES, createLeavesDrops(ModBlocks.PALM_LEAVES, ModBlocks.PALM_SAPLING, 0.1f));
 
@@ -249,6 +262,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.TAXITE_SHELF);
         dropSelf(ModBlocks.TAXITE_SIGN);
         dropSelf(ModBlocks.HANGING_TAXITE_SIGN);
+        dropSelf(ModBlocks.TAXITE_PLATFORM);
 
         add(ModBlocks.APPLE_CROP, createCropDrops(ModBlocks.APPLE_CROP, ModBlocks.APPLE_OAK_SAPLING.asItem(), ModItems.APPLE_SEEDS,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.APPLE_CROP)

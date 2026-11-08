@@ -1,0 +1,8 @@
+{
+  "parent": "jirbiomes:block/platform",
+  "textures": {
+    "log": "jirbiomes:block/taxite_platform",
+    "bottom": "jirbiomes:block/platform_bottom",
+    "particle": "jirbiomes:block/prototaxite_hyphae"
+  }
+}

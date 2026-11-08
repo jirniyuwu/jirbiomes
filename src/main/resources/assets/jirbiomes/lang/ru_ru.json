@@ -147,6 +147,17 @@
   "block.jirbiomes.mossy_brimstone_bricks_stairs": "Ступеньки из замшелого серно-каменного кирпича",
   "block.jirbiomes.mossy_brimstone_bricks_wall": "Ограда из замшелого серно-каменного кирпича",
 
+  "block.jirbiomes.oak_platform": "Дубовая платформа",
+  "block.jirbiomes.birch_platform": "Берёзовая платформа",
+  "block.jirbiomes.spruce_platform": "Еловая платформа",
+  "block.jirbiomes.acacia_platform": "Акациевоая платформа",
+  "block.jirbiomes.jungle_platform": "Платформа из джунглевого дерева",
+  "block.jirbiomes.dark_oak_platform": "Платформа из тёмного дуба",
+  "block.jirbiomes.mangrove_platform": "Мангровая платформа",
+  "block.jirbiomes.cherry_platform": "Вишнёвая платформа",
+  "block.jirbiomes.bamboo_platform": "Бамбуковая платформа",
+  "block.jirbiomes.pale_oak_platform": "Платформа из бледного дуба",
+
   "block.jirbiomes.ginkgo_planks": "Гинкго доски",
   "block.jirbiomes.ginkgo_log": "Гинкго бревно",
   "block.jirbiomes.ginkgo_wood": "Гинкго древесина",
@@ -173,6 +184,7 @@
   "entity.jirbiomes.ginkgo_boat": "Гинкго лодка",
   "item.jirbiomes.ginkgo_chest_boat": "Гинкго грузовая лодка",
   "entity.jirbiomes.ginkgo_chest_boat": "Гинкго грузовая лодка",
+  "block.jirbiomes.ginkgo_platform": "Гинкго платформа",
 
   "block.jirbiomes.palm_planks": "Пальмовые доски",
   "block.jirbiomes.palm_log": "Пальмовое бревно",
@@ -200,6 +212,7 @@
   "entity.jirbiomes.palm_boat": "Пальмовая лодка",
   "item.jirbiomes.palm_chest_boat": "Пальмовая грузовая лодка",
   "entity.jirbiomes.palm_chest_boat": "Пальмовая грузовая лодка",
+  "block.jirbiomes.palm_platform": "Пальмовая платформа",
 
   "block.jirbiomes.tenebris_planks": "Тенебризовые доски",
   "block.jirbiomes.tenebris_stem": "Тенебризовая ножка",
@@ -246,6 +259,7 @@
   "entity.jirbiomes.taxite_boat": "Такситовая лодка",
   "item.jirbiomes.taxite_chest_boat": "Такситовая грузовая лодка",
   "entity.jirbiomes.taxite_chest_boat": "Такситовая грузовая лодка",
+  "block.jirbiomes.taxite_platform": "Такситовая платформа",
 
   "item.jirbiomes.apple_seeds": "Семена яблок",
   "block.jirbiomes.apple_crop": "Росток яблочного дуба",
@@ -272,6 +286,7 @@
   "death.attack.cactus_food.player": "%1$s не посмотрел на их еду, пока боролся с %2$s",
 
   "creativemodetab.jirbiomes.jirbiomes_tab": "Jirniy's biome additions",
+  "tag.item.jirbiomes.wooden_platforms": "Wooden Platforms",
   "tag.item.jirbiomes.ginkgo_logs": "Any Ginkgo log",
   "tag.item.jirbiomes.palm_logs": "Any Palm log",
   "tag.item.jirbiomes.tenebris_logs": "Any Tenebris log",

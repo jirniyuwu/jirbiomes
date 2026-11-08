@@ -1,0 +1,8 @@
+{
+  "parent": "jirbiomes:block/platform",
+  "textures": {
+    "log": "jirbiomes:block/birch_platform_wet",
+    "bottom": "jirbiomes:block/platform_bottom",
+    "particle": "minecraft:block/birch_log"
+  }
+}
