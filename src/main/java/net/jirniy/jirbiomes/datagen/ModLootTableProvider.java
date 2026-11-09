@@ -282,6 +282,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
                                 .withPool(LootPool.lootPool().when(this.hasShears()).add(LootItem.lootTableItem(block)))
                 )
         );
+        dropPottedContents(ModBlocks.POTTED_WILD_COTTON);
 
         dropOther(ModBlocks.PRICKLY_PEAR_SEED, ModItems.PRICKLY_PEAR);
         this.add(ModBlocks.SMALL_BARREL_CACTUS, block -> this.applyExplosionDecay(block,

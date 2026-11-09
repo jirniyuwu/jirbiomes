@@ -318,6 +318,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.POTTED_LOTUS_FLOWER))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_FROZEN_GRASS))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_BARREL_CACTUS))
+                .add(ModBlocks.getKey(ModBlocks.POTTED_WILD_COTTON))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_GINKGO_SAPLING))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_PALM_SAPLING))
                 .add(ModBlocks.getKey(ModBlocks.POTTED_APPLE_OAK_SAPLING))

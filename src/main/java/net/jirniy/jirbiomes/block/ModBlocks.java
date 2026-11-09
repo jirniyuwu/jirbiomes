@@ -750,6 +750,8 @@ public class ModBlocks {
             new BonemealableVegetationPlaceableOnBlock(ModTags.Blocks.WILD_COTTON_PLACEABLE, properties
                     .instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.DIRT).offsetType(BlockBehaviour.OffsetType.XYZ)
                     .noCollision().randomTicks().sound(SoundType.CROP)));
+    public static final Block POTTED_WILD_COTTON = registerBlock("potted_wild_cotton", false, properties ->
+            new FlowerPotBlock(ModBlocks.WILD_COTTON, properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     public static final Block APPLE_LEAVES = registerBlock("apple_leaves", properties ->
             new AppleLeavesBlock(0.01F, properties.mapColor(MapColor.PLANT)
