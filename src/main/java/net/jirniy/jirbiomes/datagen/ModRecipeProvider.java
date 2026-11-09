@@ -111,6 +111,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.LOTUS_FLOWER), has(ModItems.LOTUS_FLOWER))
                         .group("pink_dye").save(output, "pink_dye_lotus");
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.WOOL.white(), 1)
+                        .pattern("SS")
+                        .pattern("SS")
+                        .define('S', ModItems.COTTON)
+                        .unlockedBy(getHasName(ModItems.COTTON), has(ModItems.COTTON))
+                        .save(output, "wool_from_cotton");
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRAW_BLOCK, 1)
                         .pattern("SS")
                         .pattern("SS")

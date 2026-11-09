@@ -267,6 +267,11 @@
   "block.jirbiomes.apple_oak_sapling": "Саженец яблочного дуба",
   "block.jirbiomes.potted_apple_oak_sapling": "Саженец яблочного дуба в горшке",
 
+  "item.jirbiomes.cotton": "Хлопок",
+  "item.jirbiomes.cotton_seeds": "Семена хлопчатника",
+  "block.jirbiomes.cotton_crop": "Хлопчатник",
+  "block.jirbiomes.wild_cotton": "Дикорастущий хлопчатник",
+
   "item.jirbiomes.barrel_cactus": "Бочко-кактус",
   "block.jirbiomes.small_barrel_cactus": "Маленький бочко-кактус",
   "block.jirbiomes.large_barrel_cactus": "Большой бочко-кактус",

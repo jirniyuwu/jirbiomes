@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
+import net.jirniy.jirbiomes.block.custom.CottonCropBlock;
 import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -212,6 +213,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.APPLE_OAK_SAPLING, ModBlocks.POTTED_APPLE_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createCrossBlock(ModBlocks.APPLE_CROP, BlockModelGenerators.PlantType.NOT_TINTED, AppleCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
+        blockModelGenerators.createCropBlock(ModBlocks.COTTON_CROP, CottonCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6);
+        blockModelGenerators.createCrossBlock(ModBlocks.WILD_COTTON, BlockModelGenerators.PlantType.NOT_TINTED);
 
         blockModelGenerators.createCrossBlock(ModBlocks.PRICKLY_PEAR_SEED, BlockModelGenerators.PlantType.NOT_TINTED);
         blockModelGenerators.createCrossBlock(ModBlocks.SMALL_BARREL_CACTUS, BlockModelGenerators.PlantType.NOT_TINTED, SmallBarrelCactusBlock.AGE, 0, 1, 2);
@@ -223,6 +226,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.PRICKLY_PEAR, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.LOTUS_FLOWER, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.COTTON, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIED_FIBERS, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SEASHELL, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.COCONUT, ModelTemplates.FLAT_ITEM);
@@ -237,6 +241,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModBlocks.SHARP_RIBS.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.SEA_URCHIN.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.HANGING_MUSHROOMS.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModBlocks.WILD_COTTON.asItem(), ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GINKGO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);

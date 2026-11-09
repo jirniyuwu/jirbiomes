@@ -17,18 +17,24 @@ import java.util.Optional;
 
 public class ModVillagerTrades {
     public static final ResourceKey<VillagerTrade> FARMER_2_EMERALD_APPLE_SEEDS = createKey("farmer/2/emerald_apple_seeds");
+    public static final ResourceKey<VillagerTrade> FARMER_2_EMERALD_COTTON_SEEDS = createKey("farmer/2/emerald_cotton_seeds");
     public static final ResourceKey<VillagerTrade> FARMER_3_COCONUT_EMERALD = createKey("farmer/3/coconut_emerald");
     public static final ResourceKey<VillagerTrade> FARMER_3_EMERALD_PRICKLY_PEAR = createKey("farmer/3/emerald_prickly_pear");
 
     public static final ResourceKey<VillagerTrade> MASON_2_EMERALD_SALT = createKey("mason/2/emerald_salt");
 
+    public static final ResourceKey<VillagerTrade> SHEPHERD_2_COTTON_STRING = createKey("shepherd/2/cotton_string");
+    public static final ResourceKey<VillagerTrade> SHEPHERD_5_COTTON_EMERALD = createKey("shepherd/5/cotton_emerald");
+
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_DRIED_FIBERS_EMERALD = createKey("wandering_trader/dried_fibers_emerald");
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_SALT_LAMP_EMERALD = createKey("wandering_trader/salt_lamp_emerald");
+    public static final ResourceKey<VillagerTrade> WANDERING_TRADER_COTTON_EMERALD = createKey("wandering_trader/cotton_emerald");
 
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_ALGAE_BUCKET = createKey("wandering_trader/emerald_algae_bucket");
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_TARR_BUCKET = createKey("wandering_trader/emerald_tarr_bucket");
 
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_APPLE_SEEDS = createKey("wandering_trader/emerald_apple_seeds");
+    public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_COTTON_SEEDS = createKey("wandering_trader/emerald_cotton_seeds");
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_BARREL_CACTUS = createKey("wandering_trader/emerald_barrel_cactus");
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_HANGING_MUSHROOMS = createKey("wandering_trader/emerald_hanging_mushrooms");
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_SMALL_MUSHROOMS = createKey("wandering_trader/emerald_small_mushrooms");;
@@ -54,6 +60,11 @@ public class ModVillagerTrades {
                 new ItemStackTemplate(ModItems.APPLE_SEEDS, 1),
                 8, 4, 0.05F, Optional.empty(), List.of()
         ));
+        context.register(FARMER_2_EMERALD_COTTON_SEEDS, new VillagerTrade(
+                new TradeCost(Items.EMERALD, 2),
+                new ItemStackTemplate(ModItems.COTTON_SEEDS, 1),
+                8, 4, 0.05F, Optional.empty(), List.of()
+        ));
         context.register(FARMER_3_COCONUT_EMERALD, new VillagerTrade(
                 new TradeCost(ModItems.COCONUT, 1),
                 new ItemStackTemplate(Items.EMERALD, 2),
@@ -71,6 +82,18 @@ public class ModVillagerTrades {
                 16, 8, 0.05F, Optional.empty(), List.of()
         ));
 
+        context.register(SHEPHERD_2_COTTON_STRING, new VillagerTrade(
+                new TradeCost(ModItems.COTTON, 2),
+                new ItemStackTemplate(Items.EMERALD, 1),
+                16, 15, 0.05F, Optional.empty(), List.of()
+        ));
+        context.register(SHEPHERD_5_COTTON_EMERALD, new VillagerTrade(
+                new TradeCost(ModItems.COTTON, 4),
+                Optional.of(new TradeCost(Items.EMERALD, 1)),
+                new ItemStackTemplate(Items.STRING, 4),
+                16, 10, 0.05F, Optional.empty(), List.of()
+        ));
+
         context.register(WANDERING_TRADER_DRIED_FIBERS_EMERALD, new VillagerTrade(
                 new TradeCost(ModItems.DRIED_FIBERS, 16),
                 new ItemStackTemplate(Items.EMERALD, 1),
@@ -80,6 +103,11 @@ public class ModVillagerTrades {
                 new TradeCost(ModBlocks.SALT_LAMP, 1),
                 new ItemStackTemplate(Items.EMERALD, 1),
                 4, 1, 0.05F, Optional.empty(), List.of()
+        ));
+        context.register(WANDERING_TRADER_COTTON_EMERALD, new VillagerTrade(
+                new TradeCost(ModItems.COTTON, 4),
+                new ItemStackTemplate(Items.EMERALD, 1),
+                8, 1, 0.05F, Optional.empty(), List.of()
         ));
 
         context.register(WANDERING_TRADER_EMERALD_SMALL_MUSHROOMS, new VillagerTrade(
@@ -146,6 +174,7 @@ public class ModVillagerTrades {
         context.register(WANDERING_TRADER_EMERALD_PROTOTAXITE_SAPLING, createWanderingTraderSaplingSell(ModBlocks.PROTOTAXITE_SAPLING.asItem()));
         context.register(WANDERING_TRADER_EMERALD_TENEBRIS_SAPLING, createWanderingTraderSaplingSell(ModBlocks.TENEBRIS_SAPLING.asItem()));
         context.register(WANDERING_TRADER_EMERALD_APPLE_SEEDS, createWanderingTraderSeedSell(ModItems.APPLE_SEEDS));
+        context.register(WANDERING_TRADER_EMERALD_COTTON_SEEDS, createWanderingTraderSeedSell(ModItems.COTTON_SEEDS));
     }
 
     private static ResourceKey<VillagerTrade> createKey(String name) {

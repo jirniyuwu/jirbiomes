@@ -153,6 +153,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItems.getKeys(ModBlocks.PACKED_SNOW_BRICKS_WALL, ModBlocks.POLISHED_SNOW_WALL));
 
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
+                .add(ModItems.getKey(ModItems.COTTON_SEEDS))
                 .add(ModItems.getKey(ModItems.APPLE_SEEDS));
 
         tag(ConventionalItemTags.BUCKETS)

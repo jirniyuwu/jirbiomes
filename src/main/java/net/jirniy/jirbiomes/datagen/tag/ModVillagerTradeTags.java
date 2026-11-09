@@ -19,7 +19,8 @@ public class ModVillagerTradeTags extends FabricTagsProvider<VillagerTrade> {
     @Override
     protected void addTags(HolderLookup.Provider registries) {
         getOrCreateRawBuilder(VillagerTradeTags.FARMER_LEVEL_2)
-                .add(TagEntry.element(ModVillagerTrades.FARMER_2_EMERALD_APPLE_SEEDS.identifier()));
+                .add(TagEntry.element(ModVillagerTrades.FARMER_2_EMERALD_APPLE_SEEDS.identifier()))
+                .add(TagEntry.element(ModVillagerTrades.FARMER_2_EMERALD_COTTON_SEEDS.identifier()));
         getOrCreateRawBuilder(VillagerTradeTags.FARMER_LEVEL_3)
                 .add(TagEntry.element(ModVillagerTrades.FARMER_3_COCONUT_EMERALD.identifier()))
                 .add(TagEntry.element(ModVillagerTrades.FARMER_3_EMERALD_PRICKLY_PEAR.identifier()));
@@ -27,11 +28,18 @@ public class ModVillagerTradeTags extends FabricTagsProvider<VillagerTrade> {
         getOrCreateRawBuilder(VillagerTradeTags.MASON_LEVEL_2)
                 .add(TagEntry.element(ModVillagerTrades.MASON_2_EMERALD_SALT.identifier()));
 
+        getOrCreateRawBuilder(VillagerTradeTags.SHEPHERD_LEVEL_2)
+                .add(TagEntry.element(ModVillagerTrades.SHEPHERD_2_COTTON_STRING.identifier()));
+        getOrCreateRawBuilder(VillagerTradeTags.SHEPHERD_LEVEL_5)
+                .add(TagEntry.element(ModVillagerTrades.SHEPHERD_5_COTTON_EMERALD.identifier()));
+
         getOrCreateRawBuilder(VillagerTradeTags.WANDERING_TRADER_BUYING)
+                .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_COTTON_EMERALD.identifier()))
                 .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_SALT_LAMP_EMERALD.identifier()))
                 .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_DRIED_FIBERS_EMERALD.identifier()));
         getOrCreateRawBuilder(VillagerTradeTags.WANDERING_TRADER_COMMON)
                 .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_EMERALD_APPLE_SEEDS.identifier()))
+                .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_EMERALD_COTTON_SEEDS.identifier()))
                 .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_EMERALD_BARREL_CACTUS.identifier()))
                 .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_EMERALD_HANGING_MUSHROOMS.identifier()))
                 .add(TagEntry.element(ModVillagerTrades.WANDERING_TRADER_EMERALD_SMALL_MUSHROOMS.identifier()))

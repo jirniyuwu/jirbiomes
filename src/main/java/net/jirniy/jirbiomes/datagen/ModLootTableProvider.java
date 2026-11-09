@@ -3,10 +3,7 @@ package net.jirniy.jirbiomes.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.jirniy.jirbiomes.block.ModBlocks;
-import net.jirniy.jirbiomes.block.custom.AppleCropBlock;
-import net.jirniy.jirbiomes.block.custom.CoconutBlock;
-import net.jirniy.jirbiomes.block.custom.HangingMushroomsBlock;
-import net.jirniy.jirbiomes.block.custom.SmallBarrelCactusBlock;
+import net.jirniy.jirbiomes.block.custom.*;
 import net.jirniy.jirbiomes.item.ModItems;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -24,6 +21,7 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.concurrent.CompletableFuture;
@@ -269,6 +267,21 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AppleCropBlock.AGE, AppleCropBlock.MAX_AGE))));
         add(ModBlocks.APPLE_LEAVES, createLeavesDrops(ModBlocks.APPLE_LEAVES, Blocks.OAK_SAPLING, 0.05f));
         dropSelf(ModBlocks.APPLE_OAK_SAPLING);
+
+        add(ModBlocks.COTTON_CROP, createCropDrops(ModBlocks.COTTON_CROP, ModItems.COTTON, ModItems.COTTON_SEEDS,
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.COTTON_CROP)
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CottonCropBlock.AGE, CottonCropBlock.MAX_AGE))));
+        add(ModBlocks.WILD_COTTON, block -> this.applyExplosionDecay(block, LootTable.lootTable()
+                                .withPool(LootPool.lootPool()
+                                        .when(hasShears().invert())
+                                        .add(LootItem.lootTableItem(ModItems.COTTON_SEEDS)
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))))
+                                .withPool(LootPool.lootPool()
+                                        .when(hasShears().invert().and(LootItemRandomChanceCondition.randomChance(0.2f)))
+                                        .add(LootItem.lootTableItem(ModItems.COTTON)))
+                                .withPool(LootPool.lootPool().when(this.hasShears()).add(LootItem.lootTableItem(block)))
+                )
+        );
 
         dropOther(ModBlocks.PRICKLY_PEAR_SEED, ModItems.PRICKLY_PEAR);
         this.add(ModBlocks.SMALL_BARREL_CACTUS, block -> this.applyExplosionDecay(block,

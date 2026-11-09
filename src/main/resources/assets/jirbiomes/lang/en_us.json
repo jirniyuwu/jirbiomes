@@ -267,6 +267,11 @@
   "block.jirbiomes.apple_oak_sapling": "Apple Oak Sapling",
   "block.jirbiomes.potted_apple_oak_sapling": "Potted Apple Oak Sapling",
 
+  "item.jirbiomes.cotton": "Cotton",
+  "item.jirbiomes.cotton_seeds": "Cotton Seeds",
+  "block.jirbiomes.cotton_crop": "Cotton",
+  "block.jirbiomes.wild_cotton": "Wild Cotton",
+
   "item.jirbiomes.barrel_cactus": "Barrel Cactus",
   "block.jirbiomes.small_barrel_cactus": "Small Barrel Cactus",
   "block.jirbiomes.large_barrel_cactus": "Large Barrel Cactus",

@@ -742,6 +742,14 @@ public class ModBlocks {
     public static final Block APPLE_CROP = registerBlock("apple_crop", false, properties ->
             new AppleCropBlock(properties.instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.GRASS)
                     .noCollision().randomTicks().sound(SoundType.CROP)));
+    public static final Block COTTON_CROP = registerBlock("cotton", false, properties ->
+            new CottonCropBlock(properties.instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.DIRT)
+                    .noCollision().randomTicks().sound(SoundType.CROP)));
+
+    public static final Block WILD_COTTON = registerBlock("wild_cotton", properties ->
+            new BonemealableVegetationPlaceableOnBlock(ModTags.Blocks.WILD_COTTON_PLACEABLE, properties
+                    .instabreak().pushReaction(PushReaction.DESTROY).noOcclusion().mapColor(MapColor.DIRT).offsetType(BlockBehaviour.OffsetType.XYZ)
+                    .noCollision().randomTicks().sound(SoundType.CROP)));
 
     public static final Block APPLE_LEAVES = registerBlock("apple_leaves", properties ->
             new AppleLeavesBlock(0.01F, properties.mapColor(MapColor.PLANT)

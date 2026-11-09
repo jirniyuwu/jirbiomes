@@ -273,6 +273,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.SUPPORTS_SMALL_DRIPLEAF)
                 .addOptionalTag(ModTags.Blocks.WET_DIRT);
         tag(BlockTags.CROPS)
+                .add(ModBlocks.getKey(ModBlocks.COTTON_CROP))
                 .add(ModBlocks.getKey(ModBlocks.APPLE_CROP));
         tag(BlockTags.GROWS_CROPS)
                 .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND));
@@ -398,6 +399,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(BlockTags.SUPPORTS_VEGETATION)
                 .addOptionalTag(BlockTags.SUPPORTS_DRY_VEGETATION)
                 .addOptionalTag(BlockTags.SAND);
+        tag(ModTags.Blocks.WILD_COTTON_PLACEABLE)
+                .addOptionalTag(ModTags.Blocks.DRIED_DIRT)
+                .add(ModBlocks.getKeys(ModBlocks.WET_FARMLAND, Blocks.FARMLAND))
+                .add(ModBlocks.getKeys(Blocks.GRASS_BLOCK, Blocks.ROOTED_DIRT, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.MYCELIUM,
+                        Blocks.MUD, ModBlocks.ROOTED_MUD, Blocks.MOSS_BLOCK, Blocks.PALE_MOSS_BLOCK));
         tag(ModTags.Blocks.SEA_URCHIN_SHIPWRECK_PLACEMENT)
                 .addOptionalTag(BlockTags.PLANKS)
                 .addOptionalTag(BlockTags.OVERWORLD_NATURAL_LOGS)
