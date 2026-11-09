@@ -4,24 +4,78 @@
       "model": "jirbiomes:block/apple_leaves_stage0"
     },
     "stage=1": {
-      "model": "jirbiomes:block/apple_leaves_stage1"
+      "model": "jirbiomes:block/apple_leaves_stage0"
     },
     "stage=2": {
-      "model": "jirbiomes:block/apple_leaves_stage2"
+      "model": "jirbiomes:block/apple_leaves_stage0"
     },
     "stage=3": {
       "model": "jirbiomes:block/apple_leaves_stage1"
     },
     "stage=4": {
-      "model": "jirbiomes:block/apple_leaves_stage3"
+      "model": "jirbiomes:block/apple_leaves_stage1"
     },
     "stage=5": {
-      "model": "jirbiomes:block/apple_leaves_stage4"
+      "model": "jirbiomes:block/apple_leaves_stage1"
     },
     "stage=6": {
-      "model": "jirbiomes:block/apple_leaves_stage5"
+      "model": "jirbiomes:block/apple_leaves_stage2"
     },
     "stage=7": {
+      "model": "jirbiomes:block/apple_leaves_stage2"
+    },
+    "stage=8": {
+      "model": "jirbiomes:block/apple_leaves_stage2"
+    },
+    "stage=9": {
+      "model": "jirbiomes:block/apple_leaves_stage2"
+    },
+    "stage=10": {
+      "model": "jirbiomes:block/apple_leaves_stage2"
+    },
+    "stage=11": {
+      "model": "jirbiomes:block/apple_leaves_stage2"
+    },
+    "stage=12": {
+      "model": "jirbiomes:block/apple_leaves_stage1"
+    },
+    "stage=13": {
+      "model": "jirbiomes:block/apple_leaves_stage1"
+    },
+    "stage=14": {
+      "model": "jirbiomes:block/apple_leaves_stage3"
+    },
+    "stage=15": {
+      "model": "jirbiomes:block/apple_leaves_stage3"
+    },
+    "stage=16": {
+      "model": "jirbiomes:block/apple_leaves_stage3"
+    },
+    "stage=17": {
+      "model": "jirbiomes:block/apple_leaves_stage4"
+    },
+    "stage=18": {
+      "model": "jirbiomes:block/apple_leaves_stage4"
+    },
+    "stage=19": {
+      "model": "jirbiomes:block/apple_leaves_stage4"
+    },
+    "stage=20": {
+      "model": "jirbiomes:block/apple_leaves_stage4"
+    },
+    "stage=21": {
+      "model": "jirbiomes:block/apple_leaves_stage5"
+    },
+    "stage=22": {
+      "model": "jirbiomes:block/apple_leaves_stage5"
+    },
+    "stage=23": {
+      "model": "jirbiomes:block/apple_leaves_stage5"
+    },
+    "stage=24": {
+      "model": "jirbiomes:block/apple_leaves_stage5"
+    },
+    "stage=25": {
       "model": "jirbiomes:block/apple_leaves_stage6"
     }
   }

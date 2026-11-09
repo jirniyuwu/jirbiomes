@@ -132,6 +132,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.TENEBRIS_WOOD, ModBlocks.STRIPPED_TENEBRIS_WOOD));
 
         tag(BlockTags.LEAVES)
+                .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES))
                 .add(ModBlocks.getKey(ModBlocks.GINKGO_LEAVES))
                 .add(ModBlocks.getKey(ModBlocks.PALM_LEAVES));
         tag(BlockTags.PLANKS)
