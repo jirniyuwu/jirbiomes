@@ -14,7 +14,9 @@ import net.jirniy.jirbiomes.worldgen.feature.TaxiteConfiguration;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.*;
+import net.minecraft.data.worldgen.features.AquaticFeatures;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -267,14 +269,20 @@ public class ModConfiguredFeatures {
                 )
         ));
 
+        BlockStateProvider appleLeavesProvider = new WeightedStateProvider(
+                WeightedList.<BlockState>builder()
+                        .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 4), 1)
+                        .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 5), 1)
+                        .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 6), 1)
+                        .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 7), 1)
+                        .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 8), 1)
+                        .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 9), 1)
+                        .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 10), 1)
+        );
         register(context, APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 simpleState(Blocks.OAK_LOG),
                 new StraightTrunkPlacer(4, 2, 0),
-                new WeightedStateProvider(
-                        WeightedList.<BlockState>builder()
-                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 1), 2)
-                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 2), 1)
-                ),
+                appleLeavesProvider,
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1),
                 belowTrunkProvider).ignoreVines().build()
@@ -282,11 +290,7 @@ public class ModConfiguredFeatures {
         register(context, APPLE_OAK_TREE_BEES_005, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 simpleState(Blocks.OAK_LOG),
                 new StraightTrunkPlacer(4, 2, 0),
-                new WeightedStateProvider(
-                        WeightedList.<BlockState>builder()
-                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 1), 2)
-                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 2), 1)
-                ),
+                appleLeavesProvider,
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1),
                 belowTrunkProvider).ignoreVines().decorators(List.of(beehive005)).build()
@@ -295,11 +299,7 @@ public class ModConfiguredFeatures {
         register(context, FANCY_APPLE_OAK_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 simpleState(Blocks.OAK_LOG),
                 new FancyTrunkPlacer(3, 11, 0),
-                new WeightedStateProvider(
-                        WeightedList.<BlockState>builder()
-                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 1), 2)
-                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 2), 1)
-                ),
+                appleLeavesProvider,
                 new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
                 belowTrunkProvider).ignoreVines().build()
@@ -307,11 +307,7 @@ public class ModConfiguredFeatures {
         register(context, FANCY_APPLE_OAK_TREE_BEES_005, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 simpleState(Blocks.OAK_LOG),
                 new FancyTrunkPlacer(3, 11, 0),
-                new WeightedStateProvider(
-                        WeightedList.<BlockState>builder()
-                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 1), 2)
-                                .add(ModBlocks.APPLE_LEAVES.defaultBlockState().setValue(AppleLeavesBlock.STAGE, 2), 1)
-                ),
+                appleLeavesProvider,
                 new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
                 belowTrunkProvider).ignoreVines().decorators(List.of(beehive005)).build()
