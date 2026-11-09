@@ -117,6 +117,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_MUSHROOMS = registryKey("small_mushrooms");
     public static final ResourceKey<ConfiguredFeature<?, ?>> HANGING_MUSHROOMS = registryKey("hanging_mushrooms");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MUD_POOL = registryKey("mud_pool");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_COTTON = registryKey("wild_cotton");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_LAYER = registryKey("potent_magma_layer");
     public static final ResourceKey<ConfiguredFeature<?, ?>> POTENT_MAGMA_ORE = registryKey("potent_magma_ore");
@@ -599,6 +600,7 @@ public class ModConfiguredFeatures {
                         simpleState(ModBlocks.LOTUS_FLOWER.defaultBlockState().setValue(LotusFlowerBlock.FLOATING, true))).build()));
         register(context, CATTAIL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.CATTAIL)));
         register(context, FROZEN_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.FROZEN_GRASS)));
+        register(context, WILD_COTTON, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(ModBlocks.WILD_COTTON)));
         register(context, SNOWY_BUSH, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(
                 ModBlocks.SNOWY_BUSH.defaultBlockState().setValue(SnowloggableVegetationBlock.SNOWLOGGED_LAYERS, 1)), true));
         register(context, SEA_URCHIN, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simpleState(

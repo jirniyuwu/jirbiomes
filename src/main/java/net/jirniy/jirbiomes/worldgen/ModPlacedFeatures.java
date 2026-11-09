@@ -75,6 +75,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PROTOTAXITE_SEPTA_PATCH_PLACED = registryKey("prototaxite_septa_patch");
     public static final ResourceKey<PlacedFeature> PROTOTAXITE_SEPTA_GROWTH_PLACED = registryKey("prototaxite_septa_growth");
     public static final ResourceKey<PlacedFeature> MUD_POOL_PLACED = registryKey("mud_pool");
+    public static final ResourceKey<PlacedFeature> WILD_COTTON_PLACED = registryKey("wild_cotton");
+    public static final ResourceKey<PlacedFeature> WILD_COTTON_DESERT_PLACED = registryKey("wild_cotton_desert");
 
     public static final ResourceKey<PlacedFeature> ICE_TOP_LAYER = registryKey("ice_top_layer");
     public static final ResourceKey<PlacedFeature> BLUE_ICE_ORE = registryKey("blue_ice_ore");
@@ -191,6 +193,17 @@ public class ModPlacedFeatures {
                 RarityFilter.onAverageOnceEvery(6),
                 RandomOffsetPlacement.of(UniformInt.of(-2, 3), ConstantInt.of(0)), CountPlacement.of(UniformInt.of(1, 4)),
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), NoiseThresholdCountPlacement.of(0.3, 1, 2));
+
+        register(context, WILD_COTTON_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.WILD_COTTON),
+                NoiseThresholdCountPlacement.of(0.2, 1, 2),
+                InSquarePlacement.spread(), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(18),
+                CountPlacement.of(UniformInt.of(8, 16)), RandomOffsetPlacement.of(UniformInt.of(-3, 3), ConstantInt.of(0)),
+                PlacementUtils.HEIGHTMAP_NO_LEAVES, BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+        register(context, WILD_COTTON_DESERT_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.WILD_COTTON),
+                NoiseThresholdCountPlacement.of(0.3, 0, 1),
+                InSquarePlacement.spread(), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(18),
+                CountPlacement.of(UniformInt.of(8, 24)), RandomOffsetPlacement.of(UniformInt.of(-4, 4), ConstantInt.of(0)),
+                PlacementUtils.HEIGHTMAP_NO_LEAVES, BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
 
         register(context, CATTAIL_PATCH_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.CATTAIL),
                 RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,

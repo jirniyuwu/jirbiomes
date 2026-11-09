@@ -56,6 +56,13 @@ public class ModBiomeModifications {
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_BADLANDS),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BARREL_CACTUS_PATCH);
 
+        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_DESERT),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WILD_COTTON_DESERT_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_BADLANDS),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WILD_COTTON_DESERT_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_SAVANNA),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WILD_COTTON_PLACED);
+
         BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_SWAMP),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WET_GRASS_PATCH_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
