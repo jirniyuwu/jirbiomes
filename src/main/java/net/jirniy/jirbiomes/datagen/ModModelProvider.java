@@ -43,6 +43,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createSpeleothem(ModBlocks.THICK_ICICLE);
         blockModelGenerators.createFlowerBed(ModBlocks.SMALL_MUSHROOMS);
 
+        blockModelGenerators.createGlassBlocks(ModBlocks.ICY_GLASS, ModBlocks.ICY_GLASS_PANE);
+
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.POTENT_MAGMA_BLOCK,
                 BlockModelGenerators.createRotatedVariants(BlockModelGenerators.plainModel(
                         TexturedModel.CUBE.create(ModBlocks.POTENT_MAGMA_BLOCK, blockModelGenerators.modelOutput)))));

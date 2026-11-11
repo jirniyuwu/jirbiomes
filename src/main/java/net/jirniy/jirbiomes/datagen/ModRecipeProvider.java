@@ -118,6 +118,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.COTTON), has(ModItems.COTTON))
                         .save(output, "wool_from_cotton");
 
+                shaped(RecipeCategory.DECORATIONS, ModBlocks.ICY_GLASS, 4)
+                        .pattern("IG")
+                        .pattern("GI")
+                        .define('G', Blocks.GLASS)
+                        .define('I', Blocks.ICE)
+                        .unlockedBy(getHasName(ModBlocks.ICY_GLASS), has(ModBlocks.ICY_GLASS))
+                        .unlockedBy(getHasName(Blocks.GLASS), has(Blocks.GLASS))
+                        .save(output, "icy_glass");
+                stainedGlassPaneFromStainedGlass(ModBlocks.ICY_GLASS_PANE, ModBlocks.ICY_GLASS);
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRAW_BLOCK, 1)
                         .pattern("SS")
                         .pattern("SS")

@@ -252,6 +252,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         tag(BlockTags.BEE_GROWABLES)
                 .add(ModBlocks.getKey(ModBlocks.APPLE_LEAVES));
 
+        tag(BlockTags.IMPERMEABLE)
+                .add(ModBlocks.getKey(ModBlocks.ICY_GLASS));
+
         tag(ModTags.Blocks.SUPPORTS_ICE_VEGETATION)
                 .add(ModBlocks.getKey(ModBlocks.PERMAFROST_BLOCK))
                 .add(ModBlocks.getKey(ModBlocks.PACKED_SNOW))

@@ -116,6 +116,9 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropWhenSilkTouch(ModBlocks.THICK_ICICLE);
         dropWhenSilkTouch(ModBlocks.PERMAFROST_BLOCK);
 
+        dropWhenSilkTouch(ModBlocks.ICY_GLASS);
+        dropWhenSilkTouch(ModBlocks.ICY_GLASS_PANE);
+
         add(ModBlocks.FROSTED_STONE, silkTouchOrElseDrop(ModBlocks.FROSTED_STONE, Blocks.COBBLESTONE));
         dropSelf(ModBlocks.FROSTED_STONE_STAIRS);
         add(ModBlocks.FROSTED_STONE_SLAB, this::createSlabItemTable);

@@ -95,7 +95,9 @@
   "block.jirbiomes.seashell_bricks_wall": "Ограда из ракушечного кирпича",
 
   "block.jirbiomes.permafrost_block": "Вечная мерзлота",
-  "block.jirbiomes.thick_icicle": "Толстая Сосулька",
+  "block.jirbiomes.thick_icicle": "Толстая сосулька",
+  "block.jirbiomes.icy_glass": "Замёрзшое стекло",
+  "block.jirbiomes.icy_glass_pane": "Замёрзшая стеклянная панель",
 
   "block.jirbiomes.frosted_stone": "Лёдный камень",
   "block.jirbiomes.frosted_stone_slab": "Плита из лёдного камня",

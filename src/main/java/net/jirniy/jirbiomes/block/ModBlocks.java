@@ -152,6 +152,14 @@ public class ModBlocks {
                     .dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)
                     .isRedstoneConductor(Blocks::never).noOcclusion().friction(0.986f)));
 
+    public static final Block ICY_GLASS = registerBlock("icy_glass", properties ->
+            new TransparentBlock(properties.mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.HAT).strength(0.22F)
+                    .sound(SoundType.GLASS).noOcclusion().friction(0.68f).isValidSpawn(Blocks::never).isRedstoneConductor(Blocks::never)
+                    .isSuffocating(Blocks::never).isViewBlocking(Blocks::never)));
+    public static final Block ICY_GLASS_PANE = registerBlock("icy_glass_pane", properties ->
+            new IronBarsBlock(properties.mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.HAT).strength(0.22F)
+                    .sound(SoundType.GLASS).noOcclusion().friction(0.68f)));
+
     public static final Block PACKED_SNOW = registerBlock("packed_snow", properties ->
             new Block(properties.mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.SNOW)));
     public static final Block POLISHED_SNOW = registerBlock("polished_packed_snow", properties ->
