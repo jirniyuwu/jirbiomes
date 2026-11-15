@@ -9,9 +9,11 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.CocoaBlock;
 import net.minecraft.world.level.block.UntintedParticleLeavesBlock;
+import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.List;
 
 public class PalmLeavesBlock extends UntintedParticleLeavesBlock implements BonemealableBlock {
     public PalmLeavesBlock(Properties properties) {
-        super(0.0f, ParticleTypes.CHERRY_LEAVES, properties);
+        super(0.0f, ParticleTypes.CHERRY_LEAVES, AmbientLeavesBlockSoundPlayer.noAmbientSound(), properties);
     }
 
     @Override
@@ -31,17 +33,17 @@ public class PalmLeavesBlock extends UntintedParticleLeavesBlock implements Bone
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, BonemealSource source) {
         return level.getBlockState(pos.below()).isAir() && !directionsToGrow(level, pos).isEmpty();
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         grow(level, random, pos);
     }
 

@@ -7,6 +7,7 @@ import net.jirniy.jirbiomes.block.ModFluids;
 import net.jirniy.jirbiomes.entity.ModEntities;
 import net.jirniy.jirbiomes.item.custom.PlaceWaterloggedBucketItem;
 import net.jirniy.jirbiomes.item.food.ModFood;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -47,7 +48,8 @@ public class ModItems {
             new BucketItem(ModFluids.TARR, properties.stacksTo(1).craftRemainder(Items.BUCKET).useItemDescriptionPrefix()));
 
     public static final Item GINKGO_SIGN = registerItem("ginkgo_sign", properties ->
-            new SignItem(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
+            new StandingAndWallBlockItem(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, Direction.DOWN,
+                    properties.stacksTo(16).useItemDescriptionPrefix()));
     public static final Item HANGING_GINKGO_SIGN = registerItem("ginkgo_hanging_sign", properties ->
             new HangingSignItem(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
 
@@ -57,7 +59,8 @@ public class ModItems {
             new BoatItem(ModEntities.GINKGO_CHEST_BOAT, properties.stacksTo(1)));
 
     public static final Item PALM_SIGN = registerItem("palm_sign", properties ->
-            new SignItem(ModBlocks.PALM_SIGN, ModBlocks.WALL_PALM_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
+            new StandingAndWallBlockItem(ModBlocks.PALM_SIGN, ModBlocks.WALL_PALM_SIGN, Direction.DOWN,
+                    properties.stacksTo(16).useItemDescriptionPrefix()));
     public static final Item HANGING_PALM_SIGN = registerItem("palm_hanging_sign", properties ->
             new HangingSignItem(ModBlocks.HANGING_PALM_SIGN, ModBlocks.HANGING_WALL_PALM_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
 
@@ -67,7 +70,8 @@ public class ModItems {
             new BoatItem(ModEntities.PALM_CHEST_BOAT, properties.stacksTo(1)));
 
     public static final Item TAXITE_SIGN = registerItem("taxite_sign", properties ->
-            new SignItem(ModBlocks.TAXITE_SIGN, ModBlocks.WALL_TAXITE_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
+            new StandingAndWallBlockItem(ModBlocks.TAXITE_SIGN, ModBlocks.WALL_TAXITE_SIGN, Direction.DOWN,
+                    properties.stacksTo(16).useItemDescriptionPrefix()));
     public static final Item HANGING_TAXITE_SIGN = registerItem("taxite_hanging_sign", properties ->
             new HangingSignItem(ModBlocks.HANGING_TAXITE_SIGN, ModBlocks.HANGING_WALL_TAXITE_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
 
@@ -77,7 +81,8 @@ public class ModItems {
             new BoatItem(ModEntities.TAXITE_CHEST_BOAT, properties.stacksTo(1)));
 
     public static final Item TENEBRIS_SIGN = registerItem("tenebris_sign", properties ->
-            new SignItem(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN, properties.useItemDescriptionPrefix().stacksTo(16)));
+            new StandingAndWallBlockItem(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN, Direction.DOWN,
+                    properties.useItemDescriptionPrefix().stacksTo(16)));
     public static final Item HANGING_TENEBRIS_SIGN = registerItem("tenebris_hanging_sign", properties ->
             new HangingSignItem(ModBlocks.HANGING_TENEBRIS_SIGN, ModBlocks.HANGING_WALL_TENEBRIS_SIGN, properties.useItemDescriptionPrefix().stacksTo(16)));
 

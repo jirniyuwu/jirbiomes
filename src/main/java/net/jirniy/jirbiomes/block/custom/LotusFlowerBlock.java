@@ -1,6 +1,5 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -15,6 +14,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,7 +31,6 @@ import org.jspecify.annotations.Nullable;
 public class LotusFlowerBlock extends VegetationBlock implements BonemealableBlock {
     public static final BooleanProperty FLOATING = BooleanProperty.create("floating");
     private static final VoxelShape SHAPE = Block.column(12.0F, 0.0F, 3F);
-    public static final MapCodec<LotusFlowerBlock> CODEC = simpleCodec(LotusFlowerBlock::new);
 
     public LotusFlowerBlock(Properties properties) {
         super(properties);
@@ -70,7 +69,7 @@ public class LotusFlowerBlock extends VegetationBlock implements BonemealableBlo
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise) {
         super.entityInside(state, level, pos, entity, effectApplier, isPrecise);
         if (state.getValue(FLOATING) && level instanceof ServerLevel && entity instanceof AbstractBoat) {
-            level.destroyBlock(new BlockPos(pos), true, entity);
+            level.destroyBlock(pos, true, entity);
         }
     }
 
@@ -93,22 +92,17 @@ public class LotusFlowerBlock extends VegetationBlock implements BonemealableBlo
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, BonemealSource source) {
         return true;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 0.2, pos.getZ() + 0.5, new ItemStack(this.asItem()));
-    }
-
-    @Override
-    protected MapCodec<? extends VegetationBlock> codec() {
-        return CODEC;
     }
 }

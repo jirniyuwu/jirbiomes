@@ -12,15 +12,15 @@ import net.jirniy.jirbiomes.misc.RegistryModifications;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModBiomeModifications;
 import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
-import net.jirniy.jirbiomes.worldgen.biome.ModSurfaceRules;
+import net.jirniy.jirbiomes.worldgen.biome.ModMaterialRules;
 import net.jirniy.jirbiomes.worldgen.blockstate.ModBlockStateProviderType;
-import net.jirniy.jirbiomes.worldgen.feature.ModFeatures;
+import net.jirniy.jirbiomes.worldgen.feature.ModFeatureRegistry;
 import net.jirniy.jirbiomes.worldgen.feature.ModFoliagePlacerTypes;
 import net.jirniy.jirbiomes.worldgen.feature.ModTreeDecoratorTypes;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import terrablender.api.SurfaceRuleManager;
+import terrablender.api.MaterialRuleManager;
 import terrablender.api.TerraBlenderApi;
 
 public class JirniyBiomes implements ModInitializer, TerraBlenderApi {
@@ -29,7 +29,7 @@ public class JirniyBiomes implements ModInitializer, TerraBlenderApi {
 
 	@Override
 	public void onInitialize() {
-		ModFeatures.register();
+		ModFeatureRegistry.register();
 		ModFoliagePlacerTypes.register();
 		ModTreeDecoratorTypes.register();
 		ModBlockStateProviderType.register();
@@ -50,8 +50,8 @@ public class JirniyBiomes implements ModInitializer, TerraBlenderApi {
 	@Override
 	public void onTerraBlenderInitialized() {
 		ModBiomes.registerBiomes();
-		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, MOD_ID, ModSurfaceRules::netherRules);
-		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules::overworldRules);
+		MaterialRuleManager.addRules(MaterialRuleManager.RuleCategory.NETHER, MOD_ID, ModMaterialRules::netherRules);
+		MaterialRuleManager.addRules(MaterialRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModMaterialRules::overworldRules);
 	}
 
 	public static Identifier id(String path) {

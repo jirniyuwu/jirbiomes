@@ -1,0 +1,34 @@
+package net.jirniy.jirbiomes.worldgen.feature;
+
+import com.mojang.serialization.MapCodec;
+import net.jirniy.jirbiomes.JirniyBiomes;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.level.levelgen.feature.Feature;
+
+public class ModFeatureRegistry {
+//    public static final Feature<NoneFeatureConfiguration> TENEBRIS = create("tenebris", new TenebrisFeature(NoneFeatureConfiguration.CODEC));
+//    public static final Feature<NoneFeatureConfiguration> TENEBRIS_DOWNWARDS = create("tenebris_downwards", new DownwardsTenebrisFeature(NoneFeatureConfiguration.CODEC));
+//    public static final Feature<NoneFeatureConfiguration> LARGE_TENEBRIS = create("large_tenebris", new LargeTenebrisFeature(NoneFeatureConfiguration.CODEC));
+//
+//    public static final Feature<TaxiteConfiguration> TAXITE = create("taxite", new TaxiteFeature(TaxiteConfiguration.CODEC));
+//
+//    public static final Feature<LargeDripstoneConfiguration> LARGE_ICICLE = create("large_icicle", new LargeIcicleFeature(LargeDripstoneConfiguration.CODEC));
+//
+//    private static <C extends FeatureConfiguration, F extends Feature<C>> F create(final String name, final F feature) {
+//        return (F)(Registry.register(BuiltInRegistries.FEATURE, JirniyBiomes.id(name), feature));
+//    }
+
+    public static void register() {
+        JirniyBiomes.LOGGER.info("registering features for " + JirniyBiomes.MOD_ID);
+
+        Registry<MapCodec<? extends Feature>> registry = BuiltInRegistries.FEATURE_TYPE;
+        Registry.register(registry, "tenebris", TenebrisFeature.CODEC);
+        Registry.register(registry, "downwards_tenebris", DownwardsTenebrisFeature.CODEC);
+        Registry.register(registry, "large_tenebris", LargeTenebrisFeature.CODEC);
+
+        Registry.register(registry, "taxite", TaxiteFeature.CODEC);
+
+        Registry.register(registry, "large_icicle", LargeIcicleFeature.CODEC);
+    }
+}

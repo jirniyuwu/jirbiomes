@@ -90,13 +90,13 @@ public class CattailBlock extends DoublePlantBlock implements SimpleWaterloggedB
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos pos, BlockState state) { return true; }
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos pos, BlockState state, BonemealSource source) { return true; }
 
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) { return true; }
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) { return true; }
 
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         popResource(level, pos, new ItemStack(this));
     }
 

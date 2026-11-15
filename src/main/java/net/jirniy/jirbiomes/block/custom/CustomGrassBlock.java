@@ -1,10 +1,7 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.jirniy.jirbiomes.misc.ModTags;
-import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
+import net.jirniy.jirbiomes.worldgen.ModPlacements;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -14,35 +11,19 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.SpreadingSnowyBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.util.List;
 import java.util.Optional;
 
 public class CustomGrassBlock extends SpreadingSnowyBlock implements BonemealableBlock {
-    public static final MapCodec<CustomGrassBlock> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance
-                    .group(ResourceKey.codec(Registries.BLOCK).fieldOf("replaceable").forGetter(block -> block.replaceable),
-                           ResourceKey.codec(Registries.PLACED_FEATURE).optionalFieldOf("placed_feature", ModPlacedFeatures.NOOP).forGetter(block -> block.placement),
-                           Codec.BOOL.optionalFieldOf("can_bonemeal", false).forGetter(block -> block.canBonemeal),
-                           propertiesCodec())
-                    .apply(instance, CustomGrassBlock::new)
-    );
     protected final ResourceKey<Block> replaceable;
     protected final ResourceKey<PlacedFeature> placement;
     protected final boolean canBonemeal;
-
-    @Override
-    public MapCodec<CustomGrassBlock> codec() {
-        return CODEC;
-    }
 
     public CustomGrassBlock(ResourceKey<Block> replaceable, ResourceKey<PlacedFeature> placedFeature, boolean bonemealable, final BlockBehaviour.Properties properties) {
         super(properties, replaceable);
@@ -54,7 +35,7 @@ public class CustomGrassBlock extends SpreadingSnowyBlock implements Bonemealabl
     public CustomGrassBlock(ResourceKey<Block> replaceable, final BlockBehaviour.Properties properties) {
         super(properties, replaceable);
         this.replaceable = replaceable;
-        this.placement = ModPlacedFeatures.NOOP;
+        this.placement = ModPlacements.NOOP;
         this.canBonemeal = false;
     }
 
@@ -66,17 +47,17 @@ public class CustomGrassBlock extends SpreadingSnowyBlock implements Bonemealabl
     }
 
     @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
+    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state, BonemealSource source) {
         return this.canBonemeal && level.getBlockState(pos.above()).isAir() && level.isInsideBuildHeight(pos.above());
     }
 
     @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
+    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state, BonemealSource source) {
         return this.canBonemeal;
     }
 
     @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
+    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, BonemealSource source) {
         BlockPos above = pos.above();
         BlockState grass = Blocks.SHORT_GRASS.defaultBlockState();
         Optional<Holder.Reference<PlacedFeature>> grassFeature = level.registryAccess()
@@ -97,16 +78,16 @@ public class CustomGrassBlock extends SpreadingSnowyBlock implements Bonemealabl
             BlockState testState = level.getBlockState(testPos);
             if (testState.is(grass.getBlock()) && random.nextInt(10) == 0) {
                 BonemealableBlock bonemealableBlock = (BonemealableBlock)grass.getBlock();
-                if (bonemealableBlock.isValidBonemealTarget(level, testPos, testState)) {
-                    bonemealableBlock.performBonemeal(level, random, testPos, testState);
+                if (bonemealableBlock.isValidBonemealTarget(level, testPos, testState, source)) {
+                    bonemealableBlock.performBonemeal(level, random, testPos, testState, source);
                 }
             }
 
             if (testState.isAir() && !level.isOutsideBuildHeight(testPos)) {
                 if (this.defaultBlockState().is(ModTags.Blocks.GRASS_BLOCKS) && random.nextInt(8) == 0) {
-                    List<ConfiguredFeature<?, ?>> features = level.getBiome(testPos).value().getGenerationSettings().getBoneMealFeatures();
+                    List<Feature> features = level.getBiome(testPos).value().getGenerationSettings().getBoneMealFeatures();
                     if (!features.isEmpty()) {
-                        ConfiguredFeature<?, ?> placementFeature = Util.getRandom(features, random);
+                        Feature placementFeature = Util.getRandom(features, random);
                         placementFeature.place(level, level.getChunkSource().getGenerator(), random, testPos);
                     }
                 } else if (grassFeature.isPresent()) {

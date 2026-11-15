@@ -1,9 +1,9 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -16,7 +16,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.SnowyBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -53,7 +56,7 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
     }
 
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack destroyedWith) {
+    public void playerDestroy(ServerLevel level, ServerPlayer player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack destroyedWith) {
         super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
         if (state.getValue(SNOWLOGGED_LAYERS) > 0 && canSnowSurvive(state, level, pos)) {
             level.setBlockAndUpdate(pos, Blocks.SNOW.defaultBlockState().setValue(SnowLayerBlock.LAYERS, state.getValue(SNOWLOGGED_LAYERS)));
@@ -161,11 +164,6 @@ public class SnowloggableVegetationBlock extends VegetationPlaceableOnBlock {
         } else {
             return super.getStateForPlacement(context);
         }
-    }
-
-    @Override
-    protected MapCodec<? extends VegetationBlock> codec() {
-        return CODEC;
     }
 
     @Override

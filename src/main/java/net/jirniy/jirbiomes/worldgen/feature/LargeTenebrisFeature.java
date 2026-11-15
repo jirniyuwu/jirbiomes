@@ -1,7 +1,7 @@
 package net.jirniy.jirbiomes.worldgen.feature;
 
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.jirniy.jirbiomes.block.ModBlocks;
 import net.jirniy.jirbiomes.block.custom.PileusBlock;
 import net.jirniy.jirbiomes.block.custom.PileusShapes;
@@ -14,25 +14,23 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.ArrayList;
 
-public class LargeTenebrisFeature extends Feature<NoneFeatureConfiguration> {
-    public LargeTenebrisFeature(Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
+public record LargeTenebrisFeature() implements Feature {
+    public static final MapCodec<LargeTenebrisFeature> CODEC = MapCodec.unit(LargeTenebrisFeature::new);
+
+    @Override
+    public MapCodec<LargeTenebrisFeature> codec() {
+        return CODEC;
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos pos = context.origin();
-        RandomSource random = context.random();
-
+    public boolean place(WorldGenLevel level, ChunkGenerator chunkGenerator, RandomSource random, BlockPos origin) {
         for (int i = 0; i <= 9; i++) {
-            if (!level.getBlockState(pos.above(i)).canBeReplaced()) {
+            if (!level.getBlockState(origin.above(i)).canBeReplaced()) {
                 return false;
             }
         }
@@ -45,7 +43,7 @@ public class LargeTenebrisFeature extends Feature<NoneFeatureConfiguration> {
         float hangingDecorProbability = 0.4f;
 
         for (int i = 0; i < height; i++) {
-            BlockPos newPos = pos.above(i);
+            BlockPos newPos = origin.above(i);
             trySetBlock(trunkPoses, ModBlocks.TENEBRIS_LOG.defaultBlockState(), newPos, level);
 
             if (i == height - 1) {

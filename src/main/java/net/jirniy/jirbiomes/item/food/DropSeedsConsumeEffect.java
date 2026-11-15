@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -49,7 +50,7 @@ public record DropSeedsConsumeEffect(ItemStackTemplate drop, float probability) 
     public boolean apply(Level level, ItemStack stack, LivingEntity user) {
         if (user instanceof Player player && user.getRandom().nextFloat() <= this.probability) {
             if (!player.isCreative() && !player.addItem(drop.create())) {
-                player.drop(drop.create(), false);
+                player.drop(drop.create(), false, Prediction.PREDICTED);
             }
             return true;
         }

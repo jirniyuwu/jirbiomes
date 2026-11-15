@@ -12,9 +12,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.TradeCost;
 import net.minecraft.world.item.trading.VillagerTrade;
 
-import java.util.List;
-import java.util.Optional;
-
 public class ModVillagerTrades {
     public static final ResourceKey<VillagerTrade> FARMER_2_EMERALD_APPLE_SEEDS = createKey("farmer/2/emerald_apple_seeds");
     public static final ResourceKey<VillagerTrade> FARMER_2_EMERALD_COTTON_SEEDS = createKey("farmer/2/emerald_cotton_seeds");
@@ -55,117 +52,117 @@ public class ModVillagerTrades {
     public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_TENEBRIS_SAPLING = createKey("wandering_trader/emerald_tenebris_sapling");
 
     public static void bootstrap(BootstrapContext<VillagerTrade> context) {
-        context.register(FARMER_2_EMERALD_APPLE_SEEDS, new VillagerTrade(
+        context.register(FARMER_2_EMERALD_APPLE_SEEDS, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 2),
                 new ItemStackTemplate(ModItems.APPLE_SEEDS, 1),
-                8, 4, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(FARMER_2_EMERALD_COTTON_SEEDS, new VillagerTrade(
+                8, 4, 0.05F
+        ).build());
+        context.register(FARMER_2_EMERALD_COTTON_SEEDS, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 2),
                 new ItemStackTemplate(ModItems.COTTON_SEEDS, 1),
-                8, 4, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(FARMER_3_COCONUT_EMERALD, new VillagerTrade(
+                8, 4, 0.05F
+        ).build());
+        context.register(FARMER_3_COCONUT_EMERALD, VillagerTrade.builder(
                 new TradeCost(ModItems.COCONUT, 1),
                 new ItemStackTemplate(Items.EMERALD, 2),
-                12, 8, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(FARMER_3_EMERALD_PRICKLY_PEAR, new VillagerTrade(
+                12, 8, 0.05F
+        ).build());
+        context.register(FARMER_3_EMERALD_PRICKLY_PEAR, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 3),
                 new ItemStackTemplate(ModItems.PRICKLY_PEAR, 1),
-                8, 8, 0.05F, Optional.empty(), List.of()
-        ));
+                8, 8, 0.05F
+        ).build());
 
-        context.register(MASON_2_EMERALD_SALT, new VillagerTrade(
+        context.register(MASON_2_EMERALD_SALT, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 1),
                 new ItemStackTemplate(ModBlocks.SALT_BLOCK.asItem(), 16),
-                16, 8, 0.05F, Optional.empty(), List.of()
-        ));
+                16, 8, 0.05F
+        ).build());
 
-        context.register(SHEPHERD_2_COTTON_STRING, new VillagerTrade(
+        context.register(SHEPHERD_2_COTTON_STRING, VillagerTrade.builder(
                 new TradeCost(ModItems.COTTON, 2),
                 new ItemStackTemplate(Items.EMERALD, 1),
-                16, 15, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(SHEPHERD_5_COTTON_EMERALD, new VillagerTrade(
+                16, 15, 0.05F
+        ).build());
+        context.register(SHEPHERD_5_COTTON_EMERALD, VillagerTrade.builder(
                 new TradeCost(ModItems.COTTON, 4),
-                Optional.of(new TradeCost(Items.EMERALD, 1)),
+                new TradeCost(Items.EMERALD, 1),
                 new ItemStackTemplate(Items.STRING, 4),
-                16, 10, 0.05F, Optional.empty(), List.of()
-        ));
+                16, 10, 0.05F
+        ).build());
 
-        context.register(WANDERING_TRADER_DRIED_FIBERS_EMERALD, new VillagerTrade(
+        context.register(WANDERING_TRADER_DRIED_FIBERS_EMERALD, VillagerTrade.builder(
                 new TradeCost(ModItems.DRIED_FIBERS, 16),
                 new ItemStackTemplate(Items.EMERALD, 1),
-                8, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_SALT_LAMP_EMERALD, new VillagerTrade(
+                8, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_SALT_LAMP_EMERALD, VillagerTrade.builder(
                 new TradeCost(ModBlocks.SALT_LAMP, 1),
                 new ItemStackTemplate(Items.EMERALD, 1),
-                4, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_COTTON_EMERALD, new VillagerTrade(
+                4, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_COTTON_EMERALD, VillagerTrade.builder(
                 new TradeCost(ModItems.COTTON, 4),
                 new ItemStackTemplate(Items.EMERALD, 1),
-                8, 1, 0.05F, Optional.empty(), List.of()
-        ));
+                8, 1, 0.05F
+        ).build());
 
-        context.register(WANDERING_TRADER_EMERALD_SMALL_MUSHROOMS, new VillagerTrade(
+        context.register(WANDERING_TRADER_EMERALD_SMALL_MUSHROOMS, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 2),
                 new ItemStackTemplate(ModBlocks.SMALL_MUSHROOMS.asItem(), 8),
-                4, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_HANGING_MUSHROOMS, new VillagerTrade(
+                4, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_HANGING_MUSHROOMS, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 2),
                 new ItemStackTemplate(ModBlocks.HANGING_MUSHROOMS.asItem(), 1),
-                6, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_BARREL_CACTUS, new VillagerTrade(
+                6, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_BARREL_CACTUS, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 3),
                 new ItemStackTemplate(ModItems.BARREL_CACTUS, 1),
-                6, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_SEASHELLS, new VillagerTrade(
+                6, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_SEASHELLS, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 1),
                 new ItemStackTemplate(ModItems.SEASHELL, 16),
-                6, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_LOTUS, new VillagerTrade(
+                6, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_LOTUS, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 3),
                 new ItemStackTemplate(ModItems.LOTUS_FLOWER, 1),
-                6, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_SEA_URCHIN, new VillagerTrade(
+                6, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_SEA_URCHIN, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 4),
                 new ItemStackTemplate(ModBlocks.SEA_URCHIN.asItem(), 1),
-                4, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_POTENT_MAGMA, new VillagerTrade(
+                4, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_POTENT_MAGMA, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 4),
                 new ItemStackTemplate(ModBlocks.POTENT_MAGMA_BLOCK.asItem(), 1),
-                8, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_PERMAFROST, new VillagerTrade(
+                8, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_PERMAFROST, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 4),
                 new ItemStackTemplate(ModBlocks.PERMAFROST_BLOCK.asItem(), 1),
-                8, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_THICK_ICICLE, new VillagerTrade(
+                8, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_THICK_ICICLE, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 2),
                 new ItemStackTemplate(ModBlocks.THICK_ICICLE.asItem(), 1),
-                6, 1, 0.05F, Optional.empty(), List.of()
-        ));
+                6, 1, 0.05F
+        ).build());
 
-        context.register(WANDERING_TRADER_EMERALD_ALGAE_BUCKET, new VillagerTrade(
+        context.register(WANDERING_TRADER_EMERALD_ALGAE_BUCKET, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 4),
                 new ItemStackTemplate(ModItems.ALGAE_BUCKET, 1),
-                6, 1, 0.05F, Optional.empty(), List.of()
-        ));
-        context.register(WANDERING_TRADER_EMERALD_TARR_BUCKET, new VillagerTrade(
+                6, 1, 0.05F
+        ).build());
+        context.register(WANDERING_TRADER_EMERALD_TARR_BUCKET, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 24),
                 new ItemStackTemplate(ModItems.TARR_BUCKET, 1),
-                4, 1, 0.05F, Optional.empty(), List.of()
-        ));
+                4, 1, 0.05F
+        ).build());
         context.register(WANDERING_TRADER_EMERALD_GINKGO_LOG, createWanderingTraderLogSell(ModBlocks.GINKGO_LOG.asItem()));
         context.register(WANDERING_TRADER_EMERALD_PALM_LOG, createWanderingTraderLogSell(ModBlocks.PALM_LOG.asItem()));
         context.register(WANDERING_TRADER_EMERALD_PROTOTAXITE_LOG, createWanderingTraderLogSell(ModBlocks.PROTOTAXITE_LOG.asItem()));
@@ -182,12 +179,12 @@ public class ModVillagerTrades {
     }
 
     private static VillagerTrade createWanderingTraderLogSell(final Item item) {
-        return new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(item, 8), 4, 1, 0.05F, Optional.empty(), List.of());
+        return VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(item, 8), 4, 1, 0.05F).build();
     }
     private static VillagerTrade createWanderingTraderSaplingSell(final Item item) {
-        return new VillagerTrade(new TradeCost(Items.EMERALD, 5), new ItemStackTemplate(item), 8, 1, 0.05F, Optional.empty(), List.of());
+        return VillagerTrade.builder(new TradeCost(Items.EMERALD, 5), new ItemStackTemplate(item), 8, 1, 0.05F).build();
     }
     private static VillagerTrade createWanderingTraderSeedSell(final Item item) {
-        return new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(item), 12, 1, 0.05F, Optional.empty(), List.of());
+        return VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(item), 12, 1, 0.05F).build();
     }
 }

@@ -1,6 +1,5 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -10,13 +9,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class GenericPlantBlock extends VegetationBlock {
-    public static final MapCodec<GenericPlantBlock> CODEC = simpleCodec(GenericPlantBlock::new);
     private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-
-    @Override
-    protected MapCodec<? extends VegetationBlock> codec() {
-        return CODEC;
-    }
 
     public GenericPlantBlock(Properties properties) {
         super(properties);

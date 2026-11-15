@@ -20,7 +20,7 @@ public class ModBiomes {
     }
 
     public static void bootstrap(BootstrapContext<Biome> context) {
-        var carvers = context.lookup(Registries.CONFIGURED_CARVER);
+        var carvers = context.lookup(Registries.CARVER);
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
 
         register(context, BRIMSTONE_CRAGS, ModNetherBiomes.brimstoneCrags(placedFeatures, carvers));

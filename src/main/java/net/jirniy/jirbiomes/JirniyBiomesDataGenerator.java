@@ -6,8 +6,8 @@ import net.jirniy.jirbiomes.datagen.*;
 import net.jirniy.jirbiomes.datagen.tag.*;
 import net.jirniy.jirbiomes.misc.ModDamageTypes;
 import net.jirniy.jirbiomes.villager.ModVillagerTrades;
-import net.jirniy.jirbiomes.worldgen.ModConfiguredFeatures;
-import net.jirniy.jirbiomes.worldgen.ModPlacedFeatures;
+import net.jirniy.jirbiomes.worldgen.ModFeatures;
+import net.jirniy.jirbiomes.worldgen.ModPlacements;
 import net.jirniy.jirbiomes.worldgen.biome.ModBiomes;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -30,8 +30,8 @@ public class JirniyBiomesDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
-		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
-		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+		registryBuilder.add(Registries.FEATURE, ModFeatures::bootstrap);
+		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacements::bootstrap);
 		registryBuilder.add(Registries.DAMAGE_TYPE, ModDamageTypes::bootstrap);
 		registryBuilder.add(Registries.BIOME, ModBiomes::bootstrap);
 		registryBuilder.add(Registries.VILLAGER_TRADE, ModVillagerTrades::bootstrap);

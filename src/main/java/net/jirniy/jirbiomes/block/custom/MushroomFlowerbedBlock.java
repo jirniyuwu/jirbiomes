@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.FlowerBedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class MushroomFlowerbedBlock extends FlowerBedBlock {
-    public MushroomFlowerbedBlock(Properties properties) {
-        super(properties);
+    public MushroomFlowerbedBlock(Properties properties, int shapeHeight) {
+        super(properties, shapeHeight);
     }
 
     @Override

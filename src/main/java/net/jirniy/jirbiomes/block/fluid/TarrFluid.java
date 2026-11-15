@@ -20,6 +20,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -37,11 +38,9 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.FogType;
+import net.minecraft.world.level.material.*;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3fc;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -251,10 +250,10 @@ public abstract class TarrFluid extends FlowingFluid {
     }
 
     public static class TarrFogEnvironment extends FogEnvironment {
-        private static final int COLOR = 0xF708070A;
+        private static final Vector3fc COLOR = ARGB.vector3fFromRGB24(0x08070A);
 
         @Override
-        public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
+        public Vector3fc getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
             return COLOR;
         }
 

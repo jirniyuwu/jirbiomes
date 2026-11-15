@@ -1,7 +1,5 @@
 package net.jirniy.jirbiomes.block.custom;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -30,20 +28,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.Nullable;
 
 public class CustomFarmlandBlock extends Block {
-    public static final MapCodec<CustomFarmlandBlock> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance
-                    .group(Block.CODEC.fieldOf("placement").forGetter(block -> block.placement), propertiesCodec())
-                    .apply(instance, CustomFarmlandBlock::new)
-    );
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
     private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 15.0);
     public static final int MAX_MOISTURE = 7;
     protected final Block placement;
-
-    @Override
-    public MapCodec<CustomFarmlandBlock> codec() {
-        return CODEC;
-    }
 
     public CustomFarmlandBlock(Block placement, final BlockBehaviour.Properties properties) {
         super(properties);

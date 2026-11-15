@@ -1,52 +1,40 @@
 package net.jirniy.jirbiomes.worldgen;
 
+import net.minecraft.util.random.Weighted;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.level.block.grower.TreeGrower;
-
-import java.util.Optional;
 
 public class ModTreeGrowers {
     public static final TreeGrower GINKGO = new TreeGrower(
             "ginkgo",
-            0.0F,
-            Optional.empty(),
-            Optional.empty(),
-            Optional.of(ModConfiguredFeatures.GINKGO_TREE),
-            Optional.empty(),
-            Optional.of(ModConfiguredFeatures.GINKGO_TREE_BEES_005),
-            Optional.empty()
+            WeightedList.of(new Weighted<>(ModFeatures.GINKGO_TREE, 1).value()),
+            WeightedList.of(),
+            WeightedList.of(new Weighted<>(ModFeatures.GINKGO_TREE_BEES_005, 1).value()),
+            ModFeatures.GINKGO_TREE
     );
 
     public static final TreeGrower PALM = new TreeGrower(
             "palm",
-            0.0F,
-            Optional.empty(),
-            Optional.empty(),
-            Optional.of(ModConfiguredFeatures.PALM_TREE),
-            Optional.empty(),
-            Optional.of(ModConfiguredFeatures.PALM_TREE_BEES_005),
-            Optional.empty()
+            WeightedList.of(new Weighted<>(ModFeatures.PALM_TREE, 1).value()),
+            WeightedList.of(),
+            WeightedList.of(new Weighted<>(ModFeatures.PALM_TREE_BEES_005, 1).value()),
+            ModFeatures.PALM_TREE
     );
 
     public static final TreeGrower APPLE_OAK = new TreeGrower(
             "apple_oak",
-            0.1F,
-            Optional.empty(),
-            Optional.empty(),
-            Optional.of(ModConfiguredFeatures.APPLE_OAK_TREE),
-            Optional.of(ModConfiguredFeatures.FANCY_APPLE_OAK_TREE),
-            Optional.of(ModConfiguredFeatures.APPLE_OAK_TREE_BEES_005),
-            Optional.of(ModConfiguredFeatures.FANCY_APPLE_OAK_TREE_BEES_005)
+            WeightedList.of(new Weighted<>(ModFeatures.APPLE_OAK_TREE, 9), new Weighted<>(ModFeatures.FANCY_APPLE_OAK_TREE, 1)),
+            WeightedList.of(),
+            WeightedList.of(new Weighted<>(ModFeatures.APPLE_OAK_TREE_BEES_005, 9), new Weighted<>(ModFeatures.FANCY_APPLE_OAK_TREE_BEES_005, 1)),
+            ModFeatures.APPLE_OAK_TREE
     );
 
     public static final TreeGrower TENEBRIS = new TreeGrower(
             "tenebris",
-            0.1F,
-            Optional.empty(),
-            Optional.empty(),
-            Optional.of(ModConfiguredFeatures.TENEBRIS),
-            Optional.of(ModConfiguredFeatures.LARGE_TENEBRIS),
-            Optional.of(ModConfiguredFeatures.TENEBRIS),
-            Optional.of(ModConfiguredFeatures.LARGE_TENEBRIS)
+            WeightedList.of(new Weighted<>(ModFeatures.TENEBRIS, 9), new Weighted<>(ModFeatures.LARGE_TENEBRIS, 1)),
+            WeightedList.of(),
+            WeightedList.of(new Weighted<>(ModFeatures.TENEBRIS, 9), new Weighted<>(ModFeatures.LARGE_TENEBRIS, 1)),
+            ModFeatures.TENEBRIS
     );
 
 }
