@@ -17,6 +17,27 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        tag(BlockTags.BLOCKS_MOTION_NO_LEAVES)
+                .addOptionalTag(ModTags.Blocks.WET_DIRT)
+                .addOptionalTag(ModTags.Blocks.DRIED_DIRT)
+                .addOptionalTag(ModTags.Blocks.WOODEN_PLATFORMS)
+                .add(ModBlocks.getKeys(ModBlocks.DRY_FARMLAND, ModBlocks.WET_FARMLAND))
+                .add(ModBlocks.getKeys(ModBlocks.DRIED_DIRT_PATH, ModBlocks.WETLAND_PATH))
+                .add(ModBlocks.getKeys(ModBlocks.ROOTED_MUD, ModBlocks.ROOTED_SAND, ModBlocks.ROOTED_RED_SAND))
+                .add(ModBlocks.getKeys(ModBlocks.SAND_SHELLS, ModBlocks.RED_SAND_SHELLS))
+                .add(ModBlocks.getKey(ModBlocks.IRON_GRATE))
+                .add(ModBlocks.getKey(ModBlocks.POTENT_MAGMA_BLOCK))
+                .add(ModBlocks.getKeys(ModBlocks.NETHERSTONE, ModBlocks.POLISHED_NETHERSTONE, ModBlocks.NETHERSTONE_BRICKS))
+                .add(ModBlocks.getKeys(ModBlocks.BRIMSTONE, ModBlocks.BRIMSTONE_GOLD_ORE, ModBlocks.BRIMGRASS_BLOCK, ModBlocks.IGNITED_BRIMSTONE, ModBlocks.CHISELED_BRIMSTONE_BRICKS))
+                .add(ModBlocks.getKeys(ModBlocks.MOSSY_BRIMSTONE_BRICKS, ModBlocks.CRACKED_BRIMSTONE_BRICKS, ModBlocks.POLISHED_BRIMSTONE, ModBlocks.BRIMSTONE_BRICKS))
+                .add(ModBlocks.getKeys(ModBlocks.PERMAFROST_BLOCK, ModBlocks.FROSTED_STONE, ModBlocks.POLISHED_FROST, ModBlocks.FROST_BRICKS))
+                .add(ModBlocks.getKeys(ModBlocks.PACKED_SNOW, ModBlocks.POLISHED_SNOW, ModBlocks.PACKED_SNOW_BRICKS))
+                .add(ModBlocks.getKeys(ModBlocks.SEASHELL_BLOCK, ModBlocks.SUSPICIOUS_SEASHELLS, ModBlocks.SEASHELL_BRICKS))
+                .add(ModBlocks.getKeys(ModBlocks.SALT_BLOCK, ModBlocks.SALT_LAMP, ModBlocks.POLISHED_SALT, ModBlocks.POLISHED_TARR))
+                .add(ModBlocks.getKeys(ModBlocks.SOLID_TARR, ModBlocks.POLISHED_TARR, ModBlocks.TARR_BRICKS))
+                .add(ModBlocks.getKeys(ModBlocks.STRAW_BLOCK, ModBlocks.PACKED_STRAW))
+                .add(ModBlocks.getKey(ModBlocks.COCONUT_PLANT));
+
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .addOptionalTag(ModTags.Blocks.WET_DIRT)
                 .addOptionalTag(ModTags.Blocks.DRIED_DIRT)
