@@ -2,7 +2,10 @@ package net.jirniy.jirbiomes;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.jirniy.jirbiomes.datagen.*;
+import net.jirniy.jirbiomes.datagen.ModLootTableProvider;
+import net.jirniy.jirbiomes.datagen.ModModelProvider;
+import net.jirniy.jirbiomes.datagen.ModRecipeProvider;
+import net.jirniy.jirbiomes.datagen.ModRegistryDataProvider;
 import net.jirniy.jirbiomes.datagen.tag.*;
 import net.jirniy.jirbiomes.misc.ModDamageTypes;
 import net.jirniy.jirbiomes.villager.ModVillagerTrades;

@@ -3,6 +3,7 @@ package net.jirniy.jirbiomes.block;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.jirniy.jirbiomes.JirniyBiomes;
 import net.jirniy.jirbiomes.block.custom.*;
+import net.jirniy.jirbiomes.misc.ModContextIntProviders;
 import net.jirniy.jirbiomes.misc.ModTags;
 import net.jirniy.jirbiomes.particle.ModParticles;
 import net.jirniy.jirbiomes.worldgen.ModPlacements;
@@ -27,6 +28,7 @@ import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -94,7 +96,8 @@ public class ModBlocks {
                     .lightLevel((state) -> 2).noOcclusion().pushReaction(PushReaction.POPPED)));
     public static final Block CATTAIL = registerBlock("cattail", properties ->
             new CattailBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_BROWN).noCollision().noOcclusion().ignitedByLava()
-                    .randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.POPPED).sound(SoundType.CROP)));
+                    .randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.POPPED).sound(SoundType.CROP)),
+            new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW));
     public static final Block ALGAE = registerBlock("algae", false, properties ->
             new AlgaeBlock(properties.instabreak().mapColor(MapColor.TERRACOTTA_LIGHT_GREEN).noCollision().noOcclusion().ignitedByLava().speedFactor(0.8f)
                     .noLootTable().replaceable().randomTicks().pushReaction(PushReaction.POPPED).sound(SoundType.WET_SPONGE)));
@@ -132,7 +135,8 @@ public class ModBlocks {
 
     public static final Block STRAW_BLOCK = registerBlock("straw_block", properties ->
             new RotatedPillarBlock(properties.strength(0.8f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
-                    .pushReaction(PushReaction.PUSH_PULL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
+                    .pushReaction(PushReaction.PUSH_PULL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_STRAW_BLOCK));
     public static final Block PACKED_STRAW = registerBlock("packed_straw", properties ->
             new Block(properties.strength(0.95f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
                     .pushReaction(PushReaction.PUSH_PULL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)));
@@ -433,34 +437,44 @@ public class ModBlocks {
 
     public static final Block OAK_PLATFORM = registerBlock("oak_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block SPRUCE_PLATFORM = registerBlock("spruce_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.COLOR_BROWN).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.COLOR_BROWN).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block BIRCH_PLATFORM = registerBlock("birch_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.QUARTZ).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.QUARTZ).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block JUNGLE_PLATFORM = registerBlock("jungle_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block ACACIA_PLATFORM = registerBlock("acacia_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.STONE).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.STONE).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block CHERRY_PLATFORM = registerBlock("cherry_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.CHERRY_WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_GRAY).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_GRAY).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block DARK_OAK_PLATFORM = registerBlock("dark_oak_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.COLOR_BROWN).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.COLOR_BROWN).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block PALE_OAK_PLATFORM = registerBlock("pale_oak_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.STONE).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.STONE).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block MANGROVE_PLATFORM = registerBlock("mangrove_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block BAMBOO_PLATFORM = registerBlock("bamboo_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.BAMBOO_WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.PLANT).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.PLANT).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
 
     public static final Block PROTOTAXITE_LOG = registerBlock("prototaxite_hyphae", properties ->
             new TaxiteLogBlock(properties.instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).randomTicks()
@@ -471,41 +485,52 @@ public class ModBlocks {
 
     public static final Block TAXITE_PLANKS = registerBlock("taxite_planks", properties ->
             new Block(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block TAXITE_STAIRS = registerBlock("taxite_stairs", properties ->
             new StairBlock(TAXITE_PLANKS.defaultBlockState(), properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block TAXITE_SLAB = registerBlock("taxite_slab", properties ->
             new SlabBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_SLABS));
     public static final Block TAXITE_BUTTON = registerBlock("taxite_button", properties ->
             new ButtonBlock(ModBlockSetTypes.Sets.TAXITE, 20, properties.noCollision().pushReaction(PushReaction.POPPED)
-                    .strength(1.0F, 2.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+                    .strength(1.0F, 2.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_EXTRA_SMALL));
     public static final Block TAXITE_PRESSURE_PLATE = registerBlock("taxite_pressure_plate", properties ->
             new PressurePlateBlock(ModBlockSetTypes.Sets.TAXITE, properties.noCollision().pushReaction(PushReaction.POPPED)
-                    .strength(1.0F, 2.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+                    .strength(1.0F, 2.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block TAXITE_FENCE = registerBlock("taxite_fence", properties ->
             new FenceBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
-                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block TAXITE_FENCE_GATE = registerBlock("taxite_fence_gate", properties ->
             new FenceGateBlock(ModBlockSetTypes.WoodTypes.TAXITE, properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
-                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+                    .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block TAXITE_TRAPDOOR = registerBlock("taxite_trapdoor", properties ->
             new TrapDoorBlock(ModBlockSetTypes.Sets.TAXITE, properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
                     .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()
-                    .pushReaction(PushReaction.POPPED).noOcclusion()));
+                    .pushReaction(PushReaction.POPPED).noOcclusion()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block TAXITE_DOOR = registerBlock("taxite_door", properties ->
             new DoorBlock(ModBlockSetTypes.Sets.TAXITE, properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
                     .strength(1.5F, 2.5F).sound(SoundType.NETHER_WOOD).ignitedByLava()
-                    .pushReaction(PushReaction.POPPED).noOcclusion()));
+                    .pushReaction(PushReaction.POPPED).noOcclusion()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
     public static final Block TAXITE_PLATFORM = registerBlock("taxite_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.NETHER_WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
 
     public static final Block TAXITE_SHELF = registerBlockEntity("taxite_shelf", BlockEntityTypes.SHELF,
             properties -> new ShelfBlock(properties.mapColor(TAXITE_PLANKS.defaultMapColor())
                     .instrument(NoteBlockInstrument.BASS).sound(SoundType.SHELF)
-                    .ignitedByLava().strength(2.0F, 3.0F)));
+                    .ignitedByLava().strength(2.0F, 3.0F)),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block TAXITE_SIGN = registerBlockEntity("taxite_sign", BlockEntityTypes.SIGN, false,
             properties -> new StandingSignBlock(ModBlockSetTypes.WoodTypes.TAXITE, properties.mapColor(TAXITE_PLANKS.defaultMapColor())
                     .noCollision().strength(1.0F).ignitedByLava()));
@@ -524,63 +549,80 @@ public class ModBlocks {
                             .strength(1.0F).ignitedByLava())));
 
     public static final Block GINKGO_LOG = registerBlock("ginkgo_log", properties ->
-            new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));
+            new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block GINKGO_WOOD = registerBlock("ginkgo_wood", properties ->
-            new RotatedPillarBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()));
+            new RotatedPillarBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block STRIPPED_GINKGO_LOG = registerBlock("stripped_ginkgo_log", properties ->
-            new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.SAND, SoundType.WOOD)));
+            new RotatedPillarBlock(logProperties(properties, MapColor.SAND, MapColor.SAND, SoundType.WOOD)),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block STRIPPED_GINKGO_WOOD = registerBlock("stripped_ginkgo_wood", properties ->
-            new RotatedPillarBlock(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()));
+            new RotatedPillarBlock(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
 
     public static final Block GINKGO_LEAVES = registerBlock("ginkgo_leaves", properties ->
             new UntintedParticleLeavesBlock(0.1F, ModParticles.GINKGO_LEAVES, AmbientLeavesBlockSoundPlayer.noAmbientSound(),
                     properties.mapColor(MapColor.COLOR_YELLOW).strength(0.2F).randomTicks().sound(SoundType.CHERRY_LEAVES).noOcclusion()
                     .isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never)
-                    .ignitedByLava().pushReaction(PushReaction.POPPED).isRedstoneConductor(Blocks::never)));
+                    .ignitedByLava().pushReaction(PushReaction.POPPED).isRedstoneConductor(Blocks::never)),
+            new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW));
 
     public static final Block GINKGO_SAPLING = registerBlock("ginkgo_sapling", properties ->
             new SaplingBlock(ModTreeGrowers.GINKGO, properties.mapColor(MapColor.COLOR_YELLOW).noCollision().randomTicks()
-                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED)));
+                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED)),
+            new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW));
     public static final Block POTTED_GINKGO_SAPLING = registerBlock("potted_ginkgo_sapling", false, properties ->
             new FlowerPotBlock(ModBlocks.GINKGO_SAPLING, properties.instabreak().noOcclusion().pushReaction(PushReaction.POPPED)));
 
     public static final Block GINKGO_PLANKS = registerBlock("ginkgo_planks", properties ->
             new Block(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block GINKGO_STAIRS = registerBlock("ginkgo_stairs", properties ->
             new StairBlock(GINKGO_PLANKS.defaultBlockState(), properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block GINKGO_SLAB = registerBlock("ginkgo_slab", properties ->
             new SlabBlock(properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_SLABS));
     public static final Block GINKGO_BUTTON = registerBlock("ginkgo_button", properties ->
             new ButtonBlock(ModBlockSetTypes.Sets.GINKGO, 20, properties.noCollision().pushReaction(PushReaction.POPPED)
-                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_EXTRA_SMALL));
     public static final Block GINKGO_PRESSURE_PLATE = registerBlock("ginkgo_pressure_plate", properties ->
             new PressurePlateBlock(ModBlockSetTypes.Sets.GINKGO, properties.noCollision().pushReaction(PushReaction.POPPED)
-                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block GINKGO_FENCE = registerBlock("ginkgo_fence", properties ->
             new FenceBlock(properties.mapColor(MapColor.SAND)
-                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block GINKGO_FENCE_GATE = registerBlock("ginkgo_fence_gate", properties ->
             new FenceGateBlock(ModBlockSetTypes.WoodTypes.GINKGO, properties.mapColor(MapColor.SAND)
-                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block GINKGO_TRAPDOOR = registerBlock("ginkgo_trapdoor", properties ->
             new TrapDoorBlock(ModBlockSetTypes.Sets.GINKGO, properties.mapColor(MapColor.SAND)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
-                    .pushReaction(PushReaction.POPPED).noOcclusion()));
+                    .pushReaction(PushReaction.POPPED).noOcclusion()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block GINKGO_DOOR = registerBlock("ginkgo_door", properties ->
             new DoorBlock(ModBlockSetTypes.Sets.GINKGO, properties.mapColor(MapColor.SAND)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
-                    .pushReaction(PushReaction.POPPED).noOcclusion()));
+                    .pushReaction(PushReaction.POPPED).noOcclusion()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
     public static final Block GINKGO_PLATFORM = registerBlock("ginkgo_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
 
     public static final Block GINKGO_SHELF = registerBlockEntity("ginkgo_shelf", BlockEntityTypes.SHELF,
             properties -> new ShelfBlock(properties.mapColor(GINKGO_PLANKS.defaultMapColor())
                     .instrument(NoteBlockInstrument.BASS).sound(SoundType.SHELF)
-                    .ignitedByLava().strength(2.0F, 3.0F)));
+                    .ignitedByLava().strength(2.0F, 3.0F)),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block GINKGO_SIGN = registerBlockEntity("ginkgo_sign", BlockEntityTypes.SIGN, false,
             properties -> new StandingSignBlock(ModBlockSetTypes.WoodTypes.GINKGO, properties.mapColor(GINKGO_PLANKS.defaultMapColor())
                     .noCollision().strength(1.0F).ignitedByLava()));
@@ -599,18 +641,23 @@ public class ModBlocks {
                             .strength(1.0F).ignitedByLava())));
 
     public static final Block PALM_LOG = registerBlock("palm_log", properties ->
-            new RotatedPillarBlock(logProperties(properties, MapColor.EMERALD, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)));
+            new RotatedPillarBlock(logProperties(properties, MapColor.EMERALD, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.WOOD)),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block PALM_WOOD = registerBlock("palm_wood", properties ->
-            new RotatedPillarBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()));
+            new RotatedPillarBlock(properties.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block STRIPPED_PALM_LOG = registerBlock("stripped_palm_log", properties ->
-            new RotatedPillarBlock(logProperties(properties, MapColor.EMERALD, MapColor.EMERALD, SoundType.WOOD)));
+            new RotatedPillarBlock(logProperties(properties, MapColor.EMERALD, MapColor.EMERALD, SoundType.WOOD)),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block STRIPPED_PALM_WOOD = registerBlock("stripped_palm_wood", properties ->
-            new RotatedPillarBlock(properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()));
+            new RotatedPillarBlock(properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
 
     public static final Block PALM_LEAVES = registerBlock("palm_leaves", properties ->
             new PalmLeavesBlock(properties.mapColor(MapColor.EMERALD).strength(0.2F).randomTicks()
                     .sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never)
-                    .ignitedByLava().pushReaction(PushReaction.POPPED).isRedstoneConductor(Blocks::never)));
+                    .ignitedByLava().pushReaction(PushReaction.POPPED).isRedstoneConductor(Blocks::never)),
+            new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW));
 
     public static final Block COCONUT_PLANT = registerBlock("coconut_plant", false, properties ->
             new CoconutBlock(properties.mapColor(MapColor.PLANT).randomTicks().strength(0.2F, 3.0F)
@@ -618,47 +665,59 @@ public class ModBlocks {
 
     public static final Block PALM_SAPLING = registerBlock("palm_sapling", properties ->
             new SaplingWithAdditionalPlaceableBlock(ModTreeGrowers.PALM, ModTags.Blocks.PALM_PLACEABLE, properties.mapColor(MapColor.EMERALD).noCollision().randomTicks()
-                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED)));
+                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED)),
+            new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW));
     public static final Block POTTED_PALM_SAPLING = registerBlock("potted_palm_sapling", false, properties ->
             new FlowerPotBlock(ModBlocks.PALM_SAPLING, properties.instabreak().noOcclusion().pushReaction(PushReaction.POPPED)));
 
     public static final Block PALM_PLANKS = registerBlock("palm_planks", properties ->
             new Block(properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block PALM_STAIRS = registerBlock("palm_stairs", properties ->
             new StairBlock(PALM_PLANKS.defaultBlockState(), properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block PALM_SLAB = registerBlock("palm_slab", properties ->
             new SlabBlock(properties.mapColor(MapColor.EMERALD).instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_SLABS));
     public static final Block PALM_BUTTON = registerBlock("palm_button", properties ->
             new ButtonBlock(ModBlockSetTypes.Sets.PALM, 20, properties.noCollision().pushReaction(PushReaction.POPPED)
-                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_EXTRA_SMALL));
     public static final Block PALM_PRESSURE_PLATE = registerBlock("palm_pressure_plate", properties ->
             new PressurePlateBlock(ModBlockSetTypes.Sets.PALM, properties.noCollision().pushReaction(PushReaction.POPPED)
-                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(1.0F, 2.0F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block PALM_FENCE = registerBlock("palm_fence", properties ->
             new FenceBlock(properties.mapColor(MapColor.EMERALD)
-                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block PALM_FENCE_GATE = registerBlock("palm_fence_gate", properties ->
             new FenceGateBlock(ModBlockSetTypes.WoodTypes.PALM, properties.mapColor(MapColor.EMERALD)
-                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()));
+                    .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block PALM_TRAPDOOR = registerBlock("palm_trapdoor", properties ->
             new TrapDoorBlock(ModBlockSetTypes.Sets.PALM, properties.mapColor(MapColor.EMERALD)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
-                    .pushReaction(PushReaction.POPPED).noOcclusion()));
+                    .pushReaction(PushReaction.POPPED).noOcclusion()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block PALM_DOOR = registerBlock("palm_door", properties ->
             new DoorBlock(ModBlockSetTypes.Sets.PALM, properties.mapColor(MapColor.EMERALD)
                     .strength(1.5F, 2.5F).sound(SoundType.WOOD).ignitedByLava()
-                    .pushReaction(PushReaction.POPPED).noOcclusion()));
+                    .pushReaction(PushReaction.POPPED).noOcclusion()),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
     public static final Block PALM_PLATFORM = registerBlock("palm_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
-                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()));
+                    .strength(0.8f).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
 
     public static final Block PALM_SHELF = registerBlockEntity("palm_shelf", BlockEntityTypes.SHELF,
             properties -> new ShelfBlock(properties.mapColor(PALM_PLANKS.defaultMapColor())
                     .instrument(NoteBlockInstrument.BASS).sound(SoundType.SHELF)
-                    .ignitedByLava().strength(2.0F, 3.0F)));
+                    .ignitedByLava().strength(2.0F, 3.0F)),
+            new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
     public static final Block PALM_SIGN = registerBlockEntity("palm_sign", BlockEntityTypes.SIGN, false,
             properties -> new StandingSignBlock(ModBlockSetTypes.WoodTypes.PALM, properties.mapColor(PALM_PLANKS.defaultMapColor())
                     .noCollision().strength(1.0F).ignitedByLava()));
@@ -765,10 +824,12 @@ public class ModBlocks {
             new AppleLeavesBlock(0.01F, properties.mapColor(MapColor.PLANT)
                     .strength(0.2F).randomTicks().sound(SoundType.CHERRY_LEAVES).noOcclusion()
                     .isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never)
-                    .ignitedByLava().pushReaction(PushReaction.POPPED).isRedstoneConductor(Blocks::never)));
+                    .ignitedByLava().pushReaction(PushReaction.POPPED).isRedstoneConductor(Blocks::never)),
+            new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW_MEDIUM));
     public static final Block APPLE_OAK_SAPLING = registerBlock("apple_oak_sapling", properties ->
             new SaplingBlock(ModTreeGrowers.APPLE_OAK, properties.mapColor(MapColor.PLANT).noCollision().randomTicks()
-                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED)));
+                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED)),
+            new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW_MEDIUM));
     public static final Block POTTED_APPLE_OAK_SAPLING = registerBlock("potted_apple_oak_sapling", false, properties ->
             new FlowerPotBlock(ModBlocks.APPLE_OAK_SAPLING, properties.instabreak().noOcclusion().pushReaction(PushReaction.POPPED)));
 
@@ -798,6 +859,12 @@ public class ModBlocks {
 
     private static Block registerBlockEntity(String name, BlockEntityType<?> type, Function<BlockBehaviour.Properties, Block> function) {
         return registerBlockEntity(name, type, true, function);
+    }
+
+    private static Block registerBlockEntity(String name, BlockEntityType<?> type, Function<BlockBehaviour.Properties, Block> function, Item.Properties itemProperties) {
+        Block block = registerBlock(name, function, itemProperties);
+        type.addValidBlock(block);
+        return block;
     }
 
     private static Block registerBlockEntity(String name, BlockEntityType<?> type, boolean addItem, Function<BlockBehaviour.Properties, Block> function) {

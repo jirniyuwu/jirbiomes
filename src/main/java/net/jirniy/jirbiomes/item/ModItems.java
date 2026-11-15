@@ -7,6 +7,7 @@ import net.jirniy.jirbiomes.block.ModFluids;
 import net.jirniy.jirbiomes.entity.ModEntities;
 import net.jirniy.jirbiomes.item.custom.PlaceWaterloggedBucketItem;
 import net.jirniy.jirbiomes.item.food.ModFood;
+import net.jirniy.jirbiomes.misc.ModContextIntProviders;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -15,6 +16,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.function.Function;
 
@@ -23,7 +25,7 @@ public class ModItems {
     public static final Item SEASHELL = registerItem("seashell", Item::new);
 
     public static final Item APPLE_SEEDS = registerItem("apple_seeds", properties ->
-            new BlockItem(ModBlocks.APPLE_CROP, properties.useItemDescriptionPrefix()));
+            new BlockItem(ModBlocks.APPLE_CROP, properties.useItemDescriptionPrefix().compostable(ContextIntProviders.COMPOSTABLE_LOW)));
 
     public static final Item COTTON_SEEDS = registerItem("cotton_seeds", properties ->
             new BlockItem(ModBlocks.COTTON_CROP, properties.useItemDescriptionPrefix()));
@@ -34,51 +36,55 @@ public class ModItems {
             new Item(properties.food(ModFood.Properties.COCONUT_PROPERTIES, ModFood.Effects.COCONUT_EFFECT)));
 
     public static final Item BARREL_CACTUS = registerItem("barrel_cactus", properties ->
-            new BlockItem(ModBlocks.SMALL_BARREL_CACTUS, properties.useItemDescriptionPrefix()));
+            new BlockItem(ModBlocks.SMALL_BARREL_CACTUS, properties.useItemDescriptionPrefix().compostable(ContextIntProviders.COMPOSTABLE_LOW)));
     public static final Item PRICKLY_PEAR = registerItem("prickly_pear", properties ->
-            new BlockItem(ModBlocks.PRICKLY_PEAR_SEED, properties.useItemDescriptionPrefix()
+            new BlockItem(ModBlocks.PRICKLY_PEAR_SEED, properties.useItemDescriptionPrefix().compostable(ContextIntProviders.COMPOSTABLE_LOW)
                     .food(ModFood.Properties.PRICKLY_PEAR, ModFood.Effects.PRICKLY_PEAR_EFFECT)));
     public static final Item LOTUS_FLOWER = registerItem("lotus", properties ->
-            new PlaceOnWaterBlockItem(ModBlocks.LOTUS_FLOWER, properties));
+            new PlaceOnWaterBlockItem(ModBlocks.LOTUS_FLOWER, properties.compostable(ContextIntProviders.COMPOSTABLE_LOW_MEDIUM)));
 
     public static final Item ALGAE_BUCKET = registerItem("algae_bucket", properties ->
             new PlaceWaterloggedBucketItem(ModBlocks.ALGAE, SoundEvents.BUCKET_EMPTY,
                     properties.stacksTo(1).usingConvertsTo(Items.BUCKET).useItemDescriptionPrefix()));
     public static final Item TARR_BUCKET = registerItem("tarr_bucket", properties ->
-            new BucketItem(ModFluids.TARR, properties.stacksTo(1).craftRemainder(Items.BUCKET).useItemDescriptionPrefix()));
+            new BucketItem(ModFluids.TARR, properties.stacksTo(1).craftRemainder(Items.BUCKET)
+                    .useItemDescriptionPrefix().cookingFuel(ModContextIntProviders.COOKING_TIME_TARR_BUCKET)));
 
     public static final Item GINKGO_SIGN = registerItem("ginkgo_sign", properties ->
             new StandingAndWallBlockItem(ModBlocks.GINKGO_SIGN, ModBlocks.WALL_GINKGO_SIGN, Direction.DOWN,
-                    properties.stacksTo(16).useItemDescriptionPrefix()));
+                    properties.stacksTo(16).useItemDescriptionPrefix().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE)));
     public static final Item HANGING_GINKGO_SIGN = registerItem("ginkgo_hanging_sign", properties ->
-            new HangingSignItem(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
+            new HangingSignItem(ModBlocks.HANGING_GINKGO_SIGN, ModBlocks.HANGING_WALL_GINKGO_SIGN, properties.stacksTo(16)
+                    .useItemDescriptionPrefix().cookingFuel(ContextIntProviders.COOKING_TIME_HANGING_SIGNS)));
 
     public static final Item GINKGO_BOAT = registerItem("ginkgo_boat", properties ->
-            new BoatItem(ModEntities.GINKGO_BOAT, properties.stacksTo(1)));
+            new BoatItem(ModEntities.GINKGO_BOAT, properties.stacksTo(1).cookingFuel(ContextIntProviders.COOKING_TIME_BOATS)));
     public static final Item GINKGO_CHEST_BOAT = registerItem("ginkgo_chest_boat", properties ->
-            new BoatItem(ModEntities.GINKGO_CHEST_BOAT, properties.stacksTo(1)));
+            new BoatItem(ModEntities.GINKGO_CHEST_BOAT, properties.stacksTo(1).cookingFuel(ContextIntProviders.COOKING_TIME_BOATS)));
 
     public static final Item PALM_SIGN = registerItem("palm_sign", properties ->
             new StandingAndWallBlockItem(ModBlocks.PALM_SIGN, ModBlocks.WALL_PALM_SIGN, Direction.DOWN,
-                    properties.stacksTo(16).useItemDescriptionPrefix()));
+                    properties.stacksTo(16).useItemDescriptionPrefix().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE)));
     public static final Item HANGING_PALM_SIGN = registerItem("palm_hanging_sign", properties ->
-            new HangingSignItem(ModBlocks.HANGING_PALM_SIGN, ModBlocks.HANGING_WALL_PALM_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
+            new HangingSignItem(ModBlocks.HANGING_PALM_SIGN, ModBlocks.HANGING_WALL_PALM_SIGN, properties.stacksTo(16)
+                    .useItemDescriptionPrefix().cookingFuel(ContextIntProviders.COOKING_TIME_HANGING_SIGNS)));
 
     public static final Item PALM_BOAT = registerItem("palm_boat", properties ->
-            new BoatItem(ModEntities.PALM_BOAT, properties.stacksTo(1)));
+            new BoatItem(ModEntities.PALM_BOAT, properties.stacksTo(1).cookingFuel(ContextIntProviders.COOKING_TIME_BOATS)));
     public static final Item PALM_CHEST_BOAT = registerItem("palm_chest_boat", properties ->
-            new BoatItem(ModEntities.PALM_CHEST_BOAT, properties.stacksTo(1)));
+            new BoatItem(ModEntities.PALM_CHEST_BOAT, properties.stacksTo(1).cookingFuel(ContextIntProviders.COOKING_TIME_BOATS)));
 
     public static final Item TAXITE_SIGN = registerItem("taxite_sign", properties ->
             new StandingAndWallBlockItem(ModBlocks.TAXITE_SIGN, ModBlocks.WALL_TAXITE_SIGN, Direction.DOWN,
-                    properties.stacksTo(16).useItemDescriptionPrefix()));
+                    properties.stacksTo(16).useItemDescriptionPrefix().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE)));
     public static final Item HANGING_TAXITE_SIGN = registerItem("taxite_hanging_sign", properties ->
-            new HangingSignItem(ModBlocks.HANGING_TAXITE_SIGN, ModBlocks.HANGING_WALL_TAXITE_SIGN, properties.stacksTo(16).useItemDescriptionPrefix()));
+            new HangingSignItem(ModBlocks.HANGING_TAXITE_SIGN, ModBlocks.HANGING_WALL_TAXITE_SIGN, properties.stacksTo(16)
+                    .useItemDescriptionPrefix().cookingFuel(ContextIntProviders.COOKING_TIME_HANGING_SIGNS)));
 
     public static final Item TAXITE_BOAT = registerItem("taxite_boat", properties ->
-            new BoatItem(ModEntities.TAXITE_BOAT, properties.stacksTo(1)));
+            new BoatItem(ModEntities.TAXITE_BOAT, properties.stacksTo(1).cookingFuel(ContextIntProviders.COOKING_TIME_BOATS)));
     public static final Item TAXITE_CHEST_BOAT = registerItem("taxite_chest_boat", properties ->
-            new BoatItem(ModEntities.TAXITE_CHEST_BOAT, properties.stacksTo(1)));
+            new BoatItem(ModEntities.TAXITE_CHEST_BOAT, properties.stacksTo(1).cookingFuel(ContextIntProviders.COOKING_TIME_BOATS)));
 
     public static final Item TENEBRIS_SIGN = registerItem("tenebris_sign", properties ->
             new StandingAndWallBlockItem(ModBlocks.TENEBRIS_SIGN, ModBlocks.WALL_TENEBRIS_SIGN, Direction.DOWN,
