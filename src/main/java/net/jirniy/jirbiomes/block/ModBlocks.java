@@ -133,6 +133,11 @@ public class ModBlocks {
             new SandBlock(new ColorRGBA(0x8E604F), properties.mapColor(MapColor.RAW_IRON)
                     .instrument(NoteBlockInstrument.SNARE).strength(0.55F).sound(SoundType.SUSPICIOUS_SAND)));
 
+    public static final Block PACKED_LEAVES = registerBlock("packed_leaves", properties ->
+            new ShearableBlock(properties.strength(0.4f).mapColor(MapColor.COLOR_BROWN).ignitedByLava()
+                    .pushReaction(PushReaction.PUSH_PULL).sound(SoundType.LEAF_LITTER)),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_STRAW_BLOCK).compostable(ContextIntProviders.COMPOSTABLE_MEDIUM_HIGH));
+
     public static final Block STRAW_BLOCK = registerBlock("straw_block", properties ->
             new RotatedPillarBlock(properties.strength(0.8f).mapColor(MapColor.TERRACOTTA_ORANGE).ignitedByLava()
                     .pushReaction(PushReaction.PUSH_PULL).sound(SoundType.GRASS).instrument(NoteBlockInstrument.BANJO)),

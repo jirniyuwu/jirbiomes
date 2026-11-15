@@ -126,6 +126,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .save(output, "icy_glass");
                 stainedGlassPaneFromStainedGlass(ModBlocks.ICY_GLASS_PANE, ModBlocks.ICY_GLASS);
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PACKED_LEAVES, 1)
+                        .pattern("SSS")
+                        .pattern("SSS")
+                        .pattern("SSS")
+                        .define('S', Blocks.LEAF_LITTER)
+                        .unlockedBy(getHasName(Blocks.LEAF_LITTER), has(Blocks.LEAF_LITTER))
+                        .unlockedBy(getHasName(ModBlocks.PACKED_LEAVES), has(ModBlocks.PACKED_LEAVES))
+                        .save(output, "packed_leaves");
+                shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.LEAF_LITTER, 9)
+                        .requires(ModBlocks.PACKED_LEAVES)
+                        .unlockedBy(getHasName(Blocks.LEAF_LITTER), has(Blocks.LEAF_LITTER))
+                        .unlockedBy(getHasName(ModBlocks.PACKED_LEAVES), has(ModBlocks.PACKED_LEAVES))
+                        .save(output, "leaf_litter_from_packed_leaves");
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRAW_BLOCK, 1)
                         .pattern("SS")
                         .pattern("SS")

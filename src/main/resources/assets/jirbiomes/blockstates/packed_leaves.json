@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "sheared=false": {
+      "model": "jirbiomes:block/packed_leaves"
+    },
+    "sheared=true": {
+      "model": "jirbiomes:block/packed_leaves_sheared"
+    }
+  }
+}

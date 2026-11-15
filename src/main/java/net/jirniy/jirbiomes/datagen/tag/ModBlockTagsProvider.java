@@ -35,7 +35,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKeys(ModBlocks.SEASHELL_BLOCK, ModBlocks.SUSPICIOUS_SEASHELLS, ModBlocks.SEASHELL_BRICKS))
                 .add(ModBlocks.getKeys(ModBlocks.SALT_BLOCK, ModBlocks.SALT_LAMP, ModBlocks.POLISHED_SALT, ModBlocks.POLISHED_TARR))
                 .add(ModBlocks.getKeys(ModBlocks.SOLID_TARR, ModBlocks.POLISHED_TARR, ModBlocks.TARR_BRICKS))
-                .add(ModBlocks.getKeys(ModBlocks.STRAW_BLOCK, ModBlocks.PACKED_STRAW))
+                .add(ModBlocks.getKeys(ModBlocks.PACKED_LEAVES, ModBlocks.STRAW_BLOCK, ModBlocks.PACKED_STRAW))
                 .add(ModBlocks.getKey(ModBlocks.COCONUT_PLANT));
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)

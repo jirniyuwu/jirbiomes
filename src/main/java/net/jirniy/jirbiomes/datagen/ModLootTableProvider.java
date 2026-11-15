@@ -144,6 +144,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.POLISHED_SNOW_SLAB, this::createSlabItemTable);
         dropSelf(ModBlocks.POLISHED_SNOW_WALL);
 
+        dropSelf(ModBlocks.PACKED_LEAVES);
         dropSelf(ModBlocks.STRAW_BLOCK);
         dropSelf(ModBlocks.PACKED_STRAW);
         dropSelf(ModBlocks.PACKED_STRAW_STAIRS);

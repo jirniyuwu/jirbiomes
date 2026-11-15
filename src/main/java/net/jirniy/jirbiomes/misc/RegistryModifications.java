@@ -50,31 +50,12 @@ public class RegistryModifications {
         BlockColorRegistry.register(List.of(BlockTintSources.doubleTallGrass()), ModBlocks.CATTAIL);
         BlockColorRegistry.register(List.of(BlockTintSources.constant(0x208030)), ModBlocks.LOTUS_FLOWER);
 
-//        CompostableRegistry.INSTANCE.add(ModItems.APPLE_SEEDS, 0.3f);
-//        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_LEAVES, 0.3f);
-//        CompostableRegistry.INSTANCE.add(ModBlocks.GINKGO_SAPLING, 0.3f);
-//        CompostableRegistry.INSTANCE.add(ModBlocks.PALM_LEAVES, 0.3f);
-//        CompostableRegistry.INSTANCE.add(ModBlocks.PALM_SAPLING, 0.3f);
-//        CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_LEAVES, 0.5f);
-//        CompostableRegistry.INSTANCE.add(ModBlocks.APPLE_OAK_SAPLING, 0.5f);
-//        CompostableRegistry.INSTANCE.add(ModItems.BARREL_CACTUS, 0.3f);
-//        CompostableRegistry.INSTANCE.add(ModItems.PRICKLY_PEAR, 0.3f);
-//        CompostableRegistry.INSTANCE.add(ModBlocks.CATTAIL, 0.3f);
-//        CompostableRegistry.INSTANCE.add(ModItems.LOTUS_FLOWER, 0.5f);
-
-//        FuelValueEvents.BUILD.register((builder, context) -> {
-//            final int BASE_TIME = context.baseSmeltTime();
-//            builder.add(ModItems.DRIED_FIBERS, BASE_TIME/6);
-//            builder.add(ModBlocks.STRAW_BLOCK, BASE_TIME);
-//            builder.add(ModItems.TARR_BUCKET, BASE_TIME*160);
-//            builder.add(ModTags.Items.WOODEN_PLATFORMS, BASE_TIME/2);
-//        });
-
         FlammableBlockRegistry.getDefaultInstance().add(ModTags.Blocks.WOODEN_PLATFORMS, 20, 60);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.CATTAIL, 40, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModTags.Blocks.BARREL_CACTUSES, 40, 60);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.LOTUS_FLOWER, 20, 40);
 
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_LEAVES, 60, 80);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRAW_BLOCK, 40, 100);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW, 20, 40);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.PACKED_STRAW_SLAB, 20, 40);

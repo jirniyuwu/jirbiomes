@@ -165,7 +165,8 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_FLAT)
                 .add(ModItems.getKey(ModBlocks.PROTOTAXITE_LOG))
                 .add(ModItems.getKey(ModBlocks.STRAW_BLOCK))
-                .add(ModItems.getKey(ModBlocks.PACKED_STRAW));
+                .add(ModItems.getKey(ModBlocks.PACKED_STRAW))
+                .add(ModItems.getKey(ModBlocks.PACKED_LEAVES));
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_SLIDING)
                 .add(ModItems.getKey(ModBlocks.PERMAFROST_BLOCK))
                 .add(ModItems.getKeys(ModBlocks.PACKED_SNOW_BRICKS, ModBlocks.PACKED_SNOW, ModBlocks.POLISHED_SNOW));
