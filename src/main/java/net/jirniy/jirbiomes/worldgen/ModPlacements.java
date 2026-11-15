@@ -9,10 +9,12 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.NetherFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ClampedNormalInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -89,6 +91,8 @@ public class ModPlacements {
     public static final ResourceKey<PlacedFeature> TENEBRIS_LARGE_PLACED = registryKey("tenebris_large");
     public static final ResourceKey<PlacedFeature> TENEBRIS_BUD_PLACED = registryKey("tenebris_bud");
     public static final ResourceKey<PlacedFeature> TENEBRIS_CEILING_PLACED = registryKey("tenebris_ceiling");
+    public static final ResourceKey<PlacedFeature> BRIMSTONE_GLOWSTONE = registryKey("glowstone_brimstone");
+    public static final ResourceKey<PlacedFeature> BRIMSTONE_GLOWSTONE_EXTRA = registryKey("glowstone_brimstone_extra");
 
     public static final ResourceKey<PlacedFeature> SALT_PLACED = registryKey("sea_salt");
     public static final ResourceKey<PlacedFeature> TARR_LAKE_PLACED = registryKey("tarr_lake");
@@ -485,6 +489,17 @@ public class ModPlacements {
                 HeightRangePlacement.of(BiasedToBottomHeight.of(
                         VerticalAnchor.aboveBottom(15), VerticalAnchor.aboveBottom(30), 2)),
                 BiomeFilter.biome(), NoiseThresholdCountPlacement.of(0.5f, 1, 3), InSquarePlacement.spread());
+
+        register(context, BRIMSTONE_GLOWSTONE, configuredFeatures.getOrThrow(NetherFeatures.GLOWSTONE_EXTRA),
+                CountPlacement.of(BiasedToBottomInt.of(0, 9)), InSquarePlacement.spread(), PlacementUtils.RANGE_4_4, BlockPredicateFilter.forPredicate(
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.UP, ModBlocks.BRIMSTONE, ModBlocks.NETHERSTONE))
+                ), BiomeFilter.biome()
+        );
+        register(context, BRIMSTONE_GLOWSTONE_EXTRA, configuredFeatures.getOrThrow(NetherFeatures.GLOWSTONE_EXTRA),
+                CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.UP, ModBlocks.BRIMSTONE, ModBlocks.NETHERSTONE))
+                ), BiomeFilter.biome()
+        );
     }
 
     public static ResourceKey<PlacedFeature> registryKey(String name) {
