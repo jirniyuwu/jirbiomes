@@ -705,6 +705,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.PALE_OAK_PLATFORM), has(ModBlocks.PALE_OAK_PLATFORM))
                         .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
                         .group("platform").save(output, "pale_oak_platform");
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POPLAR_PLATFORM, 16)
+                        .pattern("LLL")
+                        .pattern("/ /")
+                        .pattern("LLL")
+                        .define('L', Blocks.POPLAR_LOG)
+                        .define('/', Items.STICK)
+                        .unlockedBy(getHasName(ModBlocks.POPLAR_PLATFORM), has(ModBlocks.POPLAR_PLATFORM))
+                        .unlockedBy(getHasName(Blocks.POPLAR_LOG), has(Blocks.POPLAR_LOG))
+                        .group("platform").save(output, "poplar_platform");
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_PLATFORM, 16)
                         .pattern("LLL")
                         .pattern("/ /")

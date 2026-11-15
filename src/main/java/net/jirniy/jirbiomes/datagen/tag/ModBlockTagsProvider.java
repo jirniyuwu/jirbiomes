@@ -237,7 +237,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getKey(ModBlocks.HANGING_WALL_PALM_SIGN));
         tag(ModTags.Blocks.WOODEN_PLATFORMS)
                 .add(ModBlocks.getKeys(ModBlocks.OAK_PLATFORM, ModBlocks.DARK_OAK_PLATFORM, ModBlocks.PALE_OAK_PLATFORM, ModBlocks.BIRCH_PLATFORM, ModBlocks.SPRUCE_PLATFORM))
-                .add(ModBlocks.getKeys(ModBlocks.ACACIA_PLATFORM, ModBlocks.JUNGLE_PLATFORM, ModBlocks.MANGROVE_PLATFORM, ModBlocks.CHERRY_PLATFORM, ModBlocks.BAMBOO_PLATFORM))
+                .add(ModBlocks.getKeys(ModBlocks.ACACIA_PLATFORM, ModBlocks.JUNGLE_PLATFORM, ModBlocks.MANGROVE_PLATFORM, ModBlocks.CHERRY_PLATFORM, ModBlocks.POPLAR_PLATFORM, ModBlocks.BAMBOO_PLATFORM))
                 .add(ModBlocks.getKeys(ModBlocks.GINKGO_PLATFORM, ModBlocks.PALM_PLATFORM, ModBlocks.TAXITE_PLATFORM));
 
         tag(BlockTags.STAIRS)

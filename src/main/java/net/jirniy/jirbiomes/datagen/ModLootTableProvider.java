@@ -182,6 +182,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.JUNGLE_PLATFORM);
         dropSelf(ModBlocks.MANGROVE_PLATFORM);
         dropSelf(ModBlocks.SPRUCE_PLATFORM);
+        dropSelf(ModBlocks.POPLAR_PLATFORM);
 
         dropSelf(ModBlocks.GINKGO_LOG);
         dropSelf(ModBlocks.STRIPPED_GINKGO_LOG);

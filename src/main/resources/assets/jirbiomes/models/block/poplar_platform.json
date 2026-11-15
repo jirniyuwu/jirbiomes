@@ -1,0 +1,9 @@
+{
+  "parent": "jirbiomes:block/platform",
+  "textures": {
+    "log": "jirbiomes:block/poplar_platform",
+    "bottom": "jirbiomes:block/platform_bottom",
+    "hanging": "jirbiomes:block/platform_hanging",
+    "particle": "minecraft:block/poplar_log"
+  }
+}

@@ -471,6 +471,10 @@ public class ModBlocks {
             new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
                     .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()),
             new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
+    public static final Block POPLAR_PLATFORM = registerBlock("poplar_platform", properties ->
+            new PlatformBlock(properties.sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
+                    .strength(0.8f).mapColor(MapColor.PODZOL).ignitedByLava()),
+            new Item.Properties().cookingFuel(ModContextIntProviders.COOKING_TIME_WOOD_PLATFORMS));
     public static final Block BAMBOO_PLATFORM = registerBlock("bamboo_platform", properties ->
             new PlatformBlock(properties.sound(SoundType.BAMBOO_WOOD).pushReaction(PushReaction.POPPED)
                     .strength(0.8f).mapColor(MapColor.PLANT).ignitedByLava()),
