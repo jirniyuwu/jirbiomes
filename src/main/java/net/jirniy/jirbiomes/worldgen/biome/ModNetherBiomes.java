@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.placement.NetherPlacements;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.attribute.*;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.level.biome.Biome;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import org.joml.Vector3f;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,7 +55,7 @@ public class ModNetherBiomes {
                 .hasPrecipitation(false).temperature(4.0F).downfall(0.0F)
                 .specialEffects((new BiomeSpecialEffects.Builder().waterColor(0x9c3669)).build())
                 .mobSpawnSettings(mobSpawnSettings).generationSettings(biomeBuilder.build())
-                .setAttribute(EnvironmentAttributes.FOG_COLOR, new Vector3f(0x7a155))
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(0x7a1553))
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.AMBIENT_NETHER_WASTES_LOOP))
                 .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.BRIMGRASS_SPORES, 0.0025f))
                 .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(

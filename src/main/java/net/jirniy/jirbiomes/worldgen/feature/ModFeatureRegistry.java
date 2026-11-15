@@ -24,7 +24,6 @@ public class ModFeatureRegistry {
 
         Registry<MapCodec<? extends Feature>> registry = BuiltInRegistries.FEATURE_TYPE;
         Registry.register(registry, "tenebris", TenebrisFeature.CODEC);
-        Registry.register(registry, "downwards_tenebris", DownwardsTenebrisFeature.CODEC);
         Registry.register(registry, "large_tenebris", LargeTenebrisFeature.CODEC);
 
         Registry.register(registry, "taxite", TaxiteFeature.CODEC);

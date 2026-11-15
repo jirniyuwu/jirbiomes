@@ -161,9 +161,28 @@ public class ModFeatures {
         BeehiveDecorator beehive005 = new BeehiveDecorator(0.05F);
         BeehiveDecorator beehive = new BeehiveDecorator(1.0F);
 
-        context.register(TENEBRIS, new TenebrisFeature());
-        context.register(DOWNWARDS_TENEBRIS, new DownwardsTenebrisFeature());
-        context.register(LARGE_TENEBRIS, new LargeTenebrisFeature());
+        context.register(TENEBRIS, new TenebrisFeature(
+                simpleStateHolder(ModBlocks.TENEBRIS_LOG), UniformInt.of(3, 4), Direction.UP,
+                simpleStateHolder(ModBlocks.TENEBRIS_LEAVES), UniformInt.of(0, 1), simpleStateHolder(Blocks.SHROOMLIGHT)));
+        context.register(DOWNWARDS_TENEBRIS, new TenebrisFeature(
+                simpleStateHolder(ModBlocks.TENEBRIS_LOG), UniformInt.of(2, 7), Direction.DOWN,
+                simpleStateHolder(ModBlocks.TENEBRIS_LEAVES), UniformInt.of(1, 2), simpleStateHolder(Blocks.SHROOMLIGHT)));
+        context.register(LARGE_TENEBRIS, new LargeTenebrisFeature(
+                simpleStateHolder(ModBlocks.TENEBRIS_LOG), UniformInt.of(5, 8),
+                simpleStateHolder(ModBlocks.TENEBRIS_PILEUS), ConstantInt.of(2), 2,
+                0.7f, 0.4f, 0.8f,
+                Holder.direct(new WeightedStateProvider(
+                        WeightedList.<BlockState>builder()
+                                .add(ModBlocks.TENEBRIS_LEAVES.defaultBlockState().setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.CEILING)
+                                        .setValue(PlantLikeLeavesBlock.FACING, Direction.NORTH))
+                                .add(ModBlocks.TENEBRIS_LEAVES.defaultBlockState().setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.CEILING)
+                                        .setValue(PlantLikeLeavesBlock.FACING, Direction.EAST))
+                                .add(ModBlocks.TENEBRIS_LEAVES.defaultBlockState().setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.CEILING)
+                                        .setValue(PlantLikeLeavesBlock.FACING, Direction.SOUTH))
+                                .add(ModBlocks.TENEBRIS_LEAVES.defaultBlockState().setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.CEILING)
+                                        .setValue(PlantLikeLeavesBlock.FACING, Direction.WEST))
+                                .add(Blocks.SHROOMLIGHT.defaultBlockState()))), 0.4f
+        ));
         context.register(LARGE_TENEBRIS_WITH_GRASS, new SequenceFeature(
                 HolderSet.direct(
                         PlacementUtils.inlinePlaced(new SimpleBlockFeature(RuleBasedStateProvider.ifTrueThenProvide(

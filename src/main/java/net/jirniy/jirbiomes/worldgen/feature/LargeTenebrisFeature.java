@@ -1,26 +1,48 @@
 package net.jirniy.jirbiomes.worldgen.feature;
 
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import net.jirniy.jirbiomes.block.ModBlocks;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.jirniy.jirbiomes.block.custom.PileusBlock;
 import net.jirniy.jirbiomes.block.custom.PileusShapes;
-import net.jirniy.jirbiomes.block.custom.PlantLikeLeavesBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 import java.util.ArrayList;
 
-public record LargeTenebrisFeature() implements Feature {
-    public static final MapCodec<LargeTenebrisFeature> CODEC = MapCodec.unit(LargeTenebrisFeature::new);
+public record LargeTenebrisFeature(
+        Holder<BlockStateProvider> trunk,
+        IntProvider trunkHeight,
+        Holder<BlockStateProvider> leaves,
+        IntProvider leavesRadius,
+        int leavesMaxHanging,
+        float leavesHangingProbability,
+        float topBlockProbability1,
+        float topBlockProbability2,
+        Holder<BlockStateProvider> decorHanging,
+        float decorProbability
+) implements Feature {
+    public static final MapCodec<LargeTenebrisFeature> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
+            BlockStateProvider.CODEC.fieldOf("trunk").forGetter(LargeTenebrisFeature::trunk),
+            IntProviders.codec(1, 32).fieldOf("height").forGetter(LargeTenebrisFeature::trunkHeight),
+            BlockStateProvider.CODEC.fieldOf("leaves").forGetter(LargeTenebrisFeature::leaves),
+            IntProviders.codec(1, 5).fieldOf("leaves_radius").forGetter(LargeTenebrisFeature::leavesRadius),
+            Codec.intRange(0, 4).fieldOf("leaves_max_hanging").forGetter(LargeTenebrisFeature::leavesMaxHanging),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_hanging_probability").forGetter(LargeTenebrisFeature::leavesHangingProbability),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("top_block_probability_1").forGetter(LargeTenebrisFeature::topBlockProbability1),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("top_block_probability_2").forGetter(LargeTenebrisFeature::topBlockProbability2),
+            BlockStateProvider.CODEC.fieldOf("decor").forGetter(LargeTenebrisFeature::decorHanging),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("decor_probability").forGetter(LargeTenebrisFeature::decorProbability)
+    ).apply(i, LargeTenebrisFeature::new));
 
     @Override
     public MapCodec<LargeTenebrisFeature> codec() {
@@ -29,7 +51,10 @@ public record LargeTenebrisFeature() implements Feature {
 
     @Override
     public boolean place(WorldGenLevel level, ChunkGenerator chunkGenerator, RandomSource random, BlockPos origin) {
-        for (int i = 0; i <= 9; i++) {
+        int height = trunkHeight.sample(random);
+        int radius = leavesRadius.sample(random);
+
+        for (int i = 0; i <= height + 1; i++) {
             if (!level.getBlockState(origin.above(i)).canBeReplaced()) {
                 return false;
             }
@@ -37,32 +62,20 @@ public record LargeTenebrisFeature() implements Feature {
 
         ArrayList<BlockPos> trunkPoses = new ArrayList<>();
         ArrayList<BlockPos> capPoses = new ArrayList<>();
-        int height = random.nextIntBetweenInclusive(5, 8);
-        int radius = 2;
-        Pair<Float, Float> hangingBlockProbability = Pair.of(0.7f, 0.7f);
-        float hangingDecorProbability = 0.4f;
 
         for (int i = 0; i < height; i++) {
             BlockPos newPos = origin.above(i);
-            trySetBlock(trunkPoses, ModBlocks.TENEBRIS_LOG.defaultBlockState(), newPos, level);
+            trySetBlock(trunkPoses, trunk.value().getState(level, random, newPos), newPos, level);
 
             if (i == height - 1) {
-                placeCap(capPoses, radius, hangingBlockProbability, ModBlocks.TENEBRIS_PILEUS.defaultBlockState(), newPos, level, random);
+                placeCap(capPoses, radius, newPos, level, random);
             }
         }
 
         for (BlockPos capPos : capPoses) {
             if (level.getBlockState(capPos.below()).isAir()) {
-                if (random.nextFloat() < hangingDecorProbability) {
-                    if (random.nextFloat() < 0.2f) {
-                        trySetBlock(Blocks.SHROOMLIGHT.defaultBlockState(),
-                                capPos.below(), level);
-                    } else {
-                        trySetBlock(ModBlocks.TENEBRIS_LEAVES.defaultBlockState()
-                                        .setValue(PlantLikeLeavesBlock.BLOCKSHAPE, AttachFace.CEILING)
-                                        .setValue(PlantLikeLeavesBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random)),
-                                capPos.below(), level);
-                    }
+                if (random.nextFloat() < decorProbability) {
+                    trySetBlock(decorHanging.value().getState(level, random, capPos.below()), capPos.below(), level);
                 }
             }
         }
@@ -70,7 +83,7 @@ public record LargeTenebrisFeature() implements Feature {
         return true;
     }
 
-    private ArrayList<BlockPos> placeCap(ArrayList<BlockPos> list, int radius, Pair<Float, Float> probability, BlockState state, BlockPos pos, WorldGenLevel level, RandomSource random) {
+    private ArrayList<BlockPos> placeCap(ArrayList<BlockPos> list, int radius, BlockPos pos, WorldGenLevel level, RandomSource random) {
         ArrayList<Vec3i> offsets = new ArrayList<>();
         for (int i = -radius; i <= radius; i++) {
             for (int j = -radius; j <= radius; j++) {
@@ -84,18 +97,24 @@ public record LargeTenebrisFeature() implements Feature {
         for (Vec3i offset : offsets) {
             if (isWithinRange(offset.getX(), -1, 1) && isWithinRange(offset.getZ(), -1, 1)) {
                 if (isAtCorner(offset, 1)) {
-                    if (random.nextFloat() < 0.4f) {
+                    if (random.nextFloat() < topBlockProbability1) {
                         topList.add(offset.above());
                     }
                 } else {
                     topList.add(offset.above());
                 }
             }
-            if (isAtEdge(offset, radius)) {
-                if (random.nextFloat() < probability.getFirst()) {
-                    tempList.add(offset.below());
-                    if (random.nextFloat() < probability.getSecond()) {
+            if (leavesMaxHanging > 0 && isAtEdge(offset, radius)) {
+                if (random.nextFloat() < leavesHangingProbability) {
+                    tempList.add(offset.below(1));
+                    if (leavesMaxHanging > 1 && random.nextFloat() < leavesHangingProbability) {
                         tempList.add(offset.below(2));
+                        if (leavesMaxHanging > 2 && random.nextFloat() < leavesHangingProbability) {
+                            tempList.add(offset.below(3));
+                            if (leavesMaxHanging > 3 && random.nextFloat() < leavesHangingProbability) {
+                                tempList.add(offset.below(4));
+                            }
+                        }
                     }
                 }
             }
@@ -106,12 +125,13 @@ public record LargeTenebrisFeature() implements Feature {
         for (Vec3i offset : offsets) {
             if (!offset.equals(new Vec3i(0, 0, 0))) {
                 if (offset.getY() == 0
-                        && (((!isAtCorner(offset, radius) && random.nextFloat() > probability.getSecond())
+                        && (((!isAtCorner(offset, radius) && random.nextFloat() > topBlockProbability2)
                         || isAtCorner(offset, 1)) && !topList.contains(offset.above()))) {
-                    trySetBlock(list, state.setValue(PileusBlock.SHAPE, PileusShapes.GROUNDED),
+                    trySetBlock(list, leaves.value().getState(level, random, pos.offset(offset.above()))
+                                    .trySetValue(PileusBlock.SHAPE, PileusShapes.GROUNDED),
                             pos.offset(offset.above()), level);
                 }
-                trySetBlock(list, state, pos.offset(offset), level);
+                trySetBlock(list, leaves.value().getState(level, random, pos.offset(offset)), pos.offset(offset), level);
             }
         }
 
